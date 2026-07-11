@@ -1,7 +1,7 @@
 export type RootStackParamList = {
   Tabs: undefined;
   Module: { moduleId: string };
-  Quiz: { moduleId?: string; review?: boolean };
+  Quiz: { moduleId?: string; review?: boolean; exam?: boolean };
   Decision: { moduleId: string; decisionId: string };
   SimRun: { phaseId: string };
 };

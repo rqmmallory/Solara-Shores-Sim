@@ -6,6 +6,7 @@ import { simPhases } from '../content';
 import type { CurveballFrequency } from '../engine/sim';
 import { useAppState } from '../state/AppState';
 import { Body, Card, H1, H2, Screen, Small, Tag } from '../ui/components';
+import ProjectMap from '../ui/ProjectMap';
 import { colors } from '../ui/theme';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -28,6 +29,8 @@ export default function SimListScreen() {
         calls cost days, dollars, and quality — never a game-over. New phases unlock as they're
         built into the app.
       </Small>
+
+      <ProjectMap records={app.state.simRecords} />
 
       <Card>
         <Body style={{ fontWeight: '600', marginBottom: 4 }}>Curveball frequency</Body>
@@ -54,31 +57,51 @@ export default function SimListScreen() {
         <Small style={{ marginTop: 6 }}>{FREQ_LABELS.find((f) => f.key === freq)?.blurb}</Small>
       </Card>
 
-      {simPhases.map((p) => {
+      {simPhases.map((p, i) => {
         const record = app.state.simRecords.find((r) => r.phaseId === p.id);
         const placeholder = p.status === 'placeholder';
+        // sequential unlock: a phase opens once every earlier phase has a run
+        const locked =
+          !placeholder &&
+          simPhases
+            .slice(0, i)
+            .some(
+              (prev) =>
+                prev.status !== 'placeholder' &&
+                !app.state.simRecords.some((r) => r.phaseId === prev.id)
+            );
         return (
           <TouchableOpacity
             key={p.id}
-            disabled={placeholder}
+            disabled={placeholder || locked}
             onPress={() => nav.navigate('SimRun', { phaseId: p.id })}
           >
-            <Card style={{ opacity: placeholder ? 0.5 : 1 }}>
+            <Card style={{ opacity: placeholder || locked ? 0.5 : 1 }}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <H2>{p.title}</H2>
-                {record ? <Tag label={`BEST ${record.bestScore}`} color={colors.good} /> : null}
+                {record ? (
+                  <Tag label={`BEST ${record.bestScore}`} color={colors.good} />
+                ) : locked ? (
+                  <Tag label="LOCKED" color={colors.muted} />
+                ) : null}
               </View>
-              <Small>{placeholder ? 'Coming in a later build increment.' : p.intro.slice(0, 140) + '…'}</Small>
+              <Small>
+                {placeholder
+                  ? 'Coming in a later build increment.'
+                  : locked
+                    ? 'Complete the previous phase first — the critical path is the critical path.'
+                    : p.intro.slice(0, 140) + '…'}
+              </Small>
             </Card>
           </TouchableOpacity>
         );
       })}
 
       <Card style={{ opacity: 0.5 }}>
-        <H2>Phases 2–8</H2>
+        <H2>Phases 3–8</H2>
         <Small>
-          Marine excavation · Horizontal Phase 1 · Vertical + amenity core · Marine completion ·
-          Production waves · Handover. Each phase is added as its own build increment once the
+          Vertical + amenity core · Marine completion (plug breach, groins, beach) · Production
+          waves · Estate lots · Handover. Each phase is added as its own build increment once the
           previous one plays well — same engine, new data files.
         </Small>
       </Card>

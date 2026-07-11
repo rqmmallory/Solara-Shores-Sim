@@ -66,6 +66,15 @@ export default function HomeScreen() {
         </TeachBox>
       )}
 
+      <Card>
+        <Body style={{ fontWeight: '600' }}>Readiness exam</Body>
+        <Small>
+          Twelve questions sampled across all modules, weighted toward your weakest ones — the
+          whole-project test, the way September will ask it.
+        </Small>
+        <Btn label="Test me on everything" onPress={() => nav.navigate('Quiz', { exam: true })} />
+      </Card>
+
       {weakest && (
         <Card>
           <Body style={{ fontWeight: '600' }}>Suggested next: {weakest.m.short}</Body>

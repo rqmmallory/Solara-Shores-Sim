@@ -21,6 +21,7 @@ import m13 from './modules/m13-soft-skills.json';
 import m14 from './modules/m14-sequence.json';
 
 import phase1 from './sim/phase1-site-prep.json';
+import phase2 from './sim/phase2-marine-horizontal.json';
 
 // JSON imports widen literal unions to string; the runtime validator
 // (validate.ts, exercised in tests) is the real guarantee.
@@ -32,7 +33,7 @@ export const modules: ContentModule[] = (raw as unknown as ContentModule[])
 
 export const moduleById = new Map(modules.map((m) => [m.id, m]));
 
-export const simPhases: SimPhase[] = ([phase1] as unknown as SimPhase[])
+export const simPhases: SimPhase[] = ([phase1, phase2] as unknown as SimPhase[])
   .slice()
   .sort((a, b) => a.order - b.order);
 

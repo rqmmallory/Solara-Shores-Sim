@@ -27,7 +27,9 @@ npm run typecheck  # tsc --noEmit
    choice, sequencing ("put these phases in order"), and subcontract-vs-direct-manage
    scenarios. Every question has a `teach` blurb before and an `explanation`
    after — right or wrong. Missed questions enter a **Leitner spaced-repetition
-   queue** (10 min → 1 day → 3 days → 7 days) surfaced on the Home tab.
+   queue** (10 min → 1 day → 3 days → 7 days) surfaced on the Home tab. A
+   **Readiness Exam** on the Home tab samples 12 questions across all modules,
+   weighted toward your weakest — the whole-project test.
 
 2. **Budget & math engine (Math tab)** — problems generated fresh from each
    module's real planning numbers. Eight generators: unit rate, percent-of,
@@ -37,16 +39,25 @@ npm run typecheck  # tsc --noEmit
    next level), and a running **estimating accuracy** stat (mean |% error|)
    tracks calibration over time. Every problem shows a full worked solution.
 
-3. **Subdivision simulation (Sim tab)** — the actual project, phase by phase.
-   Phase 1 (Enabling Works & Site Prep) is fully playable: six decision gates
-   (CEC timing, geotech, rock classification, crusher, QA lab, hurricane prep)
-   plus a curveball pool (karst void, rock claim, storm warning, permit query,
-   sub no-show, wet month) with tunable frequency. Choices move four meters —
-   schedule slip, cost variance, quality, open risk — and can **arm** or
-   **defuse** later curveballs. No game-overs: the debrief grades the run
-   against realistic slip/contingency allowances and explains every call.
-   Phases 2–8 are added one at a time as pure data files once the prior phase
-   plays well.
+3. **Subdivision simulation (Sim tab)** — the actual project, phase by phase,
+   with a visual **site-progress map** that fills in as phases complete, and
+   sequential phase unlocking (the critical path is the critical path).
+   Playable now:
+   - **Phase 1 — Enabling Works & Site Prep**: six decision gates (CEC timing,
+     geotech, rock classification, crusher, QA lab, hurricane prep) plus a
+     curveball pool (karst void, rock claim, storm warning, permit query, sub
+     no-show, wet month).
+   - **Phase 2 — Marine Excavation & First Horizontal**: marine contract
+     packaging, dry-cut-vs-early-breach, EMP flow-down, underwater QA
+     (bathymetric surveys), WWTP procurement form, and the transformer order —
+     with curveballs to match (lost mobilization, turbidity standby, bulkhead
+     rework, canal karst, factory slip, WWTP design gaps).
+
+   Choices move four meters — schedule slip, cost variance, quality, open
+   risk — and can **arm** or **defuse** later curveballs. No game-overs: the
+   debrief grades the run against realistic slip/contingency allowances and
+   explains every call. Phases 3–8 are added one at a time as pure data files
+   once the prior phase plays well.
 
 **Gamification** is framed on the real goal: a **Project Readiness** score
 (50% knowledge / 25% estimating / 25% sim) with a countdown to the September 1

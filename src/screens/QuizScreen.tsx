@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { moduleById } from '../content';
+import { moduleById, modules } from '../content';
+import { buildMixedExam } from '../engine/exam';
 import type {
   MultipleChoiceQuestion,
   QuizQuestion,
@@ -23,7 +24,7 @@ interface SessionItem {
 }
 
 export default function QuizScreen({ route, navigation }: Props) {
-  const { moduleId, review } = route.params;
+  const { moduleId, review, exam } = route.params;
   const app = useAppState();
 
   const items = useMemo<SessionItem[]>(() => {
@@ -36,21 +37,26 @@ export default function QuizScreen({ route, navigation }: Props) {
         })
         .filter((x): x is SessionItem => x !== null);
     }
+    if (exam) {
+      return buildMixedExam(modules, app.state.moduleStats, defaultRng);
+    }
     const m = moduleId ? moduleById.get(moduleId) : undefined;
     if (!m) return [];
     return shuffle(defaultRng, m.quiz).map((q) => ({ moduleId: m.id, question: q }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [moduleId, review]);
+  }, [moduleId, review, exam]);
 
   const [index, setIndex] = useState(0);
   const [answered, setAnswered] = useState<null | { correct: boolean }>(null);
   const [sessionCorrect, setSessionCorrect] = useState(0);
   const [sessionXp, setSessionXp] = useState(0);
 
+  const title = exam ? 'Readiness Exam' : review ? 'Review' : 'Quiz';
+
   if (items.length === 0) {
     return (
       <Screen>
-        <H1>{review ? 'Review' : 'Quiz'}</H1>
+        <H1>{title}</H1>
         <Card>
           <Body>
             {review
@@ -106,12 +112,12 @@ export default function QuizScreen({ route, navigation }: Props) {
   return (
     <Screen>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-        <H1>{review ? 'Review' : 'Quiz'}</H1>
+        <H1>{title}</H1>
         <Small>
           {index + 1} / {items.length}
         </Small>
       </View>
-      {review ? <Tag label={moduleById.get(item.moduleId)?.short ?? item.moduleId} /> : null}
+      {review || exam ? <Tag label={moduleById.get(item.moduleId)?.short ?? item.moduleId} /> : null}
       {q.teach ? <TeachBox>{q.teach}</TeachBox> : null}
       <Card>
         <Body style={{ fontWeight: '600', marginBottom: 8 }}>{q.prompt}</Body>

@@ -10,6 +10,7 @@ import {
 import { seededRng, Rng } from '../rng';
 
 const phase = simPhases.find((p) => p.id === 'phase1-site-prep')!;
+const phase2 = simPhases.find((p) => p.id === 'phase2-marine-horizontal')!;
 
 /** rng that never fires curveballs (always rolls high) */
 const noEvents: Rng = () => 0.999;
@@ -108,6 +109,33 @@ describe('sim engine', () => {
       expect(s.pendingCurveball).toBeNull();
       expect(s.stepIndex).toBe(before + 1);
     }
+  });
+
+  it('phase 2 plays end-to-end: optimal beats worst, both finish', () => {
+    const playPhase = (worst: boolean) => {
+      let s = initialSimState(phase2);
+      const rng = seededRng(11);
+      while (!s.finished) {
+        if (s.pendingCurveball) {
+          const cb = getCurveball(phase2, s.pendingCurveball)!;
+          const opt = worst
+            ? cb.choices![cb.choices!.length - 1]
+            : (cb.choices!.find((o) => o.optimal) ?? cb.choices![0]);
+          s = resolveCurveball(phase2, s, opt);
+          continue;
+        }
+        const step = currentStep(phase2, s)!;
+        const opt = worst
+          ? (step.options.find((o) => !o.optimal && !o.acceptable) ?? step.options[step.options.length - 1])
+          : step.options.find((o) => o.optimal)!;
+        s = chooseOption(phase2, s, opt, rng, 'realistic');
+      }
+      return s;
+    };
+    const good = debrief(phase2, playPhase(false));
+    const bad = debrief(phase2, playPhase(true));
+    expect(good.score).toBeGreaterThan(bad.score);
+    expect(['A', 'B']).toContain(good.grade);
   });
 
   it('quality is clamped to 0..100 and risk floors at 0', () => {

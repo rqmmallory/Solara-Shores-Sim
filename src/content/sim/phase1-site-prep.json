@@ -6,6 +6,7 @@
   "intro": "The CEC is weeks away and the clock to September is running. This phase covers construction access from Yamacraw Hill Rd, clearing, survey control, the geotech confirmation program, crusher setup, and the first earthworks package. Your job: get the sequencing, contracting, and risk decisions right. Budget $7.5M, plan 120 working days. Wrong calls won't end the game — they'll cost you days, dollars, and quality, exactly like the real thing.",
   "startBudget": 7500000,
   "plannedDays": 120,
+  "mapAreas": ["Construction access (Yamacraw Hill Rd)", "Cleared & surveyed land", "Crusher & laydown compound", "First drainage wells"],
   "steps": [
     {
       "id": "cec-gate",

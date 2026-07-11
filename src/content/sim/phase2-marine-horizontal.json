@@ -1,0 +1,275 @@
+{
+  "id": "phase2-marine-horizontal",
+  "order": 2,
+  "title": "Phase 2 — Marine Excavation & First Horizontal",
+  "status": "ready",
+  "intro": "Site prep is done. Now the big rock moves: canal, marina, and lake cuts IN THE DRY behind the ocean plug, feeding the crusher that feeds the first roads — while the spine utilities, WWTP, and BPL primary race to unlock vertical. This phase is where contract structure decides everything: how you package the marine scopes, what flows down from the EMP, and which long-lead orders go out today. Budget $38M, plan 260 working days.",
+  "startBudget": 38000000,
+  "plannedDays": 260,
+  "mapAreas": ["Canal network (dry cut)", "Marina basin (dry)", "Canal bulkheads", "Spine road & wet utilities", "WWTP", "BPL primary & substation"],
+  "steps": [
+    {
+      "id": "marine-packaging",
+      "title": "Packaging the marine scopes",
+      "brief": "Dredging, bulkheads, and (next year) groins and beach fill could bid as one continuous marine campaign or as separate packages. Marine mobilization runs $250K–$1M+ per spread, the regional contractor pool is small, and bids are never comparable as submitted. How do you go to market?",
+      "options": [
+        {
+          "id": "bundle-unit-rates",
+          "label": "One continuous marine contract: unit rates by material class, leveled across three bidders, mobilization amortized over the whole campaign",
+          "effects": { "days": 10, "cost": 150000, "quality": 5, "risk": -3 },
+          "outcome": "The longer tender takes two extra weeks and the leveling sheet earns its keep — the raw low bidder was 12% 'cheaper' by excluding rock pre-treatment. One mobilization now covers everything through the bulkheads.",
+          "optimal": true,
+          "defuses": ["second-mob"]
+        },
+        {
+          "id": "piecemeal",
+          "label": "Separate packages per scope — smaller bites, more bidders per bite",
+          "effects": { "days": 0, "cost": 400000, "quality": 0, "risk": 3 },
+          "outcome": "Each package looks competitive in isolation; each pays its own mobilization. The dredge contractor's spread demobilizes after the canal package while the bulkhead award is still in tender.",
+          "arms": ["second-mob"]
+        },
+        {
+          "id": "bundle-lump-sum",
+          "label": "One big contract, but lump sum — 'give me one number for everything'",
+          "effects": { "days": 5, "cost": 900000, "quality": 0, "risk": 2 },
+          "outcome": "The bidders price your quantity risk into the lump sum — expensively — because nobody fixes a price on uncertain yardage in karstic rock without padding it. You paid the uncertainty premium whether the risk lands or not.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "dry-vs-wet",
+      "title": "How far do you push the dry cut?",
+      "brief": "The marine contractor proposes breaching the plug early: 'one campaign, everything from the water, simpler.' Your QS's model: finishing the dry excavation first saves ~$2.8M in excavation cost (dry rock $12–30/cy vs marine dredging $30–80/cy) but risks a second mobilization (~$600K) if the wet works slip to next season.",
+      "options": [
+        {
+          "id": "max-dry",
+          "label": "Maximize the dry cut behind the plug; the sea gets only what a barge alone can do",
+          "effects": { "days": 0, "cost": -2200000, "quality": 5, "risk": -1 },
+          "outcome": "Hundreds of thousands of yards move at quarry prices, clean rock streams to the crusher, and turbidity exposure shrinks because most yardage never touches water. The net saving lands even if a second mobilization proves necessary.",
+          "optimal": true
+        },
+        {
+          "id": "breach-early",
+          "label": "Breach early — one campaign, one mobilization, simpler management",
+          "effects": { "days": 0, "cost": 1400000, "quality": 0, "risk": 2 },
+          "outcome": "Simpler for the contractor, expensive for you: yardage that could have been quarried is now dredged in a weather window under turbidity monitoring. 'Simpler' was never priced against the delta.",
+          "arms": ["turbidity-standby"]
+        },
+        {
+          "id": "hybrid",
+          "label": "Dry-cut the canals; let the contractor work the basin wet",
+          "effects": { "days": 0, "cost": -800000, "quality": 2, "risk": 0 },
+          "outcome": "A defensible middle if the basin geometry truly favors wet excavation — you captured most of the dry-cut prize. Worth checking whose convenience the 'geometry' argument actually served.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "emp-flowdown",
+      "title": "The EMP and the dredging contract",
+      "brief": "The CEC's Environmental Management Plan sets turbidity limits, work windows, and monitoring duties — enforceable against YOU. The dredging contract is being finalized. How do the EMP conditions get into it?",
+      "options": [
+        {
+          "id": "verbatim-flowdown",
+          "label": "EMP conditions written into the subcontract verbatim, with stoppage cost allocation defined: contractor-caused exceedances are their time, weather/third-party stoppages share per a standby schedule",
+          "effects": { "days": 0, "cost": 100000, "quality": 5, "risk": -3 },
+          "outcome": "The contractor prices the obligations knowingly (slightly higher bid — that's honesty, not cost), and the first turbidity stoppage is a procedure instead of a fight. The standby question was answered before it was asked.",
+          "optimal": true,
+          "defuses": ["turbidity-standby"]
+        },
+        {
+          "id": "summary-clause",
+          "label": "A general clause: 'contractor shall comply with all applicable environmental requirements'",
+          "effects": { "days": 0, "cost": 0, "quality": 0, "risk": 3 },
+          "outcome": "The contractor complied with what they read — and they never read the EMP's monitoring schedule. When DEPP stops the work, 'applicable requirements' becomes a claims-lawyer's playground, and the standby meter runs while you argue.",
+          "arms": ["turbidity-standby"]
+        },
+        {
+          "id": "handle-it-yourself",
+          "label": "Keep EMP compliance owner-side: your environmental consultant monitors, the contractor just digs",
+          "effects": { "days": 0, "cost": 250000, "quality": 0, "risk": 2 },
+          "outcome": "Your consultant can monitor, but they can't slow a cutter head or reposition a turbidity curtain — the party creating the plume has no contractual duty to manage it. You've bought surveillance of violations you can't prevent.",
+          "acceptable": false
+        }
+      ]
+    },
+    {
+      "id": "bulkhead-qa",
+      "title": "Measuring what you pay for underwater",
+      "brief": "Bulkhead panels are going in along miles of canal edge, and dredge payment is per cubic yard removed. The contractor's monthly applications will state quantities and alignment. Who verifies?",
+      "options": [
+        {
+          "id": "owner-survey",
+          "label": "Owner-commissioned bathymetric surveys before/after each dredge area, alignment tolerance checks on every bulkhead run, stone gradation certs on file",
+          "effects": { "days": 0, "cost": 180000, "quality": 8, "risk": -2 },
+          "outcome": "Month three, the survey shows claimed quantities 9% above the actual bottom — corrected in that month's certification, quietly, with data. The contractor's applications get accurate from then on. The survey program has already paid for itself.",
+          "optimal": true,
+          "defuses": ["bulkhead-rework"]
+        },
+        {
+          "id": "trust-applications",
+          "label": "Certify against the contractor's own records — surveys are expensive",
+          "effects": { "days": 0, "cost": 0, "quality": -6, "risk": 3 },
+          "outcome": "You are now paying per cubic yard, as measured by the party being paid. And the bulkhead alignment drift nobody measured becomes visible exactly when the dock installers show up with straight docks for a curved wall.",
+          "arms": ["bulkhead-rework"]
+        }
+      ]
+    },
+    {
+      "id": "wwtp-procurement",
+      "title": "Buying the wastewater plant",
+      "brief": "The package WWTP ($3.5–7M) must be running before the first vertical phase occupies. It's a performance scope — you care about effluent standards and capacity, not the internals. Three procurement routes are on the table.",
+      "options": [
+        {
+          "id": "design-build-perf",
+          "label": "Design-build against a performance spec — effluent standards, capacity staging, uptime guarantees — competed between specialist firms",
+          "effects": { "days": 0, "cost": 0, "quality": 5, "risk": -2 },
+          "outcome": "The form fits the scope: the specialists carry design risk against numbers they must hit, and the capacity-staging clause means Phase 6 expansion is pre-priced. Environmental Health reviews one accountable design.",
+          "optimal": true,
+          "defuses": ["wwtp-gap"]
+        },
+        {
+          "id": "lump-sum-incomplete",
+          "label": "Lump sum on your civil engineer's 60%-complete design to start earlier",
+          "effects": { "days": -10, "cost": 200000, "quality": 0, "risk": 3 },
+          "outcome": "Two weeks saved at award; every gap in the 60% design is now a change order with sole-source pricing. Lump sum only works on complete scope — you fixed the price of the drawn part and opened the wallet on the rest.",
+          "arms": ["wwtp-gap"]
+        },
+        {
+          "id": "cost-plus-friend",
+          "label": "Cost-plus with a contractor your consultant vouches for — 'we'll figure it out together'",
+          "effects": { "days": 0, "cost": 700000, "quality": -3, "risk": 3 },
+          "outcome": "Cost-plus is for genuine emergencies, and this isn't one. Without a performance spec, 'figuring it out together' means their learning curve bills at cost plus fee — and the effluent standard is still nobody's contractual problem.",
+          "arms": ["wwtp-gap"]
+        }
+      ]
+    },
+    {
+      "id": "switchgear-order",
+      "title": "The transformer order",
+      "brief": "BPL's primary extension design is 80% settled. Substation transformers and switchgear run 40–60+ weeks — a global bottleneck. Vertical Phase 1 needs power in roughly 14 months. Ordering now means a deposit against a design that could still shift; waiting means ordering against a final design.",
+      "options": [
+        {
+          "id": "order-now",
+          "label": "Release the order now with a deposit, sized to the 80% design with BPL's concurrence on the ratings",
+          "effects": { "days": 0, "cost": 120000, "quality": 3, "risk": -2 },
+          "outcome": "The ratings were the settled 80%; the remaining design movement was conduit routing, not equipment. Your factory slot holds, and 14 months from now, houses get power instead of excuses.",
+          "optimal": true,
+          "defuses": ["transformer-slip"]
+        },
+        {
+          "id": "wait-final",
+          "label": "Wait the ~3 months for BPL's final design — order once, order right",
+          "effects": { "days": 0, "cost": 0, "quality": 0, "risk": 3 },
+          "outcome": "Prudent-sounding, and the queue doesn't care: three months later the lead time quote has stretched, and your slot went to someone who ordered at 80%. 'Order once, order right' becomes 'order late.'",
+          "arms": ["transformer-slip"]
+        },
+        {
+          "id": "gray-market",
+          "label": "Plan on sourcing surplus/gray-market units closer to need",
+          "effects": { "days": 0, "cost": 0, "quality": -3, "risk": 4 },
+          "outcome": "Surplus switchgear exists — with unknown history, mismatched ratings, and warranty stories BPL's interconnection engineers have heard before. Betting the revenue gate on salvage-yard luck is not a procurement strategy.",
+          "arms": ["transformer-slip"]
+        }
+      ]
+    }
+  ],
+  "curveballs": [
+    {
+      "id": "second-mob",
+      "title": "The spread sails away",
+      "description": "Between piecemeal packages, the marine contractor's barge spread takes a job in the Exumas. Re-mobilizing for your next package costs a fresh mobilization fee and a queue position.",
+      "chance": 0.5,
+      "effects": { "days": 20, "cost": 600000 },
+      "lesson": "Marine scopes are packaged into as few, as large, as continuous contracts as possible. Every gap between packages is an invitation for the spread to leave — and mobilization is the toll for getting it back."
+    },
+    {
+      "id": "turbidity-standby",
+      "title": "DEPP stoppage — whose meter runs?",
+      "description": "A turbidity exceedance during basin work triggers the EMP's stop-work condition. The dredge crew stands by at day rates while the plume settles and the paperwork moves.",
+      "chance": 0.45,
+      "effects": { "days": 0, "cost": 0 },
+      "choices": [
+        {
+          "id": "procedure",
+          "label": "Run the stoppage procedure: stop, self-report with response plan, restart on DEPP's confirmation, allocate standby per the contract",
+          "effects": { "days": 5, "cost": 120000, "quality": 0, "risk": -1 },
+          "outcome": "Five days and a defined cost — the incident file shows a functioning EMP. Whatever the contract says about standby is what happens; there is nothing to litigate.",
+          "optimal": true
+        },
+        {
+          "id": "push-through",
+          "label": "Restart as soon as the water clears — the report can follow",
+          "effects": { "days": 12, "cost": 400000, "quality": -3, "risk": 3 },
+          "outcome": "Restarting before DEPP's confirmation converts an exceedance into a violation. The follow-up inspection finds it, the stop-work order this time is theirs, and the standby you were avoiding runs twice as long on worse terms.",
+          "acceptable": false
+        }
+      ],
+      "lesson": "Stoppages are survivable; improvised stoppages are not. The EMP flow-down and standby allocation you wrote (or didn't) at contract signing is the entire difference between a procedure and a dispute."
+    },
+    {
+      "id": "bulkhead-rework",
+      "title": "The wall wanders",
+      "description": "Dock-installation layout reveals a 200-ft bulkhead run drifting up to 8 inches off alignment — poured, backfilled, and paid months ago. Nobody measured it when measuring was cheap.",
+      "chance": 0.4,
+      "effects": { "days": 15, "cost": 700000, "quality": -5, "risk": 1 },
+      "lesson": "Alignment tolerances are verified DURING installation or paid for at rework prices. Independent measurement of everything you pay for — surveys, tolerances, gradation certs — is the marine version of the testing lab."
+    },
+    {
+      "id": "karst-canal",
+      "title": "Void in the canal alignment",
+      "description": "The dry cut opens a karst cavity in a canal wall alignment — a soft seam running under where a bulkhead line must bear.",
+      "chance": 0.3,
+      "effects": { "days": 0, "cost": 0 },
+      "choices": [
+        {
+          "id": "grout-bearing",
+          "label": "Probe and grout the seam before the bulkhead line advances",
+          "effects": { "days": 6, "cost": 180000, "quality": 0, "risk": -1 },
+          "outcome": "A week and $180K, and the bulkhead bears on competent rock forever. The probing maps the seam's extent so the next 300 feet of wall is priced with open eyes.",
+          "optimal": true
+        },
+        {
+          "id": "widen-canal",
+          "label": "Locally widen the canal to shift the bulkhead line off the seam",
+          "effects": { "days": 4, "cost": 120000, "quality": -2, "risk": 0 },
+          "outcome": "Workable engineering with a scar: the canal edge kinks, the adjacent estate lot loses depth, and the seam is still there — just behind the wall instead of under it.",
+          "acceptable": true
+        },
+        {
+          "id": "pour-anyway",
+          "label": "Pour on the plan line — the panel will bridge the soft spot",
+          "effects": { "days": 0, "cost": 20000, "quality": -8, "risk": 3 },
+          "outcome": "The panel bridges until the first fully-loaded travel lift works the dock above it. Differential settlement in a bulkhead shows up as cracked caps and leaning docks — on your premium estate-lot frontage.",
+          "acceptable": false
+        }
+      ],
+      "lesson": "Karst doesn't respect scope boundaries — the same grout-it-once logic from the roads applies under bulkheads, with higher stakes: this wall holds back your highest-value product's front yard."
+    },
+    {
+      "id": "transformer-slip",
+      "title": "Factory pushes the delivery",
+      "description": "The switchgear manufacturer reschedules: your units slip 16 weeks. Vertical Phase 1's power date — and its OCs — slide with them unless something changes.",
+      "chance": 0.5,
+      "effects": { "days": 25, "cost": 350000 },
+      "lesson": "Long-lead procurement is a register you work weekly, not a purchase order you file. Deposits buy queue positions; queue positions gate revenue. The time to fight for a slot is before you're in line."
+    },
+    {
+      "id": "wwtp-gap",
+      "title": "The plant nobody fully designed",
+      "description": "The WWTP contractor submits change orders for the odor-control system and the second clarifier — items 'not in our scope' under the contract as written.",
+      "chance": 0.45,
+      "effects": { "days": 15, "cost": 550000 },
+      "lesson": "Performance-spec scopes need performance-spec contracts. A lump sum on incomplete design, or cost-plus without a spec, converts every design gap into sole-source pricing — the WWTP either meets an effluent standard someone signed up to, or it meets it by change order."
+    },
+    {
+      "id": "wet-season",
+      "title": "The long wet season",
+      "description": "A stalled trough parks over New Providence for most of a month. The dry cut floods faster than the sumps clear it, and utility trenches stand in water.",
+      "chance": 0.35,
+      "effects": { "days": 9, "cost": 120000 },
+      "lesson": "May–October rain is baseline, not bad luck — and a 'dry' cut below the water table is dry only as long as the pumps win. Dewatering capacity and early drainage wells are schedule insurance, priced in advance."
+    }
+  ]
+}

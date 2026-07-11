@@ -164,6 +164,8 @@ export interface SimPhase {
   plannedDays: number;
   steps: SimStep[];
   curveballs: Curveball[];
+  /** site areas this phase completes — drives the project map */
+  mapAreas?: string[];
 }
 
 export interface SimStep {
