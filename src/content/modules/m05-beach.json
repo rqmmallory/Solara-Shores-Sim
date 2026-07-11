@@ -1,13 +1,260 @@
 {
   "id": "m05-beach",
   "order": 5,
-  "title": "Beach Conversion and Groins",
+  "title": "Beach Conversion and Groins (Most Regulated Scope)",
   "short": "Beach",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "The shoreline is rocky ironshore precisely because natural sand does not persist there. Converting it to a sandy beach is engineered nourishment: imported sand at an engineered profile, held by groins, and MAINTAINED forever on a renourishment cycle. This is the most regulated scope on the project and the one most likely to put you in the newspaper.",
+  "sections": [
+    {
+      "heading": "The physics you must respect",
+      "body": "The southeastern New Providence shore is ironshore because prevailing wave energy removes sand. A nourished beach is therefore not landscaping — it's a MAINTAINED ASSET. Place sand at an engineered profile, hold it with groins, and accept from day one a renourishment cycle of commonly 5–10 years (sooner after major storms). That obligation belongs in the HOA/club budget as an annualized reserve of 3–6% of the initial beach capital cost, plus $30–80K/yr of monitoring surveys — which will also be a CEC condition."
+    },
+    {
+      "heading": "Sand is a specification, not a commodity",
+      "body": "Grain size, color, and carbonate compatibility all matter: too fine washes out fast and creates turbidity; wrong color is a marketing failure on a product sold by photograph. Sourcing options: (1) beneficial reuse of suitable dredge fractions from your own canal/marina cut, (2) licensed Bahamian marine borrow (the Bahamas has domestic aragonite resources and a licensing history), (3) imported/purchased processed sand. Every source needs DEPP sign-off on sediment characterization."
+    },
+    {
+      "heading": "Groins and the downdrift problem",
+      "body": "Groins — shore-perpendicular rock structures (armor stone over core on a filter layer) or precast units — compartmentalize the beach and interrupt longshore sand transport. Design (length, spacing, crest elevation, permeability) is a coastal-engineering deliverable. The classic failure is DOWNDRIFT EROSION: groins that starve the neighbor's shoreline. On this site the neighbors are established communities, which means complaints flow to DEPP and the Prime Minister's office. The EIA must model downdrift effects; post-construction beach monitoring will be a CEC condition; every groin sits on Crown seabed and needs the lease."
+    },
+    {
+      "heading": "Construction reality",
+      "body": "Placement is land-based where reach allows (long-reach excavators from the beach at low tide) or barge-based. Armor stone is a real trade-off: local limestone armor is cheap but soft — it degrades; imported granite is expensive with roughly triple the design life. Work in the calm season, with possible turtle-nesting or other seasonal conditions in the EMP. Palm Cay's ~$1.52M, 1,200-ft protected pocket-beach system on this same wave climate is your benchmark floor — roughly $1,250+/lf — and their structures' storm performance is free full-scale physical modeling of your coast."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m05-q1",
+      "type": "multipleChoice",
+      "teach": "The shoreline is rocky for a physical reason, and that reason doesn't go away when you add sand.",
+      "prompt": "Why must the beach be treated as a maintained asset rather than a one-time construction scope?",
+      "choices": [
+        {
+          "text": "Wave energy that kept the shore rocky keeps removing placed sand — so renourishment every 5–10 years (sooner after storms) is part of the design, funded by a reserve",
+          "correct": true,
+          "why": "Correct. The sea's verdict on this shoreline is already in — the groins slow the loss; the reserve pays for the inevitable top-ups."
+        },
+        {
+          "text": "DEPP requires annual beach reconstruction",
+          "why": "DEPP requires MONITORING; the physics requires renourishment. Conflating regulation with erosion misses where the obligation comes from."
+        },
+        {
+          "text": "Because sand compacts and settles like fill",
+          "why": "Settlement isn't the mechanism — longshore transport and storm events are. The sand leaves sideways and seaward, not downward."
+        },
+        {
+          "text": "It's optional — well-designed groins hold sand indefinitely",
+          "why": "Groins slow and compartmentalize loss; nothing holds nourished sand indefinitely on a coast that was bare rock when you found it."
+        }
+      ],
+      "explanation": "Annualized renourishment reserve: 3–6% of initial beach capital, plus monitoring surveys at $30–80K/yr. Put it in the HOA/club budget from day one — a beach with no reserve is a deferred special assessment with your name on it."
+    },
+    {
+      "id": "m05-q2",
+      "type": "multipleChoice",
+      "teach": "Groins interrupt the natural longshore movement of sand — which means somebody downstream stops receiving it.",
+      "prompt": "What is the classic groin failure mode on a site flanked by established communities?",
+      "choices": [
+        {
+          "text": "Downdrift erosion — your groins starve the neighbors' shoreline, and the complaints go to DEPP and the Prime Minister's office",
+          "correct": true,
+          "why": "Correct. Downdrift effects must be modeled in the EIA, monitored after construction, and managed with a proactive neighbor-relations program."
+        },
+        {
+          "text": "Groins collapsing in the first major storm",
+          "why": "Structural failure is a design/stone-quality issue and it's manageable; the systemic failure that ends projects is eroding someone else's beach."
+        },
+        {
+          "text": "Sand overtopping the groins into the marina entrance",
+          "why": "Transport into an entrance channel is a real maintenance-dredging consideration, but it's your problem on your property — not the political event downdrift erosion is."
+        },
+        {
+          "text": "Boats striking submerged groin heads",
+          "why": "Navigation marking handles that. The failure that generates hearings is erosion on the neighbor's frontage."
+        }
+      ],
+      "explanation": "This project's specific geometry — established communities on both flanks — makes downdrift rigor existential. Engineering rigor + post-construction monitoring + briefing the adjacent HOAs BEFORE the barge shows up: that's the survival kit."
+    },
+    {
+      "id": "m05-q3",
+      "type": "multipleChoice",
+      "teach": "Your own canal/marina excavation produces sandy fractions — potentially free beach fill, if they meet spec.",
+      "prompt": "The dredge spoil's sandy fraction is slightly finer than the coastal engineer's beach spec. Using it saves $1.5M over buying compliant sand. What actually happens if you use it?",
+      "choices": [
+        {
+          "text": "Faster loss rates and more turbidity — the $1.5M 'saving' converts into an earlier, larger renourishment bill and possible EMP issues",
+          "correct": true,
+          "why": "Correct. Fine sand is the sand the sea removes first. You'd be pre-paying for the next nourishment cycle and calling it savings."
+        },
+        {
+          "text": "Nothing significant — grain size tolerances are conservative",
+          "why": "Grain size IS the engineering. 'Slightly finer' on a high-energy shore is the difference between a 7-year cycle and a 3-year cycle."
+        },
+        {
+          "text": "It's prohibited — dredge spoil can never be used on beaches",
+          "why": "Beneficial reuse of SUITABLE fractions is a legitimate, DEPP-approvable option. The issue is this batch doesn't meet spec, not that reuse is banned."
+        },
+        {
+          "text": "DEPP decides, so submit it and see",
+          "why": "DEPP reviews sediment characterization, but the performance risk is yours either way — regulatory sign-off doesn't make fine sand stay put."
+        }
+      ],
+      "explanation": "Sand decisions are lifecycle decisions: purchase price is one line; loss rate, turbidity, color, and the renourishment schedule are the rest of the equation. Compare sources on total cost over a decade, not on the invoice."
+    },
+    {
+      "id": "m05-q4",
+      "type": "multipleChoice",
+      "teach": "Armor stone choice is a classic capital-vs-lifecycle trade.",
+      "prompt": "Local limestone armor costs half the price of imported granite, but granite has roughly 3x the design life on exposed structures. How do you decide?",
+      "choices": [
+        {
+          "text": "Run the repair/renourishment reserve math over the structures' life — exposed groins usually justify granite; sheltered stretches may take limestone",
+          "correct": true,
+          "why": "Correct. Soft limestone degrading on an exposed groin means repair mobilizations (marine, expensive) on a shorter cycle — the lifecycle math, not the invoice, decides."
+        },
+        {
+          "text": "Always granite — never compromise on marine structures",
+          "why": "Blanket rules waste money too: on genuinely sheltered structures, limestone's price advantage can win the lifecycle math."
+        },
+        {
+          "text": "Always limestone — supporting local quarries matters politically",
+          "why": "Local sourcing has real value (Module 10), but a groin that degrades into rubble starves the beach it holds and re-mobilizes a barge. Politics doesn't pay for that."
+        },
+        {
+          "text": "Split every groin: granite heads, limestone bodies",
+          "why": "Hybrid sections exist in practice, but as an ENGINEERED choice per exposure zone — not as a default compromise applied everywhere."
+        }
+      ],
+      "explanation": "Every marine repair carries a mobilization cost, which multiplies the price of short-lived materials. Design life on exposed coastal structures is worth paying for; the reserve model makes the comparison honest."
+    },
+    {
+      "id": "m05-q5",
+      "type": "sequencing",
+      "teach": "The beach program has its own gating chain, from paper to sand.",
+      "prompt": "Order the beach conversion program:",
+      "items": [
+        "Coastal engineering study: wave climate, transport modeling, groin design",
+        "EIA marine sections model downdrift effects; public consultation",
+        "Seabed lease granted for the groins; CEC issued",
+        "Brief the adjacent community HOAs before mobilization",
+        "Groin construction in the calm-season window",
+        "Beach fill placed to the engineered profile",
+        "Post-construction monitoring surveys begin (CEC condition)"
+      ],
+      "explanation": "Structures before sand — groins must exist to hold the fill. Paper before structures — lease and CEC gate mobilization. And neighbors before everything visible: they should hear about the barge from you, months early, not from their beachfront window."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m05_fill_cy", "label": "Beach fill placed", "unit": "$/cy", "min": 25, "max": 60, "note": "Source-dependent" },
+    { "id": "m05_fill_volume", "label": "Initial fill volume", "unit": "cy", "min": 50000, "max": 200000 },
+    { "id": "m05_groin_lf", "label": "Groins", "unit": "$/lf", "min": 3000, "max": 8000, "note": "Stone-dependent" },
+    { "id": "m05_coastal_eng", "label": "Coastal engineering + modeling + EIA marine sections", "unit": "$", "min": 300000, "max": 800000 },
+    { "id": "m05_reserve_pct", "label": "Annualized renourishment reserve", "unit": "%", "min": 3, "max": 6, "note": "Of initial beach capital cost" },
+    { "id": "m05_monitoring_yr", "label": "Monitoring surveys", "unit": "$/yr", "min": 30000, "max": 80000 }
+  ],
+  "mathProblems": [
+    {
+      "id": "m05-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Initial beach fill",
+      "context": "Beach fill prices per cubic yard placed, and the volume for a project beach runs 50,000–200,000 cy.",
+      "params": {
+        "qtyLabel": "fill volume",
+        "qty": "m05_fill_volume",
+        "qtyUnit": "cy",
+        "rateLabel": "placed fill rate",
+        "rate": "m05_fill_cy",
+        "rateUnit": "$/cy",
+        "answerLabel": "initial fill cost",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "m05-p2",
+      "generator": "percentOf",
+      "difficulty": 2,
+      "title": "Renourishment reserve",
+      "context": "The reserve is annualized as a percentage of the initial beach CAPITAL cost — and it goes in the HOA/club operating budget, forever.",
+      "params": {
+        "baseLabel": "initial beach capital cost",
+        "base": { "min": 2500000, "max": 8000000 },
+        "baseUnit": "$",
+        "pct": "m05_reserve_pct",
+        "answerLabel": "annual renourishment reserve",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "m05-p3",
+      "generator": "estimateBuildup",
+      "difficulty": 3,
+      "title": "Full beach program estimate",
+      "context": "Beach and groins are marine scope: carry the 15–25% marine contingency tier, not the standard 5–10%.",
+      "params": {
+        "scopeLabel": "the beach conversion program",
+        "contingencyPct": { "min": 15, "max": 25 },
+        "lines": [
+          { "label": "Beach fill", "qty": { "min": 60000, "max": 150000 }, "rate": "m05_fill_cy", "qtyUnit": "cy", "rateUnit": "$/cy" },
+          { "label": "Groins", "qty": { "min": 800, "max": 2000 }, "rate": "m05_groin_lf", "qtyUnit": "lf", "rateUnit": "$/lf" },
+          { "label": "Coastal engineering", "qty": 1, "rate": "m05_coastal_eng", "qtyUnit": "study", "rateUnit": "$" }
+        ]
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m05-d1",
+      "title": "The storm takes 30% in year one",
+      "scenario": "A named storm passes 100 miles south in the beach's first year. The monitoring survey shows roughly 30% of the fill volume is gone — within the range the coastal engineer's model called possible for such an event. The renourishment reserve is one year old. Owners are emailing photos of exposed rock. Your options: insurance claim, reserve draw, or defer and let the next scheduled nourishment catch it.",
+      "options": [
+        {
+          "id": "planned-response",
+          "label": "Treat it as the designed-for event it is: reserve-funded partial renourishment scheduled into the next calm window, owners briefed with the engineer's data",
+          "outcome": "The reserve exists for exactly this. The engineer's memo showing the loss was within model range converts an 'emergency' into a maintenance event, and the owner briefing converts anger into confidence in the system.",
+          "optimal": true
+        },
+        {
+          "id": "insurance-fight",
+          "label": "File a named-storm insurance claim for the sand",
+          "outcome": "Check the policy first: placed beach fill is commonly excluded or sub-limited, deductibles run 2–5% of insured values, and a marginal claim spends relationship capital with your insurer that the buildings may need later. Usually a dead end for sand.",
+          "acceptable": true
+        },
+        {
+          "id": "defer",
+          "label": "Defer — the next scheduled nourishment will restore it eventually",
+          "outcome": "A 30%-depleted profile erodes FASTER (the engineered profile is what dissipates wave energy), the exposed rock photos become the community's image online, and the beach club's revenue season happens on rubble. Deferral compounds.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "A storm taking a bite of a nourished beach is not a disaster — it's the operating model. The disaster is a developer who didn't fund the reserve, didn't set owner expectations, and now faces a special assessment conversation on a rock beach. Design the loss in, fund it, and communicate it."
+    },
+    {
+      "id": "m05-d2",
+      "title": "The neighbors and the barge",
+      "scenario": "Groin construction mobilizes in six weeks. The adjacent community's HOA has already fought one developer this decade and has a direct line to the local MP. Your community-relations budget is unspent. Marketing says don't 'wake them up' — the permits are in hand, so legally nothing requires telling them anything.",
+      "options": [
+        {
+          "id": "brief-early",
+          "label": "Request a slot at their next HOA meeting: present the coastal engineer's downdrift modeling, the monitoring program, and a named contact for complaints",
+          "outcome": "You surface concerns while they're still questions, on your data, with your engineer in the room. When the barge appears, it's the thing you told them about. The monitoring program — which the CEC requires anyway — becomes your standing proof of good faith.",
+          "optimal": true
+        },
+        {
+          "id": "stay-quiet",
+          "label": "Stay quiet — permits are in hand and legally nothing is owed",
+          "outcome": "The barge appears unannounced off their beach. The HOA's first information about your groins comes from their own windows, their second from a lawyer, their third from the MP. Every future consultation on every future phase now has an organized, motivated opposition.",
+          "acceptable": false
+        },
+        {
+          "id": "letter-only",
+          "label": "Send a courtesy letter with the project website",
+          "outcome": "Better than silence, but a letter can't answer the only question that matters to them — 'will your groins eat our beach?' — and unanswered, that question organizes itself. Halfway measures on stakeholders buy halfway outcomes.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "The rule from Module 13, applied: every stakeholder hears your news from you before anyone else. Legal sufficiency and political sufficiency are different standards — the groins are permitted by DEPP, but they're TOLERATED by neighbors, and tolerance is earned in HOA meetings, not court."
+    }
+  ]
 }

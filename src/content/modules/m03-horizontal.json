@@ -1,13 +1,299 @@
 {
   "id": "m03-horizontal",
   "order": 3,
-  "title": "Horizontal Development: Earthwork, Roads, Utilities",
+  "title": "Horizontal Development: Clearing, Earthwork, Roads, Utilities",
   "short": "Horizontal",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "Horizontal work turns raw rock into buildable, serviced land — and its sequence is rigid for good reasons. This module covers the per-phase sequence, the utility realities of New Providence (WSC water, no island sewer, BPL power with brutal switchgear lead times), and why you never build all 302 lots at once.",
+  "sections": [
+    {
+      "heading": "The per-phase sequence",
+      "body": "Survey + geotech → clearing/grubbing (DEPP-conditioned; expect invasive-species and native-vegetation retention conditions) → bulk earthwork and rock cut (mass-balanced against canal/lake spoil) → drainage wells/soakaways and lake shaping → underground utilities in road corridors (water, sewer, electrical duct bank, comms) → curbs → road base (crushed local limestone) → asphalt binder course → THEN the vertical construction traffic period → final asphalt lift + sidewalks + lighting + landscaping LAST. Never pave finishes before heavy traffic ends — finished surfaces destroyed by construction traffic are pure rework, and the sim punishes it hard because reality does."
+    },
+    {
+      "heading": "Utilities on New Providence, specifically",
+      "body": "Potable water: Water & Sewerage Corporation (WSC); island supply is desalination-dependent (RO), and a 430+ unit development needs a formal WSC service agreement, possibly developer-funded transmission upgrades. Wastewater: New Providence has NO island-wide sewer — a development this size builds its own package wastewater treatment plant (site it downwind, buffer it, effluent to deep wells per Environmental Health standards) or negotiates a WSC connection if feasibly close. Power: Bahamas Power and Light (BPL); expect a developer-funded primary extension and on-site substation/transformers — and order switchgear 40–60+ weeks ahead, because transformer procurement is a global bottleneck. Phasing rule: no vertical phase starts until its road base, water (fire flow), and power (at least construction power) exist."
+    },
+    {
+      "heading": "Why you never build all 302 at once",
+      "body": "Four forces set the phasing: cash exposure (you finance everything until closings), absorption rate (sales pace sets construction pace, not the other way around), utility capacity staging, and keeping finished-product areas separated from active construction — buyers doing walkthroughs next to blasting is a sales killer. Typical structure: 4–8 phases of 40–80 units, with amenities front-loaded enough to sell the lifestyle."
+    },
+    {
+      "heading": "The excavation clause that decides fights",
+      "body": "'Classified' excavation prices soil and rock separately — and on an island made of rock, every hard cubic yard becomes a claimed extra. 'Unclassified' means one rate regardless of material. On New Providence: always demand unclassified/all-rock pricing, or a firm pre-agreed unit rate for rock. This single clause is the most disputed line item in Bahamian sitework. Pair it with a geotech boring grid so both sides price from data, and hire an independent materials testing lab that reports to YOU — density tests, concrete cylinders, asphalt cores — never to the earthworks contractor."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m03-q1",
+      "type": "sequencing",
+      "teach": "The horizontal sequence is rigid because each step protects the one after it — and the last steps are the most damage-prone.",
+      "prompt": "Order the horizontal development sequence for one phase:",
+      "items": [
+        "Survey control and geotech borings",
+        "Clearing and grubbing per DEPP conditions",
+        "Bulk earthwork and rock cut, mass-balanced",
+        "Underground utilities in road corridors",
+        "Road base and asphalt binder course",
+        "Vertical construction traffic period",
+        "Final asphalt lift, sidewalks, lighting, landscaping"
+      ],
+      "explanation": "Utilities go in before the road structure so you never saw-cut new pavement. The binder course carries construction traffic; the final lift, sidewalks, and landscaping wait until heavy traffic ends. Paving finishes early means paying for them twice."
+    },
+    {
+      "id": "m03-q2",
+      "type": "multipleChoice",
+      "teach": "Bid documents define excavation as 'classified' (soil vs rock priced separately) or 'unclassified' (one rate, whatever the ground is).",
+      "prompt": "Earthworks Bid A is 15% cheaper but prices classified excavation with rock as an extra. Bid B is unclassified. On New Providence, which do you take and why?",
+      "choices": [
+        {
+          "text": "Bid B — the island is essentially all rock, so a classified contract converts the site's certainty into the contractor's change-order machine",
+          "correct": true,
+          "why": "Correct. When the ground is known to be rock, 'classified' pricing means the low bid is a fiction and the rock rate gets negotiated when you have no leverage."
+        },
+        {
+          "text": "Bid A — 15% is 15%, and rock claims can be fought",
+          "why": "You'd fight them from a weak position: the work is done, the quantities are the contractor's measurements, and your schedule hostage is their leverage."
+        },
+        {
+          "text": "Bid A, but only if the contractor is bonded",
+          "why": "A bond protects against default, not against a legitimate claim under the contract YOU signed. The classification clause is the problem."
+        },
+        {
+          "text": "Either — geotech data makes the clause irrelevant",
+          "why": "Geotech data helps price rock but doesn't change who carries quantity risk. The clause allocates the risk; the borings just inform it."
+        }
+      ],
+      "explanation": "Unclassified excavation (or a firm pre-agreed rock rate) is the island rule. The 15% 'saving' in a classified bid is the expected value of future claims, priced by an estimator who knows exactly what's under the grass: rock."
+    },
+    {
+      "id": "m03-q3",
+      "type": "multipleChoice",
+      "teach": "Transformer and switchgear procurement is a global bottleneck — this is one of the sim's classic curveballs.",
+      "prompt": "When should the BPL substation switchgear and transformers be ordered?",
+      "choices": [
+        {
+          "text": "40–60+ weeks before they're needed — effectively at project start, from the long-lead register",
+          "correct": true,
+          "why": "Correct. At a year-plus lead time, switchgear ordered when you 'need' it arrives a year late. It goes on the long-lead register on day one."
+        },
+        {
+          "text": "When the first vertical phase gets its building permits",
+          "why": "Permits run 6–12 weeks; switchgear runs 40–60+. Order-at-permit means houses standing finished with no power."
+        },
+        {
+          "text": "BPL supplies them from stock as part of the service agreement",
+          "why": "The primary extension and transformation are developer-funded ($1.5–4M) and the equipment is subject to the same global lead times as everyone else's."
+        },
+        {
+          "text": "After the WWTP is commissioned, to sequence utility spend",
+          "why": "Sequencing SPEND is fine; sequencing ORDERS by spend logic ignores that no vertical phase can start without power. Deposits on long-lead items are cheap insurance."
+        }
+      ],
+      "explanation": "The long-lead register — transformers/switchgear 40–60+ weeks, elevators 30–50, impact glazing 16–30 — is opened in Phase 0 and reviewed weekly. 'No vertical until road base, fire flow, and power exist' means electrical gear silently gates your revenue."
+    },
+    {
+      "id": "m03-q4",
+      "type": "multipleChoice",
+      "teach": "New Providence has no island-wide sewer system.",
+      "prompt": "How does a 430+ unit development handle wastewater?",
+      "choices": [
+        {
+          "text": "Build its own package wastewater treatment plant, sited downwind and buffered, with effluent to deep wells — or negotiate a WSC connection if one is feasibly close",
+          "correct": true,
+          "why": "Correct — a $3.5–7M design-build scope, and one of the quiet gates on the whole phasing plan."
+        },
+        {
+          "text": "Septic tanks per house, like smaller Bahamian subdivisions",
+          "why": "At 430+ units on porous rock above a freshwater lens, septic at this density is neither permittable nor sane."
+        },
+        {
+          "text": "A sewer main to Nassau's municipal treatment plant",
+          "why": "There is no island-wide system to connect to — that's the point. WSC connection is only an option if their infrastructure happens to be feasibly close."
+        },
+        {
+          "text": "Direct ocean outfall with screening",
+          "why": "A marina-and-beach community discharging screened sewage to its own shoreline — DEPP would end the conversation at the word 'outfall.'"
+        }
+      ],
+      "explanation": "The package WWTP is a design-build specialist scope with its own Environmental Health approvals. Site it downwind of the community, buffer it with landscape, and remember it must be running before the units it serves can occupy — another hidden gate on OCs."
+    },
+    {
+      "id": "m03-q5",
+      "type": "subOrManage",
+      "teach": "The horizontal program mixes heavy specialist trades with owner-side control functions that should never be delegated.",
+      "prompt": "Subcontract or direct-manage each horizontal-phase scope:",
+      "items": [
+        {
+          "scope": "Blasting for heavy rock cuts",
+          "answer": "subcontract",
+          "why": "Licensed blaster only — with vibration monitoring and pre-blast surveys built into their scope."
+        },
+        {
+          "scope": "The cut-to-fill mass-balance plan",
+          "answer": "direct",
+          "why": "It's one of the biggest cost levers on the project, and the earthworks sub profits from ignoring it (more haul, more import). The owner runs this plan."
+        },
+        {
+          "scope": "Package WWTP delivery",
+          "answer": "subcontract",
+          "why": "Design-build specialist scope with performance guarantees — you specify effluent standards and capacity, they deliver the plant."
+        },
+        {
+          "scope": "Materials QA testing (density, cylinders, asphalt cores)",
+          "answer": "direct",
+          "why": "Hire the independent lab under contract to YOU. Testing that reports to the contractor being tested is theater."
+        },
+        {
+          "scope": "WSC and BPL service agreements",
+          "answer": "direct",
+          "why": "Agency agreements are developer commitments that gate the entire phasing plan — consultants support, but the developer signs and drives."
+        },
+        {
+          "scope": "Road construction (base, curbs, asphalt)",
+          "answer": "subcontract",
+          "why": "A conventional civil trade — with your QA lab verifying every lift."
+        }
+      ],
+      "explanation": "The pattern across the whole project: physical work is subcontracted; plans, agreements, and verification systems that protect the owner's money are direct-managed. Contractors optimize their scope; only you optimize the project."
+    },
+    {
+      "id": "m03-q6",
+      "type": "multipleChoice",
+      "teach": "Phasing isn't just construction logic — it's cash and sales logic.",
+      "prompt": "Why do amenity and walkthrough areas need physical separation from active construction phases?",
+      "choices": [
+        {
+          "text": "Buyers touring next to blasting and truck traffic kill sales velocity — and sales pace is what funds construction pace",
+          "correct": true,
+          "why": "Correct. Absorption drives the phasing model; anything that suppresses it (like a construction-zone sales experience) throttles the whole machine."
+        },
+        {
+          "text": "Insurance requires separate zones",
+          "why": "Insurers care about site control generally, but the driver here is commercial: the sales path IS revenue infrastructure."
+        },
+        {
+          "text": "DEPP mandates buffer zones between uses",
+          "why": "DEPP conditions concern environment, not sales geography. The separation logic is commercial."
+        },
+        {
+          "text": "It reduces construction traffic wear on finished roads",
+          "why": "True and worth doing, but secondary — the real money is in protecting the buyer experience that sets absorption."
+        }
+      ],
+      "explanation": "The master plan's geometry supports a permanent construction access route from Yamacraw Hill Rd (north) that never crosses the sales path to the amenity core (center-south). Designing that route early is one of the highest-leverage site-logistics decisions on the project."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m03_clearing_acre", "label": "Clearing and grubbing", "unit": "$/acre", "min": 3000, "max": 8000 },
+    { "id": "m03_rock_breaker", "label": "Rock excavation (hydraulic breaker)", "unit": "$/cy", "min": 15, "max": 40 },
+    { "id": "m03_rock_blast", "label": "Rock excavation (blasting, at volume)", "unit": "$/cy", "min": 8, "max": 20 },
+    { "id": "m03_base_savings", "label": "Own crushed base vs imported (saving)", "unit": "$/cy", "min": 25, "max": 45 },
+    { "id": "m03_road_lf", "label": "Subdivision road, full section w/ utilities", "unit": "$/lf", "min": 450, "max": 900 },
+    { "id": "m03_drain_well", "label": "Drainage well, installed", "unit": "$/each", "min": 8000, "max": 20000 },
+    { "id": "m03_wwtp_m", "label": "Package WWTP (~430 EDUs)", "unit": "$M", "min": 3.5, "max": 7 },
+    { "id": "m03_bpl_m", "label": "BPL primary extension + transformation", "unit": "$M", "min": 1.5, "max": 4 },
+    { "id": "m03_asphalt_ton", "label": "Asphalt placed (imported binder)", "unit": "$/ton", "min": 110, "max": 160 }
+  ],
+  "mathProblems": [
+    {
+      "id": "m03-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Road package for one phase",
+      "context": "Subdivision roads price by the linear foot for the full section — earthwork, utilities in the corridor, base, curb, and paving.",
+      "params": {
+        "qtyLabel": "phase road length",
+        "qty": { "min": 3000, "max": 8000 },
+        "qtyUnit": "lf",
+        "rateLabel": "full-section road rate",
+        "rate": "m03_road_lf",
+        "rateUnit": "$/lf",
+        "answerLabel": "phase road budget",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "m03-p2",
+      "generator": "massBalance",
+      "difficulty": 2,
+      "title": "Cut-to-fill mass balance",
+      "context": "Every cubic yard of canal/lake spoil crushed and reused on site avoids both a disposal haul and an import purchase — the project's biggest single cost lever.",
+      "params": {
+        "cutCy": { "min": 150000, "max": 400000 },
+        "fillCy": { "min": 100000, "max": 300000 },
+        "savedPerCy": "m03_base_savings"
+      }
+    },
+    {
+      "id": "m03-p3",
+      "generator": "estimateBuildup",
+      "difficulty": 3,
+      "title": "Horizontal Phase 1 estimate",
+      "context": "Horizontal scopes carry a 10–15% contingency tier — higher than vertical (5–8%) because the rock hides surprises. Build the estimate line by line, then apply it.",
+      "params": {
+        "scopeLabel": "Horizontal Phase 1",
+        "contingencyPct": { "min": 10, "max": 15 },
+        "lines": [
+          { "label": "Clearing", "qty": { "min": 40, "max": 90 }, "rate": "m03_clearing_acre", "qtyUnit": "acres", "rateUnit": "$/acre" },
+          { "label": "Roads", "qty": { "min": 3000, "max": 6000 }, "rate": "m03_road_lf", "qtyUnit": "lf", "rateUnit": "$/lf" },
+          { "label": "Drainage wells", "qty": { "min": 8, "max": 20 }, "rate": "m03_drain_well", "qtyUnit": "wells", "rateUnit": "$/each" }
+        ]
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m03-d1",
+      "title": "Karst void under the road corridor",
+      "scenario": "Grading exposes a void under the planned spine road — roughly a garage-sized cavity with soft, wet fill at the bottom. The road alignment feeds Phase 1's first 45 lots. The earthworks contractor offers three prices: grout it properly, bridge it with a reinforced slab, or realign the road 60 ft south into an area that would eat two saleable lots.",
+      "options": [
+        {
+          "id": "grout",
+          "label": "Probe the full extent, then pressure-grout the void",
+          "outcome": "Costs real money and about a week, and it's final — the road, and the utilities inside it, sit on competent ground forever. The probing also maps two smaller adjacent pockets you'd have hit during utility trenching.",
+          "optimal": true
+        },
+        {
+          "id": "bridge",
+          "label": "Bridge it with a reinforced slab",
+          "outcome": "Cheaper today. The slab's edges become differential-settlement lines in the pavement in a few wet seasons, and the water main crossing the slab edge is now a future break point. Workable engineering, worse lifecycle math.",
+          "acceptable": true
+        },
+        {
+          "id": "realign",
+          "label": "Realign the road and lose two lots",
+          "outcome": "Two lots at this project's pricing is far more expensive than any grouting program — and the karst doesn't respect your new alignment either; without probing, you may be trading a known void for an unknown one.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Karst response is lifecycle math: grouting is expensive once; bridging is cheap now and expensive forever; realignment burns revenue to avoid an engineering problem that follows you anyway. And the meta-lesson — a geotech boring grid up front converts this whole drama into a priced line item."
+    },
+    {
+      "id": "m03-d2",
+      "title": "Crusher on site, or haul and import?",
+      "scenario": "Your QS runs the numbers: a crushing spread costs about $400K to mobilize and set up plus operating costs, but the canal, marina, and lake cuts will generate several hundred thousand cubic yards of limestone, and the roads and pads need most of it back as base and fill. The alternative — haul spoil out, import base — needs no capital and no crusher pad in the site logistics plan.",
+      "options": [
+        {
+          "id": "crush",
+          "label": "Mobilize the crusher and run the mass balance as an owner-managed plan",
+          "outcome": "At $25–45/cy avoided cost across six figures of yardage, the crusher pays for itself several times over. It also decouples you from import haulage pricing and port logistics for your single biggest material.",
+          "optimal": true
+        },
+        {
+          "id": "haul",
+          "label": "Keep it simple — haul out, import in",
+          "outcome": "You pay for the same rock to move twice: once out as 'spoil,' once in as 'base.' Simplicity is worth something, but not seven figures.",
+          "acceptable": false
+        },
+        {
+          "id": "sell-spoil",
+          "label": "Sell the spoil to other island projects and import your own base",
+          "outcome": "Spoil rock sells cheap and base buys dear — you've handed the crushing margin to someone else while still paying import prices. Occasionally viable for surplus AFTER your own fill demand is met, never instead of it.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Mass balance before trucking: quantify cut, quantify fill, reuse the overlap. The crusher decision is really a decision about who captures the value of your own excavated rock — you, or the haulers and quarries."
+    }
+  ]
 }

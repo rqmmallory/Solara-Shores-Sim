@@ -1,13 +1,269 @@
 {
   "id": "m09-budgeting",
   "order": 9,
-  "title": "Budgeting, Estimating, and Cost Control",
+  "title": "Budgeting, Estimating, and Cost Control (The Clerical Spine)",
   "short": "Budgeting",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "This module is the math engine's home turf: landed-cost calculation (the FOB → freight → duty → CPF → VAT stack), contingency TIERED by scope risk instead of blended, the weekly/monthly control cadence built on committed cost (the only honest number), and the change-order discipline that separates projects that die from projects that merely bleed.",
+  "sections": [
+    {
+      "heading": "Estimate architecture",
+      "body": "Land + soft costs (design 4–7% of hard; EIA/permits/legal; financing; insurance; marketing — soft costs commonly total 20–30% on top of hard) + hard costs by module + contingency TIERED BY SCOPE RISK: 5–8% on production vertical, 10–15% on horizontal (rock surprises), 15–25% on marine/coastal. A single blended contingency number is how developers lie to themselves: it lets the safe scopes subsidize the illusion that the risky ones are covered. General conditions run 6–10% of hard cost. Financing structure: interest reserve, 10% retainage typical, retainage released at substantial completion."
+    },
+    {
+      "heading": "The Bahamas cost model: landed cost",
+      "body": "Materials are import-dominated. Landed cost = FOB + freight + insurance (8–15% of FOB) + duty (0–45% by tariff line) + 1% customs processing fee + 10% VAT on the WHOLE landed stack. Cement, grout/mortar, and fasteners went duty-free in the 2025 amendments, and a negotiated Heads of Agreement concession package can exempt much more — so the estimator models duty line-by-line under both 'with concessions' and 'without' cases. The market rule of thumb: comparable construction runs on the order of 40% above South Florida. Currency risk is nil (BSD pegged 1:1 to USD); no income/corporate tax; VAT and NIB are the levies that touch you."
+    },
+    {
+      "heading": "The control cadence you personally run",
+      "body": "Weekly/monthly: COMMITTED-COST report (contracts + POs + approved COs vs budget line — 'spent' lags reality and flatters you); cost-to-complete forecast monthly per module; change-order log WITH AGING (unpriced COs older than 30 days are schedule bombs); monthly draw package to the lender (their QS verifies percent-complete — your schedule of values structure at contract signing determines how painful this is forever); cash-flow curve vs facility availability (marine scopes front-load cash brutally: mobilization + insurance + bond before a single cy moves). Early-warning metrics: labor productivity vs baseline, inspection first-pass rate, unpriced CO count, lead-time slippage on the long-lead register."
+    },
+    {
+      "heading": "Change orders: where projects die",
+      "body": "Legitimate CO sources here: rock quantity variance (if you failed Module 3's lesson), EMP-driven standby, design development gaps on commercial buildings, and buyer options — which you run as a separate PRICED CATALOG with margin, never as free goodwill. The iron rule: every CO gets scope, price, and TIME IMPACT, signed BEFORE the work. The verbal go-ahead is the classic failure pattern: a verbal instruction to a sub is an unpriced change order with unlimited interest."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m09-q1",
+      "type": "multipleChoice",
+      "teach": "Three numbers describe your financial position: budgeted, committed (contracts + POs + approved COs), and spent (invoices paid).",
+      "prompt": "Why is committed cost 'the only honest number'?",
+      "choices": [
+        {
+          "text": "Because 'spent' lags reality — money is committed the moment you sign, and a budget compared against spend looks healthy right up until the committed invoices arrive",
+          "correct": true,
+          "why": "Correct. A line 95% committed and 40% spent is nearly OUT of money, while the spend report says it's fine. Commitment is the decision; spend is just the paperwork catching up."
+        },
+        {
+          "text": "Because contractors inflate invoices",
+          "why": "Invoice verification matters, but the structural problem is timing: even perfectly honest invoices arrive months after the commitment that guaranteed them."
+        },
+        {
+          "text": "Because lenders only audit commitments",
+          "why": "Lenders' QS actually verifies percent-complete on the ground. The committed report is for YOU — it's the earliest true picture of your position."
+        },
+        {
+          "text": "Because spent figures include VAT and committed figures don't",
+          "why": "Both can be stated either way. The honesty gap is temporal, not tax treatment."
+        }
+      ],
+      "explanation": "The committed-cost report is your weekly discipline: every contract, PO, and approved CO against its budget line. Developers who track spend instead of commitment discover their overruns at invoice time — months after the decisions that caused them."
+    },
+    {
+      "id": "m09-q2",
+      "type": "multipleChoice",
+      "teach": "Contingency can be one blended number on the whole project, or a tier per scope.",
+      "prompt": "Why does this project demand tiered contingency (5–8% vertical / 10–15% horizontal / 15–25% marine) instead of one blended rate?",
+      "choices": [
+        {
+          "text": "Because risk lives in specific scopes — a blended number lets predictable scopes mask underfunded risky ones, so the marine overrun arrives with no reserve matched to it",
+          "correct": true,
+          "why": "Correct. 'A single blended contingency number is how developers lie to themselves.' Tiering forces the honest question per scope: what could go wrong HERE, and what does that cost?"
+        },
+        {
+          "text": "Lenders require tiered contingency",
+          "why": "Sophisticated lenders like it, but the driver is self-honesty: the blend hides exactly the risk concentration you most need to see."
+        },
+        {
+          "text": "Tiering produces a lower total contingency",
+          "why": "Often it produces a HIGHER total — that's the point. The blend was understating the marine tier all along."
+        },
+        {
+          "text": "It simplifies the draw schedule",
+          "why": "It slightly complicates it, actually. You accept that for risk visibility."
+        }
+      ],
+      "explanation": "The sim attacks per-scope contingency with events for a reason: when the karst void or the EMP standby hits, the question is whether THAT scope's reserve covers it. A healthy blended number spread across 302 houses is no comfort to a dredging line that's 40% over."
+    },
+    {
+      "id": "m09-q3",
+      "type": "sequencing",
+      "teach": "The landed-cost stack builds in a fixed order, and VAT applies to the WHOLE stack at the end.",
+      "prompt": "Order the landed-cost calculation for an imported materials order:",
+      "items": [
+        "Start with FOB value at the origin port",
+        "Add freight and insurance (8–15% of FOB) to get CIF",
+        "Apply duty (0–45% by tariff line) on the CIF value",
+        "Add the 1% customs processing fee",
+        "Apply 10% VAT on the whole landed stack",
+        "Compare the landed total against the 'with concessions' case"
+      ],
+      "explanation": "The order matters because each layer compounds on the previous ones — VAT on (CIF + duty + CPF) is VAT on tax, which is why landed cost so easily runs 25–75% above FOB. The estimator runs every major line both with and without the Heads of Agreement concessions."
+    },
+    {
+      "id": "m09-q4",
+      "type": "multipleChoice",
+      "teach": "The change-order log tracks not just COs but their AGE — how long they've sat unpriced.",
+      "prompt": "Why is an unpriced CO older than 30 days called a 'schedule bomb'?",
+      "choices": [
+        {
+          "text": "The work is usually already proceeding on a verbal basis — cost and time exposure accumulate unbounded, and pricing leverage shifts to the contractor every day it stays open",
+          "correct": true,
+          "why": "Correct. An aging unpriced CO means someone said 'go ahead, we'll sort the paperwork' — and the sorting gets harder as the work gets buried."
+        },
+        {
+          "text": "COs expire after 30 days under Bahamian law",
+          "why": "No such expiry. The 30-day flag is management discipline — the age at which 'in process' reliably means 'out of control.'"
+        },
+        {
+          "text": "The lender rejects draws with old COs",
+          "why": "Lenders dislike them, but the bomb is internal: unquantified committed cost that your committed-cost report can't see."
+        },
+        {
+          "text": "Contractors can charge interest on unpriced work",
+          "why": "The real interest is worse than financial: it's negotiating from beneath work that's already cast in concrete."
+        }
+      ],
+      "explanation": "The iron rule: scope, price, and time impact signed BEFORE the work. The CO log with aging is how you police yourself — every entry over 30 days is a negotiation you're losing slowly."
+    },
+    {
+      "id": "m09-q5",
+      "type": "multipleChoice",
+      "teach": "Buyers will ask for upgrades — different tile, an outdoor kitchen, a pool. How you handle this is a business model decision.",
+      "prompt": "What's the correct machinery for buyer options on the 302 houses?",
+      "choices": [
+        {
+          "text": "A separate priced catalog with margin, cutoff dates tied to construction stages, and change orders like any other scope — never verbal goodwill",
+          "correct": true,
+          "why": "Correct. Options are a profit center with production discipline: priced ahead, margined, and locked to stage cutoffs so they never break the takt."
+        },
+        {
+          "text": "Accommodate reasonable requests free — goodwill drives referrals",
+          "why": "Free options at production scale are a margin leak and, worse, a SCHEDULE leak: every undocumented variation breaks the standardization the takt depends on."
+        },
+        {
+          "text": "Refuse all options — standardization is sacred",
+          "why": "Standardization is the machine, but options money is real and buyers at this price point expect choice. The catalog gives you both: variety for them, discipline for you."
+        },
+        {
+          "text": "Let each buyer negotiate directly with the trades",
+          "why": "Buyers directing your subs on your sites is chaos with liability attached — every such 'arrangement' is an unpriced CO between three parties."
+        }
+      ],
+      "explanation": "The options catalog is where production housing hides a margin engine — IF it runs on CO discipline. The moment options go verbal, you're giving away work and breaking your own production rhythm to do it."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m09_freight_pct", "label": "Freight + insurance", "unit": "%", "min": 8, "max": 15, "note": "Of FOB" },
+    { "id": "m09_duty_pct", "label": "Duty by tariff line", "unit": "%", "min": 0, "max": 45, "note": "Cement, mortar, fasteners duty-free since 2025" },
+    { "id": "m09_design_pct", "label": "Design fees", "unit": "%", "min": 4, "max": 7, "note": "Of hard cost" },
+    { "id": "m09_gc_pct", "label": "General conditions", "unit": "%", "min": 6, "max": 10, "note": "Of hard cost" },
+    { "id": "m09_retainage_pct", "label": "Retainage", "unit": "%", "min": 5, "max": 10, "note": "Released at substantial completion" },
+    { "id": "m09_soft_pct", "label": "Developer soft costs total", "unit": "%", "min": 20, "max": 30, "note": "On top of hard cost" }
+  ],
+  "mathProblems": [
+    {
+      "id": "m09-p1",
+      "generator": "landedCost",
+      "difficulty": 2,
+      "title": "Landed cost: imported materials order",
+      "context": "The stack: FOB → +freight/insurance → +duty on CIF → +1% CPF → +10% VAT on everything. Watch how far the landed total runs above FOB — this is the island premium, made visible.",
+      "params": {
+        "itemLabel": "container order of finish materials",
+        "fob": { "min": 80000, "max": 400000 },
+        "freightPct": "m09_freight_pct",
+        "dutyPct": { "min": 10, "max": 45 },
+        "cpfPct": 1,
+        "vatPct": 10
+      }
+    },
+    {
+      "id": "m09-p2",
+      "generator": "landedCost",
+      "difficulty": 2,
+      "title": "Landed cost: duty-free line under concessions",
+      "context": "Same stack, but this line is duty-free (2025 amendments or Heads of Agreement concession). Compare mentally with the full-duty case — this is why the concession package changes every purchase order.",
+      "params": {
+        "itemLabel": "bulk cement order (duty-free)",
+        "fob": { "min": 100000, "max": 500000 },
+        "freightPct": "m09_freight_pct",
+        "dutyPct": 0,
+        "cpfPct": 1,
+        "vatPct": 10
+      }
+    },
+    {
+      "id": "m09-p3",
+      "generator": "retainage",
+      "difficulty": 1,
+      "title": "This month's draw",
+      "context": "Payment is monthly against certified progress, minus retainage held as performance security until substantial completion.",
+      "params": {
+        "workLabel": "certified progress",
+        "work": { "min": 800000, "max": 4000000 },
+        "retainagePct": "m09_retainage_pct"
+      }
+    },
+    {
+      "id": "m09-p4",
+      "generator": "estimateBuildup",
+      "difficulty": 3,
+      "title": "Soft-cost stack on a hard-cost base",
+      "context": "Design fees and general conditions ride on hard cost as percentages — build the full stack. (In a real pro forma, financing, marketing, and legal join them to reach the 20–30% soft-cost total.)",
+      "params": {
+        "scopeLabel": "the soft-cost stack on this phase",
+        "contingencyPct": { "min": 5, "max": 8 },
+        "lines": [
+          { "label": "Hard cost base", "qty": 1, "rate": { "min": 20000000, "max": 60000000 }, "qtyUnit": "phase", "rateUnit": "$" },
+          { "label": "Design fees (as $)", "qty": 1, "rate": { "min": 1200000, "max": 3600000 }, "qtyUnit": "allocation", "rateUnit": "$" },
+          { "label": "General conditions (as $)", "qty": 1, "rate": { "min": 1600000, "max": 5000000 }, "qtyUnit": "allocation", "rateUnit": "$" }
+        ]
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m09-d1",
+      "title": "The verbal go-ahead",
+      "scenario": "The frame sub hits a design gap on the sports bar — a beam the structural drawings never resolved. Your architect sketches a fix on site. The sub says: 'We can build it right now while the crane's here, or we stop this corner for two weeks while you paper it. Just tell me to go.' Your superintendent, the architect, and the schedule all want you to say go.",
+      "options": [
+        {
+          "id": "same-day-co",
+          "label": "Say go — WITH a same-day written instruction: sketch attached, rough-order price and time impact agreed in writing, formal CO to follow within the week",
+          "outcome": "The crane keeps working and the paper exists: scope defined by the sketch, price bounded in writing, time impact zero by agreement. When the formal CO arrives it's a formality, not a negotiation. This is what 'never verbal' actually means in practice — not slow, just written.",
+          "optimal": true
+        },
+        {
+          "id": "pure-verbal",
+          "label": "Just say go — everyone heard the agreement, paper it later",
+          "outcome": "Three months later the 'small fix' invoice arrives at 4x the number nobody wrote down, with a two-week delay claim attached, and your only evidence is memories that have diverged. The classic failure pattern, executed classically: a verbal instruction is an unpriced CO with unlimited interest.",
+          "acceptable": false
+        },
+        {
+          "id": "full-stop",
+          "label": "Stop the corner for two weeks until a formal CO is fully executed",
+          "outcome": "Contractually immaculate and operationally clumsy: you paid two weeks of crane and general conditions to avoid writing one page on site. Discipline that can't move at field speed gets bypassed eventually — usually by you.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "CO discipline isn't about speed — it's about WRITING. Scope, price bound, and time impact can be captured in thirty minutes on site. The one thing that can never be recovered later is what was agreed before the concrete was poured."
+    },
+    {
+      "id": "m09-d2",
+      "title": "The schedule of values, forever",
+      "scenario": "At signing of the biggest earthworks contract, the contractor submits a schedule of values that front-loads mobilization and early activities — standard contractor cash-flow engineering. Your lender's QS will verify percent-complete against this SOV every month for two years. The contractor calls it boilerplate and wants signatures today.",
+      "options": [
+        {
+          "id": "rebalance-sov",
+          "label": "Rebalance the SOV before signing: line items matched to measurable work stages, front-loading trimmed to verifiable mobilization costs",
+          "outcome": "A day of negotiation, then two years of clean draws: every month, percent-complete maps to things the QS can see and measure. Overpayment risk (paying 60% for 40% of the work) is structurally closed.",
+          "optimal": true
+        },
+        {
+          "id": "sign-boilerplate",
+          "label": "Sign it — the SOV is just billing mechanics",
+          "outcome": "Month four: the lender's QS flags that billing runs 20 points ahead of the ground. Now every draw is an argument, and if the contractor stumbles, you discover you've paid for work that doesn't exist — with retainage as your only cushion.",
+          "acceptable": false
+        },
+        {
+          "id": "trust-retainage",
+          "label": "Sign it but raise retainage to 10% as protection",
+          "outcome": "Retainage helps at the margin, but 10% held against 20% front-loaded is still 10% underwater — and you've made the contract more expensive for the contractor without fixing the actual distortion.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "'Your schedule of values structure at contract signing determines how painful the draw process is forever after.' The SOV is not billing paperwork — it's the measurement system your entire draw relationship runs on, and it's only negotiable once."
+    }
+  ]
 }

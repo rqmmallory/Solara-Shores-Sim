@@ -1,13 +1,264 @@
 {
   "id": "m10-contracts",
   "order": 10,
-  "title": "Contracts, Procurement, Sub Management",
+  "title": "Contracts, Procurement, and Subcontractor Management",
   "short": "Contracts",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "Contract FORM follows scope certainty: lump sum where drawings are complete, unit price where quantities are uncertain, design-build for performance scopes — and a handful of clauses (rock definition, named-storm force majeure, EMP flow-down, insurance schedules) decide every fight this project will ever have. Plus the field paperwork machine: daily logs, RFIs, submittals.",
+  "sections": [
+    {
+      "heading": "Matching contract form to scope",
+      "body": "The Bahamian market runs on FIDIC-influenced and bespoke forms; what matters is allocation logic. LUMP SUM where scope is drawable and complete — the houses. UNIT PRICE where quantities are uncertain — earthwork and dredging: fixed rates × measured quantities, with rock classification and measurement method nailed down. COST-PLUS/GMP: avoid except genuine emergencies. DESIGN-BUILD for performance-spec scopes — WWTP, fuel station, elevators. Retainage 5–10%; payment monthly against measured progress; your leverage is CERTIFICATION — you (or your QS) certify progress, and certification discipline is your primary daily control."
+    },
+    {
+      "heading": "The clauses that decide fights on this project",
+      "body": "(1) Unclassified excavation / rock definition — Module 3's lesson, in contract language. (2) Weather and NAMED-STORM force majeure with defined standby rates and demobilization triggers — decided at signing, not in the forecast cone. (3) EMP flow-down: turbidity stoppages — whose time, whose money, written down. (4) Liquidated damages tied to phase gates that matter (OC dates, marina opening), not arbitrary milestones. (5) Insurance per scope: marine scopes need marine liability, P&I, hull, wreck removal — different policies from land CAR/builder's risk, whose named-storm deductibles run 2–5% of insured values (a number that should shock you into reading the policy). (6) Bonding: performance bonds are less universal in the Bahamian market than the US — vet sub financials harder to compensate. (7) Dispute ladder: negotiation → mediation → arbitration, seat Nassau."
+    },
+    {
+      "heading": "Procurement discipline",
+      "body": "Long-lead register from day one (transformers/switchgear 40–60+ weeks, elevators 30–50, marine mobilization slots, trusses at volume, impact glazing 16–30). Minimum two, ideally three qualified bidders per major package. SCOPE-SHEET LEVELING: bids are never comparable as submitted — the leveling sheet is where the CM earns their keep, and the delta between low bid and leveled-low commonly runs 5–15%. Local content awareness: Bahamian subs and suppliers first is both good politics under your investment approvals and usually good logistics — foreign-crew work permits run 4–8+ weeks each and are politically visible."
+    },
+    {
+      "heading": "The field administration machine",
+      "body": "Daily logs per active area — weather, manpower by sub, work performed, delays, visitors, incidents. THE DAILY LOG WINS EVERY DELAY DISPUTE LATER. RFI log with a response-time SLA on your design team (5–10 working days). Submittal register: every material submitted and approved BEFORE purchase — on an island, an unapproved-material rejection after shipping is a five-figure mistake. Weekly sub coordination meetings per front (production, marine, amenities) plus a weekly owner meeting. Safety program under the Health and Safety at Work Act — toolbox talks, fall protection on the condos, marine safety plan, incident reporting — and your insurance premiums track your incident record."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m10-q1",
+      "type": "multipleChoice",
+      "teach": "Contract form allocates risk — and the right form depends on how certain the scope is.",
+      "prompt": "Why is dredging contracted UNIT PRICE while the houses go LUMP SUM?",
+      "choices": [
+        {
+          "text": "House scope is fully drawable so a fixed price is honest; dredging quantities are inherently uncertain, so fixed rates × measured quantities allocates quantity risk without a fiction",
+          "correct": true,
+          "why": "Correct. A lump sum on uncertain quantities just makes the contractor price the uncertainty (expensively) or claim it back later (worse). Unit price faces reality up front."
+        },
+        {
+          "text": "Marine contractors refuse lump sums",
+          "why": "Some would take one — loaded with contingency you'd pay whether the risk landed or not. The form choice is YOUR optimization, not their preference."
+        },
+        {
+          "text": "Unit price is always cheaper",
+          "why": "Not always — on certain scope, lump sum's competitive pressure wins. Each form is cheapest exactly where its risk allocation is honest."
+        },
+        {
+          "text": "Banks require unit price on marine work",
+          "why": "No such rule. The logic is scope certainty, and it's the CM's call."
+        }
+      ],
+      "explanation": "The full map: lump sum = complete drawings (houses); unit price = uncertain quantities (earthwork, dredging — with rock classification and MEASUREMENT METHOD nailed down); design-build = performance specs (WWTP, elevators); cost-plus = genuine emergencies only."
+    },
+    {
+      "id": "m10-q2",
+      "type": "multipleChoice",
+      "teach": "In the Caribbean, builder's risk policies carry special deductibles for named storms.",
+      "prompt": "Your builder's risk policy has a 3% named-storm deductible. A storm causes $4M of damage across $150M of insured values. What do you pay?",
+      "choices": [
+        {
+          "text": "$4M — the entire loss, because the deductible is 3% of INSURED VALUES ($4.5M), which exceeds the loss",
+          "correct": true,
+          "why": "Correct, and this is the number that should shock you: 2–5% of insured VALUES (not of the loss) means the first several million of any named-storm event is always yours."
+        },
+        {
+          "text": "$120K — 3% of the $4M loss",
+          "why": "The trap answer. Named-storm deductibles are percentage-of-VALUES, not percentage-of-loss — read the definition, then read it again."
+        },
+        {
+          "text": "Nothing — force majeure covers storm damage",
+          "why": "Force majeure clauses allocate TIME and standby cost between you and contractors; they don't pay for physical damage. That's insurance — after its deductible."
+        },
+        {
+          "text": "$1.35M by negotiation",
+          "why": "Deductibles aren't negotiated at claim time. They were negotiated at placement — which is when this number deserved your full attention."
+        }
+      ],
+      "explanation": "This math is why hurricane preparedness plans and seasonal sequencing are worth real money: with a 2–5%-of-values deductible, prevention isn't just prudent — it's the only 'coverage' for the first few million of every storm."
+    },
+    {
+      "id": "m10-q3",
+      "type": "multipleChoice",
+      "teach": "Bids arrive with different inclusions, exclusions, allowances, and assumptions.",
+      "prompt": "What is bid leveling, and why does the 'leveled low' bidder differ from the low bidder 5–15% of the time?",
+      "choices": [
+        {
+          "text": "Adjusting every bid to a common scope sheet — pricing in each bidder's exclusions and gaps — because the raw low bid is often low precisely because of what it quietly leaves out",
+          "correct": true,
+          "why": "Correct. The leveling sheet is where the CM earns their keep: a bid missing rock excavation, or carrying a thin allowance where others carry real numbers, isn't cheap — it's incomplete."
+        },
+        {
+          "text": "Negotiating all bidders down to the lowest price",
+          "why": "That's bid shopping — it poisons your bidder pool in a small market. Leveling is analysis, not squeezing."
+        },
+        {
+          "text": "Averaging the bids to find fair value",
+          "why": "The average of incomparable numbers is a more confident wrong number. Level first; then the comparison means something."
+        },
+        {
+          "text": "Checking references and financials",
+          "why": "That's qualification — necessary, separate. Leveling is strictly about making the PRICES comparable."
+        }
+      ],
+      "explanation": "Never award on raw bid ranking. The leveling sheet — line-by-line scope comparison, exclusions priced, allowances normalized — is also your negotiation anchor (Module 13): you negotiate from the leveled comparison and your engineer's estimate, never from the contractor's number."
+    },
+    {
+      "id": "m10-q4",
+      "type": "multipleChoice",
+      "teach": "Eighteen months from now, a contractor will claim your project delayed them. What decides that dispute?",
+      "prompt": "Why does the daily log 'win every delay dispute later'?",
+      "choices": [
+        {
+          "text": "It's the contemporaneous record — weather, manpower by sub, work performed, delays, visitors — created before anyone knew what would be disputed, which makes it the most credible evidence in the room",
+          "correct": true,
+          "why": "Correct. Reconstructed narratives compete; contemporaneous records testify. The log that notes 'Sub X: 4 workers on site (contracted crew: 12)' on forty separate days IS the delay case."
+        },
+        {
+          "text": "Courts require daily logs by law",
+          "why": "No statute requires them — which is exactly why the party that kept them beats the party that didn't."
+        },
+        {
+          "text": "Contractors sign the log daily, making it binding",
+          "why": "Sub acknowledgment strengthens it, but its power is contemporaneity, not signatures."
+        },
+        {
+          "text": "It's needed for insurance audits",
+          "why": "Useful there too — but the evidentiary role in delay disputes is why it's non-negotiable discipline."
+        }
+      ],
+      "explanation": "The clerical machine — daily logs, RFI log with SLA, submittal register, minuted meetings — feels like overhead until the first claim, when it's suddenly the most valuable asset on the project. Write everything, date everything, file everything."
+    },
+    {
+      "id": "m10-q5",
+      "type": "multipleChoice",
+      "teach": "On an island, materials must be APPROVED before they're purchased — because returning a rejected shipment means a boat.",
+      "prompt": "What does the submittal register protect you from?",
+      "choices": [
+        {
+          "text": "Buying and shipping materials that then fail review — an unapproved-material rejection after shipping is a five-figure mistake in freight, duty, and schedule",
+          "correct": true,
+          "why": "Correct. The register enforces submit → approve → THEN purchase. The submittal cycle (2–4 weeks) is annoying; a rejected container is worse."
+        },
+        {
+          "text": "Contractors substituting cheaper materials",
+          "why": "It catches substitution too, but the island-specific pain it prevents is approved-too-late: freight and duty paid on materials the architect then rejects."
+        },
+        {
+          "text": "Warranty disputes with suppliers",
+          "why": "Approved submittals do anchor warranty terms, but the front-line protection is sequencing purchases behind approvals."
+        },
+        {
+          "text": "Duty misclassification at customs",
+          "why": "Tariff classification is the broker's job. The register's job is making sure nothing ships that hasn't been approved on paper first."
+        }
+      ],
+      "explanation": "Island logistics inverts forgiveness: on the mainland, a rejected material is a return truck; here it's a re-order lead time plus a boat plus duty paid twice. Submittal discipline is cheap insurance priced in weeks instead of five figures."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m10_retainage", "label": "Retainage", "unit": "%", "min": 5, "max": 10 },
+    { "id": "m10_storm_deductible", "label": "Named-storm deductible", "unit": "%", "min": 2, "max": 5, "note": "Of insured VALUES, not of loss" },
+    { "id": "m10_rfi_sla", "label": "RFI response SLA", "unit": "working days", "min": 5, "max": 10 },
+    { "id": "m10_submittal_weeks", "label": "Submittal cycle", "unit": "weeks", "min": 2, "max": 4 },
+    { "id": "m10_leveling_delta", "label": "Low bid vs leveled-low delta", "unit": "%", "min": 5, "max": 15 },
+    { "id": "m10_permit_weeks", "label": "Work permit processing", "unit": "weeks", "min": 4, "max": 8, "note": "Per foreign specialist" }
+  ],
+  "mathProblems": [
+    {
+      "id": "m10-p1",
+      "generator": "percentOf",
+      "difficulty": 2,
+      "title": "Named-storm deductible exposure",
+      "context": "The deductible is a percentage of insured VALUES — compute it and you know the size of the loss you self-insure on every named storm. This number should drive your preparedness spending.",
+      "params": {
+        "baseLabel": "insured values at peak construction",
+        "base": { "min": 80, "max": 250 },
+        "baseUnit": "$M",
+        "pct": "m10_storm_deductible",
+        "answerLabel": "named-storm deductible (your retained risk)",
+        "answerUnit": "$M"
+      }
+    },
+    {
+      "id": "m10-p2",
+      "generator": "retainage",
+      "difficulty": 1,
+      "title": "Certifying the earthworks draw",
+      "context": "You certify measured progress monthly; retainage comes off every draw and sits as your performance security until substantial completion.",
+      "params": {
+        "workLabel": "measured earthworks progress",
+        "work": { "min": 500000, "max": 3000000 },
+        "retainagePct": "m10_retainage"
+      }
+    },
+    {
+      "id": "m10-p3",
+      "generator": "percentOf",
+      "difficulty": 2,
+      "title": "What leveling finds",
+      "context": "The delta between the raw low bid and the leveled-low commonly runs 5–15% — that's the value of the leveling sheet, in dollars, on one package.",
+      "params": {
+        "baseLabel": "raw low bid on the package",
+        "base": { "min": 2000000, "max": 12000000 },
+        "baseUnit": "$",
+        "pct": "m10_leveling_delta",
+        "answerLabel": "scope gaps priced by leveling",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m10-d1",
+      "title": "The cheap dredger with no bond",
+      "scenario": "Dredging bids are in. The regional incumbent — Bahamas track record, references from three marina projects, bondable — is 18% above a Florida newcomer with good equipment, no Bahamas history, and no performance bond ('our balance sheet is our bond'). Eighteen percent of this package is about $1.4M. Performance bonds are less universal in the Bahamian market anyway.",
+      "options": [
+        {
+          "id": "vet-then-decide",
+          "label": "Level both bids fully, then vet the newcomer like an underwriter: audited financials, equipment liens, references from their last three jobs, EMP/permit experience — and price the incumbent against the VERIFIED alternative",
+          "outcome": "The vetting is the answer either way: if the newcomer survives it, $1.4M is real money and you negotiate the incumbent down with a credible alternative in hand. If they don't survive it, the 18% premium was the price of certainty all along. Either way you decided on evidence.",
+          "optimal": true
+        },
+        {
+          "id": "take-cheap",
+          "label": "Take the 18% saving — equipment is equipment",
+          "outcome": "Unbonded, unvetted, and unfamiliar with DEPP: the first EMP stoppage becomes a standoff, the mobilization arrives late behind another job, and if they fail mid-channel your remedy is suing a Florida LLC while re-mobilizing the incumbent at emergency rates — from a weaker negotiating position than today's.",
+          "acceptable": false
+        },
+        {
+          "id": "take-incumbent",
+          "label": "Pay the incumbent's premium without further process — marine work is no place for experiments",
+          "outcome": "Defensible instinct, lazy execution: without leveling and a vetted alternative, you paid the premium AND surrendered your only leverage over the incumbent's price and terms. Certainty is worth buying; it's rarely worth overpaying for unexamined.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Where bonds are scarce, VETTING substitutes for bonding — you underwrite the contractor yourself. And a credible second bidder is worth real money even when you never hire them: leverage is the cheapest thing on any bid tab."
+    },
+    {
+      "id": "m10-d2",
+      "title": "A claim caused by your own consultant",
+      "scenario": "The frame sub files a delay notice: three weeks of standby on Building 2 because structural RFI responses averaged 19 working days against the contract's 10-day SLA. They're right — your structural engineer has been drowning. The claim is $180K. You are both the developer who owes the answer and the CM who let the SLA slip. The engineer is mid-way through designing four more buildings for you.",
+      "options": [
+        {
+          "id": "own-it-structurally",
+          "label": "Settle the legitimate claim quickly, then fix the system: RFI dashboard reviewed weekly, engineer adds staff at their cost per your consultancy agreement's remedy clause, and the SLA gets teeth",
+          "outcome": "The sub learns your paper means something (which makes the NEXT claim less likely, not more). The engineer keeps the relationship and pays in staffing rather than lawsuits. And the RFI log that let you verify the claim in an afternoon just paid for itself.",
+          "optimal": true
+        },
+        {
+          "id": "fight-the-sub",
+          "label": "Dispute the claim — make the sub prove every standby day",
+          "outcome": "They can prove it; it's YOUR RFI log. You spend legal fees losing slowly, teach every sub on site that legitimate claims get fought anyway (so they'll pad the next ones), and the actual problem — a drowning engineer — keeps generating new claims behind you.",
+          "acceptable": false
+        },
+        {
+          "id": "backcharge-engineer",
+          "label": "Pay the sub and back-charge the full $180K to the structural engineer",
+          "outcome": "Legally available, relationally expensive: mid-project, with four buildings on their boards, a scorched-earth back-charge buys you a defensive, minimum-effort consultant exactly when you need an invested one. Recover something, but structure it — fee credit, added staff, expanded scope at no cost.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "When your own consultant causes a claim, you're managing three things at once: the sub's trust in your contract administration, the consultant relationship you still depend on, and the system failure underneath. Pay what's owed fast, recover what's recoverable gently, and fix the SLA machinery so it doesn't recur — the claim is a symptom; the RFI pipeline is the disease."
+    }
+  ]
 }

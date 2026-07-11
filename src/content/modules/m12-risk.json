@@ -1,13 +1,231 @@
 {
   "id": "m12-risk",
   "order": 12,
-  "title": "Risk, Quality, and Safety Systems",
+  "title": "Risk Management, Quality, and Safety Systems",
   "short": "Risk & QA",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "Three systems that run continuously under everything else: a live risk register (probability × impact, owner, mitigation, date), a quality system enforced at hold points and verified by independent testing, and a safety program whose record flows directly into your insurance costs and regulator standing. Plus the honest answer to 'what do I directly manage': fewer things, better systems.",
+  "sections": [
+    {
+      "heading": "The risk register method",
+      "body": "Identify → score (probability × impact, 1–5 scales) → assign an OWNER → mitigation with a DATE → track, reviewed monthly. The project's pre-loaded top risks: (1) hurricane strike during construction; (2) EIA/CEC delay pushing the marine window a full year — the critical path's critical path; (3) rock/karst quantity variance; (4) the island's labor supply ceiling; (5) long-lead procurement; (6) sales absorption below pro forma — phase gates must let you throttle starts without stranding infrastructure; (7) downdrift erosion / neighbor litigation on the groins; (8) WSC/BPL capacity timing; (9) fuel/marina environmental incident; (10) KEY-PERSON DEPENDENCY — you. Document systems so the project survives your absence."
+    },
+    {
+      "heading": "The quality system",
+      "body": "Quality is DEFINED in documents (specs + approved submittals + shop drawings), ENFORCED at hold points (no pour without your rep's sign-off at footing rebar, ring beam, suspended slab, roof strapping; no cover-up of MEP without rough sign-off), VERIFIED by independent testing (concrete cylinders, density, asphalt cores, weld/bolt inspection on marine structures — the lab contracts to the OWNER), and MEASURED: first-pass inspection rate per sub is your quality KPI, published to the subs. Marine QC additions: bathymetric surveys to verify dredge depths (you pay per cy — the survey is how you avoid paying for water), stone gradation certs on armor, bulkhead alignment tolerances."
+    },
+    {
+      "heading": "Safety, and what it buys",
+      "body": "The Health and Safety at Work Act is the floor; your program sits above it: site induction for every worker, fall protection on all condo frame work, excavation/edge protection at the canals — open water + heavy equipment + rock edges is the site's likeliest fatality mechanism, so canal-edge protocols get treated as seriously as anything on the project — marine ops plan (vessel traffic, diver operations during dredging), the hurricane action plan rehearsed before June 1 every year, and incident investigation with root cause. Your safety record flows directly into insurance premiums and your standing with regulators."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m12-q1",
+      "type": "multipleChoice",
+      "teach": "A risk register entry isn't complete with just a description and a score.",
+      "prompt": "What turns a risk register from a worry list into a management tool?",
+      "choices": [
+        {
+          "text": "Every risk gets an OWNER and a mitigation with a DATE, reviewed monthly — unowned risks with undated mitigations are just documented anxiety",
+          "correct": true,
+          "why": "Correct. Probability × impact prioritizes; owner + date makes something happen. The monthly review is where 'mitigation planned' either became 'mitigation done' or gets escalated."
+        },
+        {
+          "text": "Scoring precision — using 1–10 scales instead of 1–5",
+          "why": "Finer scales add false precision to estimates that are judgment calls anyway. The action fields (owner, date) are what move risk."
+        },
+        {
+          "text": "Longer lists — capturing every conceivable risk",
+          "why": "A 300-line register nobody reads manages nothing. Ten owned, dated, tracked risks beat a hundred documented ones."
+        },
+        {
+          "text": "Quantifying every risk in dollars",
+          "why": "Dollar estimates help on the big ones, but plenty of real risks (regulator standing, key-person) resist honest quantification — and still need owners and dates."
+        }
+      ],
+      "explanation": "The register's pre-loaded top ten for this project ranges from hurricanes to your own irreplaceability. Note risk #2 — EIA/CEC delay — is called 'the critical path's critical path': it's why the environmental workstream starts before everything else."
+    },
+    {
+      "id": "m12-q2",
+      "type": "multipleChoice",
+      "teach": "A hold point is a stage where work legally may not proceed without a designated sign-off.",
+      "prompt": "Which stages are EVERY-house hold points on this project?",
+      "choices": [
+        {
+          "text": "Footing rebar, ring beam, roof strapping, and MEP rough before cover-up",
+          "correct": true,
+          "why": "Correct — the structural and concealed stages where an error becomes invisible and permanent. Finish tolerances, by contrast, get QC by sampling."
+        },
+        {
+          "text": "Every stage of every house",
+          "why": "Inspecting everything everywhere is a staffing fantasy that collapses into inspecting nothing well. Hold points concentrate scrutiny where errors hide."
+        },
+        {
+          "text": "Only the stages MOW inspects",
+          "why": "MOW's inspections are the code minimum. Your hold points overlap but serve YOU — they exist so your money never covers up an unverified stage."
+        },
+        {
+          "text": "Paint, trim, and final finishes",
+          "why": "Finish defects are visible and fixable — sampling handles them. Hold points guard what disappears: rebar under concrete, strapping under roofing, pipe behind drywall."
+        }
+      ],
+      "explanation": "The logic: hold points for what gets CONCEALED (structure, MEP rough), sampling for what stays visible (finishes). No pour, no cover-up, without sign-off — and the first-pass rate per sub, published as a league table, is your quality KPI."
+    },
+    {
+      "id": "m12-q3",
+      "type": "multipleChoice",
+      "teach": "Dredging is paid per cubic yard removed — measured somehow.",
+      "prompt": "Why does the owner commission independent bathymetric surveys during dredging?",
+      "choices": [
+        {
+          "text": "Because you pay per cy — pre- and post-dredge surveys of the actual bottom are how you avoid paying for water",
+          "correct": true,
+          "why": "Correct. Without independent surveys, the payable quantity is whatever the contractor's records say it is. The survey is the marine QA lab."
+        },
+        {
+          "text": "DEPP requires them for the EMP",
+          "why": "The EMP has its own monitoring, but the survey's commercial role — verifying payable quantities — is why the OWNER commissions it."
+        },
+        {
+          "text": "For navigation chart updates",
+          "why": "Charts eventually update, but that's a Port Department byproduct, not why your QS wants the data monthly."
+        },
+        {
+          "text": "To find archaeology before it stops the dredge",
+          "why": "Archaeological screening happens in the EIA phase. The recurring surveys are about cubic yards and dollars."
+        }
+      ],
+      "explanation": "Same principle as the land-side testing lab, wetter: independent measurement, contracted to the owner, of every quantity you pay against. Marine QC also adds stone gradation certificates on armor and alignment tolerances on bulkheads."
+    },
+    {
+      "id": "m12-q4",
+      "type": "multipleChoice",
+      "teach": "Every site has a 'likeliest fatality mechanism' — the hazard geometry most likely to kill someone. Naming it focuses the program.",
+      "prompt": "What is this site's likeliest fatality mechanism?",
+      "choices": [
+        {
+          "text": "The canal edges — open water + heavy equipment + rock edges, for years of construction",
+          "correct": true,
+          "why": "Correct. An excavator working a rock edge over deep water, daily, across miles of canal, for years — canal-edge protocols get treated as seriously as anything on the project."
+        },
+        {
+          "text": "Falls from the condo frames",
+          "why": "The classic construction killer, and fall protection on frame work is mandatory — but the condos are 3–4 storeys with standard controls. The canals are an unusual, persistent, site-wide hazard."
+        },
+        {
+          "text": "Blasting operations",
+          "why": "Dramatic but tightly proceduralized and episodic — licensed blaster, exclusion zones, scheduled shots. The canal edge is there every unremarkable day."
+        },
+        {
+          "text": "Hurricane events",
+          "why": "Storms threaten property at scale, but the preparedness plan evacuates people. The daily drowning-and-crushing geometry of the canal edges is the persistent human risk."
+        }
+      ],
+      "explanation": "Risk thinking 101: frequency × exposure × severity. The canal edges score high on all three for years, which is why edge protection, equipment setback rules, and water-rescue provisions belong in every relevant sub's contract, not just the safety manual."
+    },
+    {
+      "id": "m12-q5",
+      "type": "multipleChoice",
+      "teach": "Risk #10 on the project register is you.",
+      "prompt": "What is the mitigation for key-person dependency on the owner-developer?",
+      "choices": [
+        {
+          "text": "Document the systems — registers, logs, pipelines, procedures — so the project survives your absence; and direct-manage fewer things with better systems",
+          "correct": true,
+          "why": "Correct, and it's the same answer as 'what do I directly manage': the value isn't your daily presence in every decision, it's the machine you build that makes decisions repeatable."
+        },
+        {
+          "text": "Key-person life insurance",
+          "why": "Insurance pays money; it doesn't run the permit pipeline. Financial mitigation without operational mitigation leaves the project rich and rudderless."
+        },
+        {
+          "text": "Hire a deputy who shadows everything",
+          "why": "A shadow of undocumented judgment inherits the same fragility. The deputy plus documented systems works; the deputy instead of them doesn't."
+        },
+        {
+          "text": "Avoid vacations during construction",
+          "why": "That's not mitigation, that's maximizing exposure to the risk — a burned-out key person is the failure mode arriving early."
+        }
+      ],
+      "explanation": "This is the register's most personal entry and its most honest: a project that only works when you're in the room is a fragile project. Every system this app teaches — committed-cost reports, hold points, logs, pipelines — is also the succession plan."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m12_prob", "label": "Risk probability score", "unit": "points", "min": 1, "max": 5 },
+    { "id": "m12_impact", "label": "Risk impact score", "unit": "points", "min": 1, "max": 5 }
+  ],
+  "mathProblems": [
+    {
+      "id": "m12-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Scoring a risk",
+      "context": "Risk score = probability × impact on 1–5 scales. A 4×4 risk (16+) demands an owner and a mitigation date this week; a 2×2 gets watched monthly.",
+      "params": {
+        "qtyLabel": "probability score",
+        "qty": "m12_prob",
+        "qtyUnit": "(1–5)",
+        "rateLabel": "impact score",
+        "rate": "m12_impact",
+        "rateUnit": "(1–5)",
+        "answerLabel": "risk score",
+        "answerUnit": "points"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m12-d1",
+      "title": "The Friday pour",
+      "scenario": "Friday, 3 PM. The concrete sub has a pump, a crew, and eight ring beams formed and ready on Phase 2's first street. Your inspector — the hold-point sign-off for ring beam rebar — went home sick at noon and can't be reached. The sub's foreman says his own guys checked the steel and it's fine: 'We pour now or you pay for a Saturday crew and a pump remob. Your call.'",
+      "options": [
+        {
+          "id": "hold-the-point",
+          "label": "No sign-off, no pour. Pay the Saturday premium and get the inspector (or a qualified substitute) there in the morning",
+          "outcome": "The Saturday costs real money and buys something priceless: the hold-point system stays real. Saturday's inspection finds two beams with missing corner bars at column intersections — the exact hurricane-critical detail the hold point exists for. Every sub on site hears both halves of this story.",
+          "optimal": true
+        },
+        {
+          "id": "pour-on-foreman",
+          "label": "Pour on the foreman's word — he's experienced and the steel is probably fine",
+          "outcome": "Probably. And the hold-point system just became advisory: every future Friday afternoon now has this precedent, the sub's crews learn your sign-offs bend under schedule pressure, and if any of those eight beams is wrong, it's wrong inside concrete, in the wind structure, on all eight houses.",
+          "acceptable": false
+        },
+        {
+          "id": "photo-verify",
+          "label": "Have the foreman photo-document every beam against the drawings, review remotely, then pour",
+          "outcome": "Better than nothing, worse than eyes: photos miss what inspections catch (bar laps, chair heights, ties at intersections — the three-dimensional stuff). As a one-off documented exception with your explicit remote review, defensible; as a habit, it's the slow death of the hold point.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Hold points only work if they hold under pressure — and the pressure always arrives at 3 PM Friday with a pump on the clock. The cost of enforcing the system is always visible and always small; the cost of the exception is invisible until it's structural. Pay the Saturday."
+    },
+    {
+      "id": "m12-d2",
+      "title": "The near-miss at the canal edge",
+      "scenario": "An excavator working the canal cut slides half a track over the rock edge — operator unhurt, machine recovered, nobody outside the earthworks crew saw it. The sub's superintendent calls it 'a non-event, ground just spalled a little' and doesn't want it written up: 'incident reports raise everyone's premiums for nothing.'",
+      "options": [
+        {
+          "id": "investigate-fully",
+          "label": "Treat it as the free lesson it is: formal near-miss report, root-cause investigation (why was the machine that close? was the edge setback rule followed? was the rock undercut?), findings to every crew on the water",
+          "outcome": "The investigation finds the edge setback rule existed but was never marked physically — paint and barriers go up the same week, canal-wide. The near-miss that cost nothing just rewrote the protocol that prevents the fatality version. This is what 'incident investigation with root cause' means when it matters.",
+          "optimal": true
+        },
+        {
+          "id": "quiet-word",
+          "label": "Skip the paperwork; have a quiet word with the operator about staying back from the edge",
+          "outcome": "The systemic cause — unmarked setbacks on undercut rock — stays in place for every other operator on eight miles of canal. Near-misses are the cheapest safety data that exists; unrecorded, this one is just a story that predicts a funeral.",
+          "acceptable": false
+        },
+        {
+          "id": "report-minimal",
+          "label": "Log it minimally to keep the record technically complete, no investigation",
+          "outcome": "The log entry satisfies the file and teaches nothing. When the serious version happens later, the minimal entry becomes evidence you knew about edge instability and investigated nothing — worse for the premiums, and the regulator, than the honest version would ever have been.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "The canal edge is this site's likeliest fatality mechanism, and near-misses are its early-warning system. A safety culture is measured by what it does with events that cost nothing — and your incident record flows into insurance pricing and regulator standing either way, so let it flow as evidence of a system that learns."
+    }
+  ]
 }

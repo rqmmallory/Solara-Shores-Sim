@@ -1,13 +1,304 @@
 {
   "id": "m04-marina",
   "order": 4,
-  "title": "Canals, Dredging, and Marina",
+  "title": "Canals, Dredging, and Marina (The Specialist Half)",
   "short": "Marina",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "The canals and marina basin are mostly CUT INTO LIMESTONE UPLANDS in the dry, behind a rock plug at the ocean, then connected to the sea. How much you excavate dry before breaching that plug is a seven-figure lever, because dry rock cut is far cheaper than marine dredging. You will never self-perform any of this — your job is packaging, permits, insurance, and sequencing.",
+  "sections": [
+    {
+      "heading": "What this work actually is",
+      "body": "A hybrid of three things: (1) DRY rock excavation — the canal network and basin cut like a quarry behind an unexcavated plug at the ocean interface, at $12–30/cy; (2) MARINE dredging — the entrance channel and below-water refinement once connected, at $30–80/cy for rock-heavy Bahamian work; (3) MARINE STRUCTURES — bulkheads lining the canals, docks, and the fuel station. The design decision of how much happens in the dry before the plug is breached moves millions. Cut everything you can at quarry prices; leave the sea for what only a barge can do."
+    },
+    {
+      "heading": "Dredge method choices",
+      "body": "Mechanical dredging (excavator or clamshell on a barge) handles rock and rubble, produces higher turbidity per pass, and handles spoil as a solid. Hydraulic cutter-suction dredging is efficient in sand and soft material, pumps slurry to a disposal/reclamation area, and needs settling ponds and decant water-quality control. Limestone usually means mechanical plus pre-treatment — rock-tooth cutter heads or, in hard zones, underwater drill-and-blast, which is heavily EMP-constrained. Spoil is a resource: rock to the crusher, sandy fractions potentially toward beach fill IF grain size and quality match — DEPP requires spoil characterization either way."
+    },
+    {
+      "heading": "Marine structures and the flushing obsession",
+      "body": "Canal edges get vertical bulkheads — king-pile and panel, sheet pile with concrete cap, or mass concrete/rock revetment on cheaper stretches — at $1,500–3,500 per linear foot installed. The marina adds docks (floating systems run $150–350/sf), a fuel dock with spill containment and its own fire and environmental approvals, pump-out, and power/water pedestals. And the design issue DEPP scrutinizes hardest: FLUSHING. Poor basin circulation means water-quality failure means enforcement. Some Bahamian marina EIAs have required mechanical flushing pumps ($200–500K) where natural exchange was inadequate."
+    },
+    {
+      "heading": "Who does this, and what you do",
+      "body": "A small pool of regional marine contractors — Bahamian and Florida-based firms mobilizing barges and dredges across. Mobilization alone runs $250K–$1M+, which is why marine scopes are packaged into as FEW, as LARGE, as CONTINUOUS contracts as possible — never piecemeal. Your role as developer: get the EIA/CEC and seabed lease right; hire a coastal engineer as owner's representative; package contracts with unit rates by material class and EMP obligations passed through verbatim; verify MARINE insurance (marine liability, P&I, wreck removal — different policies from land CGL); and sequence so the plug breach and entrance works land in the November–May calm window. Carry 15–25% contingency on all marine line items, versus 5–10% on standard vertical."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m04-q1",
+      "type": "multipleChoice",
+      "teach": "Dry rock excavation runs $12–30/cy; marine dredging of the same rock runs $30–80/cy.",
+      "prompt": "Why is the timing of the plug breach a seven-figure decision?",
+      "choices": [
+        {
+          "text": "Every cubic yard excavated dry before the breach costs roughly half or less of what the same yard costs as marine dredging",
+          "correct": true,
+          "why": "Correct — at a delta of $18–50/cy across hundreds of thousands of yards, maximizing the dry cut is one of the largest single optimizations available."
+        },
+        {
+          "text": "The plug breach itself is the expensive operation",
+          "why": "The breach is a modest operation. The money is in WHERE the yardage gets excavated — quarry-style in the dry, or from a barge in the wet."
+        },
+        {
+          "text": "Because the seabed lease fee starts when the water connects",
+          "why": "Lease terms don't hinge on the breach date. The economics are in the excavation method the breach timing forces."
+        },
+        {
+          "text": "Breaching early avoids a second mobilization",
+          "why": "This is the real counter-argument (one mobilization vs two), but it usually loses: mobilization is $250K–$1M while the dry-vs-wet delta across the full yardage is several times that."
+        }
+      ],
+      "explanation": "The trade is: maximize dry excavation (cheap cy, but possibly two marine mobilizations) versus breach early so the marine contractor does everything wet (one mobilization, expensive cy). Run the actual numbers — but at this project's volumes, the dry cut usually wins decisively."
+    },
+    {
+      "id": "m04-q2",
+      "type": "multipleChoice",
+      "teach": "Dredge selection follows the material: mechanical handles rock; hydraulic cutter-suction excels in sand and pumps slurry to a reclamation area.",
+      "prompt": "For the limestone entrance channel, which dredge approach fits?",
+      "choices": [
+        {
+          "text": "Mechanical dredging with rock-tooth pre-treatment — hydraulic cutter-suction is a sand tool",
+          "correct": true,
+          "why": "Correct. Limestone means mechanical (excavator/clamshell on barge) with rock cutter heads or, in hard zones, EMP-constrained underwater drill-and-blast."
+        },
+        {
+          "text": "Hydraulic cutter-suction — it's the more efficient dredge",
+          "why": "More efficient in sand and soft material. In rock it stalls; efficiency claims are always relative to the material."
+        },
+        {
+          "text": "Either, since spoil handling is the same",
+          "why": "Spoil handling differs completely: mechanical handles solids; hydraulic pumps slurry and needs settling ponds and decant water-quality control."
+        },
+        {
+          "text": "Land-based excavators working at low tide",
+          "why": "Reach ends fast offshore — that trick works for some groin placement, not an entrance channel."
+        }
+      ],
+      "explanation": "Method selection is a coastal-engineering deliverable, but you must understand it to package the contract: unit rates by MATERIAL CLASS, turbidity obligations by METHOD, spoil handling by TYPE. A contract written method-blind is a claims generator."
+    },
+    {
+      "id": "m04-q3",
+      "type": "multipleChoice",
+      "teach": "DEPP scrutinizes marina basin circulation hard, because a stagnant basin is a permanent water-quality violation.",
+      "prompt": "The coastal engineer's model shows marginal natural flushing in the basin's inner corner. What's the responsible move?",
+      "choices": [
+        {
+          "text": "Redesign the basin geometry now, or budget the mechanical flushing pumps — at design stage, not after enforcement",
+          "correct": true,
+          "why": "Correct. Bahamian marina EIAs have required flushing pumps where natural exchange was inadequate. Fixing circulation on paper costs a redesign; fixing it after opening costs enforcement plus retrofit."
+        },
+        {
+          "text": "Build it and monitor — flushing models are conservative",
+          "why": "The EMP's monitoring will document the failure you modeled, in a government file, with your name on the response obligation."
+        },
+        {
+          "text": "Reduce the slip count so fewer boats pollute",
+          "why": "Flushing is basin geometry and tidal exchange — fewer boats slow the symptom, not the stagnation."
+        },
+        {
+          "text": "Dose the basin with treatment chemicals seasonally",
+          "why": "Chemically treating an open tidal basin connected to the sea is neither permittable nor physically sensible."
+        }
+      ],
+      "explanation": "Flushing is a design obsession in Bahamian marinas for a reason: poor flushing = water quality failure = enforcement, and the marina is also the amenity your estate-lot premiums stand on. It's solvable cheaply exactly once — at design."
+    },
+    {
+      "id": "m04-q4",
+      "type": "multipleChoice",
+      "teach": "Marine mobilization — getting a barge/dredge spread to your site — is a large fixed cost regardless of how much work follows.",
+      "prompt": "What does a $250K–$1M+ mobilization cost imply about how marine scopes should be contracted?",
+      "choices": [
+        {
+          "text": "Package marine work into as few, as large, as continuous contracts as possible — never piecemeal",
+          "correct": true,
+          "why": "Correct. Each separate marine contract re-pays the mobilization. Bundling dredging, bulkheads, groins, and beach into continuous campaigns amortizes it."
+        },
+        {
+          "text": "Split it into small packages so more contractors can bid",
+          "why": "The opposite: small marine packages each eat a full mobilization, and the regional contractor pool is small anyway."
+        },
+        {
+          "text": "Only hire Bahamian contractors to avoid mobilization",
+          "why": "Bahamian marine contractors also mobilize spreads — and restricting the already-small pool weakens your negotiating position."
+        },
+        {
+          "text": "Have the contractor waive mobilization in exchange for schedule flexibility",
+          "why": "Nobody waives a real cost; they bury it in unit rates. Trading schedule flexibility has value, but mobilization gets paid either way."
+        }
+      ],
+      "explanation": "This is also why the master sequence tries to land groins + beach fill in the same or adjacent calm-season window as the entrance works: one marine mobilization instead of two or three is the sim's biggest single optimization prize."
+    },
+    {
+      "id": "m04-q5",
+      "type": "subOrManage",
+      "teach": "On the marine half you self-perform nothing — but several functions must never leave your desk.",
+      "prompt": "Subcontract or direct-manage each marine-scope element:",
+      "items": [
+        {
+          "scope": "Dredging and canal excavation execution",
+          "answer": "subcontract",
+          "why": "Specialist marine contractors with barges, spreads, and marine crews — a capability you will never build in-house."
+        },
+        {
+          "scope": "Coastal engineering design (basin, entrance, flushing, bulkheads)",
+          "answer": "subcontract",
+          "why": "A specialist consultant scope — but hired as YOUR owner's representative, not the contractor's designer."
+        },
+        {
+          "scope": "Passing EMP conditions (turbidity limits, work windows) into subcontracts verbatim",
+          "answer": "direct",
+          "why": "The CEC binds YOU. If the EMP's conditions aren't flowed into the dredging contract word for word, you own the gap between what DEPP requires and what the contractor priced."
+        },
+        {
+          "scope": "Verifying marine insurance (P&I, hull, wreck removal)",
+          "answer": "direct",
+          "why": "Marine policies are different animals from land CGL — verifying them is owner-side risk management you don't delegate to the party being insured."
+        },
+        {
+          "scope": "Bathymetric surveys verifying dredge depths",
+          "answer": "direct",
+          "why": "You pay per cubic yard — an independent survey is how you avoid paying for water. Commission it yourself, like the QA lab."
+        }
+      ],
+      "explanation": "The marine half inverts the intuition that hands-on means self-performing: everything physical is subcontracted, and your leverage lives entirely in paper — contracts, EMP flow-down, insurance verification, and independent measurement."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m04_dry_cut", "label": "Dry rock excavation (canals)", "unit": "$/cy", "min": 12, "max": 30 },
+    { "id": "m04_mech_dredge", "label": "Mechanical marine dredging", "unit": "$/cy", "min": 30, "max": 80, "note": "Rock-heavy Bahamas work at the high end" },
+    { "id": "m04_hydraulic_dredge", "label": "Hydraulic dredging in sand", "unit": "$/cy", "min": 12, "max": 30 },
+    { "id": "m04_bulkhead_lf", "label": "Bulkhead installed", "unit": "$/lf", "min": 1500, "max": 3500 },
+    { "id": "m04_dock_sf", "label": "Floating dock systems", "unit": "$/sf", "min": 150, "max": 350 },
+    { "id": "m04_mob", "label": "Marine mobilization", "unit": "$", "min": 250000, "max": 1000000 },
+    { "id": "m04_fuel_station", "label": "Fuel station (tanks, containment, approvals)", "unit": "$", "min": 750000, "max": 2000000 },
+    { "id": "m04_flush_pump", "label": "Flushing pump system if required", "unit": "$", "min": 200000, "max": 500000 },
+    { "id": "m04_marine_cont", "label": "Marine contingency tier", "unit": "%", "min": 15, "max": 25 }
+  ],
+  "mathProblems": [
+    {
+      "id": "m04-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Canal bulkhead package",
+      "context": "Bulkheads price per linear foot installed — and the canal network has a LOT of linear feet of edge (both sides of every canal).",
+      "params": {
+        "qtyLabel": "bulkheaded canal edge",
+        "qty": { "min": 4000, "max": 12000 },
+        "qtyUnit": "lf",
+        "rateLabel": "bulkhead rate",
+        "rate": "m04_bulkhead_lf",
+        "rateUnit": "$/lf",
+        "answerLabel": "bulkhead package cost",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "m04-p2",
+      "generator": "massBalance",
+      "difficulty": 2,
+      "title": "The dry-cut prize",
+      "context": "Think of this as a mass balance of METHOD: yardage moved from the wet column to the dry column 'saves' the dredge-vs-dry rate difference. How much does maximizing the dry cut save?",
+      "params": {
+        "cutCy": { "min": 100000, "max": 250000 },
+        "fillCy": { "min": 100000, "max": 250000 },
+        "savedPerCy": { "min": 18, "max": 50 }
+      }
+    },
+    {
+      "id": "m04-p3",
+      "generator": "estimateBuildup",
+      "difficulty": 3,
+      "title": "Marina program estimate with marine contingency",
+      "context": "Marine line items carry 15–25% contingency — the highest tier on the project — because weather, EMP stoppages, and rock surprises all live here.",
+      "params": {
+        "scopeLabel": "the marina program",
+        "contingencyPct": "m04_marine_cont",
+        "lines": [
+          { "label": "Entrance dredging", "qty": { "min": 20000, "max": 60000 }, "rate": "m04_mech_dredge", "qtyUnit": "cy", "rateUnit": "$/cy" },
+          { "label": "Bulkheads", "qty": { "min": 3000, "max": 6000 }, "rate": "m04_bulkhead_lf", "qtyUnit": "lf", "rateUnit": "$/lf" },
+          { "label": "Floating docks", "qty": { "min": 15000, "max": 40000 }, "rate": "m04_dock_sf", "qtyUnit": "sf", "rateUnit": "$/sf" }
+        ]
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m04-d1",
+      "title": "Breach early, or maximize the dry cut?",
+      "scenario": "The marine contractor proposes breaching the plug at the start of their campaign: 'one mobilization, we do everything from the water, simpler for everyone.' Your QS's model says finishing the dry excavation first saves $2.8M in excavation cost but likely forces a second marine mobilization (~$600K) next season. The coastal engineer notes the dry cut also produces cleaner spoil for the crusher.",
+      "options": [
+        {
+          "id": "max-dry",
+          "label": "Maximize the dry cut; accept the possibility of a second mobilization",
+          "outcome": "The $2.8M excavation saving dwarfs the $600K second mobilization even in the worst case, the crusher gets clean rock, and turbidity exposure (and EMP risk) shrinks because most yardage never touches the water.",
+          "optimal": true
+        },
+        {
+          "id": "one-mob",
+          "label": "Breach early — one mobilization, one continuous marine campaign",
+          "outcome": "Simpler management, and $2M+ more expensive: yardage that could have been quarried at $12–30/cy is now dredged at $30–80/cy, in a weather window, under turbidity monitoring.",
+          "acceptable": false
+        },
+        {
+          "id": "split-difference",
+          "label": "Negotiate: dry-cut the canals, let the contractor breach early for the basin only",
+          "outcome": "A defensible hybrid if the basin geometry genuinely favors wet excavation — but check the premise, because contractors propose what suits their fleet, not your ledger.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "The plug is a pay-toll between two price regimes. Every yard that crosses from dry to wet costs you the difference. The contractor's 'simpler for everyone' is simpler for THEM — your job is to price simplicity like everything else."
+    },
+    {
+      "id": "m04-d2",
+      "title": "Turbidity curtain breach, inspector on site",
+      "scenario": "Mid-dredge, the turbidity curtain fails in a squall and the plume crosses the EMP limit — with a DEPP inspector on site for a routine visit. The EMP says stop work until compliance is restored. The dredge contractor's superintendent says stopping is fine, 'but standby is $40K a day and it's yours — check your contract.'",
+      "options": [
+        {
+          "id": "stop-selfreport",
+          "label": "Stop immediately, self-report the exceedance formally to DEPP with your response plan, then resolve the standby question per the contract",
+          "outcome": "The stoppage costs days. But DEPP watched you enforce your own EMP in real time — the incident file shows a developer who self-polices. The standby fight is whatever your contract says it is; the regulator relationship survives intact.",
+          "optimal": true
+        },
+        {
+          "id": "argue-first",
+          "label": "Keep dredging while you argue the reading is squall noise, not operations",
+          "outcome": "The inspector watches you continue working through an exceedance. Whatever the meter said, the file now says 'continued in violation, in the presence of an inspector.' Expect a stop-work order on DEPP's terms instead of a pause on yours.",
+          "acceptable": false
+        },
+        {
+          "id": "quiet-fix",
+          "label": "Stop, fix the curtain quietly, restart — no formal report since the inspector saw it anyway",
+          "outcome": "Halfway right. But 'the inspector saw it' is not self-reporting — the formal notice with a response plan is what converts an incident into evidence of a functioning EMP. You gave up the credit for doing the right thing.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Two lessons stacked: (1) stakeholders hear bad news from YOU first — a self-reported incident is survivable, a discovered one is not; (2) whose money the standby is was decided the day the contract was signed. If EMP-stoppage cost allocation isn't written down, you wrote a blank check."
+    },
+    {
+      "id": "m04-d3",
+      "title": "Estate-lot docks: uniform or individual?",
+      "scenario": "The 21 canal-front estate lots are your highest-value product, and buyers are already asking about private docks. Option A: the developer designs and builds uniform docks as part of the bulkhead campaign. Option B: each buyer permits and builds their own (Port Department letters, individual seabed considerations, their own contractors on your canal edges).",
+      "options": [
+        {
+          "id": "developer-docks",
+          "label": "Developer-built uniform docks, priced into the lots",
+          "outcome": "One design, one permit package, one contractor already mobilized on the water, uniform look the master plan controls — and the dock margin is yours. Buyers get a turnkey premium instead of a two-year permitting hobby.",
+          "optimal": true
+        },
+        {
+          "id": "buyer-docks",
+          "label": "Let buyers build their own",
+          "outcome": "Twenty-one separate Port Department applications, twenty-one contractors working over YOUR bulkheads during YOUR warranty period, and a canal-scape of mismatched structures. The first buyer whose barge cracks a bulkhead panel makes the warranty question yours anyway.",
+          "acceptable": false
+        },
+        {
+          "id": "developer-standard-buyer-build",
+          "label": "Publish a developer dock standard + approved-contractor list; buyers build within it",
+          "outcome": "A workable middle path used in several Bahamian communities — you keep design control and bulkhead protection rules, buyers keep choice. You give up the dock margin and keep some coordination burden.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Anything touching the seabed and your bulkheads is cheapest and safest done once, uniformly, by the contractor already floating there. Sell the dock as product, not as a buyer's problem — Palm Cay's marina uniformity is part of why its marine assets carried its relaunch."
+    }
+  ]
 }

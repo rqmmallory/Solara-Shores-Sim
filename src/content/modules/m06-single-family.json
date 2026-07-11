@@ -3,11 +3,277 @@
   "order": 6,
   "title": "Vertical: Production Single-Family (302 Units)",
   "short": "Houses",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "302 houses is not 302 construction projects — it's a manufacturing problem. This module covers the Bahamian concrete house sequence, even-flow production scheduling, the island's finite trade labor pool, and the materials discipline that island logistics forces on you.",
+  "sections": [
+    {
+      "heading": "The Bahamian house, step by step",
+      "body": "Reinforced concrete/CMU dominates. Per unit: layout → footings (shallow, on rock — often minimal excavation, sometimes pinned/doweled to rock; limestone bearing is superb) → slab on grade with plumbing rough-in cast in → block walls with poured reinforced columns and ring beam → roof structure (hurricane-strapped timber or engineered trusses; concrete flat roofs on some typologies) → roof covering (metal standing seam preferred for wind and insurance) → impact-rated or shuttered windows/doors → MEP rough → insulation/furring → interior finishes → exterior render/paint → fixtures → punch → inspections → Occupancy Certificate. Per-house cycle: 60–120 working days."
+    },
+    {
+      "heading": "Production management: the takt",
+      "body": "Standardize 3–6 floor plans. Release starts at a steady weekly rate matched to your SLOWEST trade's capacity — not to sales enthusiasm. Each sub moves house-to-house on a takt (a block crew lays 400–700 blocks/day and does one house per X days — this rhythm is the core production math). QC by sampling plus hold points: EVERY house gets checked at footing/rebar, ring beam, roof strapping, and MEP rough; finish tolerances get sampled. A superintendent covers 15–30 active units, so at a 60–80 unit peak you run 3–4 supers under you."
+    },
+    {
+      "heading": "Labor: the island has a ceiling",
+      "body": "New Providence has deep masonry and concrete trades but finite capacity. Running 60+ concurrent homes strains the island's block-laying and finishing pools and pushes wages up — accelerating starts raises unit labor cost AND drops quality scores. Minimum wage is BSD $260/week; skilled trades run far above; NIB employer contributions apply to direct labor; every sub must hold a business licence. The escape valves — work permits for foreign crews — run 4–8+ weeks each and are politically visible."
+    },
+    {
+      "heading": "Materials: buyout, staging, and shrinkage",
+      "body": "Island logistics demand buyout discipline: bulk-purchase block, cement (duty-free since 2025), rebar, and trusses per phase, ahead of need. Run a fenced, cameraed materials compound with inventory control — theft shrinkage is a real Caribbean line item; budget 1–2%. A common Bahamian model: developer-supplied materials with LABOR-ONLY trade subs — it protects you from sub-side material markup and theft, at the price of running procurement yourself."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m06-q1",
+      "type": "sequencing",
+      "teach": "The Bahamian concrete house has a fixed structural logic — each stage bears on the one before.",
+      "prompt": "Order the single-family construction sequence:",
+      "items": [
+        "Footings on rock and slab with plumbing rough-in cast in",
+        "Block walls with reinforced columns and ring beam",
+        "Roof structure, hurricane-strapped",
+        "Impact windows/doors — building dried in",
+        "MEP rough-in",
+        "Interior finishes and exterior render",
+        "Punch, final inspections, Occupancy Certificate"
+      ],
+      "explanation": "Concrete from the ground up, dry-in before interior trades, finishes last, and the OC — the document that lets the buyer close — at the end. Every house in the program walks this same path; production management is keeping 60+ of them walking it in step."
+    },
+    {
+      "id": "m06-q2",
+      "type": "multipleChoice",
+      "teach": "Even-flow production releases starts at a constant rate. The question is what rate.",
+      "prompt": "Sales pace doubles. The sales director wants starts doubled. What sets the actual ceiling on your start rate?",
+      "choices": [
+        {
+          "text": "Your slowest trade's real capacity — plus super coverage and QC integrity; exceeding it buys wage inflation and quality failures, not faster delivery",
+          "correct": true,
+          "why": "Correct. Starts released beyond trade capacity just queue up half-built — while pushing island wages up and first-pass inspection rates down."
+        },
+        {
+          "text": "Nothing — sales funds construction, so sales sets pace",
+          "why": "Sales sets the CEILING of what you should build, not the rate you CAN build. The island's block-laying pool doesn't expand because your sales office had a good quarter."
+        },
+        {
+          "text": "The lender's draw schedule",
+          "why": "Financing paces cash, and it matters — but the binding physical constraint on this island is trade labor capacity."
+        },
+        {
+          "text": "Concrete supply",
+          "why": "Cement is duty-free and block is made locally; materials scale with purchase orders. Skilled labor doesn't."
+        }
+      ],
+      "explanation": "The correct response to doubled sales is a MEASURED ramp: extend trade partnerships, add a super before adding his units, open the work-permit pipeline as a backup, and raise starts only as verified capacity arrives. Presold backlog is a nice problem; 70 stalled slabs is not."
+    },
+    {
+      "id": "m06-q3",
+      "type": "multipleChoice",
+      "teach": "Two models for trade contracts: turnkey (sub supplies labor + materials) vs labor-only (you supply materials).",
+      "prompt": "Why is developer-supplied-materials / labor-only subcontracting a common Bahamian production model?",
+      "choices": [
+        {
+          "text": "It strips out sub-side material markup and theft exposure, and puts island procurement (the hard part) under the party with the most leverage — you",
+          "correct": true,
+          "why": "Correct. At 302 houses your bulk purchasing beats any sub's pricing, and materials in YOUR fenced compound shrink less than materials in twenty pickup trucks."
+        },
+        {
+          "text": "Labor-only subs are higher quality",
+          "why": "Quality comes from your hold points and first-pass tracking, not the contract form. The model's win is commercial: markup and shrinkage control."
+        },
+        {
+          "text": "Bahamian law restricts subs from importing materials",
+          "why": "No such restriction — subs can and do buy materials. It's a choice about margin and control, not compliance."
+        },
+        {
+          "text": "It transfers schedule risk to the developer's suppliers",
+          "why": "Backwards — it takes procurement risk ONTO you. That's the price you pay for capturing the margin; the administrative load is real."
+        }
+      ],
+      "explanation": "The trade-off is margin control vs administrative load: labor-only means you run buyout, staging, inventory, and the compound. Worth it at production scale IF you build the clerical machine to match — which is exactly the developer skillset this whole program trains."
+    },
+    {
+      "id": "m06-q4",
+      "type": "multipleChoice",
+      "teach": "Quality on a production program is enforced at hold points — stages where work may not proceed without sign-off.",
+      "prompt": "A block sub's ring beams fail inspection twice in a row. Remove them (schedule hit) or supervise-and-remediate (risk)?",
+      "choices": [
+        {
+          "text": "Escalate structurally: stop their new starts, remediate under direct supervision, and re-qualify them at reduced volume — with removal as the explicit next step",
+          "correct": true,
+          "why": "Correct. Two consecutive structural failures is a pattern, not an accident. Contain (no new starts), fix (supervised remediation), then either verified recovery or removal."
+        },
+        {
+          "text": "Remove them immediately — structural failures are unforgivable",
+          "why": "Defensible but expensive on an island with 2–3 subs per trade: instant removal mid-phase can cost more schedule than a controlled probation, and Nassau's market is small enough that scorched earth has a memory."
+        },
+        {
+          "text": "Supervise-and-remediate without restricting their volume",
+          "why": "Remediating while they keep producing at full speed means your supervision chases their output. Containment first — the failing crew doesn't get MORE houses."
+        },
+        {
+          "text": "Waive the inspections — the engineer can recertify later",
+          "why": "The ring beam is the hurricane structure. Waiving a structural hold point on a wind-zone island is the one option that should genuinely never be on the table."
+        }
+      ],
+      "explanation": "This is why you keep 2–3 competing subs per trade: so no single sub can hold the schedule hostage while you enforce quality. Publish first-pass inspection rates per sub — nothing improves masonry like a league table."
+    },
+    {
+      "id": "m06-q5",
+      "type": "subOrManage",
+      "teach": "At production scale, the developer's org chart is mostly systems, not trades.",
+      "prompt": "Subcontract or direct-manage each element of the 302-house program:",
+      "items": [
+        {
+          "scope": "Masonry, roofing, MEP, and finish trades",
+          "answer": "subcontract",
+          "why": "Every trade is subcontracted — ideally 2–3 competing subs per trade so no one holds the schedule hostage."
+        },
+        {
+          "scope": "The production schedule and weekly start releases",
+          "answer": "direct",
+          "why": "The takt IS the program. Releasing starts is the developer's throttle on cash, labor, and quality — never delegated."
+        },
+        {
+          "scope": "Bulk buyout of block, cement, rebar, trusses",
+          "answer": "direct",
+          "why": "Island logistics + the labor-only model put procurement on your desk, where the volume leverage lives."
+        },
+        {
+          "scope": "The punch/OC/closing handoff pipeline",
+          "answer": "direct",
+          "why": "This is the revenue pipeline — OC throughput converts construction into cash, and only the developer feels that urgency."
+        },
+        {
+          "scope": "Warranty service on delivered homes",
+          "answer": "direct",
+          "why": "Run the warranty program with your own coordinator calling back the responsible subs — owners' warranty experience is your reputation in a small market."
+        }
+      ],
+      "explanation": "Trades build houses; the developer builds the machine that builds houses — schedule, procurement, QC, permits, closings, warranty. If you're personally laying out footings, something upstream has failed."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m06_hard_sf", "label": "Hard cost, production spec", "unit": "$/sf", "min": 190, "max": 280, "note": "Mid/upper packages $300–500/sf" },
+    { "id": "m06_cycle_days", "label": "Per-house cycle", "unit": "working days", "min": 60, "max": 120 },
+    { "id": "m06_blocks_day", "label": "Block crew production", "unit": "blocks/day", "min": 400, "max": 700 },
+    { "id": "m06_super_ratio", "label": "Superintendent coverage", "unit": "active units", "min": 15, "max": 30 },
+    { "id": "m06_shrinkage", "label": "Materials shrinkage allowance", "unit": "%", "min": 1, "max": 2 },
+    { "id": "m06_gc_month", "label": "General conditions per month (program)", "unit": "$/month", "min": 150000, "max": 400000, "note": "Site staff, security, temp facilities, insurance" }
+  ],
+  "mathProblems": [
+    {
+      "id": "m06-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "One production house, hard cost",
+      "context": "Production-spec hard cost on New Providence runs $190–280/sf in the current market — meaningfully above South Florida, driven by freight, duty, and logistics.",
+      "params": {
+        "qtyLabel": "house size",
+        "qty": { "min": 1400, "max": 2600 },
+        "qtyUnit": "sf",
+        "rateLabel": "hard cost rate",
+        "rate": "m06_hard_sf",
+        "rateUnit": "$/sf",
+        "answerLabel": "house hard cost",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "m06-p2",
+      "generator": "crewRatio",
+      "difficulty": 1,
+      "title": "Superintendent headcount",
+      "context": "A super covers 15–30 active units depending on complexity and travel time. Understaffing shows up in first-pass inspection rates, not in the budget — until rework.",
+      "params": {
+        "unitLabel": "active houses",
+        "active": { "min": 45, "max": 90 },
+        "staffLabel": "superintendents",
+        "ratio": "m06_super_ratio"
+      }
+    },
+    {
+      "id": "m06-p3",
+      "generator": "takt",
+      "difficulty": 2,
+      "title": "Block crew takt",
+      "context": "Takt math: each crew takes a fixed time per house, crews run in parallel, and the phase duration follows. This is the production mini-game's core arithmetic.",
+      "params": {
+        "unitLabel": "houses (block stage)",
+        "qty": { "min": 20, "max": 60 },
+        "daysPerUnit": { "min": 8, "max": 15 },
+        "crewLabel": "block crews",
+        "crews": { "min": 3, "max": 6 }
+      }
+    },
+    {
+      "id": "m06-p4",
+      "generator": "estimateBuildup",
+      "difficulty": 3,
+      "title": "Vertical Phase 2 hard cost",
+      "context": "A phase estimate: houses at $/sf plus the general-conditions burn for the phase duration, then the production-vertical contingency tier (5–8%).",
+      "params": {
+        "scopeLabel": "Vertical Phase 2 (production houses)",
+        "contingencyPct": { "min": 5, "max": 8 },
+        "lines": [
+          { "label": "Houses", "qty": { "min": 60000, "max": 140000 }, "rate": "m06_hard_sf", "qtyUnit": "sf total", "rateUnit": "$/sf" },
+          { "label": "General conditions", "qty": { "min": 8, "max": 14 }, "rate": "m06_gc_month", "qtyUnit": "months", "rateUnit": "$/month" }
+        ]
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m06-d1",
+      "title": "The best block sub wants an advance",
+      "scenario": "Your highest-quality block sub — first-pass rate 96%, never missed a takt slot — asks for a $150K materials advance to carry them through a cash crunch caused by another developer paying late. Your options range from a straight advance to letting them stew. Nassau is a small market and this conversation will be remembered.",
+      "options": [
+        {
+          "id": "structured-support",
+          "label": "Solve their interest, not their position: milestone-based early payments against materials delivered to YOUR compound, plus faster payment terms going forward",
+          "outcome": "They get cash-flow certainty (the real need), you get security (the materials are on your site, in your inventory), and the market hears you stood by a good sub without becoming their bank. The relationship compounds for years.",
+          "optimal": true
+        },
+        {
+          "id": "straight-advance",
+          "label": "Wire the $150K advance against future work",
+          "outcome": "Generous and fast — and unsecured. If their crunch deepens (their other client still isn't paying), your advance is an unsecured loan to an insolvent sub. Kindness without structure is exposure.",
+          "acceptable": true
+        },
+        {
+          "id": "refuse",
+          "label": "Refuse — their cash flow is their problem",
+          "outcome": "Contractually correct. Three weeks later your best crew is pouring someone else's ring beams while their company restructures, your takt slips program-wide, and the story of how you treat good subs in trouble travels the whole island.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Module 13 in action: the position is 'advance me $150K'; the interest is cash-flow certainty. Milestone payments against delivered materials meet the interest with a fraction of the exposure. And the relationship horizon matters — in a small market, being the developer good subs can rely on is a compounding asset."
+    },
+    {
+      "id": "m06-d2",
+      "title": "Model homes: build ahead or build real?",
+      "scenario": "Sales needs model homes for the launch. Option A: pull three houses from Phase 1 forward, before roads and permanent power reach them — generator power, temporary access, built out of sequence. Option B: hold the launch until the first street is genuinely finished — roads, lights, landscape, three furnished models on it.",
+      "options": [
+        {
+          "id": "finished-street",
+          "label": "Hold for one genuinely finished street with models on it",
+          "outcome": "Later launch, vastly stronger product: buyers walk a real street of the real community, not a construction site with three furnished islands. The finished streetscape sells the master plan, and the models were built in sequence at normal cost.",
+          "optimal": true
+        },
+        {
+          "id": "rush-models",
+          "label": "Build three models out of sequence on generators",
+          "outcome": "The models open months earlier and cost 20–30% more each (temporary power, out-of-sequence trades, damaged access repaved). Buyers tour a construction zone — and the discount their offers imply prices exactly that experience.",
+          "acceptable": true
+        },
+        {
+          "id": "no-models",
+          "label": "Sell from renders and a sales center only",
+          "outcome": "Cheapest — and at this price point, weakest. Palm Cay's lesson cuts both ways: buyers on this island have been burned by developers selling paper. Physical proof is what converts at premium pricing.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Amenities and models sell the units that fund everything — but out-of-sequence construction always carries a premium and a quality tax. The strongest sales tool this market knows is a finished street: it proves the infrastructure, the product, AND the developer, all at once."
+    }
+  ]
 }

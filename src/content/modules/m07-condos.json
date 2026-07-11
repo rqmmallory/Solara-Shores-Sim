@@ -1,13 +1,260 @@
 {
   "id": "m07-condos",
   "order": 7,
-  "title": "Vertical: Condos, Senior Living, Commercial",
+  "title": "Vertical: Condos, Senior Living, and Commercial Buildings",
   "short": "Condos",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "Twelve 3–4 storey condo buildings, senior living, and the commercial pieces play by different rules than the houses: engineered structural frames, MEP stacking discipline, fire/life-safety class changes, elevator procurement, and a legal layer (the Condominium Act) that must be built in step with the concrete.",
+  "sections": [
+    {
+      "heading": "How 3–4 storeys differ from houses",
+      "body": "Four step-changes: (1) STRUCTURE — engineered reinforced-concrete columns/shear walls with concrete slabs, cast-in-place with table forms or precast planks, plus concrete pump and crane logistics; (2) MEP STACKING — wet walls and risers must align floor-to-floor, and clash review happens BEFORE the pour, because post-pour rework in concrete is brutal; (3) LIFE SAFETY — rated corridors and stairs, standpipes/sprinklers ($6–12/sf), fire alarm, and elevators (a 30–50 week lead item installed by licensed specialists at $180–350K per unit); (4) ENVELOPE — condos 1–2 and the beach club face open ocean: highest wind/flood/salt tier, stainless or hot-dip hardware and corrosion-resistant detailing, or you buy a 10-year maintenance problem. Salt-zone premium: 5–12% of shell cost."
+    },
+    {
+      "heading": "Sequencing one building, then twelve",
+      "body": "Foundations → vertical structure floor by floor (target one floor per 2–4 weeks) → envelope watertight ('topped out and dried in' is the milestone that releases interior trades) → MEP rough, run consistently top-down or bottom-up → finishes → life-safety commissioning and fire inspection → OC. Across 12 buildings: stagger starts so crews and the crane flow building-to-building — a slower, heavier version of the house takt. Palm Cay's One Marina phase ($100M, 84 units, HNR Construction / Winston Jones Architects) is the local proof of team and price: interview those firms."
+    },
+    {
+      "heading": "The condominium legal layer",
+      "body": "Bahamian condos are constituted under the Law of Property and Conveyancing (Condominium) Act — the declaration, unit entitlements, and the condo corporation must be established IN STEP with construction, because closings require both the legal structure and the OC. Handover to the owners' association — as-builts, warranties, O&M manuals, reserve study — is a managed deliverable with its own completeness score, not an afterthought."
+    },
+    {
+      "heading": "The commercial pieces",
+      "body": "Clubhouse/restaurant, sports bar, beach club, gym, retail, senior living: each is its own mini-project with its own design team and permit. Specialty layers: commercial kitchens (health approvals, hoods, grease, gas; fit-out $250–600/sf of kitchen), pool plant rooms, assembly-occupancy egress, senior-living accessibility and possible care-facility standards. Treat each one as a separate project that happens to share your site."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m07-q1",
+      "type": "multipleChoice",
+      "teach": "In multi-storey concrete, plumbing and mechanical risers run vertically through the building — through holes cast into each slab.",
+      "prompt": "Why is MEP 'stacking' coordination a make-or-break discipline on the condos when the houses never needed it?",
+      "choices": [
+        {
+          "text": "Wet walls and risers must align floor-to-floor through cast concrete — a stacking clash found after the pour means demolition, not adjustment",
+          "correct": true,
+          "why": "Correct. In a house, a misplaced pipe moves a stud. In a concrete tower, it faces a structural slab. Clash review before the pour is the cheap version of this lesson."
+        },
+        {
+          "text": "Condo MEP systems are larger",
+          "why": "Size isn't the issue — geometry is. Vertical continuity through cast-in-place structure is what makes errors irreversible."
+        },
+        {
+          "text": "Because inspectors check condos more strictly",
+          "why": "Inspection intensity does rise with occupancy class, but the stacking discipline exists for physics, not inspectors: concrete doesn't forgive."
+        },
+        {
+          "text": "It's a cost issue — stacked risers are cheaper to install",
+          "why": "They are, but efficiency is the bonus. The core reason is that UNstacked risers in concrete construction are somewhere between brutal and impossible to fix post-pour."
+        }
+      ],
+      "explanation": "This is why the condo scope gets BIM/clash review as a direct-managed deliverable before every structural pour. The houses tolerate field coordination; the towers do not."
+    },
+    {
+      "id": "m07-q2",
+      "type": "sequencing",
+      "teach": "One condo building has a strict internal sequence, with 'dried in' as the gate that releases the interior army.",
+      "prompt": "Order the condo building sequence:",
+      "items": [
+        "Foundations",
+        "Vertical structure, floor by floor (2–4 weeks per floor)",
+        "Envelope watertight — topped out and dried in",
+        "MEP rough, run consistently through the building",
+        "Interior finishes",
+        "Life-safety commissioning and fire inspection",
+        "Occupancy Certificate"
+      ],
+      "explanation": "'Topped out and dried in' is THE milestone: it releases interior trades into a protected building. Starting interiors before the envelope is watertight gambles finished work against the rainy season — quantify that risk before ever taking it."
+    },
+    {
+      "id": "m07-q3",
+      "type": "multipleChoice",
+      "teach": "Elevators are a 30–50 week lead item, supplied and installed by licensed specialists.",
+      "prompt": "Building 1's structure will top out in 8 months. Elevators haven't been ordered. What's the situation?",
+      "choices": [
+        {
+          "text": "You're already late — at 30–50 weeks lead, the elevator arrives after top-out at best, and the OC (hence closings) waits on its installation and inspection",
+          "correct": true,
+          "why": "Correct. Elevators gate the OC in a 3–4 storey building, and the OC gates revenue. This order should have gone out with the structural package."
+        },
+        {
+          "text": "Fine — elevators install during finishes anyway",
+          "why": "They do install late in the sequence, but 30–50 week procurement means ordering EARLY to install late. The install date isn't the problem; the factory queue is."
+        },
+        {
+          "text": "Use the construction hoist until elevators arrive",
+          "why": "A hoist moves workers, not occupancy permits. No elevator inspection, no OC, no closings — the hoist doesn't touch the actual problem."
+        },
+        {
+          "text": "Order two buildings' worth to catch up",
+          "why": "Bulk-ordering the remaining buildings IS the right move for the future — but it doesn't compress Building 1's queue position. The long-lead register exists to prevent exactly this."
+        }
+      ],
+      "explanation": "The long-lead register (elevators 30–50 wks, switchgear 40–60+, impact glazing 16–30) is reviewed weekly precisely because these items silently gate OCs. Procurement lead-time slippage is one of your early-warning metrics."
+    },
+    {
+      "id": "m07-q4",
+      "type": "multipleChoice",
+      "teach": "The beach club and condos 1–2 face open ocean — the highest wind, flood, and salt exposure tier on the project.",
+      "prompt": "Standard galvanized envelope hardware passes code for the beach club. Stainless costs $180K more. Take the code-compliant option?",
+      "choices": [
+        {
+          "text": "No — code is a minimum, not a design standard; galvanized in the direct salt zone is a 10-year corrosion problem on your flagship amenity",
+          "correct": true,
+          "why": "Correct. The salt-zone premium (5–12% of shell) buys away streaked facades, seized fixings, and envelope failures on the building every buyer sees first."
+        },
+        {
+          "text": "Yes — code compliance is the definition of adequate",
+          "why": "Code defines the legal floor. The beach club is a marketing asset with a 50-year life in salt spray; 'adequate' hardware there is deferred maintenance with compounding interest."
+        },
+        {
+          "text": "Yes, and budget for hardware replacement in year 10",
+          "why": "Honest accounting at least — but replacing embedded envelope hardware in an occupied building costs several times the $180K delta, plus scaffolding on your beach club in season."
+        },
+        {
+          "text": "Split it: stainless on the ocean face, galvanized elsewhere",
+          "why": "Salt aerosol wraps buildings; the leeward face of an oceanfront structure is still a salt zone. Exposure-zoned detailing is legitimate, but 'ocean side only' is drawn too tight."
+        }
+      ],
+      "explanation": "Coastal buildings add flood elevation and wave-load design over the base code — and the envelope decisions made now become the HOA's maintenance budget forever. The $180K is cheap against the beach club's lifetime in the spray zone."
+    },
+    {
+      "id": "m07-q5",
+      "type": "multipleChoice",
+      "teach": "Bahamian condo closings require two things to exist: the building's OC, and the condo's legal structure under the Condominium Act.",
+      "prompt": "When must the condo declaration and owners' corporation be established?",
+      "choices": [
+        {
+          "text": "In step with construction — because closings require the legal structure AND the OC, whichever arrives last gates revenue",
+          "correct": true,
+          "why": "Correct. A finished building with no declaration is exactly as unsellable as a declared building with no OC. The attorneys' timeline is a construction-schedule dependency."
+        },
+        {
+          "text": "After the building is complete, when unit sizes are final",
+          "why": "As-built adjustments are handled in the process; starting the legal work post-completion adds months between OC and first closing — pure carrying cost."
+        },
+        {
+          "text": "Before construction starts, as a permit prerequisite",
+          "why": "It's not a building-permit prerequisite — it's a CLOSING prerequisite. The point of 'in step' is that it must be ready when the OC is, not before ground-break."
+        },
+        {
+          "text": "Only when the first building sells out",
+          "why": "Pre-sales contracts typically commit you to a declaration framework from the first deposit — the structure can't wait for sell-out."
+        }
+      ],
+      "explanation": "The condo legal layer runs parallel to construction: declaration and entitlements drafted during design, corporation formed before first closings, and the handover package (as-builts, warranties, O&M, reserve study) treated as a scored deliverable at turnover."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m07_hard_sf", "label": "Condo hard cost", "unit": "$/sf", "min": 260, "max": 400 },
+    { "id": "m07_floor_weeks", "label": "Structure cycle per floor", "unit": "weeks", "min": 2, "max": 4 },
+    { "id": "m07_elevator", "label": "Elevator supply + install", "unit": "$/each", "min": 180000, "max": 350000, "note": "30–50 week lead" },
+    { "id": "m07_fire_sf", "label": "Sprinkler + fire alarm", "unit": "$/sf", "min": 6, "max": 12 },
+    { "id": "m07_kitchen_sf", "label": "Commercial kitchen fit-out", "unit": "$/sf", "min": 250, "max": 600, "note": "Per sf of kitchen" },
+    { "id": "m07_salt_premium", "label": "Salt-zone envelope premium", "unit": "%", "min": 5, "max": 12, "note": "Of shell cost" }
+  ],
+  "mathProblems": [
+    {
+      "id": "m07-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "One condo building, hard cost",
+      "context": "Drawings show 30,000–56,000 sf per building at $260–400/sf hard cost.",
+      "params": {
+        "qtyLabel": "building area",
+        "qty": { "min": 30000, "max": 56000 },
+        "qtyUnit": "sf",
+        "rateLabel": "condo hard cost",
+        "rate": "m07_hard_sf",
+        "rateUnit": "$/sf",
+        "answerLabel": "building hard cost",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "m07-p2",
+      "generator": "percentOf",
+      "difficulty": 2,
+      "title": "Salt-zone premium",
+      "context": "Oceanfront buildings carry a 5–12% envelope premium on shell cost — stainless hardware, corrosion detailing, upgraded coatings. Price it up front or pay it in maintenance.",
+      "params": {
+        "baseLabel": "shell cost of the oceanfront building",
+        "base": { "min": 6000000, "max": 15000000 },
+        "baseUnit": "$",
+        "pct": "m07_salt_premium",
+        "answerLabel": "salt-zone premium",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "m07-p3",
+      "generator": "estimateBuildup",
+      "difficulty": 3,
+      "title": "Condo building all-in estimate",
+      "context": "Shell $/sf plus fire protection $/sf plus elevators as units — then the vertical contingency tier. Note how the 'small' systems add up at building scale.",
+      "params": {
+        "scopeLabel": "one condo building",
+        "contingencyPct": { "min": 5, "max": 8 },
+        "lines": [
+          { "label": "Shell + fit-out", "qty": { "min": 30000, "max": 50000 }, "rate": "m07_hard_sf", "qtyUnit": "sf", "rateUnit": "$/sf" },
+          { "label": "Sprinkler/fire alarm", "qty": { "min": 30000, "max": 50000 }, "rate": "m07_fire_sf", "qtyUnit": "sf", "rateUnit": "$/sf" },
+          { "label": "Elevators", "qty": 2, "rate": "m07_elevator", "qtyUnit": "cars", "rateUnit": "$/each" }
+        ]
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m07-d1",
+      "title": "Cast-in-place or precast planks?",
+      "scenario": "The frame contractor offers two structural approaches for the 12 condo buildings: cast-in-place slabs with table forms (proven local method, one floor per 3 weeks) or imported precast planks (one floor per 2 weeks, but planks ship from Florida, need a bigger crane, and the saving depends on zero shipping disruptions across 12 buildings).",
+      "options": [
+        {
+          "id": "run-the-numbers",
+          "label": "Price both fully landed — planks + freight + duty + crane premium vs table-form cycle — and stress-test the precast saving against one missed barge per building",
+          "outcome": "The honest comparison: precast's cycle saving is real, but landed cost (freight + duty on every plank) and shipping fragility eat most of it. On a 12-building program, the proven local method with the deeper local labor pool usually wins the risk-adjusted math.",
+          "optimal": true
+        },
+        {
+          "id": "precast-speed",
+          "label": "Take precast — a week per floor across 12 buildings is huge",
+          "outcome": "On paper, months saved. In practice: every floor now depends on a Florida barge schedule, duty and freight ate the margin, and the first weather-delayed shipment idles a crane crew at full rate. Speed you can't bank is not speed.",
+          "acceptable": true
+        },
+        {
+          "id": "cip-default",
+          "label": "Cast-in-place because it's what local contractors know — skip the analysis",
+          "outcome": "Probably the right answer for the wrong reason. Skipping the landed-cost comparison means you'll never know what the schedule was worth, and the next 'obvious' default might not be right.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Import-vs-local on an island is always a landed-cost problem (Module 9's math) times a supply-chain-fragility problem. The rule: any import-dependent method must beat the local method by enough to survive its own logistics risk."
+    },
+    {
+      "id": "m07-d2",
+      "title": "Interiors before the roof?",
+      "scenario": "Building 3's envelope is running six weeks late on glazing, but the schedule shows interior framing and MEP rough could start now on the lower floors and 'catch up the season.' It's August. The building is topped out but not dried in.",
+      "options": [
+        {
+          "id": "hold-for-dryin",
+          "label": "Hold interiors until dried in; attack the glazing delay instead (expedite, temporary weatherproofing on lower floors as a bridge)",
+          "outcome": "You lose some schedule and keep it honest: 'dried in releases interiors' exists because August is peak rain and storm season, and drywall/insulation/electrical rough in an open building is a write-off waiting for one squall.",
+          "optimal": true
+        },
+        {
+          "id": "start-interiors",
+          "label": "Start interiors on the lower floors — the odds of a direct hit are low",
+          "outcome": "The first tropical wave drives rain through four open floors. Wet insulation and swollen framing come out in trash bags; the schedule you were protecting slips further than the glazing delay ever threatened, and the insurer notes the exposure decision.",
+          "acceptable": false
+        },
+        {
+          "id": "partial-temp",
+          "label": "Fully weatherproof the lower two floors with temporary enclosure, then start interiors there only",
+          "outcome": "Workable if the temporary enclosure is genuinely storm-rated and priced honestly (it isn't cheap). Quantified risk-taking is legitimate; optimism dressed as enclosure is not — the difference is what the enclosure sub signs up to.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "The dried-in milestone is a risk gate, not a formality — especially with an August calendar. If you must trade against it, do it with real weatherproofing, priced and specified, never with probability estimates about storms."
+    }
+  ]
 }

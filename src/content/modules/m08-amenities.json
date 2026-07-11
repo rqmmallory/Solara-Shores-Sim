@@ -1,13 +1,277 @@
 {
   "id": "m08-amenities",
   "order": 8,
-  "title": "Amenities, Pools, Lakes, Sequencing Trap",
+  "title": "Amenities, Pools, Lakes, and the Sequencing Trap",
   "short": "Amenities",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "Amenities don't produce revenue — they SELL the revenue. Buyers at this price point close faster and pay more when the clubhouse, pool, and beach exist. But amenities built early sit inside an active construction zone. Resolving that tension — the sequencing trap — plus pools over a shallow water table, lakes that are groundwater windows, and a seven-figure landscape package.",
+  "sections": [
+    {
+      "heading": "The trap and its standard resolution",
+      "body": "Build the sales-critical amenity core — clubhouse, main pool, entry landscape, one finished streetscape — in Phase 1, physically segregated from construction traffic by a DEDICATED construction access route. Your master plan's geometry supports exactly this: amenity core center-south, construction access from Yamacraw Hill Rd north. The route that never crosses the sales path is one of the highest-value lines ever drawn on the site plan. Amenity core budget: 8–15% of total project cost, spent before it earns a dollar — that's the price of selling the lifestyle."
+    },
+    {
+      "heading": "Pools over a shallow water table",
+      "body": "Pool shells cut into rock excavate easily — but the water table sits high, so an emptied pool becomes a boat: groundwater uplift can crack or float a shell that lacks hydrostatic relief valves. Club/public pools add Environmental Health approvals on recirculation and sanitation. Pool subs are a distinct trade; commercial pools run $150–350/sf of water surface on a 4–8 month cycle."
+    },
+    {
+      "heading": "The three lakes",
+      "body": "Cut into rock, intersecting brackish groundwater, the lakes are three things at once: fill source (value the spoil at $8–15/cy avoided cost), stormwater management, and amenity. Design rules: you cannot hold them at a level different from the water table (they are groundwater windows — no liner debate here as in clay country); keep a significant portion deeper than 6–8 ft or get algae soup in tropical sun; aeration/fountains as mitigation; mosquito management for Environmental Health. Edge treatment ranges from battered rock to planted shelf to bulkheaded sections."
+    },
+    {
+      "heading": "Landscape at scale: finishes-last, ordered-first",
+      "body": "200,000 sf of green space plus streetscape is a seven-figure package (3–6% of total hard cost) with an island-specific problem: nursery supply. Mature plant material at this volume must be CONTRACT-GROWN locally or imported with quarantine and plant-import permits — both need lead times measured in seasons, ordered long before the finishes-last installation date. Landscape is last in the ground and nearly first on the procurement calendar."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m08-q1",
+      "type": "multipleChoice",
+      "teach": "Amenities are a financial paradox: pure cost on the pro forma, yet they set the pace of everything that earns.",
+      "prompt": "Why does the amenity core get built in Phase 1 despite producing zero revenue?",
+      "choices": [
+        {
+          "text": "Because absorption pace and pricing depend on buyers experiencing the lifestyle — the clubhouse and pool are sales infrastructure, and sales pace funds everything else",
+          "correct": true,
+          "why": "Correct. Palm Cay's $65M of early infrastructure/amenities is what made its later phases financeable — the lesson is on your same street."
+        },
+        {
+          "text": "Amenities are cheapest to build first",
+          "why": "They're not cheaper early — they then sit inside a construction zone needing protection for years. They're built early because of what they do to SALES, despite the cost."
+        },
+        {
+          "text": "Lenders require amenities before residential draws",
+          "why": "Lenders require the pro forma to work — and it's the ABSORPTION model that makes amenity-first pencil, not a lending rule."
+        },
+        {
+          "text": "DEPP conditions require green space delivered first",
+          "why": "EMP conditions may protect vegetation, but they don't sequence your clubhouse. This is commercial logic."
+        }
+      ],
+      "explanation": "The full trap: amenities early = sales velocity but construction-zone exposure; amenities late = protected assets but a community sold from renders (see Palm Cay's 'former hiccups' — lots sold ahead of amenities created the owner constituency that held the developer publicly accountable). The resolution is early + physically segregated."
+    },
+    {
+      "id": "m08-q2",
+      "type": "multipleChoice",
+      "teach": "An in-ground concrete shell surrounded by groundwater obeys Archimedes like everything else.",
+      "prompt": "Why do the pools here need hydrostatic relief valves?",
+      "choices": [
+        {
+          "text": "The water table is shallow — an emptied pool without relief valves can be cracked or floated out of the ground by groundwater uplift",
+          "correct": true,
+          "why": "Correct. The valves let groundwater INTO an emptied shell, equalizing pressure. A drained pool over shallow groundwater is a boat with bad intentions."
+        },
+        {
+          "text": "To drain the pool faster for maintenance",
+          "why": "They're not drains — they're one-way valves letting groundwater IN when the shell is empty, protecting it from uplift."
+        },
+        {
+          "text": "Code requires them on all commercial pools",
+          "why": "They're required WHERE groundwater demands them — which here is everywhere. Know the physics, not just the code clause."
+        },
+        {
+          "text": "To manage salt corrosion of the shell",
+          "why": "Brackish groundwater does inform the concrete mix and cover specs, but the valves address buoyancy, not chemistry."
+        }
+      ],
+      "explanation": "Same physics as the lakes, pointed at a structure: near this coast, groundwater sits high and pushes up on anything hollow. Every buried tank, vault, and shell on the project needs a flotation check — it's a standard line on your structural review checklist."
+    },
+    {
+      "id": "m08-q3",
+      "type": "multipleChoice",
+      "teach": "The lakes serve three masters: fill supply, stormwater, and amenity.",
+      "prompt": "What keeps the lakes from becoming 'algae soup in tropical sun'?",
+      "choices": [
+        {
+          "text": "Depth — a significant portion deeper than 6–8 ft — plus aeration and circulation as mitigation",
+          "correct": true,
+          "why": "Correct. Shallow warm water breeds algae; depth keeps the water column cooler and more stable, and aeration handles what depth can't."
+        },
+        {
+          "text": "Chlorination systems like a large pool",
+          "why": "You can't chlorinate a groundwater window — the water exchanges with the aquifer continuously. Design, not chemicals."
+        },
+        {
+          "text": "Liners to isolate them from nutrient-rich groundwater",
+          "why": "There is no liner debate here: these are groundwater windows BY DESIGN — the liner would defeat their stormwater role and fight uplift forever."
+        },
+        {
+          "text": "Stocking fish to control algae",
+          "why": "Biological management can help at the margins, but no fish population rescues a shallow, hot, nutrient-fed bowl. Geometry first."
+        }
+      ],
+      "explanation": "Lake design here is constrained optimization: deep enough for water quality, shaped to serve stormwater, edged for safety and looks, and always at the water table's level — because that's the only level physics offers."
+    },
+    {
+      "id": "m08-q4",
+      "type": "multipleChoice",
+      "teach": "Landscape is installed last but the plants must exist first — and they take seasons to grow.",
+      "prompt": "When does the 200,000 sf landscape package enter the procurement calendar?",
+      "choices": [
+        {
+          "text": "Near the start of the project — contract-grow agreements with nurseries or import-with-quarantine arrangements need lead times measured in growing seasons",
+          "correct": true,
+          "why": "Correct. Mature material at this volume doesn't exist on island shelves. You order it years before the finishes-last install date."
+        },
+        {
+          "text": "When each phase's vertical construction completes",
+          "why": "That's the INSTALL date. Order-at-install means either juvenile plants (undermining the sold imagery) or paying desperation prices for whatever mature stock exists."
+        },
+        {
+          "text": "Landscape subs carry their own stock",
+          "why": "No island nursery carries seven figures of mature material as inventory — it's grown to order or imported with permits."
+        },
+        {
+          "text": "After sales confirm which streetscapes buyers value",
+          "why": "The streetscape IS what buyers value, and it takes seasons to grow. Waiting for sales data on plants inverts the causality."
+        }
+      ],
+      "explanation": "The pattern across the project: install-last items (landscape, final asphalt lift, mature trees) are often order-first items. The finishes-last rule protects them from construction traffic; the procurement calendar protects them from not existing."
+    },
+    {
+      "id": "m08-q5",
+      "type": "subOrManage",
+      "teach": "The amenity program mixes specialty trades with owner-side sequencing calls.",
+      "prompt": "Subcontract or direct-manage each amenity element:",
+      "items": [
+        {
+          "scope": "Commercial pool construction",
+          "answer": "subcontract",
+          "why": "A distinct specialty trade with its own permits and Environmental Health approvals — never a sideline for the concrete sub."
+        },
+        {
+          "scope": "The construction-traffic route that never crosses the sales path",
+          "answer": "direct",
+          "why": "Site logistics geometry is the developer's chessboard — it protects the sales experience for the project's whole life."
+        },
+        {
+          "scope": "Landscape installation",
+          "answer": "subcontract",
+          "why": "A trade package — but against YOUR contract-grow supply agreements, made years earlier."
+        },
+        {
+          "scope": "Contract-grow nursery agreements and plant-import permits",
+          "answer": "direct",
+          "why": "Long-lead supply arrangements are owner procurement — the landscape sub selected in year three can't fix what wasn't planted in year one."
+        },
+        {
+          "scope": "Lake aeration and edge design",
+          "answer": "subcontract",
+          "why": "Civil/landscape engineering deliverables — with the developer enforcing the groundwater-window constraints against the renders."
+        }
+      ],
+      "explanation": "Amenities repeat the project's core division: specialists build; the developer owns geometry, sequencing, and long-lead supply — the decisions whose consequences outlive any single contract."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m08_clubhouse_sf", "label": "Clubhouse-class building", "unit": "$/sf", "min": 350, "max": 550 },
+    { "id": "m08_pool_sf", "label": "Commercial pool", "unit": "$/sf", "min": 150, "max": 350, "note": "Per sf of water surface" },
+    { "id": "m08_spoil_value", "label": "Lake spoil value (avoided cost)", "unit": "$/cy", "min": 8, "max": 15 },
+    { "id": "m08_landscape_pct", "label": "Landscape package", "unit": "%", "min": 3, "max": 6, "note": "Of total project hard cost" },
+    { "id": "m08_amenity_core_pct", "label": "Amenity core Phase-1 budget", "unit": "%", "min": 8, "max": 15, "note": "Of total project cost" }
+  ],
+  "mathProblems": [
+    {
+      "id": "m08-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "The clubhouse",
+      "context": "Clubhouse-class buildings — finishes, kitchens, assembly spaces — run $350–550/sf, well above production housing.",
+      "params": {
+        "qtyLabel": "clubhouse area",
+        "qty": { "min": 8000, "max": 20000 },
+        "qtyUnit": "sf",
+        "rateLabel": "clubhouse rate",
+        "rate": "m08_clubhouse_sf",
+        "rateUnit": "$/sf",
+        "answerLabel": "clubhouse cost",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "m08-p2",
+      "generator": "percentOf",
+      "difficulty": 2,
+      "title": "Amenity core commitment",
+      "context": "8–15% of total project cost goes into the amenity core in Phase 1 — spent before it earns a dollar. This number is why amenity-first requires conviction (and a lender who shares it).",
+      "params": {
+        "baseLabel": "total project cost",
+        "base": { "min": 400, "max": 600 },
+        "baseUnit": "$M",
+        "pct": "m08_amenity_core_pct",
+        "answerLabel": "amenity core budget",
+        "answerUnit": "$M"
+      }
+    },
+    {
+      "id": "m08-p3",
+      "generator": "estimateBuildup",
+      "difficulty": 3,
+      "title": "Amenity core estimate",
+      "context": "Clubhouse + pools + the first finished streetscape's landscape share — the Phase 1 amenity package, with a standard vertical contingency.",
+      "params": {
+        "scopeLabel": "the Phase 1 amenity core",
+        "contingencyPct": { "min": 8, "max": 12 },
+        "lines": [
+          { "label": "Clubhouse", "qty": { "min": 9000, "max": 16000 }, "rate": "m08_clubhouse_sf", "qtyUnit": "sf", "rateUnit": "$/sf" },
+          { "label": "Main pool", "qty": { "min": 2500, "max": 6000 }, "rate": "m08_pool_sf", "qtyUnit": "sf water", "rateUnit": "$/sf" },
+          { "label": "Entry landscape allowance", "qty": 1, "rate": { "min": 800000, "max": 2000000 }, "qtyUnit": "package", "rateUnit": "$" }
+        ]
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m08-d1",
+      "title": "Who catches the lake-level error, and when?",
+      "scenario": "At design development review, you notice the landscape architect's lake-edge sections show a planted shelf elevation that only works if the lake holds 2 ft above the geotech report's groundwater level. The renders based on these sections are already circulating internally, and marketing wants them for the launch campaign next month. The landscape architect insists the civil engineer 'will make the levels work.'",
+      "options": [
+        {
+          "id": "stop-at-dd",
+          "label": "Flag it now: convene landscape + civil + geotech on the actual water-table data, redesign the edge sections at DD, and hold the renders until they match physics",
+          "outcome": "A design-phase change at DD costs 1x. The edge design is reworked for the true water level — planted shelves AT the water table, which reads just as well in renders. Marketing grumbles for a week.",
+          "optimal": true
+        },
+        {
+          "id": "let-cd-catch-it",
+          "label": "Let it ride — the civil engineer will catch it in construction documents",
+          "outcome": "The CD-phase collision costs 3–5x: the edge details, planting plans, and irrigation design all rework, and the launch renders — now public — show a lake that can't exist. Marketing's correction is more expensive than marketing's delay would have been.",
+          "acceptable": false
+        },
+        {
+          "id": "field-fix",
+          "label": "Build it and adjust the shelf in the field to wherever the water actually sits",
+          "outcome": "The 10x+ version: excavated shelves at the wrong elevation get re-cut in rock, planted material drowns or dries, and buyers who bought the render photograph the difference. Field 'adjustments' to physics errors are change orders with an audience.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "The change-cost multiplier is the whole lesson: 1x at schematic/DD, 3–5x at CD, 10x+ in the field. The developer's design-review value is catching physics-vs-drawing conflicts at the cheapest phase — nobody else at the table owns that job."
+    },
+    {
+      "id": "m08-d2",
+      "title": "Protecting the amenity core for four years",
+      "scenario": "The clubhouse and pool open at the end of Phase 1 — while Phases 2 through 6 build out around them for the next four-plus years. The construction access route from Yamacraw Hill Rd is designed but costs $650K to build as a permanent dedicated road now, versus routing construction traffic on the future residential spine road 'temporarily.'",
+      "options": [
+        {
+          "id": "dedicated-route",
+          "label": "Build the dedicated construction route now, permanently separated from the sales path",
+          "outcome": "$650K buys four years of buyers never meeting a dump truck — and the spine road's final asphalt lift goes down once, unwrecked, when heavy traffic ends. The route later becomes a service road, so most of the money was never temporary at all.",
+          "optimal": true
+        },
+        {
+          "id": "spine-road",
+          "label": "Run construction traffic on the spine road temporarily and save the $650K",
+          "outcome": "Every walkthrough shares the road with loaded trucks; the binder course gets destroyed and repaved sections telegraph through the final lift; the clubhouse's arrival experience is a haul route. The $650K 'saving' leaks out through absorption pace, invisibly, forever.",
+          "acceptable": false
+        },
+        {
+          "id": "schedule-split",
+          "label": "Share the spine road but restrict construction traffic to non-sales hours",
+          "outcome": "Time-sharing sounds clever and dies in practice: concrete pours don't respect showing schedules, the road still gets destroyed, and enforcement becomes a daily argument between your supers and your sales team.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "The sim rewards this decision because reality does: site logistics geometry set in year one compounds across every phase. The sales path is revenue infrastructure — separate it physically, not procedurally, and let the traffic route be a permanent asset instead of a temporary compromise."
+    }
+  ]
 }

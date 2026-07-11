@@ -1,13 +1,222 @@
 {
   "id": "m14-sequence",
   "order": 14,
-  "title": "Master Sequence and Critical Path",
+  "title": "Master Sequence and Critical Path (The Sim Backbone)",
   "short": "Critical Path",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "The whole project in one ordering: Phase 0's invisible paper (EIA → CEC, seabed lease, agency agreements — the longest lead and the least visible), enabling works, marine-critical excavation, horizontal waves, vertical waves, and the calm-season marine completion. Plus the five critical-path truths the sim enforces: CEC gates everything; the marine window is annual; utilities gate vertical; OC gates revenue; and cash can gate everything even when the schedule is fine.",
+  "sections": [
+    {
+      "heading": "Phase 0 — Pre-development (longest lead, least visible)",
+      "body": "EIA/EMP → public consultation → CEC. Seabed lease application. Planning/subdivision approval. WSC and BPL agreements. Financing close. QS baseline estimate. Long-lead register OPENED. Nothing physical happens until the CEC, and the environmental process (6–14 months) is the duration driver — which is why it starts before everything else. Phase 0 is where the project is actually won: a developer who exits it with permits batched, long-lead deposits down, and agency agreements signed has bought back a year of the schedule."
+    },
+    {
+      "heading": "Phases 1–5: the buildout logic",
+      "body": "Phase 1 — Enabling works: construction access from Yamacraw Hill Rd, site security, clearing per EMP, survey control, crusher setup, geotech confirmation, first drainage wells. Phase 2 — Marine-critical excavation: canal/marina/lake rock cut IN THE DRY (spoil → crusher → road base), bulkheads, dry-side marina structures — running CONCURRENT with Phase 3 — Horizontal wave 1: roads/utilities for the first residential phase plus amenity core, WWTP, BPL primary. Phase 4 — Vertical wave 1 + amenity core: first 40–80 houses on takt, clubhouse/pool, first condo building as sales model, sales center opens. Phase 5 — Marine completion in the calm-season window: plug breach, entrance dredging, marina wet works, fuel commissioning, groins + beach fill in the same or adjacent window — ONE marine mobilization if the schedule holds, the sim's biggest optimization prize."
+    },
+    {
+      "heading": "Phases 6–n: the repeating machine",
+      "body": "Horizontal→vertical waves repeat per absorption. Estate lots release only after canal water quality stabilizes and bulkheads/docks are proven — your highest-value product waits for its evidence. Senior living and retail time to community population. The OC/closing/handover machine runs continuously. Final phase: punch, monitoring obligations, HOA turnover, warranty period."
+    },
+    {
+      "heading": "The five critical-path truths",
+      "body": "(1) The CEC gates everything — before it, only paper moves. (2) The marine weather window is ANNUAL — miss November–May and you wait a year, not a season. (3) Utilities gate vertical — no road base, fire flow, and power means no starts, whatever sales says. (4) The OC gates revenue — construction isn't done until the certificate that permits closing is issued. (5) Cash can gate everything even when the schedule is fine — marine scopes front-load brutally, and a draw schedule out of sync with the spend curve stops a healthy project as surely as any permit."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m14-q1",
+      "type": "sequencing",
+      "teach": "The master sequence runs paper → enabling → dry marine + horizontal → vertical → wet marine — each gate feeding the next.",
+      "prompt": "Order the master phases of Solara Shores:",
+      "items": [
+        "Phase 0: EIA/CEC, seabed lease, agency agreements, financing, long-lead register",
+        "Phase 1: enabling works — access, clearing per EMP, crusher, geotech",
+        "Phase 2: canal/marina/lake excavation in the dry, bulkheads (concurrent with Phase 3)",
+        "Phase 3: first horizontal wave — roads, utilities, WWTP, BPL primary",
+        "Phase 4: first vertical wave plus amenity core; sales center opens",
+        "Phase 5: calm-season marine completion — plug breach, entrance dredging, groins, beach",
+        "Phases 6+: repeating horizontal→vertical waves per absorption; estate lots after water quality proves"
+      ],
+      "explanation": "Two things to notice: Phases 2 and 3 run concurrently (the dry marine cut feeds the crusher that feeds the roads), and the wet marine work waits for a calm-season window near the end — because dry excavation is cheap, marine work is expensive, and the weather window is annual."
+    },
+    {
+      "id": "m14-q2",
+      "type": "multipleChoice",
+      "teach": "Phase 0 produces nothing visible — no cleared land, no photos for the website.",
+      "prompt": "Why is Phase 0 described as where the project is 'actually won'?",
+      "choices": [
+        {
+          "text": "Its outputs — CEC, seabed lease, agency agreements, permit batches, long-lead deposits — gate every later phase, and their lead times are the longest on the project",
+          "correct": true,
+          "why": "Correct. A 6–14 month EIA, 40–60 week switchgear, WSC/BPL agreements: Phase 0 items decide the project's real start dates. Everything physical is faster than the paper that permits it."
+        },
+        {
+          "text": "It's when land is cheapest to buy",
+          "why": "Land economics precede even Phase 0. The phase's value is schedule: paper lead times dominate the critical path."
+        },
+        {
+          "text": "Because financing closes in Phase 0",
+          "why": "Financing is ONE Phase 0 item — the phase's power is that ALL its items gate later work with the longest leads on the project."
+        },
+        {
+          "text": "It's the cheapest phase, so mistakes cost least",
+          "why": "Inverted: Phase 0 mistakes are the most expensive of all — a mis-scoped EIA or unopened long-lead register costs entire YEARS downstream."
+        }
+      ],
+      "explanation": "The sim's Phase 1 already showed this: the player who used the CEC wait to get paper-ready mobilized into a ready project. Scale that lesson up and it IS Phase 0 — the invisible phase where every later phase's speed is set."
+    },
+    {
+      "id": "m14-q3",
+      "type": "multipleChoice",
+      "teach": "The marine weather window is November–May. Consider what 'missing it' actually means.",
+      "prompt": "The plug breach and entrance dredging slip past May. What's the real schedule consequence?",
+      "choices": [
+        {
+          "text": "Roughly a full year — the window is annual, so work missing it waits for the next November, and everything gated on marina completion waits with it",
+          "correct": true,
+          "why": "Correct. This is the harshest arithmetic on the project: a 6-week slip in April becomes a 12-month slip in June. Marine milestones get schedule buffers for exactly this reason."
+        },
+        {
+          "text": "A few weeks — summer marine work is just less comfortable",
+          "why": "Peak-season marine work isn't discomfort; it's named-storm exposure on open works, probable EMP seasonal restrictions, and uninsurable risk stacking. Practically, the window is the window."
+        },
+        {
+          "text": "Nothing, if the contractor accepts summer rates",
+          "why": "The contractor's appetite doesn't move the hurricane season or the EMP's seasonal clauses — recall the cheap-barge-in-July trap from Module 2."
+        },
+        {
+          "text": "The insurance premium rises but work continues",
+          "why": "Premium loading is the least of it — insurers may simply exclude named-storm perils on exposed marine works in season, which makes the work uninsured, not expensive."
+        }
+      ],
+      "explanation": "Annual gates change how you manage float: a task feeding a marine milestone deserves buffer wildly out of proportion to its own duration, because its failure mode isn't 'late' — it's 'next year.' The sim's biggest prize (one marine mobilization) and biggest trap (missing the window) are the same schedule."
+    },
+    {
+      "id": "m14-q4",
+      "type": "multipleChoice",
+      "teach": "The 21 canal-front estate lots are the project's highest-value product.",
+      "prompt": "Why do estate lots release AFTER canal water quality stabilizes and bulkheads/docks are proven?",
+      "choices": [
+        {
+          "text": "Because their premium rests entirely on the canal being demonstrably excellent — releasing them against an unproven canal risks your best product on your riskiest system",
+          "correct": true,
+          "why": "Correct. A buyer paying the canal-front premium is buying the water. Let the basin flush, the bulkheads settle, and the first docks prove out — then sell the evidence, at evidence prices."
+        },
+        {
+          "text": "The lots physically can't be accessed until the canal is done",
+          "why": "Access could be sequenced earlier. The hold is commercial: value protection, not construction necessity."
+        },
+        {
+          "text": "DEPP prohibits sales before water-quality sign-off",
+          "why": "The EMP monitors water quality; it doesn't schedule your sales releases. This is the developer protecting price, not complying."
+        },
+        {
+          "text": "To create scarcity for marketing",
+          "why": "Scarcity is a pleasant side effect. The core logic is de-risking: never let your premium product be the test case for your unproven infrastructure."
+        }
+      ],
+      "explanation": "A general release principle hides here: sequence product releases so each one is backed by proof the previous phase created. Houses prove the builder; the marina proves the water; THEN the estate lots harvest the premium both proofs built."
+    },
+    {
+      "id": "m14-q5",
+      "type": "multipleChoice",
+      "teach": "The fifth critical-path truth is the one that catches developers with healthy schedules.",
+      "prompt": "How does cash gate a project whose construction schedule is going fine?",
+      "choices": [
+        {
+          "text": "When the spend curve outruns facility availability — marine scopes front-load brutally (mobilization, insurance, bond before a single cy moves), and a draw schedule out of sync with that curve stops work as surely as any permit",
+          "correct": true,
+          "why": "Correct. Schedules measure work; facilities fund invoices. The marine campaign's cash bow-wave arrives months before its measurable progress — plan the curve or it plans you."
+        },
+        {
+          "text": "It can't — lenders fund whatever the schedule requires",
+          "why": "Lenders fund against verified progress per the agreed draw structure. Front-loaded scopes create exactly the gap between 'cash needed' and 'progress measurable' that this truth warns about."
+        },
+        {
+          "text": "Only if sales collapse entirely",
+          "why": "Absorption failure is risk #6 and it's real — but the cash gate closes even with GOOD sales if the spend curve and facility timing don't match."
+        },
+        {
+          "text": "Through inflation eroding the budget",
+          "why": "Escalation is a budget problem, priced in contingency. The cash gate is a TIMING problem — the right total money, available at the wrong moments."
+        }
+      ],
+      "explanation": "This is why the monthly cash-flow-vs-facility curve sits in your control cadence next to the schedule. The most instructive project failures aren't the ones that ran out of money — they're the ones that ran out of money on schedule."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m14_eia_months", "label": "Environmental process duration", "unit": "months", "min": 6, "max": 14 },
+    { "id": "m14_marine_window_months", "label": "Marine work window", "unit": "months", "min": 6, "max": 7, "note": "November–May, annual" }
+  ],
+  "mathProblems": [
+    {
+      "id": "m14-p1",
+      "generator": "takt",
+      "difficulty": 2,
+      "title": "Waves of production",
+      "context": "The repeating phases are takt at program scale: waves of houses, released per absorption, across parallel crews. How long does the buildout run?",
+      "params": {
+        "unitLabel": "production waves (40–80 houses each)",
+        "qty": { "min": 4, "max": 8 },
+        "daysPerUnit": { "min": 120, "max": 200 },
+        "crewLabel": "concurrent wave fronts",
+        "crews": { "min": 1, "max": 2 }
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m14-d1",
+      "title": "One mobilization, or certainty?",
+      "scenario": "It's January. The entrance dredging finishes in March, comfortably inside the window. The groins and beach fill could join the same campaign — one marine mobilization, saving ~$700K — but the beach sand's DEPP sediment sign-off is still pending, expected 'February, probably.' If you commit the combined campaign and the sand approval slips past the window's end, the beach waits a year AND you've held the dredge spread on standby. If you split the campaigns, you pay the second mobilization but each scope runs when it's actually ready.",
+      "options": [
+        {
+          "id": "commit-with-triggers",
+          "label": "Plan the combined campaign WITH a decision trigger: if the sand sign-off isn't in hand by March 1, the spread demobilizes on schedule and the beach becomes next season's separate campaign — pre-priced in the contract as an option",
+          "outcome": "You chase the $700K prize without betting the window on a regulator's calendar: the trigger date converts an open-ended gamble into a bounded option, and pricing both outcomes at contract time means neither surprises you. This is how you hold an optimization and an escape hatch at once.",
+          "optimal": true
+        },
+        {
+          "id": "commit-fully",
+          "label": "Commit the combined campaign — February 'probably' is good enough for $700K",
+          "outcome": "DEPP's sign-off arrives April 20th, six weeks late, with a supplementary characterization request. The spread sat on standby (at day rates that ate half the prize), the beach missed the window anyway, and next year's separate mobilization costs what it always would have — plus the standby.",
+          "acceptable": false
+        },
+        {
+          "id": "split-safe",
+          "label": "Split the campaigns now — pay the second mobilization for certainty",
+          "outcome": "Clean and expensive: each campaign runs when ready, and you've paid $700K for insurance against a risk a contract trigger could have bounded for a fraction of that. Buying certainty is legitimate; buying it without pricing the alternative is just flinching.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "The one-mobilization prize is real and so is the annual window behind it — the resolution is a DECISION TRIGGER: a date, pre-agreed and pre-priced, where the optimistic plan converts to the safe one automatically. Optimizations you can't exit on a date aren't optimizations; they're bets."
+    },
+    {
+      "id": "m14-d2",
+      "title": "Sales says go faster",
+      "scenario": "Phase 4's houses are selling ahead of pro forma. The board, delighted, wants Phase 6 vertical pulled forward six months. But the schedule shows Phase 6's utilities (BPL transformer for that zone, on the long-lead register) land only four months early at best, and the WWTP's next capacity module lands with them. Sales momentum is real; so are the gates.",
+      "options": [
+        {
+          "id": "pull-what-gates-allow",
+          "label": "Pull Phase 6 forward exactly as far as its gates allow — four months, matched to the transformer and WWTP module — and show the board the gate analysis with the acceleration",
+          "outcome": "You bank most of the momentum and none of the fantasy: starts release when power and treatment capacity actually exist. The board sees a developer who accelerates on evidence — which is worth more to them than the extra two months would have been.",
+          "optimal": true
+        },
+        {
+          "id": "promise-six",
+          "label": "Commit the full six months — utilities usually find a way",
+          "outcome": "They don't. Month five: forty slabs poured in a zone whose transformer is still on a ship, generators renting by the week, and an OC pipeline jammed behind treatment capacity. 'Utilities gate vertical' was truth #3, and it didn't negotiate.",
+          "acceptable": false
+        },
+        {
+          "id": "hold-schedule",
+          "label": "Hold the original schedule — momentum is no reason to touch a working plan",
+          "outcome": "Discipline overshooting into rigidity: four months of gate-compatible acceleration was free money (earlier closings, less market risk), and you left it unclaimed. Plans exist to be re-optimized when the constraints move — and sales momentum moved them.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "The phasing machine has a throttle, and absorption is the hand on it — but the throttle only moves within the gates: utilities, OCs, cash, labor. The developer's job when good news arrives is the same as when bad news does: re-run the gate analysis and move exactly as far as the constraints actually allow."
+    }
+  ]
 }

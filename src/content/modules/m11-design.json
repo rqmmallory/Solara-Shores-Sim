@@ -3,11 +3,257 @@
   "order": 11,
   "title": "Design Management and the Development Team",
   "short": "Design",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
-  "mathVariables": [],
-  "mathProblems": [],
-  "decisionPoints": []
+  "status": "ready",
+  "summary": "You hold the pen on nothing and the consequences of everything. This module covers the consultant team and who owns what, the design-phase gates where the developer's discipline actually bites (design freeze, design-to-budget, coordination review), and the escalating cost of change: 1x at schematic, 3–5x at construction documents, 10x+ in the field.",
+  "sections": [
+    {
+      "heading": "The team and who holds the pen",
+      "body": "Land planner/landscape architect (master plan author — Lotus Design per the drawings); civil engineer (roads/drainage/utilities — the workhorse); coastal/marine engineer (Modules 4–5); geotechnical engineer; architects — production house plans, condo buildings, commercial buildings, possibly different firms; structural and MEP engineers; environmental consultant (must be DEPP-pre-approved); QUANTITY SURVEYOR — British-system QS practice is the Bahamian norm, your cost certifier, worth engaging early; attorneys (planning, Condominium Act, HOA, conveyancing); and the sales/marketing operation whose absorption forecasts drive the phasing model."
+    },
+    {
+      "heading": "Design phases and the developer's control points",
+      "body": "Concept/master plan (locked) → schematic design → design development → construction documents → permit sets → construction administration. At each gate, the developer's discipline: a WRITTEN design freeze with sign-off (late changes are priced in blood); a design-to-budget mandate with QS estimates at each gate — if the DD estimate busts the pro forma, value-engineer NOW, not after bids; and a drawing coordination review before permit submission, because civil-vs-architectural-vs-structural conflicts found by MOW reviewers cost you the 6-week resubmittal loop, and found by subs in the field they cost change orders."
+    },
+    {
+      "heading": "The change-cost multiplier",
+      "body": "The same change costs 1x at schematic design, 3–5x at construction documents, 10x+ during construction. This is the single most important number in design management. It's why the design freeze is written and signed, why sales' 'small improvements' after DD get priced before they get discussed, and why the developer who catches conflicts at review meetings is worth more than the one who catches them on site."
+    },
+    {
+      "heading": "Managing a live master plan",
+      "body": "Internal-review-phase drawings (yours are marked exactly that) WILL move: lot-line adjustments after survey, utility corridor conflicts, DEPP-driven changes (buffer zones, retained vegetation), market-driven product mix changes. Manage the master plan as a VERSIONED document with a change log — every version ripples into permits, marketing materials, and legal plats. Uncontrolled plan versions are how developers sell the same lot twice."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m11-q1",
+      "type": "multipleChoice",
+      "teach": "A change's cost depends less on the change than on WHEN it's made.",
+      "prompt": "Sales wants to enlarge the beach club. Roughly how does the cost of that change scale by project phase?",
+      "choices": [
+        {
+          "text": "1x at schematic design, 3–5x at construction documents, 10x+ during construction",
+          "correct": true,
+          "why": "Correct. At SD it's redrawn lines; at CD it's re-engineering across disciplines; in the field it's demolition, rework, and every downstream document."
+        },
+        {
+          "text": "Roughly constant — a change costs what it costs",
+          "why": "The physical delta may be constant; the COORDINATION debt compounds: each phase multiplies the number of documents, contracts, and approvals the change must ripple through."
+        },
+        {
+          "text": "Cheaper later, because the design is more defined",
+          "why": "Precisely backwards — definition is what makes change expensive. The most defined design is the one cast in concrete."
+        },
+        {
+          "text": "2x per phase, doubling steadily",
+          "why": "The curve is steeper than doubling at the end: field changes carry demolition, standby, and permit amendments that early phases never see."
+        }
+      ],
+      "explanation": "The multiplier is why the design freeze exists and why 'we'll refine it as we build' is the most expensive sentence in development. Decide fully, freeze formally, change rarely — and when you must change late, price it (money AND time) before anyone says yes."
+    },
+    {
+      "id": "m11-q2",
+      "type": "multipleChoice",
+      "teach": "The quantity surveyor is a British-system institution and the Bahamian norm — a cost professional independent of the designers and contractors.",
+      "prompt": "Why engage the QS EARLY rather than at tender time?",
+      "choices": [
+        {
+          "text": "Because design-to-budget only works with a QS estimate at every design gate — discovering at bid time that the DD design busts the pro forma means value-engineering under deadline with sunk design fees",
+          "correct": true,
+          "why": "Correct. The QS at each gate converts 'design-to-budget' from a slogan into a checkpoint: bust the number at DD, fix it at DD prices."
+        },
+        {
+          "text": "QS firms discount long engagements",
+          "why": "Fee structure is a detail. The value is cost knowledge INSIDE the design loop instead of after it."
+        },
+        {
+          "text": "The lender requires QS sign-off on the loan",
+          "why": "The lender's QS verifies draws during construction — a different role. YOUR QS's early job is keeping the design inside the pro forma."
+        },
+        {
+          "text": "Early engagement locks their rates before inflation",
+          "why": "Marginal at best. The real money is in the design decisions their estimates discipline."
+        }
+      ],
+      "explanation": "The QS is your cost certifier at design gates, your bid-leveling engine at tender, and your progress certifier during construction. On this project they also carry the local cost data (BCQS-style) that Appendix B says every planning number must be validated against."
+    },
+    {
+      "id": "m11-q3",
+      "type": "multipleChoice",
+      "teach": "Drawings from different disciplines — civil, architectural, structural, MEP — are drawn by different firms and WILL conflict somewhere.",
+      "prompt": "Where is the cheapest place for a civil-vs-structural drawing conflict to be found?",
+      "choices": [
+        {
+          "text": "In your own coordination review before permit submission — after that it costs either MOW's 6-week resubmittal loop or a field change order",
+          "correct": true,
+          "why": "Correct. The coordination review is a meeting; the MOW query is 6 weeks of general conditions; the field discovery is a CO at the 10x multiplier."
+        },
+        {
+          "text": "By MOW reviewers — that's what the review is for",
+          "why": "MOW finding your conflicts means your permit batch bounces — the 6-week loop across every house in the batch. Their review is a backstop, not your QA."
+        },
+        {
+          "text": "By subcontractors during bidding",
+          "why": "Bidders who find conflicts price them as risk or exclude them — either way you pay. Some conflicts surface here anyway; relying on it is not a plan."
+        },
+        {
+          "text": "In the field, where conditions are real",
+          "why": "The most expensive classroom on earth. Field-found conflicts cost demolition, standby, and redesign simultaneously."
+        }
+      ],
+      "explanation": "The pre-submission coordination review — every discipline's drawings overlaid, conflicts logged and resolved — is unglamorous developer discipline that pays at the permit counter and again in the field. On the condos, this is the BIM/clash review; on the civil packages, it's often literally overlaying prints."
+    },
+    {
+      "id": "m11-q4",
+      "type": "multipleChoice",
+      "teach": "The master plan will change — survey adjustments, DEPP conditions, market shifts. The danger isn't change; it's uncontrolled versions.",
+      "prompt": "Why is master-plan version control described as existential ('how developers sell the same lot twice')?",
+      "choices": [
+        {
+          "text": "Because every plan version ripples into permits, marketing materials, and legal plats — when those artifacts cite different versions, two buyers can hold contracts describing overlapping ground",
+          "correct": true,
+          "why": "Correct. The lot sold from the v3 marketing plan and the lot platted in v5 can be different shapes on the same land — and both buyers have paper."
+        },
+        {
+          "text": "Regulators fine developers for outdated plans",
+          "why": "The exposure isn't a fine — it's contractual chaos: sales, permits, and plats drifting out of sync with each other."
+        },
+        {
+          "text": "Printing and distribution costs of plan updates",
+          "why": "Trivial. The cost is legal: what did each buyer, agency, and lender think they were looking at, and do those things agree?"
+        },
+        {
+          "text": "Old versions confuse the construction crews",
+          "why": "Field confusion is real but recoverable. Contradictory LEGAL descriptions sold to different parties is the unrecoverable version."
+        }
+      ],
+      "explanation": "Run the master plan like source code: numbered versions, a change log, and a rule that permits, marketing, and legal plats each cite the version they rely on. When the plan moves, someone's job is tracing the ripple through all three."
+    },
+    {
+      "id": "m11-q5",
+      "type": "subOrManage",
+      "teach": "Every deliverable has an author, but some functions are the developer's alone.",
+      "prompt": "Subcontract (to a consultant) or direct-manage each design-management function:",
+      "items": [
+        {
+          "scope": "Structural engineering for the condo buildings",
+          "answer": "subcontract",
+          "why": "Registered-PE deliverable — one of the pens you hire."
+        },
+        {
+          "scope": "The design freeze decision and its sign-off",
+          "answer": "direct",
+          "why": "Freezing design is a business decision about risk and money — no consultant can own it, because every consultant benefits from more design."
+        },
+        {
+          "scope": "Cost estimates at each design gate",
+          "answer": "subcontract",
+          "why": "The QS's core deliverable — independent of the designers whose work it disciplines."
+        },
+        {
+          "scope": "The master plan version log and its ripple-tracing",
+          "answer": "direct",
+          "why": "It spans permits, marketing, and legal — only the developer sees all three. This is exactly the kind of system that survives your absence if documented."
+        },
+        {
+          "scope": "The decision to value-engineer when DD busts the pro forma",
+          "answer": "direct",
+          "why": "Trading scope against budget is the owner's call — consultants execute the VE, but choosing WHAT to cut is choosing what the project is."
+        }
+      ],
+      "explanation": "Consultants hold pens; the developer holds gates. Freeze decisions, budget mandates, version control — the connective tissue between disciplines is the job nobody else at the table has."
+    }
+  ],
+  "mathVariables": [
+    { "id": "m11_design_pct", "label": "Design fees", "unit": "%", "min": 4, "max": 7, "note": "Of hard cost" },
+    { "id": "m11_cd_multiplier", "label": "Change multiplier at CD", "unit": "x", "min": 3, "max": 5 },
+    { "id": "m11_field_multiplier", "label": "Change multiplier in the field", "unit": "x", "min": 10, "max": 15 }
+  ],
+  "mathProblems": [
+    {
+      "id": "m11-p1",
+      "generator": "percentOf",
+      "difficulty": 1,
+      "title": "Design fees on a phase",
+      "context": "Design fees run 4–7% of hard cost — a number worth knowing cold when negotiating consultancy agreements.",
+      "params": {
+        "baseLabel": "phase hard cost",
+        "base": { "min": 15000000, "max": 60000000 },
+        "baseUnit": "$",
+        "pct": "m11_design_pct",
+        "answerLabel": "design fee budget",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "m11-p2",
+      "generator": "unitRate",
+      "difficulty": 2,
+      "title": "The price of changing late",
+      "context": "A change that would have cost X at schematic costs 3–5x at CD. Multiply the SD-phase cost by the CD multiplier to see what waiting costs.",
+      "params": {
+        "qtyLabel": "change cost if made at schematic design",
+        "qty": { "min": 50000, "max": 400000 },
+        "qtyUnit": "$ (at SD)",
+        "rateLabel": "CD-phase multiplier",
+        "rate": "m11_cd_multiplier",
+        "rateUnit": "x",
+        "answerLabel": "same change made at CD",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m11-d1",
+      "title": "Enlarging the beach club after DD",
+      "scenario": "Sales, armed with strong pre-launch interest, wants the beach club 40% bigger. Design development is complete; the QS prices the change at +$1.4M and 3 months of redesign. And one more thing nobody in the sales meeting has mentioned: the EIA already described the smaller building.",
+      "options": [
+        {
+          "id": "full-impact-decision",
+          "label": "Price the FULL ripple before deciding: QS's +$1.4M and 3 months, plus building permit amendment, plus a possible CEC amendment for the changed EIA description, plus what 3 months does to the amenity-core-first strategy — then decide with the whole bill on the table",
+          "outcome": "The complete accounting: the change touches budget, schedule, MOW permit, possibly the CEC, and the marketing promises already circulating. Maybe it's still worth it — beach clubs sell condos — but now it's a decision, not a drift. Half the time, pricing the ripple kills the idea; the other half, it makes the approval honest.",
+          "optimal": true
+        },
+        {
+          "id": "just-approve",
+          "label": "Approve it — sales knows the market and $1.4M is affordable",
+          "outcome": "The $1.4M was the visible fraction. The CEC amendment surfaces during the building permit review (the agencies cross-reference), the amenity core slips a season, and the launch marketing now describes a building whose environmental clearance is in flux. The QS priced the design change; nobody priced the change.",
+          "acceptable": false
+        },
+        {
+          "id": "refuse-freeze",
+          "label": "Refuse — DD is past, the design freeze is the freeze",
+          "outcome": "Discipline, rigidly applied: if the market signal is real, a bigger beach club at 3–5x might still beat a too-small one forever. The freeze exists to force full-cost decisions, not to prevent all change. Refusing without pricing is the same error as approving without pricing, in the other direction.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Late changes touch everything the design has already flowed into: permits, the EIA/CEC, budget, schedule, marketing. The developer's job is neither yes nor no — it's making sure the decision is taken against the FULL ripple, priced by the QS and traced through every approval that cited the old design."
+    },
+    {
+      "id": "m11-d2",
+      "title": "Six inches of datum",
+      "scenario": "The civil engineer and the coastal engineer disagree on the vertical datum for canal edge elevations — their drawings differ by six inches, each certain the other converted wrong. Bulkhead forming starts in five weeks. Six inches at bulkhead scale is either bulkhead caps underwater at spring tide, or a step down to every dock on 8,000 feet of canal.",
+      "options": [
+        {
+          "id": "arbitrate-with-survey",
+          "label": "Stop the argument with data: commission your licensed surveyor to establish the datum benchmark both consultants must reference, and hold a joint session where both sets of drawings are corrected against it before forming",
+          "outcome": "The surveyor's benchmark is the single source of truth; both consultants adjust; the five weeks hold. Cost: a survey task order and one uncomfortable meeting. The alternative was discovering the winner empirically, in concrete, at spring tide.",
+          "optimal": true
+        },
+        {
+          "id": "trust-coastal",
+          "label": "Side with the coastal engineer — water levels are their specialty",
+          "outcome": "Probably the better guess, and still a guess: if their datum conversion was the wrong one, you've poured 8,000 feet of bulkhead on the authority of a plausible assumption. Specialty is not the same as verification.",
+          "acceptable": true
+        },
+        {
+          "id": "let-them-resolve",
+          "label": "Tell the two engineers to work it out between themselves",
+          "outcome": "Weeks pass in polite email attrition — neither has authority over the other, and both bill for the correspondence. The forming date arrives with the conflict unresolved, and now the field crew picks the datum. The developer who won't arbitrate has delegated the decision to the concrete.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "When consultants disagree on a matter of fact, the developer doesn't pick a side — they buy the fact. A surveyed benchmark costs thousands; a datum error at bulkhead scale costs millions. Arbitration by data is the developer's move whenever 'professional disagreement' is actually a measurable question."
+    }
+  ]
 }

@@ -1,13 +1,240 @@
 {
   "id": "m13-soft-skills",
   "order": 13,
-  "title": "Soft Skills: Negotiation and Stakeholders",
+  "title": "Soft Skills: Negotiation, Stakeholders, and Running the Room",
   "short": "Soft Skills",
-  "status": "placeholder",
-  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
-  "sections": [],
-  "quiz": [],
+  "status": "ready",
+  "summary": "Nassau is a small market: every sub, supplier, and official recurs across decades and future phases. This module drills the negotiation frameworks (BATNA, ZOPA, interests vs positions, anchoring from the leveling sheet), the stakeholder rule (bad news comes from you first), and the communication mechanics that keep a project's decisions written, minuted, and owned.",
+  "sections": [
+    {
+      "heading": "Preparation beats talent",
+      "body": "Before any negotiation: your BATNA (what happens if no deal), THEIR BATNA (a dredging contractor with an idle barge has a weak one; the only elevator supplier serving Nassau has a strong one), the ZOPA between them, and your issue list ranked by what's cheap for you and valuable to them. Trade payment terms for price; trade schedule flexibility for rate; NEVER trade quality hold points for anything. In bid negotiations, anchor from your engineer's estimate and the leveled comparison — never from the contractor's number."
+    },
+    {
+      "heading": "Interests vs positions, and the relationship horizon",
+      "body": "The sub demanding a 15% mobilization advance (position) may need cash-flow certainty (interest) — milestone-based early payments against materials delivered to YOUR site solve the interest with a fraction of the exposure. And the horizon rule: win negotiations without producing losers who wait for their moment. Leave something on the table deliberately with strategic long-term partners; be surgical only with transactional one-offs, like the foreign barge operator you'll never see again."
+    },
+    {
+      "heading": "The stakeholder map and the first-news rule",
+      "body": "Government (MOW, DEPP, Physical Planning, Port Department, WSC, BPL, Immigration, Customs, the local MP), neighbors (two established adjacent communities plus the school/commercial frontage), buyers and the HOA-in-formation, the lender, the sales team, the press. The rule the sim drills relentlessly: EVERY STAKEHOLDER HEARS BAD NEWS FROM YOU BEFORE THEY HEAR IT FROM ANYONE ELSE. Pre-briefing DEPP on a turbidity incident you self-report is a survivable event; DEPP finding it first is not."
+    },
+    {
+      "heading": "Communication mechanics",
+      "body": "Meetings run on agendas issued prior; decisions and owners minuted within 24 hours; action lists reviewed FIRST at the next meeting. RFI answers and instructions in writing, never verbal — a verbal instruction to a sub is an unpriced change order (Module 9's failure pattern). Upward reporting to your board/investors in a fixed monthly format: narrative, dashboard (schedule/cost/safety/quality/risk), decisions needed. A preference for structure over improvisation is the correct temperament for this role; the growth edge is real-time verbal negotiation under pressure — which is exactly what these scenarios train."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m13-q1",
+      "type": "multipleChoice",
+      "teach": "BATNA — Best Alternative To a Negotiated Agreement — is what each side does if talks fail. Relative BATNA strength IS negotiating power.",
+      "prompt": "You're negotiating with (a) a dredging contractor whose barge sits idle next month, and (b) the only elevator supplier serving Nassau. Who holds power in each talk?",
+      "choices": [
+        {
+          "text": "You hold power over the dredger (their idle barge burns money if no deal); the elevator supplier holds power over you (your alternative is no elevators)",
+          "correct": true,
+          "why": "Correct. Power isn't size or need — it's what each party's next-best option costs them. Idle barges have terrible BATNAs; monopolists have great ones."
+        },
+        {
+          "text": "You hold power in both — you're the paying client",
+          "why": "Paying doesn't mean powerful. Against a monopoly supplier, your money has nowhere else to go, and they know it."
+        },
+        {
+          "text": "They hold power in both — you need the work done",
+          "why": "The dredger needs YOU more that month: an idle spread is a cash furnace. Read their situation, not just yours."
+        },
+        {
+          "text": "BATNA doesn't apply to construction procurement",
+          "why": "It applies to everything with an alternative. Every bid tab is a BATNA document: your alternatives, priced."
+        }
+      ],
+      "explanation": "Practical moves follow: with the dredger, negotiate harder on rate and terms — time is on your side. With the elevator supplier, don't out-muscle; widen the ZOPA instead (bundle all 12 buildings, offer schedule certainty, be a reference client) or build a BATNA by pricing a Florida supplier's mobilization."
+    },
+    {
+      "id": "m13-q2",
+      "type": "multipleChoice",
+      "teach": "A position is what someone demands; an interest is why they demand it.",
+      "prompt": "Your best sub demands a 15% mobilization advance (position). What's the interests-based response?",
+      "choices": [
+        {
+          "text": "Probe the why — likely cash-flow certainty — and meet it with milestone-based early payments against materials delivered to your site: their interest served, your exposure secured",
+          "correct": true,
+          "why": "Correct. The interest (predictable cash) has many solutions; the position (15% unsecured) was just the first one they thought of. The secured version costs you a fraction of the risk."
+        },
+        {
+          "text": "Counter at 7.5% and meet in the middle",
+          "why": "Haggling the position leaves the real question — what do they actually need? — unasked, and still leaves you unsecured at half the size."
+        },
+        {
+          "text": "Refuse — advances are bad practice, full stop",
+          "why": "Rules without probing lose deals interests could save. If their need is real and your best sub walks, the rule cost you more than the advance would have."
+        },
+        {
+          "text": "Grant it but hold their retainage at double rate",
+          "why": "Creative, but it solves your fear, not their need — doubled retainage WORSENS their cash flow, the very interest driving the demand."
+        }
+      ],
+      "explanation": "Interests-vs-positions is the single highest-yield negotiation habit: almost every hard position hides a softer interest with cheaper solutions. The question that unlocks it is simply 'help me understand what the advance solves for you.'"
+    },
+    {
+      "id": "m13-q3",
+      "type": "multipleChoice",
+      "teach": "A government inspector on a routine visit hints that a small payment could 'expedite' your inspection backlog.",
+      "prompt": "What's the correct handling?",
+      "choices": [
+        {
+          "text": "Decline clearly and without drama, document the exchange contemporaneously, and address the backlog through official channels and your attorney's advice",
+          "correct": true,
+          "why": "Correct. Paying creates permanent leverage over you (the first payment is never the last), legal exposure in two countries, and a project hostage to every future hint. Decline, write it down, work the system properly."
+        },
+        {
+          "text": "Pay it — it's how things work and the backlog is real",
+          "why": "It's how things work until the file opens: bribery exposure under Bahamian law (and anti-corruption laws reaching foreign investors), plus a reputation as the developer who pays — which ATTRACTS more hints."
+        },
+        {
+          "text": "Report the inspector to their ministry immediately",
+          "why": "A formal accusation over a deniable hint, with no evidence, converts an awkward moment into a war with the office that inspects your next 300 houses. Decline and document first; escalate if it persists or hardens."
+        },
+        {
+          "text": "Joke it off and change the subject",
+          "why": "Ambiguity is what hints feed on — an unclear response reads as 'negotiable.' Clarity, delivered politely, closes the door without making an enemy."
+        }
+      ],
+      "explanation": "The professional stance: unambiguous decline, contemporaneous documentation (your protection if it ever escalates), and patience with legitimate process. Expediting exists in every system — the legal version is complete submissions, good relationships, and predictable follow-up."
+    },
+    {
+      "id": "m13-q4",
+      "type": "multipleChoice",
+      "teach": "The turbidity monitor logged an exceedance last night during dredging. It's fixed by morning. Nobody outside your team knows.",
+      "prompt": "DEPP's monthly report is due in three weeks and would capture it anyway. What do you do today?",
+      "choices": [
+        {
+          "text": "Self-report today with the data, cause, and the corrective action already taken — DEPP hears it from you first",
+          "correct": true,
+          "why": "Correct. A self-reported incident with a completed fix is evidence your EMP works. The same event, found by DEPP in your monthly data — or worse, reported by a neighbor — is evidence you hide things."
+        },
+        {
+          "text": "Include it in the monthly report as scheduled",
+          "why": "Technically compliant, strategically weak: three weeks of silence reads as three weeks of hoping nobody asks. The first-news rule exists because WHO TELLS determines what the event means."
+        },
+        {
+          "text": "Fix it and omit it — one night's blip harms nothing",
+          "why": "Falsifying environmental monitoring converts a survivable exceedance into the end of regulator trust, and possibly of the CEC. The cover-up is always the career-ender; the incident almost never is."
+        },
+        {
+          "text": "Have the environmental consultant mention it informally",
+          "why": "Bad news through intermediaries reads as distancing. The developer's own signature on the self-report is what buys the credibility."
+        }
+      ],
+      "explanation": "'Every stakeholder hears bad news from you before they hear it from anyone else.' It's cheap to honor (one uncomfortable phone call) and ruinous to violate — because regulators, neighbors, and lenders all price your future statements by how you handled the last bad one."
+    },
+    {
+      "id": "m13-q5",
+      "type": "multipleChoice",
+      "teach": "Meeting mechanics sound trivial until you count what undocumented decisions cost.",
+      "prompt": "What's the required follow-through after every project meeting?",
+      "choices": [
+        {
+          "text": "Decisions and owners minuted within 24 hours, and the action list reviewed FIRST at the next meeting",
+          "correct": true,
+          "why": "Correct. The 24-hour minute converts talk into record while memories agree; reviewing actions first makes accountability the meeting's spine instead of its afterthought."
+        },
+        {
+          "text": "A full transcript circulated for comment",
+          "why": "Transcripts bury decisions in words. The minute is short precisely so the decisions and owners are unmissable."
+        },
+        {
+          "text": "Nothing formal — the contract documents govern anyway",
+          "why": "Contracts govern scope; meetings generate the hundred weekly decisions contracts never anticipated. Unminuted, each one is a future disagreement."
+        },
+        {
+          "text": "Minutes only for meetings where money was discussed",
+          "why": "Schedule, quality, and safety decisions cost money too — just later. If it had decisions, it gets minutes."
+        }
+      ],
+      "explanation": "The same discipline in three sizes: minutes for meetings, written confirmations for instructions, the daily log for the field. All three exist because the project's most expensive disputes are always about what was said, by whom, when — and paper remembers."
+    }
+  ],
   "mathVariables": [],
   "mathProblems": [],
-  "decisionPoints": []
+  "decisionPoints": [
+    {
+      "id": "m13-d1",
+      "title": "Removing the connected sub",
+      "scenario": "A finishing sub — cousin of a senior official whose goodwill your permit pipeline depends on — is failing: 61% first-pass rate against a site average of 88%, two months of remediation plans ignored. Your supers want them gone. Your government-relations instinct says careful. The league table you publish makes the problem visible to everyone.",
+      "options": [
+        {
+          "id": "process-exit",
+          "label": "Run the documented process to its end: formal cure notice per the contract, a defined probation with measurable targets, then removal executed respectfully — with a direct, private heads-up to the official before it lands",
+          "outcome": "The removal is bulletproof (the data did it, not politics), the official heard it from you first with the league table in hand — most connected people won't defend documented failure — and the site learns quality standards survive connections. Permits keep flowing because you managed the relationship, not the standard.",
+          "optimal": true
+        },
+        {
+          "id": "carry-them",
+          "label": "Keep them on reduced scope where they can't hurt much",
+          "outcome": "The league table now shows everyone that 61% has a price and it's zero. Your better subs quietly recalibrate what you'll tolerate; the carried sub's work still needs redoing; and you've made the relationship MORE fragile — now it rests on an unspoken favor either side can call.",
+          "acceptable": false
+        },
+        {
+          "id": "quiet-squeeze",
+          "label": "Starve them of work assignments until they leave on their own",
+          "outcome": "Slower than firing, less honest than either option, and transparent to everyone including the official — who now hears through the family that you're squeezing their cousin out sideways. You get the removal AND the resentment, plus months of carrying capacity you couldn't use.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Connected-party problems are managed with PROCESS and FIRST-NEWS: documentation makes the decision impersonal, and the private pre-brief lets the connection save face. What you must never trade is the standard itself — one visible exception reprices quality for every sub on site."
+    },
+    {
+      "id": "m13-d2",
+      "title": "The consultation microphone",
+      "scenario": "EIA public consultation, community hall, standing room only. The neighboring HOA president — organized, articulate, angry — takes the microphone with photos of blast-cracked tiles from a project fifteen years ago and asks: 'Why should we believe your vibration limits when developers always say this?' The room is with her. Your coastal engineer reaches for the mic to answer technically.",
+      "options": [
+        {
+          "id": "own-the-answer",
+          "label": "Take the mic yourself: validate the history ('that project's failures are why our program looks different'), commit specifically — pre-blast surveys of every neighboring home, monitors they can see the data from, a named phone number — and offer her HOA a standing seat in the monitoring review",
+          "outcome": "You can't win the room with physics; you can win it with accountability. The specific, checkable commitments — surveys, visible data, a name — give the reasonable majority something to hold you to, which is what they actually came for. The engineer backs you up on details; the developer owns the promise.",
+          "optimal": true
+        },
+        {
+          "id": "engineer-answers",
+          "label": "Let the coastal engineer handle it — it's a technical question",
+          "outcome": "It was never a technical question; it was a trust question wearing technical clothes. The engineer's peak-particle-velocity slide is accurate and lands as exactly the deflection she predicted: the developer hiding behind the consultant. The clip of her unanswered question does numbers online.",
+          "acceptable": false
+        },
+        {
+          "id": "defer-formally",
+          "label": "Note the concern formally for the written consultation record and move the agenda along",
+          "outcome": "Proceduralism in front of a live audience: technically the process, visibly an evasion. The consultation record gets her question; the community gets confirmation that the process is theater; and DEPP's staff in the room note the temperature.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Public consultation is a trust negotiation, and trust is only offered to principals — never to their experts. Answer history with accountability, not data: specific commitments, verifiable by the people worried, with your own name attached. The engineer proves you CAN; only you can prove you WILL."
+    },
+    {
+      "id": "m13-d3",
+      "title": "The half-legitimate delay claim",
+      "scenario": "The roofing sub claims 22 days of delay: 10 days you genuinely caused (truss redesign after your architect's error) and 12 days that your daily logs show were their own crew shortages, dressed up in the claim's narrative. They've asked for $95K. Their claim letter is aggressive; their work is good; you'll need them for six more phases.",
+      "options": [
+        {
+          "id": "split-on-the-logs",
+          "label": "Respond with the daily-log record: acknowledge and pay the 10 documented days promptly, reject the 12 with the manpower entries attached, and say both parts to their face in one meeting",
+          "outcome": "Paying the legitimate half fast proves claims get honest treatment; rejecting the padded half with contemporaneous evidence proves padding doesn't pay. Most subs respect exactly this — and their next claim arrives pre-shrunk to what the logs will support.",
+          "optimal": true
+        },
+        {
+          "id": "settle-whole",
+          "label": "Pay the full $95K — good subs are scarce and the relationship matters",
+          "outcome": "You just published your price list: claims against you settle at face value if the work is good. Six phases of future claims will be drafted accordingly. Relationship preservation that rewards padding isn't preservation — it's training.",
+          "acceptable": false
+        },
+        {
+          "id": "reject-whole",
+          "label": "Reject the entire claim — the padding poisons it",
+          "outcome": "Emotionally satisfying, contractually wrong: 10 days of their delay really was your architect's error, and your own logs prove it. Forcing a good sub to fight for money you owe them teaches them your paper only counts when it favors you — the exact opposite of what your systems are for.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Half-legitimate claims are the daily-log system's exam: the logs let you split the claim on evidence instead of negotiating it on volume. Pay what's real fast, refuse what isn't with the record attached — the reputation that combination builds is worth more than any single settlement."
+    }
+  ]
 }
