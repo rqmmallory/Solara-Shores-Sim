@@ -1,0 +1,13 @@
+{
+  "id": "m13-soft-skills",
+  "order": 13,
+  "title": "Soft Skills: Negotiation and Stakeholders",
+  "short": "Soft Skills",
+  "status": "placeholder",
+  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
+  "sections": [],
+  "quiz": [],
+  "mathVariables": [],
+  "mathProblems": [],
+  "decisionPoints": []
+}

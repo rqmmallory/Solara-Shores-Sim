@@ -1,0 +1,13 @@
+{
+  "id": "m06-single-family",
+  "order": 6,
+  "title": "Vertical: Production Single-Family (302 Units)",
+  "short": "Houses",
+  "status": "placeholder",
+  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
+  "sections": [],
+  "quiz": [],
+  "mathVariables": [],
+  "mathProblems": [],
+  "decisionPoints": []
+}

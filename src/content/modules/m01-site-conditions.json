@@ -1,0 +1,219 @@
+{
+  "id": "m01-site-conditions",
+  "order": 1,
+  "title": "Site Conditions: Geology, Water, Climate",
+  "short": "Site Physics",
+  "status": "ready",
+  "summary": "Everything on this project sits on young carbonate limestone with groundwater near sea level and a six-month hurricane season. This module teaches the physics of the site — rock, water, and weather — because every later decision (excavation pricing, canal methods, schedule windows, structural design) is downstream of these three facts.",
+  "sections": [
+    {
+      "heading": "The rock: limestone, not soil",
+      "body": "New Providence is carbonate rock: young oolitic/eolianite limestone over the older Lucayan Limestone. There is effectively no soil — vegetation sits on inches of organics over rock. Practical consequences: (1) all excavation is ROCK excavation — hydraulic breakers, rippers, and in heavy cuts drill-and-blast; (2) blasting near the occupied subdivisions on both flanks of the site triggers vibration monitoring, pre-blast surveys of neighboring homes, and community relations work; (3) the rock is KARSTIC — voids, caves and soft pockets appear randomly, so you run geotechnical borings on a grid and carry contingency for void grouting under building pads; (4) excavated limestone is an ASSET — it crushes into road base and fill. Cut-to-fill mass balance is one of the largest single cost levers on the whole project: canal, marina, and lake excavation should be balanced against fill needs before a single truck is hired."
+    },
+    {
+      "heading": "The water: a lens at sea level",
+      "body": "The freshwater lens sits under 1.5 m below grade in places; near the coast, groundwater is essentially at sea level. Canals, the marina, and the three lakes all cut BELOW the water table — canal excavation happens 'in the wet' or behind temporary rock plugs that are cut last. The lakes will intersect groundwater and behave as groundwater windows: expect brackish, tidal-damped water, and design them as stormwater/amenity hybrids, never as freshwater ponds. You cannot hold a lake at a level different from the water table. Stormwater on New Providence goes to ground via drainage wells and soakaways cut into the porous rock — not to storm sewer outfalls. The drainage design is wells, swales, and the lakes."
+    },
+    {
+      "heading": "The weather: schedule geometry",
+      "body": "Hurricane season runs June 1 – November 30, peaking mid-August through October. Rainy season is roughly May–October (~1,250 mm/yr). Rules the project must live by: marine works (dredging, groins, beach fill) are planned for the calmer late-fall-to-spring window; nothing weather-vulnerable (open shoreline excavations, half-built roofs, staged sand) is exposed through peak season without a written hurricane preparedness plan per contractor — tie-down procedures, demobilization triggers at 72/48/24 hours, crane laydown rules. Every contract needs a named-storm force majeure clause with defined standby and remobilization cost treatment: this is one of the most commonly bungled clauses in Caribbean contracts."
+    },
+    {
+      "heading": "Codes and loads",
+      "body": "The Bahamas Building Code has been compulsory since the 1970s — the Bahamas was early in the region on codified wind standards. Practice on New Providence commonly references Florida Building Code / ASCE 7 wind methodology. Design wind speeds are in the 150+ mph class; reinforced concrete block or poured concrete construction dominates; hurricane strapping, ring beams, and impact/shutter protection are standard. Coastal buildings — the beach club, condos 1–2, marina structures — add flood elevation and wave-load design on top."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m01-q1",
+      "type": "multipleChoice",
+      "teach": "On New Providence, 'digging' means breaking rock. The upside is that the excavated limestone is valuable — it crushes into road base and structural fill.",
+      "prompt": "Why should canal, marina, and lake excavation be planned against fill needs BEFORE hiring any trucking?",
+      "choices": [
+        {
+          "text": "Because cut-to-fill mass balance is one of the largest cost levers on the project — own spoil crushed on site replaces imported base and fill",
+          "correct": true,
+          "why": "Correct. Every cubic yard you reuse avoids both a disposal haul AND an import purchase — a double saving."
+        },
+        {
+          "text": "Because trucking companies require long-term contracts",
+          "why": "Trucking terms are negotiable; the real issue is that hauling spoil out while importing fill pays twice for the same material movement."
+        },
+        {
+          "text": "Because the government requires a mass-balance report before permits",
+          "why": "No such report is required. The driver is pure economics: reuse of spoil as crushed base saves $25–45/cy versus importing."
+        },
+        {
+          "text": "Because excavated limestone can't legally leave the site",
+          "why": "It can leave the site. The point is you don't WANT it to — it's your cheapest source of road base and fill."
+        }
+      ],
+      "explanation": "The site's biggest excavations (canals, marina basin, lakes) produce rock, and its biggest fills (roads, building pads) consume rock. Balancing them on paper first — a mass-balance plan you direct-manage, never delegate to the earthworks sub — is one of the largest single cost levers on the project."
+    },
+    {
+      "id": "m01-q2",
+      "type": "multipleChoice",
+      "teach": "Karst is limestone that groundwater has dissolved into voids, caves, and soft pockets — and they appear randomly, not where it's convenient.",
+      "prompt": "What is the standard defense against karst surprises under building pads?",
+      "choices": [
+        {
+          "text": "Geotechnical borings on a grid, plus a contingency budget for void grouting",
+          "correct": true,
+          "why": "Correct — you can't eliminate karst risk, so you characterize it statistically (grid borings) and price the response (grouting contingency)."
+        },
+        {
+          "text": "Deep pile foundations under every building",
+          "why": "Massive overkill — limestone bearing is superb where sound. You'd pay pile-foundation money on 400+ structures to solve a localized problem."
+        },
+        {
+          "text": "Ground-penetrating radar of the entire site before purchase",
+          "why": "GPR helps but can't see deep voids reliably in wet carbonate rock; borings on a grid remain the standard, with contingency for what the grid misses."
+        },
+        {
+          "text": "Avoiding excavation entirely",
+          "why": "Impossible here — canals, lakes, utilities, and pools all require cutting rock. The answer is characterization plus priced contingency, not avoidance."
+        }
+      ],
+      "explanation": "You manage karst the way you manage any random-occurrence risk: sample it (boring grid), carry a priced response (void grouting contingency), and put rock-quantity risk into unit-rate contract structures so a surprise is a measured quantity, not a claim."
+    },
+    {
+      "id": "m01-q3",
+      "type": "multipleChoice",
+      "teach": "The three lakes will cut below the water table into porous rock. That makes them 'groundwater windows' — openings that expose the actual groundwater surface.",
+      "prompt": "The landscape architect's renders show the lakes held 2 ft above surrounding grade water levels, sparkling and fresh. What's wrong?",
+      "choices": [
+        {
+          "text": "You cannot hold a lake in porous limestone at a level different from the water table, and the water will be brackish, not fresh",
+          "correct": true,
+          "why": "Correct on both counts — the rock is porous, so lake level = water table level, and near the coast that water is brackish and tidally damped."
+        },
+        {
+          "text": "Nothing — a pond liner will hold the design level",
+          "why": "There is no liner debate here as in clay-country lakes: these are groundwater windows by design. A liner defeats their stormwater function and fights hydrostatic uplift forever."
+        },
+        {
+          "text": "The lakes only need pumps to stay at the render level",
+          "why": "Pumping against porous rock is pouring money into the ground — inflow through the rock is continuous and unlimited."
+        },
+        {
+          "text": "The render is fine as long as the lakes are shallow",
+          "why": "Shallow makes it worse: shallow tropical lakes become algae soup. Good practice keeps a significant portion deeper than 6–8 ft."
+        }
+      ],
+      "explanation": "This is a real sim scenario from the knowledge base: renders showing lake levels above the water table. The CM's job is to catch this at design review — before it's sold to buyers — because physics will win. Lakes here are stormwater/amenity hybrids at water-table level, brackish, with depth and aeration managed for water quality."
+    },
+    {
+      "id": "m01-q4",
+      "type": "sequencing",
+      "teach": "Hurricane preparedness plans work on countdown triggers before forecast landfall — each window has its own actions.",
+      "prompt": "Put these hurricane-season events in the order they occur across a season and an approaching storm:",
+      "items": [
+        "June 1 — hurricane season opens; every contractor's written preparedness plan must already be rehearsed",
+        "Mid-August — peak season begins; no weather-vulnerable work exposed without a plan",
+        "72 hours out — preparedness plan triggers first actions (secure materials, review tie-downs)",
+        "48 hours out — demobilization decisions; cranes laid down per plan",
+        "24 hours out — site secured and evacuated; standby cost treatment per the force majeure clause"
+      ],
+      "explanation": "The preparedness plan is written and rehearsed BEFORE June 1, then executes on 72/48/24-hour triggers when a named storm approaches. Who pays for standby and remobilization is decided by the force majeure clause you wrote at contract signing — not negotiated in the storm's cone."
+    },
+    {
+      "id": "m01-q5",
+      "type": "multipleChoice",
+      "teach": "Blasting is the cheap way to cut heavy rock — but this site has occupied subdivisions on both flanks.",
+      "prompt": "What does blasting next to existing neighborhoods trigger?",
+      "choices": [
+        {
+          "text": "Vibration monitoring, pre-blast condition surveys of neighboring homes, and a community relations program",
+          "correct": true,
+          "why": "Correct — the pre-blast survey is your legal defense against damage claims, monitoring proves compliance, and community relations keeps complaints out of DEPP and the press."
+        },
+        {
+          "text": "Nothing extra, as long as the blaster is licensed",
+          "why": "A licensed blaster is necessary but not sufficient. Without pre-blast surveys, every existing crack in every neighboring house becomes your crack."
+        },
+        {
+          "text": "A ban — blasting near homes is prohibited in the Bahamas",
+          "why": "Not prohibited — it's managed. Blasting at volume runs $8–20/cy versus $15–40/cy for breakers, so managed blasting is often worth the overhead."
+        },
+        {
+          "text": "Only a notification letter to neighbors",
+          "why": "A letter without a pre-blast survey leaves you defenseless against claims that your blasting caused pre-existing damage."
+        }
+      ],
+      "explanation": "Pre-blast surveys document neighboring structures' condition BEFORE work, so damage claims can be judged against a baseline. Combined with vibration monitoring and proactive neighbor communication, this is what makes blasting politically and legally survivable next to occupied communities."
+    },
+    {
+      "id": "m01-q6",
+      "type": "multipleChoice",
+      "teach": "Stormwater design here looks nothing like a mainland subdivision.",
+      "prompt": "Where does stormwater go on New Providence?",
+      "choices": [
+        {
+          "text": "Into the ground — drainage wells and soakaways cut into the porous rock, plus swales and the lakes",
+          "correct": true,
+          "why": "Correct. The porous limestone IS the drainage system; wells and soakaways feed it, and the lakes buffer it."
+        },
+        {
+          "text": "Storm sewers to ocean outfalls",
+          "why": "There is no island storm-sewer-to-outfall system; the porous rock accepts the water directly through drainage wells."
+        },
+        {
+          "text": "Retention ponds sized to hold the 100-year storm",
+          "why": "The lakes do play a stormwater role, but the primary mechanism is infiltration to ground through wells and soakaways — the rock is the pond."
+        },
+        {
+          "text": "Pumped to the municipal wastewater plant",
+          "why": "There is no island-wide wastewater system at all — the development builds its own package plant, and stormwater never goes there anyway."
+        }
+      ],
+      "explanation": "Drainage wells ($8,000–20,000 each) and soakaways put stormwater into the porous limestone. The three lakes double as stormwater management. This is why the civil drainage design gets reviewed by MOW's Civil Design Section as part of permitting."
+    }
+  ],
+  "mathVariables": [
+    {
+      "id": "m01_rain_annual_mm",
+      "label": "Mean annual rainfall",
+      "unit": "mm/yr",
+      "min": 1150,
+      "max": 1350,
+      "note": "Rainy season roughly May–October"
+    },
+    {
+      "id": "m01_design_wind_mph",
+      "label": "Design wind speed class",
+      "unit": "mph",
+      "min": 150,
+      "max": 180,
+      "note": "Florida Building Code / ASCE 7 methodology commonly referenced"
+    }
+  ],
+  "mathProblems": [],
+  "decisionPoints": [
+    {
+      "id": "m01-d1",
+      "title": "The render vs. the water table",
+      "scenario": "Marketing is about to publish landscape renders showing the three lakes at a level roughly 2 ft above what your geotech report says the groundwater sits at, with captions calling them 'freshwater lakes.' The landscape architect says the levels are 'aspirational.' Sales loves the images.",
+      "options": [
+        {
+          "id": "kill-renders",
+          "label": "Stop publication, brief sales and the landscape architect on groundwater-window physics, reissue renders at true water-table level as brackish amenity lakes",
+          "outcome": "A week of friction with marketing and a redesign fee — versus buyers who were sold something physics cannot deliver. Renders reissue honestly; the lake edge design improves because it's now designed for the real water level.",
+          "optimal": true
+        },
+        {
+          "id": "let-it-ride",
+          "label": "Publish — buyers won't measure lake levels",
+          "outcome": "Early buyers close on the imagery. Two years later the lakes sit exactly at the water table, brackish and 2 ft below the renders' edge treatment, which now stands exposed. The HOA-in-formation makes it their founding grievance, and every future marketing claim gets discounted.",
+          "acceptable": false
+        },
+        {
+          "id": "engineer-it",
+          "label": "Ask the civil engineer to design a lined, pumped lake to hold the render level",
+          "outcome": "The engineer's memo explains what you should have known: liners in porous rock fight hydrostatic uplift permanently, and pumping against unlimited inflow through porous limestone is an eternal operating cost. Quote lands seven figures plus O&M. You end up reissuing the renders anyway, later and more expensively.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "The lakes are groundwater windows: their level IS the water table, and near this coast the water is brackish. The CM's value is catching physics-vs-marketing conflicts at design review, before promises are printed. Whoever catches it latest pays the most."
+    }
+  ]
+}

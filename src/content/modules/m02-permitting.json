@@ -1,0 +1,310 @@
+{
+  "id": "m02-permitting",
+  "order": 2,
+  "title": "Regulatory & Permitting Map (The Gating System)",
+  "short": "Permitting",
+  "status": "ready",
+  "summary": "This is the module to overlearn. Every construction activity on Solara Shores is gated by an approval, and the marine approvals are the long poles. Three chains run in parallel: the land-side chain (planning → building permits → inspections → occupancy), the environmental chain (EIA → CEC, which gates EVERYTHING), and the commercial chain (licences, VAT, NIB, work permits).",
+  "sections": [
+    {
+      "heading": "The land-side chain",
+      "body": "1) Subdivision/planning approval from the Department of Physical Planning / Town Planning Committee — zoning conformity, subdivision layout, land use; larger schemes can involve public notice and hearings. 2) Building permits from the Ministry of Works (MOW), Buildings Control Division — applications route in parallel to the Civil Design Section (drainage, road access), Physical Planning (zoning), Environmental Health, then MOW's own structural/mechanical/electrical/plumbing checks. Drawings must be signed by a Bahamas-registered architect and a registered professional engineer (Professional Engineers Act 2004 — foreign engineers need temporary registration and association with a Bahamian PE). Nominal processing is 6–8 weeks per permit after COMPLETE submission; longer when external agencies weigh in. Permits are valid 18 months, extendable. For 302 homes you run a permit PIPELINE, not a permit — batch submissions by phase and track them like a production schedule. 3) Inspections through construction (setback, foundation/rebar, slab, frame/block, electrical rough, plumbing rough, final), then the Occupancy Certificate per building. The OC is what allows closings — OC throughput is a revenue gate, not a paperwork detail."
+    },
+    {
+      "heading": "The environmental chain — the project's master gate",
+      "body": "The Department of Environmental Planning and Protection (DEPP) administers the Environmental Planning and Protection Act 2019 and the EIA Regulations 2020 (amended 2026). A project of this class requires: preliminary review → a full EIA by a DEPP-pre-approved consultant → published notice → MANDATORY public consultation → an Environmental Management Plan (EMP) → a Certificate of Environmental Clearance (CEC) before commencement. Land clearing IS commencement — nothing physical happens before the CEC. DEPP can require an environmental performance bond of up to 5% of project value, continues oversight through construction, and can stop work for EMP non-compliance. The EMP's conditions — turbidity limits, seasonal work windows, monitoring reports — become enforceable constraints on your dredging and beach contractors: write them into the subcontracts verbatim. Realistic duration for a marine-inclusive EIA: 6–14 months. This is why the environmental workstream starts before everything else — it is the critical path's critical path."
+    },
+    {
+      "heading": "The seabed: Crown property, lease only",
+      "body": "Groins, marina structures, jetties, moorings — anything on the seabed — now requires a formal seabed lease from the Port Department under the Port Authorities (Amendment) Act 2025. The seabed is Crown property; policy is lease-only, never sale. Applications need site plans, financials, and supporting permits. Port Department approval letters are also a listed prerequisite for MOW building permits on docks and marine structures — the agencies cross-reference each other, so sequence the applications deliberately."
+    },
+    {
+      "heading": "The commercial chain",
+      "body": "Business Licence (Department of Inland Revenue) for the development entities AND every subcontractor — verify each sub holds one, because unlicensed subs are a compliance exposure to you. VAT registration. NIB registration as an employer. Work permits via the Department of Immigration for any non-Bahamian labor or specialists: the labour-market test requires a certified vacancy showing no Bahamian is available; long-term permits renew annually; under-90-day short-term permits cover visiting specialists like dredge crews. Processing runs 4–8+ weeks per foreign specialist. If foreign investment structure is involved, Bahamas Investment Authority / NEC approval and International Persons Landholding Act compliance sit upstream of everything. Finally, concessions: large developments negotiate duty concessions via a Heads of Agreement with government — an owner-level negotiation, but the CM must know exactly what is and isn't covered, because it changes every purchase order."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "m02-q1",
+      "type": "multipleChoice",
+      "teach": "The Certificate of Environmental Clearance (CEC) must be issued before 'commencement' of the project — and the definition of commencement is broader than most developers assume.",
+      "prompt": "The EIA is in public consultation and going well. Your earthworks contractor has idle machines and offers a discount to start land clearing now. Legal?",
+      "choices": [
+        {
+          "text": "No — clearing is commencement, and commencement before the CEC is prohibited",
+          "correct": true,
+          "why": "Correct. Land clearing is physical commencement. Starting before the CEC risks stop-work, enforcement, and poisoning your relationship with DEPP for the whole project."
+        },
+        {
+          "text": "Yes, as long as you stay 100 ft from the shoreline",
+          "why": "There is no shoreline-buffer exemption — the CEC gates ALL physical work, upland included."
+        },
+        {
+          "text": "Yes, clearing isn't construction",
+          "why": "Clearing IS commencement under the environmental framework. This is exactly the trap the discount is inviting you into."
+        },
+        {
+          "text": "Yes, if the contractor accepts the risk in writing",
+          "why": "The CEC obligation runs to the project and its owner. A contractor's risk acceptance letter does not transfer regulatory exposure — DEPP stops YOUR project."
+        }
+      ],
+      "explanation": "Nothing physical happens before the CEC — this is the sim's hardest gate. A discount on clearing is trivial against a DEPP stop-work order, a damaged regulator relationship, and possible conditions added to your CEC. The correct use of the waiting period is paper: permits, procurement, agreements."
+    },
+    {
+      "id": "m02-q2",
+      "type": "multipleChoice",
+      "teach": "The Occupancy Certificate (OC) is issued per building after final inspections pass.",
+      "prompt": "Why is OC throughput described as 'a revenue gate, not a paperwork detail'?",
+      "choices": [
+        {
+          "text": "Because unit closings — the project's revenue — cannot happen until each building has its OC",
+          "correct": true,
+          "why": "Correct. A finished house with no OC is inventory you cannot convert to cash. The OC-to-closing lag runs 2–6 weeks even when everything goes right."
+        },
+        {
+          "text": "Because the OC triggers the final construction draw",
+          "why": "Draws track construction progress; the OC's real teeth are on the sales side — no OC, no closing, no revenue."
+        },
+        {
+          "text": "Because insurance rates drop once the OC issues",
+          "why": "Occupied-building insurance does differ, but the reason the OC is a REVENUE gate is that closings legally require it."
+        },
+        {
+          "text": "Because the HOA can't form without OCs",
+          "why": "The condo legal structure is established in step with construction — the OC's direct bite is that buyers cannot close without it."
+        }
+      ],
+      "explanation": "The whole production machine — inspections passed in sequence, punch complete, OC issued, closing scheduled — is the pipeline that turns construction spend back into cash. A CM who treats final inspections casually is choking the project's revenue at its last step."
+    },
+    {
+      "id": "m02-q3",
+      "type": "sequencing",
+      "teach": "The environmental chain has a strict internal order, and it gates all physical work.",
+      "prompt": "Put the environmental approval chain in order:",
+      "items": [
+        "Preliminary review with DEPP",
+        "Full EIA prepared by a DEPP-pre-approved consultant",
+        "Published notice and mandatory public consultation",
+        "Environmental Management Plan (EMP) finalized",
+        "Certificate of Environmental Clearance (CEC) issued",
+        "Physical commencement — clearing can begin"
+      ],
+      "explanation": "Preliminary review scopes the assessment; the EIA must come from a consultant DEPP has pre-approved; the public consultation is mandatory, not optional; the EMP converts the EIA's mitigation into enforceable conditions; and only the CEC unlocks physical work. Budget 6–14 months for the chain on a marine-inclusive project."
+    },
+    {
+      "id": "m02-q4",
+      "type": "multipleChoice",
+      "teach": "The seabed around the Bahamas is Crown property, and the Port Authorities (Amendment) Act 2025 formalized how private structures occupy it.",
+      "prompt": "Which of these project elements requires a seabed lease?",
+      "choices": [
+        {
+          "text": "The ocean groins holding the converted beach",
+          "correct": true,
+          "why": "Correct — groins sit on Crown seabed seaward of the high-water mark, so they need a formal lease (lease-only policy; the seabed is never sold)."
+        },
+        {
+          "text": "The canal bulkheads inside the property",
+          "why": "Canals cut into your own uplands are on your land, not Crown seabed — though they still fall under the EIA/CEC."
+        },
+        {
+          "text": "The beach club building",
+          "why": "The beach club is an upland building — MOW permit and coastal design tier, but no seabed lease."
+        },
+        {
+          "text": "The package wastewater treatment plant",
+          "why": "The WWTP is upland infrastructure — Environmental Health and MOW territory, not Port Department."
+        }
+      ],
+      "explanation": "Anything on the seabed — groins, marina structures seaward of the high-water mark, jetties, moorings — requires a Port Department seabed lease. And note the cross-reference trap: Port Department approval letters are a PREREQUISITE for MOW building permits on marine structures, so sequence the applications deliberately."
+    },
+    {
+      "id": "m02-q5",
+      "type": "multipleChoice",
+      "teach": "MOW building permit processing is nominally 6–8 weeks per permit after COMPLETE submission — and a query restarts the clock.",
+      "prompt": "MOW queries a batch of 20 house permits over a drainage detail. What is the real cost of the resubmittal loop?",
+      "choices": [
+        {
+          "text": "Roughly 6 weeks of delay to those 20 vertical starts, which ripples into the draw schedule and every downstream trade's takt",
+          "correct": true,
+          "why": "Correct — a query doesn't just delay paper; it delays 20 foundations, which delays 20 of everything after, and the lender's draw schedule assumed those starts."
+        },
+        {
+          "text": "A resubmission fee only",
+          "why": "The fee is trivial. The six-week loop on 20 houses is the real cost — measured in general conditions burn ($150–400K/month across the program) and delayed revenue."
+        },
+        {
+          "text": "Nothing, because construction can start while the query is resolved",
+          "why": "No permit, no start. That's the entire meaning of a gating system."
+        },
+        {
+          "text": "Only the first house is delayed; the rest proceed",
+          "why": "The query hit the whole batch — this is why batching strategy matters and why a drawing coordination review BEFORE submission pays for itself."
+        }
+      ],
+      "explanation": "For 302 homes you run a permit pipeline — batched by phase, tracked like a production schedule. A coordination review before each submission (civil vs architectural vs structural conflicts) is cheap insurance against the 6-week resubmittal loop, which at program scale costs months of general conditions and delayed closings."
+    },
+    {
+      "id": "m02-q6",
+      "type": "subOrManage",
+      "teach": "Some regulatory work you hire out to specialists; some you must own personally because it IS the developer's job.",
+      "prompt": "For each regulatory workstream, decide: subcontract to a specialist, or direct-manage it yourself?",
+      "items": [
+        {
+          "scope": "Preparing the EIA document itself",
+          "answer": "subcontract",
+          "why": "The EIA must legally come from a DEPP-pre-approved environmental consultant — you couldn't self-perform it even if you wanted to."
+        },
+        {
+          "scope": "The permit pipeline tracker (batches, submission dates, query status per phase)",
+          "answer": "direct",
+          "why": "This is production management of approvals — it drives your start releases and draw schedule, and no consultant feels the schedule pain like you do."
+        },
+        {
+          "scope": "Verifying every subcontractor holds a current Business Licence",
+          "answer": "direct",
+          "why": "Unlicensed subs are a compliance exposure to YOU. It's a checklist item in your sub-onboarding process, not something to outsource."
+        },
+        {
+          "scope": "Structural drawings for permit submission",
+          "answer": "subcontract",
+          "why": "Drawings must be signed by a Bahamas-registered PE — this is your structural engineer's deliverable."
+        },
+        {
+          "scope": "The relationship with DEPP through construction",
+          "answer": "direct",
+          "why": "The regulator relationship is a developer asset. Consultants attend meetings, but DEPP hears bad news from YOU first — self-reporting through an intermediary reads as hiding."
+        }
+      ],
+      "explanation": "Pattern: technical deliverables requiring registration or specialty (EIA, stamped drawings) are subcontracted; anything that controls schedule, compliance exposure, or a regulator relationship stays on your desk with systems behind it."
+    }
+  ],
+  "mathVariables": [
+    {
+      "id": "m02_permit_weeks",
+      "label": "Permit processing per batch",
+      "unit": "weeks",
+      "min": 6,
+      "max": 12,
+      "note": "After complete submission; queries restart the loop"
+    },
+    {
+      "id": "m02_env_bond_pct",
+      "label": "Environmental performance bond",
+      "unit": "%",
+      "min": 0,
+      "max": 5,
+      "note": "DEPP may require up to 5% of project value"
+    },
+    {
+      "id": "m02_eia_months",
+      "label": "EIA production + review + consultation",
+      "unit": "months",
+      "min": 6,
+      "max": 14,
+      "note": "Marine-inclusive project"
+    },
+    {
+      "id": "m02_oc_closing_weeks",
+      "label": "OC-to-closing lag",
+      "unit": "weeks",
+      "min": 2,
+      "max": 6
+    },
+    {
+      "id": "m02_project_value_m",
+      "label": "Project value for bonding math",
+      "unit": "$M",
+      "min": 400,
+      "max": 600,
+      "note": "Solara is ~3x Palm Cay's ~$200M"
+    }
+  ],
+  "mathProblems": [
+    {
+      "id": "m02-p1",
+      "generator": "percentOf",
+      "difficulty": 1,
+      "title": "Environmental performance bond",
+      "context": "DEPP can require an environmental performance bond of up to 5% of project value — cash or bonding capacity you must arrange before commencement.",
+      "params": {
+        "baseLabel": "project value",
+        "base": "m02_project_value_m",
+        "baseUnit": "$M",
+        "pct": "m02_env_bond_pct",
+        "answerLabel": "bond amount",
+        "answerUnit": "$M"
+      }
+    },
+    {
+      "id": "m02-p2",
+      "generator": "unitRate",
+      "difficulty": 2,
+      "title": "The cost of a resubmittal loop",
+      "context": "A permit query restarts the processing clock. While the batch waits, general conditions (site staff, security, temp facilities, insurance) keep burning — that's the price of an incomplete submission.",
+      "params": {
+        "qtyLabel": "resubmittal delay",
+        "qty": "m02_permit_weeks",
+        "qtyUnit": "weeks",
+        "rateLabel": "general conditions burn",
+        "rate": { "min": 37500, "max": 100000 },
+        "rateUnit": "$/week",
+        "answerLabel": "carrying cost of the delay",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "m02-d1",
+      "title": "The cheap barge in July",
+      "scenario": "Your groin contractor calls: their barge spread finishes another Bahamas job in late June and they'll knock 15% off mobilization if you take it straight to your site for a July–August groin campaign. The seabed lease is in hand. The EMP has a seasonal marine work window clause you haven't re-read lately.",
+      "options": [
+        {
+          "id": "decline-window",
+          "label": "Decline — hold marine works for the November–May calm window and re-check the EMP's seasonal restrictions",
+          "outcome": "You pay full mobilization later, but the groins are built in workable seas, inside the EMP window, with no named-storm exposure on a half-built rock structure. The 15% 'saving' would have been consumed by the first weather standby week.",
+          "optimal": true
+        },
+        {
+          "id": "take-it-priced",
+          "label": "Take it, but only after pricing the risk: confirm the EMP allows summer marine work, cap weather standby in the contract, and check named-storm insurance on the spread",
+          "outcome": "Diligence comes back mixed: the EMP restricts turbidity-generating work in summer months, and the insurer loads the premium for peak-season marine exposure. Priced honestly, the discount disappears — you decline anyway, a week later.",
+          "acceptable": true
+        },
+        {
+          "id": "grab-it",
+          "label": "Grab the discount — barges are scarce and 15% is 15%",
+          "outcome": "August: a tropical storm forecast triggers demobilization mid-campaign. Half-placed groin stone takes wave damage; the contractor invoices standby and remobilization under a force majeure clause you never tightened; DEPP queries turbidity exceedances from storm-agitated, half-finished works. The 15% is gone several times over.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Marine works are planned November–May for a reason: peak hurricane season plus probable EMP seasonal restrictions make summer marine work a risk stack, not a bargain. Cheap mobilization into the wrong window is the classic false economy — if you must consider it, price every layer of the risk explicitly, and expect that pricing to kill the deal."
+    },
+    {
+      "id": "m02-d2",
+      "title": "Clearing during consultation",
+      "scenario": "The EIA public consultation wraps next month and your environmental consultant says approval looks likely. The earthworks sub can mobilize now at a discount. Sales wants site photos showing progress. Everyone is telling you to start clearing.",
+      "options": [
+        {
+          "id": "hold",
+          "label": "Hold all physical work until the CEC is issued; use the time for permit batching, procurement, and utility agreements",
+          "outcome": "Frustrating month, perfectly used: first house-permit batch submitted, long-lead register opened, WSC and BPL agreements progressed. When the CEC lands, you mobilize into a project that's paper-ready.",
+          "optimal": true
+        },
+        {
+          "id": "clear-anyway",
+          "label": "Start clearing — approval is 'likely' and the discount is real",
+          "outcome": "DEPP issues a stop-work order: commencement before CEC is prohibited, and clearing is commencement. The consultation record now includes your violation; conditions get added to the CEC; your regulator relationship starts in a hole it never fully climbs out of.",
+          "acceptable": false
+        },
+        {
+          "id": "clear-a-little",
+          "label": "Clear just the access corridor 'for survey purposes'",
+          "outcome": "A neighbor photographs the machines and submits it to the public consultation. Legally it's still commencement; politically it's worse — you've handed opponents evidence that you treat conditions as suggestions.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "The CEC gates everything, and 'likely approval' is not approval. The pre-CEC period is when good developers win the project on paper: permits batched, long-lead items released, agency agreements signed. The discipline also has a face: this site has established communities on both flanks watching everything."
+    }
+  ]
+}

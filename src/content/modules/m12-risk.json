@@ -1,0 +1,13 @@
+{
+  "id": "m12-risk",
+  "order": 12,
+  "title": "Risk, Quality, and Safety Systems",
+  "short": "Risk & QA",
+  "status": "placeholder",
+  "summary": "TODO: research content for this module is being wired in. The app runs end-to-end with this placeholder; drop real sections, quiz, math variables, and decision points into this file — no code changes needed.",
+  "sections": [],
+  "quiz": [],
+  "mathVariables": [],
+  "mathProblems": [],
+  "decisionPoints": []
+}
