@@ -35,8 +35,16 @@ export interface SimState {
   costVariance: number;
   /** 0..100, starts at 70 — "how well built is what you built" */
   quality: number;
-  /** open risk exposure, starts at 0 — unresolved liabilities you carry */
+  /** open risk exposure — unresolved liabilities you carry (seeds from
+   * the previous phase's final risk: shortcuts ride forward) */
   risk: number;
+  /** risk inherited from earlier phases, for the debrief narrative */
+  carriedRisk: number;
+  /** persistent decision flags — inherited from earlier phases' runs,
+   * extended by choices made in this one */
+  flags: string[];
+  /** flags inherited (subset of flags), for narrative */
+  inheritedFlags: string[];
   /** curveballs armed (probability boosted) by choices */
   armed: string[];
   /** curveballs defused (removed from pool) by choices */
@@ -50,14 +58,26 @@ export interface SimState {
   decisions: { stepId: string; optionId: string }[];
 }
 
-export function initialSimState(phase: SimPhase): SimState {
+export interface SimCarry {
+  /** flags earned across earlier phases' most recent completed runs */
+  flags?: string[];
+  /** open risk left over from the previous phase's run */
+  risk?: number;
+}
+
+export function initialSimState(phase: SimPhase, carry?: SimCarry): SimState {
+  const flags = [...new Set(carry?.flags ?? [])];
+  const risk = Math.max(0, carry?.risk ?? 0);
   return {
     phaseId: phase.id,
     stepIndex: 0,
     slipDays: 0,
     costVariance: 0,
     quality: 70,
-    risk: 0,
+    risk,
+    carriedRisk: risk,
+    flags,
+    inheritedFlags: flags,
     armed: [],
     defused: [],
     fired: [],
@@ -66,6 +86,15 @@ export function initialSimState(phase: SimPhase): SimState {
     finished: false,
     decisions: [],
   };
+}
+
+/** options visible given the flags accumulated across phases */
+export function availableOptions(options: SimOption[], s: SimState): SimOption[] {
+  return options.filter((o) => {
+    if (o.requiresFlag && !s.flags.includes(o.requiresFlag)) return false;
+    if (o.hiddenIfFlag && s.flags.includes(o.hiddenIfFlag)) return false;
+    return true;
+  });
 }
 
 function applyEffects(s: SimState, e: SimEffects): SimState {
@@ -109,6 +138,7 @@ export function chooseOption(
     ...next,
     armed: [...new Set([...next.armed, ...(option.arms ?? [])])],
     defused: [...new Set([...next.defused, ...(option.defuses ?? [])])],
+    flags: [...new Set([...next.flags, ...(option.flags ?? [])])],
     decisions: [...next.decisions, { stepId: step.id, optionId: option.id }],
     log: [
       ...next.log,
@@ -127,6 +157,29 @@ export function chooseOption(
   return advanceIfClear(phase, next);
 }
 
+function isArmed(c: Curveball, s: SimState): boolean {
+  if (s.armed.includes(c.id)) return true;
+  return (c.armedByFlags ?? []).some((f) => s.flags.includes(f));
+}
+
+function isDefused(c: Curveball, s: SimState): boolean {
+  if (s.defused.includes(c.id)) return true;
+  return (c.defusedByFlags ?? []).some((f) => s.flags.includes(f));
+}
+
+/** flag-conditional consequences: how an old decision changes this event */
+function applyFlagModifiers(s: SimState, c: Curveball): { state: SimState; notes: string[] } {
+  let state = s;
+  const notes: string[] = [];
+  for (const m of c.flagModifiers ?? []) {
+    if (state.flags.includes(m.flag)) {
+      state = applyEffects(state, m.extraEffects);
+      notes.push(m.note);
+    }
+  }
+  return { state, notes };
+}
+
 function rollCurveball(
   phase: SimPhase,
   s: SimState,
@@ -134,15 +187,13 @@ function rollCurveball(
   frequency: CurveballFrequency
 ): SimState {
   const mult = FREQUENCY_MULTIPLIER[frequency];
-  const pool = phase.curveballs.filter(
-    (c) => !s.fired.includes(c.id) && !s.defused.includes(c.id)
-  );
+  const pool = phase.curveballs.filter((c) => !s.fired.includes(c.id) && !isDefused(c, s));
   // spread event pressure across steps: roll each candidate independently,
   // fire at most one per step (the highest roller)
   let firing: Curveball | null = null;
   let bestMargin = -Infinity;
   for (const c of pool) {
-    const armedBoost = s.armed.includes(c.id) ? Math.max(c.chance, 0.85) : c.chance;
+    const armedBoost = isArmed(c, s) ? Math.max(c.chance, 0.85) : c.chance;
     // per-step chance: pool chance is authored per-run; divide by step count
     const perStep = clamp((armedBoost * mult) / Math.max(1, phase.steps.length - 1), 0, 0.95);
     const roll = rng();
@@ -155,19 +206,35 @@ function rollCurveball(
   if (!firing) return s;
 
   const fired = [...s.fired, firing.id];
+  // old decisions change what this event costs — apply before any choice
+  const { state: modified, notes } = applyFlagModifiers({ ...s, fired }, firing);
+  const callbackNote = notes.length ? ` ${notes.join(' ')}` : '';
+
   if (firing.choices?.length) {
-    return { ...s, fired, pendingCurveball: firing.id };
+    const withNote = notes.length
+      ? {
+          ...modified,
+          log: [
+            ...modified.log,
+            {
+              kind: 'curveball' as const,
+              title: `${firing.title} — an old decision surfaces`,
+              detail: notes.join(' '),
+            },
+          ],
+        }
+      : modified;
+    return { ...withNote, pendingCurveball: firing.id };
   }
-  const hit = applyEffects(s, firing.effects);
+  const hit = applyEffects(modified, firing.effects);
   return {
     ...hit,
-    fired,
     log: [
       ...hit.log,
       {
         kind: 'curveball',
         title: firing.title,
-        detail: `${firing.description} ${firing.lesson}`,
+        detail: `${firing.description}${callbackNote} ${firing.lesson}`,
         effects: firing.effects,
       },
     ],
@@ -182,6 +249,7 @@ export function resolveCurveball(phase: SimPhase, s: SimState, option: SimOption
   let next = applyEffects(s, option.effects);
   next = {
     ...next,
+    flags: [...new Set([...next.flags, ...(option.flags ?? [])])],
     pendingCurveball: null,
     log: [
       ...next.log,
@@ -254,9 +322,14 @@ export function debrief(phase: SimPhase, s: SimState): SimDebrief {
   else
     notes.push(`Cost: ${money(s.costVariance)} of variance blew through the ${money(contingency)} contingency. Ask which decisions traded a visible cost now for an invisible one later.`);
   notes.push(`Quality ended at ${s.quality}/100 — quality only moves when you pay for systems (testing labs, geotech, rehearsals) before you need them.`);
+  if (s.carriedRisk > 0)
+    notes.push(`You entered this phase carrying ${s.carriedRisk} points of risk from earlier phases — the sim remembers, and so does a real project.`);
   if (s.risk > 0)
     notes.push(`You finished carrying ${s.risk} points of open risk exposure — liabilities that didn't bite THIS phase but ride into the next one.`);
   else notes.push('You finished with no open risk exposure — nothing armed and left hanging.');
+  const newFlags = s.flags.filter((f) => !s.inheritedFlags.includes(f));
+  if (newFlags.length > 0)
+    notes.push(`${newFlags.length} decision${newFlags.length === 1 ? '' : 's'} from this phase will follow you into later phases — contract clauses, spec choices, and shortcuts all have long fuses here.`);
 
   const headline =
     grade === 'A'

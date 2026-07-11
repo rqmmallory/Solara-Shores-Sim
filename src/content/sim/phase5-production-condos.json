@@ -1,0 +1,204 @@
+{
+  "id": "phase5-production-condos",
+  "order": 5,
+  "title": "Phase 5 — Production Waves & the Condo Program",
+  "status": "ready",
+  "intro": "The machine scales: production waves 2–3 (60–80 houses each) run while three to four condo frames climb concurrently. Concrete volume becomes industrial, formwork cycles set the pace, and the frame schedule will lean on your shoring discipline every single week. The decisions here are about capacity, systems, and whether cylinder data or the calendar releases the shores. Budget $95M, plan 400 working days.",
+  "startBudget": 95000000,
+  "plannedDays": 400,
+  "mapAreas": ["Production waves 2–3 (140 houses)", "Condo buildings 1–4", "Meter banks & risers", "Second finished streetscape"],
+  "steps": [
+    {
+      "id": "batch-plant",
+      "title": "On-site batch plant or ready-mix commitments?",
+      "brief": "Twelve condo buildings plus production concrete puts your demand well past the 15–25,000 cy threshold where an on-site batch plant starts to pay. Setup runs $400K–1.2M and moves mix QC responsibility onto YOU; ready-mix keeps QC at the supplier but puts your pour schedule in Nassau traffic and someone else's plant queue.",
+      "options": [
+        {
+          "id": "onsite-plant",
+          "label": "On-site batch plant with your own QC tech, moisture-corrected aggregates, and the testing lab running mix verification",
+          "effects": { "days": 15, "cost": 800000, "quality": 5, "risk": -2 },
+          "outcome": "Setup takes weeks and the QC burden is real — and every pour now starts when YOUR schedule says so, at truck-to-form times you control. Across 12 frames and 140 houses, the plant pays for itself in schedule certainty alone.",
+          "optimal": true,
+          "flags": ["batch-plant"],
+          "defuses": ["readymix-breakdown"]
+        },
+        {
+          "id": "readymix-contract",
+          "label": "Negotiate plant-capacity commitments with two ready-mix suppliers",
+          "effects": { "days": 0, "cost": 300000, "quality": 2, "risk": 1 },
+          "outcome": "Dual-sourced supply with committed capacity is a legitimate answer — you pay a commitment premium and keep QC at the supplier. Your exposure is whatever happens to THEIR plants in YOUR pour season.",
+          "acceptable": true
+        },
+        {
+          "id": "spot-market",
+          "label": "Order pours as needed — Nassau has plants, competition keeps prices honest",
+          "effects": { "days": 0, "cost": 0, "quality": -3, "risk": 3 },
+          "outcome": "At your volume you're not a customer, you're a disruption — every big pour scrambles someone's dispatch board. Trucks arrive at 95 minutes in the heat, slumps arrive as lotteries, and your frame cycle inherits everyone else's schedule.",
+          "arms": ["readymix-breakdown"]
+        }
+      ]
+    },
+    {
+      "id": "formwork-system",
+      "title": "Handset plywood or engineered table forms?",
+      "brief": "Twelve near-identical buildings is exactly what table-form systems are made for: higher mobilization, faster cycles, fewer crane picks per floor. Handset plywood is cheaper to bring and slower every single week. Formwork economics are reuse economics — the twelfth building pays for what the first one mobilized.",
+      "options": [
+        {
+          "id": "table-forms",
+          "label": "Engineered table forms, amortized across all 12 buildings",
+          "effects": { "days": 0, "cost": 600000, "quality": 5, "risk": -1 },
+          "outcome": "Floor cycles hold at the fast end (10–14 working days), deck flatness improves (self-leveling underlayment budgets shrink), and the system's engineering includes the shoring/reshoring design — one less improvised thing.",
+          "optimal": true
+        },
+        {
+          "id": "handset",
+          "label": "Handset plywood — the crews know it and mobilization is cheap",
+          "effects": { "days": 0, "cost": 0, "quality": 0, "risk": 1 },
+          "outcome": "Every floor cycle runs 4–6 days longer, times 40+ floors across the program. The 'cheap' mobilization costs a season of general conditions by the eighth building — reuse economics were the entire question.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "elevator-batching",
+      "title": "The elevator program",
+      "brief": "Twelve buildings, 20+ elevator cars, 30–50 week leads, licensed-specialist installation, and an inspector who visits the island on his schedule, not yours. One batched procurement with staged deliveries, or building-by-building orders as each frame starts?",
+      "options": [
+        {
+          "id": "batch-elevators",
+          "label": "One batched order for the program: staged factory slots, committed installer crews, inspection dates block-booked with the authority",
+          "effects": { "days": 0, "cost": 150000, "quality": 4, "risk": -2 },
+          "outcome": "The batch order buys queue priority, volume pricing, and — most valuable — a standing relationship with the inspector's office. Elevators stop being twelve separate emergencies and become a program.",
+          "optimal": true,
+          "flags": ["elevators-batched"],
+          "defuses": ["elevator-backlog"]
+        },
+        {
+          "id": "per-building",
+          "label": "Order per building as each frame tops out",
+          "effects": { "days": 0, "cost": 0, "quality": 0, "risk": 3 },
+          "outcome": "Each order joins the global queue fresh, each install competes for the same two licensed crews on the island, and each inspection books into a backlog. The OC dates — the revenue dates — inherit all of it.",
+          "arms": ["elevator-backlog"]
+        }
+      ]
+    },
+    {
+      "id": "trade-depth",
+      "title": "Second-sourcing the critical trades",
+      "brief": "The frame contractor and your best block subs are performing — and each is a single point of failure across a $95M phase. Qualifying second sources costs money and management attention now; needing one without having one costs a stalled frame.",
+      "options": [
+        {
+          "id": "dual-source",
+          "label": "Qualify and seed a second frame crew and additional block subs now — real scopes, not standby promises",
+          "effects": { "days": 0, "cost": 350000, "quality": 3, "risk": -2 },
+          "outcome": "The second sources cost real scope to keep warm — and no single sub can now hold the takt hostage, commercially or through their own failure. Depth is what lets the quality league table have teeth.",
+          "optimal": true,
+          "flags": ["dual-sourced"]
+        },
+        {
+          "id": "ride-the-best",
+          "label": "Ride the proven subs — splitting scope dilutes your leverage and theirs",
+          "effects": { "days": 0, "cost": 0, "quality": 0, "risk": 3 },
+          "outcome": "Concentration works until it doesn't. Your leverage over a sole-source sub shrinks as their share of your schedule grows — and their balance sheet is now your balance sheet whether you can see it or not.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "reshore-policy",
+      "title": "Who releases the shores?",
+      "brief": "The multi-storey rhythm — pour L3 while L2 is reshored and L1 cures — turns on one rule: shores come out when FIELD-CURED cylinder data (or maturity method) says the concrete reached stripping strength, not when the calendar or the crane schedule says so. The frame contractor wants 'engineering judgment' flexibility. Premature stripping is the classic frame-collapse cause worldwide.",
+      "options": [
+        {
+          "id": "cylinder-rule",
+          "label": "Hard rule in the contract: stripping releases on field-cured cylinder/maturity data at the engineer's thresholds, no exceptions without the EOR's written reshore plan",
+          "effects": { "days": 0, "cost": 50000, "quality": 5, "risk": -2 },
+          "outcome": "The rule costs a few crane-idle days across the program and removes the entire category of 'the schedule wanted the shores out.' The data decides, which means nobody has to.",
+          "optimal": true
+        },
+        {
+          "id": "flexible-judgment",
+          "label": "Allow 'engineering judgment' stripping when cylinders lag but the pour 'looks right'",
+          "effects": { "days": -5, "cost": 0, "quality": -4, "risk": 4 },
+          "outcome": "Concrete strength is invisible — that's what the cylinders are FOR. 'Looks right' is a schedule wish wearing a hard hat, and you've just made it a contractual category.",
+          "arms": ["reshore-pressure"],
+          "flags": ["strip-flexibility"]
+        }
+      ]
+    }
+  ],
+  "curveballs": [
+    {
+      "id": "reshore-pressure",
+      "title": "The shores and the schedule",
+      "description": "Building 3, level 2: 7-day field-cured cylinders read 62% of f'c; the stripping table needs 70%. The crane is booked, the table forms are needed on Building 4, and holding costs roughly $30K a day. The frame super says the pour 'looks fine.'",
+      "chance": 0.45,
+      "effects": { "days": 0, "cost": 0 },
+      "choices": [
+        {
+          "id": "hold-for-data",
+          "label": "Hold 3 days for the next break set; re-sequence the crane to Building 4's columns meanwhile",
+          "effects": { "days": 3, "cost": 90000, "quality": 2, "risk": -1 },
+          "outcome": "The 10-day breaks clear 74% and the shores release on data. The re-sequenced crane recovered most of the delay — holds hurt less when the response is re-planning instead of waiting.",
+          "optimal": true
+        },
+        {
+          "id": "engineer-reshore",
+          "label": "Strip early under the EOR's written reshore plan — engineered risk, on paper",
+          "effects": { "days": 0, "cost": 60000, "quality": 0, "risk": 1 },
+          "outcome": "Legitimate when the ENGINEER designs it: reshores sized for the actual loads, in writing, with their stamp. The cost is the reshore work and a precedent you'll need to manage — 'we did it on Building 3' will be quoted back to you.",
+          "acceptable": true
+        },
+        {
+          "id": "strip-anyway",
+          "label": "Strip on schedule — 62% at 7 days will be fine by the time it matters",
+          "effects": { "days": 0, "cost": 0, "quality": -6, "risk": 4 },
+          "outcome": "The slab holds — this time, probably. You've also just taught every super on the project that cylinder thresholds are opening offers. The habit you built is now the risk you carry, on every remaining pour.",
+          "acceptable": false,
+          "flags": ["overrode-cylinders"]
+        }
+      ],
+      "lesson": "Premature stripping is the classic frame-collapse cause worldwide, and the pressure ALWAYS arrives dressed as a crane schedule. Cylinder data is the arbiter; an engineered reshore plan is the legitimate exception; 'it looks fine' is not on the ladder. (S5)"
+    },
+    {
+      "id": "frame-qc-failure",
+      "title": "The frame bill comes due",
+      "description": "Routine cores from Building 5's level 1 — pulled after a formwork blowout repair — come back below acceptance. The structural engineer's review escalates: this level was stripped early 'on judgment' and the concrete never reached design strength. One level requires demolition and re-pour, under the floors above it.",
+      "chance": 0.1,
+      "effects": { "days": 45, "cost": 2800000, "quality": -10, "risk": 2 },
+      "armedByFlags": ["overrode-cylinders", "strip-flexibility"],
+      "lesson": "This is what the cylinder rule was protecting you from: strength shortfalls discovered AFTER load is applied cost demolition money, not waiting money. The 3-day holds you skipped priced out at $90K each; this event does not. The habit, not the single decision, is what fired."
+    },
+    {
+      "id": "readymix-breakdown",
+      "title": "Plant down in pour season",
+      "description": "Your primary ready-mix supplier's plant goes down for a week — bearings, parts on a boat. Every project on the island scrambles for the remaining capacity at once.",
+      "chance": 0.35,
+      "effects": { "days": 10, "cost": 300000 },
+      "lesson": "Concrete supply is infrastructure you either own, contract firmly, or gamble on. At program volume, supply interruptions aren't procurement noise — they're frame-cycle events that idle crane, forms, and crews simultaneously."
+    },
+    {
+      "id": "elevator-backlog",
+      "title": "Inspector backlog",
+      "description": "The elevator inspection authority's island visits are booked eight weeks out. Buildings 1 and 2 are finished, furnished — and cannot receive OCs without elevator sign-off.",
+      "chance": 0.4,
+      "effects": { "days": 25, "cost": 350000 },
+      "lesson": "The OC gates revenue and the elevator gates the OC — which makes the inspector's calendar a revenue document. Program-level procurement books inspection dates the way it books factory slots: early, in bulk, with a relationship behind them."
+    },
+    {
+      "id": "sub-insolvency",
+      "title": "A sub goes under mid-frame",
+      "description": "One of the structural trade subs stops paying its crews and folds mid-scope — performance bonds are less universal in the Bahamian market, and this one wasn't bonded.",
+      "chance": 0.3,
+      "effects": { "days": 20, "cost": 600000, "risk": 1 },
+      "flagModifiers": [
+        {
+          "flag": "dual-sourced",
+          "extraEffects": { "days": -12, "cost": -350000, "risk": -1 },
+          "note": "Your second-sourcing pays off: the qualified backup crew absorbs the scope within the week, at rates you negotiated when you didn't need them. The insolvency is a bad month instead of a stalled building."
+        }
+      ],
+      "lesson": "Where bonds are scarce, sub failure risk is managed by vetting depth and SOURCING depth. The backup you qualified while things were fine is the difference between re-tendering under duress and a phone call."
+    }
+  ]
+}

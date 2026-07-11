@@ -1,0 +1,246 @@
+{
+  "id": "phase3-vertical-amenity",
+  "order": 3,
+  "title": "Phase 3 — Vertical Wave 1 & Amenity Core",
+  "status": "ready",
+  "intro": "Roads-to-base, fire flow, and power exist — vertical is unlocked. This phase is the production game: the first 60 houses on takt, the clubhouse and pool, and the first condo building as a sales model. The decisions here are about pace, specification, and quality systems — and several of them have fuses measured in years, not weeks. Budget $42M, plan 300 working days.",
+  "startBudget": 42000000,
+  "plannedDays": 300,
+  "mapAreas": ["First 60 houses", "Clubhouse & main pool", "Model condo building", "Sales center & finished streetscape"],
+  "steps": [
+    {
+      "id": "trade-model",
+      "title": "Labor-only or turnkey trades?",
+      "brief": "The production machine needs its contract model: turnkey trade subs (they supply labor and materials) or labor-only subs against your bulk-purchased block, cement, rebar, and trusses in your fenced compound. Your buying power at 302 houses is real; so is the administrative load of running procurement.",
+      "options": [
+        {
+          "id": "labor-only",
+          "label": "Labor-only subs, developer-supplied materials, fenced compound with inventory control",
+          "effects": { "days": 0, "cost": 250000, "quality": 5, "risk": -1 },
+          "outcome": "The compound, the buyer, and the inventory clerk cost real money — and strip out sub-side markup and shrinkage across every house that follows. Your volume pricing on block and cement beats any sub's.",
+          "optimal": true
+        },
+        {
+          "id": "turnkey",
+          "label": "Turnkey trades — let the subs carry materials",
+          "effects": { "days": 0, "cost": 600000, "quality": 0, "risk": 1 },
+          "outcome": "Less administration, and you pay each sub's materials markup plus their shrinkage allowance on every house. Workable — many developers run this way — but at 302 units the margin left on the table compounds.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "start-rate",
+      "title": "The start-release throttle",
+      "brief": "Sales opened strong and the board wants starts doubled from 6 to 12 houses per week. Your block crews' verified capacity supports 7, maybe 8. The island's mason pool is finite — pushing past it means poaching crews at premium wages and diluting supervision.",
+      "options": [
+        {
+          "id": "match-capacity",
+          "label": "Release at verified trade capacity (7/week), grow it deliberately: extend trade partnerships, add a super before his units, open the work-permit pipeline",
+          "effects": { "days": 10, "cost": 100000, "quality": 5, "risk": -2 },
+          "outcome": "Slower than the board wanted, honest to the labor market. The takt holds, first-pass rates hold, and capacity grows a crew at a time instead of collapsing all at once.",
+          "optimal": true
+        },
+        {
+          "id": "double-starts",
+          "label": "Double the starts — sales momentum is worth some strain",
+          "effects": { "days": 0, "cost": 500000, "quality": -6, "risk": 3 },
+          "outcome": "Twelve slabs a week pour beautifully. Then the block stage becomes the bottleneck it always was, poached crews arrive at +30% wages with unknown habits, and your supers now cover 35 houses each. The strain shows up in the inspection reports first.",
+          "arms": ["grout-void", "wage-spike"],
+          "flags": ["overpaced"]
+        },
+        {
+          "id": "split-difference",
+          "label": "Release 9/week and hope the pool stretches",
+          "effects": { "days": 5, "cost": 250000, "quality": -3, "risk": 1 },
+          "outcome": "A modest overreach with modest consequences — some wage drift, some supervision dilution. The honest question is what 2 extra starts a week bought that a quarter's patience wouldn't have.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "hvac-sizing",
+      "title": "HVAC: the tonnage decision",
+      "brief": "The mechanical sub proposes 'generous' AC sizing — a ton per 400 sf, no load calculations, 'nobody complains about too much cooling in the tropics.' Your MEP engineer wants Manual-J-type load calcs and right-sizing (~1 ton per 450–600 sf here). Oversized units are cheaper to spec than to calculate. In the tropics, oversized AC short-cycles: it cools the air fast without dehumidifying — cold, clammy, and eventually moldy.",
+      "options": [
+        {
+          "id": "right-size",
+          "label": "Load calculations per plan type, right-sized equipment, ducts in sealed space, fresh-air strategy that doesn't import humidity",
+          "effects": { "days": 0, "cost": 150000, "quality": 5, "risk": -2 },
+          "outcome": "The engineering costs a little and the equipment costs less than the 'generous' sizing. The houses dehumidify properly — which nobody notices, which is the point. Mold is designed out, not cleaned out.",
+          "optimal": true,
+          "flags": ["right-sized-hvac"]
+        },
+        {
+          "id": "oversize",
+          "label": "Take the sub's generous sizing — cold air sells in the tropics",
+          "effects": { "days": 0, "cost": 200000, "quality": -3, "risk": 3 },
+          "outcome": "Bigger units, bigger price, faster spec. The houses blow cold and short-cycle, humidity stays high behind the chill, and the consequence has a fuse measured in warranty years, not construction weeks.",
+          "flags": ["oversized-hvac"]
+        }
+      ]
+    },
+    {
+      "id": "equipment-spec",
+      "title": "The corrosion tax: coastal-rated or standard?",
+      "brief": "Condensers, panels, and fixtures: standard equipment saves about $180K across the wave versus coastal-rated (coated coils, stainless/NEMA-appropriate enclosures). This is salt-air country — the corrosion tax gets paid either way; the question is when and by whom.",
+      "options": [
+        {
+          "id": "coastal-rated",
+          "label": "Coastal-rated equipment throughout — pay the 15–35% premium now",
+          "effects": { "days": 0, "cost": 180000, "quality": 5, "risk": -1 },
+          "outcome": "The premium is visible in this phase's cost report and invisible forever after — which is what good spec decisions look like. The HOA inherits equipment with a full service life.",
+          "optimal": true
+        },
+        {
+          "id": "standard-equipment",
+          "label": "Standard equipment — $180K is $180K, and warranties cover failures",
+          "effects": { "days": 0, "cost": 0, "quality": -3, "risk": 3 },
+          "outcome": "Warranties cover defects; they don't cover salt air doing exactly what salt air does. Year 5–7, the condenser coils fail in a wave, out of warranty, in occupied homes — and the replacement logistics cost more than the original premium.",
+          "flags": ["standard-condensers"]
+        }
+      ]
+    },
+    {
+      "id": "roof-spec",
+      "title": "Metal or shingle?",
+      "brief": "The shingle package saves $2,400 per house against standing-seam metal — $144K across the wave. Metal carries the better wind rating, the better insurer pricing, and the better resale story. Shingles are what the roofing sub knows best.",
+      "options": [
+        {
+          "id": "metal-roofs",
+          "label": "Standing-seam metal, with strap and sheathing-nailing inspections as hold points",
+          "effects": { "days": 0, "cost": 144000, "quality": 5, "risk": -1 },
+          "outcome": "Higher first cost, lower insurance premiums for every buyer forever, and a roof system that matches the 150-mph design reality. The hold points at strap embedment and edge-zone nailing are where the rating becomes real.",
+          "optimal": true
+        },
+        {
+          "id": "shingle-roofs",
+          "label": "Shingles — the saving is real and shingles meet code",
+          "effects": { "days": 0, "cost": 0, "quality": -3, "risk": 2 },
+          "outcome": "Code-compliant, cheaper, and every buyer's insurance quote is worse for the life of the house. In a named-storm market, the roof covering IS the insurance conversation — and the first storm's shingle losses will be your warranty calls.",
+          "flags": ["shingle-roofs"]
+        }
+      ]
+    },
+    {
+      "id": "grout-qa",
+      "title": "Verifying what's inside the walls",
+      "brief": "Reinforced CMU only works if the reinforced cells are actually grouted solid — a bar standing in a hollow cell is invisible and worthless. Verification: inspection at grouting plus random cell-drilling on completed walls. The block subs call the drilling 'insulting.'",
+      "options": [
+        {
+          "id": "sample-and-drill",
+          "label": "Hold-point inspection at grouting plus random cell-drilling per house, results on the sub league table",
+          "effects": { "days": 0, "cost": 90000, "quality": 8, "risk": -2 },
+          "outcome": "The drilling finds what it finds early, per crew and per date, while remediation is a drill-and-grout visit instead of a structural investigation. The league table does the rest — nothing improves grouting like published first-pass rates.",
+          "optimal": true,
+          "defuses": ["grout-void"]
+        },
+        {
+          "id": "trust-inspection",
+          "label": "Visual inspection at grouting only — drilling finished walls is overkill",
+          "effects": { "days": 0, "cost": 0, "quality": -5, "risk": 3 },
+          "outcome": "Visual inspection sees the top of the cell. What's below the surface — full grout or a void with a bar in it — is now unknowable without drilling, and the hurricane that tests it won't file a report first.",
+          "arms": ["grout-void"],
+          "flags": ["no-grout-sampling"]
+        }
+      ]
+    }
+  ],
+  "curveballs": [
+    {
+      "id": "cylinder-fail",
+      "title": "Low breaks on the clubhouse pour",
+      "description": "7-day cylinder breaks on the clubhouse's suspended slab come in at 55% of f'c — expected is 65–70%. The frame crew is formed up to pour the next section tomorrow morning.",
+      "chance": 0.35,
+      "effects": { "days": 0, "cost": 0 },
+      "choices": [
+        {
+          "id": "hold-investigate",
+          "label": "Hold the next pour; run the investigation ladder — curing/testing chain first, then cores if 28-day breaks confirm",
+          "effects": { "days": 6, "cost": 60000, "quality": 2, "risk": -1 },
+          "outcome": "The ladder finds it: cylinders were left baking on the deck instead of cured properly — the CONCRETE is fine, the TESTING failed. Six days lost proving it, and the QC chain gets fixed. That's the system working.",
+          "optimal": true
+        },
+        {
+          "id": "pour-on",
+          "label": "Pour on — 7-day breaks are only an early warning",
+          "effects": { "days": 0, "cost": 30000, "quality": -5, "risk": 3 },
+          "outcome": "If the 28-day breaks come in low with another level poured on top, the conversation is cores, structural review, and possibly demolition under load. You bet the building on the optimistic reading of a warning light.",
+          "acceptable": false
+        }
+      ],
+      "lesson": "Low early breaks trigger a LADDER, not a panic: check curing and testing chain first (the most common culprit), then cores from the structure, then engineering evaluation. Removal is the last rung — but pouring past a warning skips the ladder entirely. (S2)"
+    },
+    {
+      "id": "grout-void",
+      "title": "Voids in the grouted cells",
+      "description": "A random drill of 20 grouted cells across the wave finds 3 voided — bars standing in hollow cells, in the walls that hold the roofs on.",
+      "chance": 0.3,
+      "effects": { "days": 0, "cost": 0 },
+      "choices": [
+        {
+          "id": "statistical-response",
+          "label": "Expand the sampling, map affected houses by crew and date, drill-and-grout remediate, put the responsible crew on 100% inspection",
+          "effects": { "days": 8, "cost": 160000, "quality": 3, "risk": -1 },
+          "outcome": "The mapping shows one crew, six weeks, eleven houses — bounded and fixed. The crew works under full inspection until their first-pass rate earns back sampling. This is what a statistical quality system does when it catches something.",
+          "optimal": true
+        },
+        {
+          "id": "fix-three",
+          "label": "Grout the three found voids and move on",
+          "effects": { "days": 1, "cost": 15000, "quality": -6, "risk": 4 },
+          "outcome": "A 15% defect rate in the SAMPLE means the walls you didn't drill have voids too — fixing only what you happened to find is treating the sample as the population. The rest waits for a hurricane to run the real test.",
+          "acceptable": false
+        }
+      ],
+      "lesson": "Sampling exists to ESTIMATE the defect rate, not to enumerate defects. A hit rate that high demands expanding the sample and tracing the cause — crew, date, batch — because quality failures cluster. (S4)"
+    },
+    {
+      "id": "storm-brush",
+      "title": "Tropical storm brush at 60% roofs",
+      "description": "A tropical storm tracks 80 miles north with the wave at 60% roof completion — trusses set, sheathing partial, underlayment staged.",
+      "chance": 0.3,
+      "effects": { "days": 4, "cost": 90000 },
+      "flagModifiers": [
+        {
+          "flag": "no-hurricane-culture",
+          "extraEffects": { "days": 6, "cost": 280000, "quality": -4 },
+          "note": "Your Phase 1 decision to skip preparedness planning surfaces now: no tie-down assignments, no staged-material protocol, crews improvising at 48 hours. Loose sheathing becomes projectiles and the cleanup is yours."
+        }
+      ],
+      "lesson": "Half-built roofs are the most wind-vulnerable state a house passes through. The preparedness plan's whole value is that partial-completion protocols — fasten or strip loose sheathing, secure staged materials, document for insurance — exist BEFORE the cone appears. (S6)"
+    },
+    {
+      "id": "permit-batch-query",
+      "title": "Permit batch queried",
+      "description": "MOW queries the second house-permit batch over drainage details — 20 permits stalled, with slabs scheduled against their approval dates.",
+      "chance": 0.3,
+      "effects": { "days": 0, "cost": 0 },
+      "choices": [
+        {
+          "id": "full-response-again",
+          "label": "Same-week complete response with the civil engineer pulled in",
+          "effects": { "days": 4, "cost": 25000, "quality": 1, "risk": 0 },
+          "outcome": "The response lands inside the review window. The pipeline hiccups instead of stalling — this is why the permit tracker is a production document.",
+          "optimal": true
+        },
+        {
+          "id": "reshuffle-starts",
+          "label": "Respond at normal pace; reshuffle starts to unqueried lots meanwhile",
+          "effects": { "days": 10, "cost": 120000, "quality": -2, "risk": 1 },
+          "outcome": "The reshuffle keeps crews busy and scrambles the takt — trades now hop non-adjacent lots, travel time eats production, and the queried batch still needs the same answer, just later.",
+          "acceptable": true
+        }
+      ],
+      "lesson": "A permit query is a schedule emergency wearing correspondence clothing. Response speed and completeness are the only variables you control — and takt integrity is worth protecting even when lots could technically shuffle."
+    },
+    {
+      "id": "wage-spike",
+      "title": "The resort project starts hiring",
+      "description": "A competing resort development breaks ground across the island and posts mason rates 25% above yours. Two of your block crews give notice in the same week.",
+      "chance": 0.35,
+      "effects": { "days": 12, "cost": 400000 },
+      "lesson": "The island's labor pool is a shared, finite resource — your production plan competes with every other project's. Trade partnerships, prompt payment, and being the developer good crews prefer are cheaper than bidding wars; the work-permit pipeline is the pressure valve, at 4–8 weeks per specialist."
+    }
+  ]
+}

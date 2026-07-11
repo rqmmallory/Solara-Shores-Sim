@@ -11,16 +11,9 @@ import { colors } from './theme';
  * of the master plan (phases not yet built into the app) shows dimmed.
  */
 
-const FUTURE_AREAS = [
-  'First 40–80 houses + amenity core',
-  'Plug breach & entrance channel',
-  'Marina wet works & fuel dock',
-  'Groins & beach conversion',
-  'Estate lots & docks',
-  'Condo buildings 1–12',
-  'Senior living & retail',
-  'HOA turnover & monitoring',
-];
+/** areas beyond the currently built-out sim phases (none — all 7 phases
+ * now define their own mapAreas; kept for future master-plan extensions) */
+const FUTURE_AREAS: string[] = [];
 
 export default function ProjectMap({ records }: { records: SimRecord[] }) {
   const done = new Set(records.map((r) => r.phaseId));

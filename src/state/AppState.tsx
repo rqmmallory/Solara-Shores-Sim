@@ -39,7 +39,15 @@ interface AppStateValue {
   // math
   recordMath: (correct: boolean, absPctError: number, difficulty: number) => void;
   // sim
-  recordSimRun: (phaseId: string, score: number, xp: number) => void;
+  recordSimRun: (
+    phaseId: string,
+    score: number,
+    xp: number,
+    snapshot: { decisions: { stepId: string; optionId: string }[]; flags: string[]; finalRisk: number }
+  ) => void;
+  /** flags + carried risk for starting a given phase, built from earlier
+   * phases' latest completed runs */
+  simCarryFor: (phaseId: string) => { flags: string[]; risk: number };
   setCurveballFrequency: (f: CurveballFrequency) => void;
 }
 
@@ -146,7 +154,12 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   );
 
   const recordSimRun = useCallback(
-    (phaseId: string, score: number, xp: number) => {
+    (
+      phaseId: string,
+      score: number,
+      xp: number,
+      snapshot: { decisions: { stepId: string; optionId: string }[]; flags: string[]; finalRisk: number }
+    ) => {
       mutate((s) => {
         const existing = s.simRecords.find((r) => r.phaseId === phaseId);
         const simRecords = existing
@@ -162,11 +175,32 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
         return {
           ...s,
           simRecords,
+          simRuns: { ...s.simRuns, [phaseId]: { phaseId, score, ...snapshot } },
           moduleStats: { ...s.moduleStats, __sim__: { ...ms, xp: ms.xp + xp } },
         };
       });
     },
     [mutate]
+  );
+
+  const simCarryFor = useCallback(
+    (phaseId: string) => {
+      const target = simPhases.find((p) => p.id === phaseId);
+      const earlier = simPhases.filter(
+        (p) => p.status !== 'placeholder' && target && p.order < target.order
+      );
+      const flags: string[] = [];
+      let risk = 0;
+      for (const p of earlier) {
+        const run = stateRef.current.simRuns[p.id];
+        if (run) {
+          flags.push(...run.flags);
+          risk = run.finalRisk; // the immediately previous run's leftover wins
+        }
+      }
+      return { flags: [...new Set(flags)], risk };
+    },
+    []
   );
 
   const setCurveballFrequency = useCallback(
@@ -197,9 +231,10 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       recordDecisionSeen,
       recordMath,
       recordSimRun,
+      simCarryFor,
       setCurveballFrequency,
     };
-  }, [ready, state, recordQuizResult, recordDecisionSeen, recordMath, recordSimRun, setCurveballFrequency]);
+  }, [ready, state, recordQuizResult, recordDecisionSeen, recordMath, recordSimRun, simCarryFor, setCurveballFrequency]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

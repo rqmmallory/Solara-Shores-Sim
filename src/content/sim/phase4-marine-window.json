@@ -1,0 +1,201 @@
+{
+  "id": "phase4-marine-window",
+  "order": 4,
+  "title": "Phase 4 — Marine Completion Window",
+  "status": "ready",
+  "intro": "November. The calm-season window is open and everything wet must land inside it: plug breach, entrance dredging, marina wet works, fuel commissioning, groins, and beach fill — ideally on ONE marine mobilization. The window is annual: miss it, wait a year. And this is the phase where your earlier contracts start talking — the EMP clause you wrote (or didn't) in Phase 2 decides who pays for the first stoppage. Budget $26M, plan 140 working days.",
+  "startBudget": 26000000,
+  "plannedDays": 140,
+  "mapAreas": ["Plug breach & entrance channel", "Marina wet works & fuel dock", "Ocean groins", "Converted beach"],
+  "steps": [
+    {
+      "id": "window-plan",
+      "title": "One mobilization, with an escape hatch",
+      "brief": "The combined campaign — entrance works, groins, and beach fill on one mobilization — saves roughly $700K. But the beach sand's DEPP sediment sign-off is still pending, 'expected February.' Commit everything and a late sign-off strands the spread on standby; split the campaigns and you pay the second mobilization for certain.",
+      "options": [
+        {
+          "id": "trigger-plan",
+          "label": "Plan the combined campaign with a pre-priced decision trigger: no sand sign-off by March 1 → the spread demobilizes on schedule and the beach becomes next season's priced option",
+          "effects": { "days": 0, "cost": 50000, "quality": 5, "risk": -2 },
+          "outcome": "The $700K prize stays in play without betting the window on a regulator's calendar. The trigger date converts an open-ended gamble into a bounded option — both outcomes priced at contract time, neither a surprise.",
+          "optimal": true
+        },
+        {
+          "id": "commit-all",
+          "label": "Commit the full combined campaign — 'February, probably' is good enough",
+          "effects": { "days": 10, "cost": 450000, "quality": 0, "risk": 3 },
+          "outcome": "Sign-off lands late-April with a supplementary request. The spread burned standby at day rates, the beach missed the window anyway, and the $700K prize became a $450K loss with a one-year beach delay attached.",
+          "acceptable": false
+        },
+        {
+          "id": "split-now",
+          "label": "Split the campaigns — pay the second mobilization, sleep at night",
+          "effects": { "days": 0, "cost": 600000, "quality": 2, "risk": 0 },
+          "outcome": "Certainty, purchased at full price. Legitimate — but a contract trigger would have bounded the same risk for a tenth of the cost. Insurance you didn't price-compare is still a cost overrun.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "sand-source",
+      "title": "The sand decision",
+      "brief": "Your dredge spoil's sandy fraction is slightly finer than the coastal engineer's beach spec; using it saves $1.5M over licensed marine borrow. Fine sand is the sand the sea removes first — the spec exists because grain size IS the engineering on a shore that was bare rock when you found it.",
+      "options": [
+        {
+          "id": "compliant-sand",
+          "label": "Buy compliant sand; use the spoil fraction upland as utility bedding and fill",
+          "effects": { "days": 0, "cost": 800000, "quality": 5, "risk": -1 },
+          "outcome": "The beach gets the grain size the wave climate demands, and the spoil sand still earns its keep upland where the sea can't grade it. The renourishment cycle starts on the engineer's schedule, not ahead of it.",
+          "optimal": true
+        },
+        {
+          "id": "use-spoil",
+          "label": "Use the spoil sand — $1.5M is $1.5M and it's 'slightly' finer",
+          "effects": { "days": 0, "cost": -900000, "quality": -4, "risk": 3 },
+          "outcome": "DEPP accepts the characterization with conditions; the sea doesn't negotiate. The fine fraction goes first, in the first energetic winter — you've pre-paid the next renourishment cycle and called it savings.",
+          "flags": ["fine-sand"]
+        },
+        {
+          "id": "blend",
+          "label": "Blend spoil and compliant sand to stretch the budget",
+          "effects": { "days": 5, "cost": -300000, "quality": -1, "risk": 1 },
+          "outcome": "Blending can work IF the blended gradation actually meets spec — which needs testing, handling, and honesty about what the blend curve says. Done rigorously it's engineering; done hopefully it's dilution.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "armor-stone",
+      "title": "Armor stone: local limestone or imported granite",
+      "brief": "Local limestone armor prices at roughly half of imported granite — and it's soft, degrading under wave attack, with roughly a third of the design life on exposed structures. Every future groin repair is a marine mobilization. The exposure zoning matters: the outer groin heads take the full wave climate; the inner cells are sheltered.",
+      "options": [
+        {
+          "id": "zoned-armor",
+          "label": "Engineer it by exposure zone: granite on exposed heads and trunks, limestone where the design wave genuinely allows",
+          "effects": { "days": 0, "cost": 700000, "quality": 5, "risk": -1 },
+          "outcome": "The lifecycle model drives the stone map: granite where the sea hits hardest, limestone's price advantage where it survives. Repair mobilizations — the multiplier on cheap stone — are designed down to the minimum.",
+          "optimal": true
+        },
+        {
+          "id": "all-limestone",
+          "label": "All local limestone — half price, and it supports the local quarry",
+          "effects": { "days": 0, "cost": 0, "quality": -3, "risk": 3 },
+          "outcome": "The saving is real and so is the physics: soft armor rounds and degrades under wave attack, and a degrading groin starves the beach it holds. The repair barge is now a recurring line item nobody budgeted.",
+          "flags": ["limestone-armor"]
+        },
+        {
+          "id": "all-granite",
+          "label": "All imported granite — never compromise on marine structures",
+          "effects": { "days": 0, "cost": 1400000, "quality": 3, "risk": 0 },
+          "outcome": "Bulletproof and blunt: you paid the exposed-structure premium on sheltered stone that limestone would have served. Blanket rules waste money in both directions — the zoned design was sitting in the engineer's report.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "neighbor-brief",
+      "title": "The neighbors and the groins, again",
+      "brief": "Groin construction is six weeks out. The adjacent HOA fought a developer before and has the MP's number. Marketing still says don't wake them. The coastal engineer's downdrift modeling is solid and the monitoring program is a CEC condition either way.",
+      "options": [
+        {
+          "id": "brief-hoa",
+          "label": "Present at their HOA meeting: downdrift modeling, the monitoring program, a named contact — and a standing seat in the monitoring review",
+          "effects": { "days": 2, "cost": 30000, "quality": 3, "risk": -2 },
+          "outcome": "Their questions get answered on your data before the barge answers them worse. The standing monitoring seat converts your most dangerous critic into a witness of your compliance.",
+          "optimal": true,
+          "flags": ["neighbors-briefed"],
+          "defuses": ["hoa-complaint"]
+        },
+        {
+          "id": "stay-dark",
+          "label": "Stay dark — permits are in hand",
+          "effects": { "days": 0, "cost": 0, "quality": 0, "risk": 3 },
+          "outcome": "The first the neighbors learn of the groins is a barge off their beach. Whatever happens next, it happens with an organized, blindsided community and a sympathetic MP watching.",
+          "arms": ["hoa-complaint"]
+        }
+      ]
+    },
+    {
+      "id": "fuel-commissioning",
+      "title": "Fuel dock commissioning sequence",
+      "brief": "The fuel station — tanks, dispensers, spill containment — needs fire and environmental sign-offs, and the inspectors book out weeks ahead. The marina opening date is marketing's favorite milestone. Commissioning is the kind of 'paperwork' that quietly owns the ribbon-cutting.",
+      "options": [
+        {
+          "id": "book-early",
+          "label": "Book the commissioning authorities now, sequence tank testing and containment certification backward from their dates",
+          "effects": { "days": 0, "cost": 20000, "quality": 3, "risk": -1 },
+          "outcome": "The inspections land in sequence because the sequence was built around them. The fuel dock opens with the marina — the invisible kind of win that is just called 'the plan working.'",
+          "optimal": true
+        },
+        {
+          "id": "commission-later",
+          "label": "Finish construction first, book inspections when it's ready",
+          "effects": { "days": 15, "cost": 80000, "quality": 0, "risk": 1 },
+          "outcome": "'Ready' meets a six-week inspector backlog. The marina opens with a fuel dock wrapped in caution tape — boats at the slips, fuel at the gas station in town, and marketing explaining the difference.",
+          "acceptable": true
+        }
+      ]
+    }
+  ],
+  "curveballs": [
+    {
+      "id": "turbidity-stopwork-2",
+      "title": "Entrance dredging stoppage",
+      "description": "The entrance channel work exceeds the turbidity limit in a spring-tide current. The EMP stop-work condition triggers with the full spread mobilized — the standby meter starts the moment the cutter stops.",
+      "chance": 0.45,
+      "effects": { "days": 6, "cost": 200000 },
+      "flagModifiers": [
+        {
+          "flag": "emp-flowdown",
+          "extraEffects": { "days": -3, "cost": -150000 },
+          "note": "Your Phase 2 flow-down clause pays off now: the EMP conditions are in the dredging contract verbatim with standby allocation defined — the stoppage runs as a procedure, most of the cost sits where the contract put it, and nobody calls a lawyer."
+        },
+        {
+          "flag": "emp-vague",
+          "extraEffects": { "days": 8, "cost": 350000, "risk": 1 },
+          "note": "The vague 'comply with applicable requirements' clause from Phase 2 bites: the contractor claims full standby at day rates, your leverage is a clause that named nothing, and the argument itself burns window days you cannot buy back."
+        }
+      ],
+      "lesson": "This event was decided two phases ago, at contract signing. EMP flow-down with standby allocation is the difference between a $50K procedure and a $550K dispute — the sim remembers your contract because the contractor certainly does."
+    },
+    {
+      "id": "barge-slip",
+      "title": "The spread arrives six weeks late",
+      "description": "Your marine contractor's previous job overruns and the spread reaches you six weeks into the window. Every remaining task now competes for a shorter season.",
+      "chance": 0.35,
+      "effects": { "days": 18, "cost": 250000 },
+      "lesson": "Marine schedules inherit every upstream project's slippage — which is why window-critical campaigns deserve buffer wildly out of proportion to their own duration, and why mobilization dates carry liquidated damages tied to the window, not just the calendar."
+    },
+    {
+      "id": "hard-rock-lens",
+      "title": "Hard-rock lens in the channel",
+      "description": "The entrance dredging hits a lens of dense, older limestone the borings bracketed but didn't center — the dredge unit rate for that zone doubles under the material-class schedule.",
+      "chance": 0.35,
+      "effects": { "days": 8, "cost": 400000 },
+      "flagModifiers": [
+        {
+          "flag": "breached-early",
+          "extraEffects": { "days": 4, "cost": 350000 },
+          "note": "Your early-breach decision compounds here: this lens sat where the dry cut would have handled it at breaker rates behind the plug. Underwater, it's drill-and-blast money under EMP constraints."
+        }
+      ],
+      "lesson": "Unit-rate contracts with material classes make rock surprises measured events instead of claims — the price of the surprise still depends on WHERE you chose to meet the rock: in the dry at $15–40/cy or under the barge at double."
+    },
+    {
+      "id": "hoa-complaint",
+      "title": "Downdrift complaint filed",
+      "description": "The neighboring HOA files a formal complaint with DEPP over groin downdrift fears, copying the MP and the press. DEPP requests your response and supporting modeling within 14 days.",
+      "chance": 0.4,
+      "effects": { "days": 10, "cost": 150000, "risk": 2 },
+      "lesson": "A blindsided stakeholder escalates through the most public channel available — and mid-construction, with a barge on the water, is the most expensive possible time to start a trust conversation. The HOA meeting you didn't take cost more than the two days it needed."
+    },
+    {
+      "id": "december-swell",
+      "title": "North swell event",
+      "description": "A strong cold-front swell — normal for the season — puts the exposed works on hold for a week and tests the half-built groin cells.",
+      "chance": 0.35,
+      "effects": { "days": 6, "cost": 120000 },
+      "lesson": "The calm season is calmER, not calm. Winter cold fronts bring north swell; good marine schedules carry weather days inside the window, and half-built structures get storm-stable configurations at every pause — the sea doesn't wait for substantial completion."
+    }
+  ]
+}

@@ -201,6 +201,17 @@ export interface SimOption {
    */
   arms?: string[];
   defuses?: string[];
+  /**
+   * PERSISTENT decision flags this choice sets. Flags survive the phase:
+   * they are stored with the completed run and seed every later phase,
+   * so a Phase 2 contract clause can decide a Phase 5 dispute. Flags are
+   * namespaced free text, e.g. "emp-flowdown", "oversized-hvac".
+   */
+  flags?: string[];
+  /** only show this option if a flag (from any phase) is set */
+  requiresFlag?: string;
+  /** hide this option if a flag (from any phase) is set */
+  hiddenIfFlag?: string;
 }
 
 export interface Curveball {
@@ -215,4 +226,18 @@ export interface Curveball {
   choices?: SimOption[];
   /** the lesson attached to the event */
   lesson: string;
+  /** flags (from THIS or EARLIER phases) that arm this event */
+  armedByFlags?: string[];
+  /** flags that defuse this event entirely */
+  defusedByFlags?: string[];
+  /**
+   * flag-conditional consequences applied when the event fires — how an
+   * old decision changes what this event costs. `note` is appended to
+   * the narration so the callback teaches explicitly.
+   */
+  flagModifiers?: {
+    flag: string;
+    extraEffects: SimEffects;
+    note: string;
+  }[];
 }

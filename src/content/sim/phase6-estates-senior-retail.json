@@ -1,0 +1,200 @@
+{
+  "id": "phase6-estates-senior-retail",
+  "order": 6,
+  "title": "Phase 6 — Estate Lots, Senior Living & Retail",
+  "status": "ready",
+  "intro": "The premium play: 21 canal-front estate lots release only when the canal can prove itself — water quality stable, bulkheads settled, docks working. This phase runs a different management model: buyer-custom homes on developer lots (design review board, builder qualification), a senior living operator with care standards, and retail shells waiting on tenants. Budget $30M, plan 300 working days.",
+  "startBudget": 30000000,
+  "plannedDays": 300,
+  "mapAreas": ["Estate lots & docks", "Senior living", "Retail buildings", "Sports bar & beach club fit-out"],
+  "steps": [
+    {
+      "id": "release-gate",
+      "title": "When does the premium product release?",
+      "brief": "Sales wants estate lots on the market NOW — the marina is open and the buzz is real. The release rule you wrote says: after canal water quality stabilizes and bulkheads/docks are proven. The monitoring data shows two of six sample stations still trending, not stable.",
+      "options": [
+        {
+          "id": "hold-for-proof",
+          "label": "Hold release until all stations stabilize; use the wait to finish the dock program and stage the launch",
+          "effects": { "days": 20, "cost": 200000, "quality": 5, "risk": -2 },
+          "outcome": "Two more monitoring cycles and the data is unambiguous — the launch happens with water-quality charts IN the sales material. Your best product sells against evidence, at evidence prices.",
+          "optimal": true
+        },
+        {
+          "id": "release-now",
+          "label": "Release now — buyers won't test the water, and momentum is money",
+          "effects": { "days": 0, "cost": 0, "quality": -4, "risk": 4 },
+          "outcome": "The first buyers' attorneys DO test the water — due diligence at this price point reads monitoring reports. Two deals re-trade on the trending stations, and the discount they extract prices the uncertainty you tried to skip.",
+          "arms": ["water-quality-low"],
+          "flags": ["released-early"]
+        },
+        {
+          "id": "release-four",
+          "label": "Soft-release the four lots on the proven canal reach only",
+          "effects": { "days": 5, "cost": 50000, "quality": 1, "risk": 1 },
+          "outcome": "A defensible middle: the proven reach carries the launch narrative while the rest of the canal finishes proving. The risk is a two-tier story if the trending stations misbehave publicly.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "design-review",
+      "title": "The design review board's teeth",
+      "brief": "Estate buyers build custom homes on your canal — through YOUR design review board and builder qualification list. Strict guidelines protect the streetscape (and everyone's resale value) but generate sales friction; loose ones sell lots faster and surrender the master plan one variance at a time.",
+      "options": [
+        {
+          "id": "firm-guidelines",
+          "label": "Firm, published guidelines with an efficient review process: clear standards, 3-week cycle commitment, qualified-builder list with performance criteria",
+          "effects": { "days": 0, "cost": 120000, "quality": 5, "risk": -1 },
+          "outcome": "Buyers grumble and comply — because the process is fast and the standards were published before they bought. The 21st house protects the first house's value, which is the entire point of a master-planned canal.",
+          "optimal": true
+        },
+        {
+          "id": "loose-guidelines",
+          "label": "Light-touch review — these buyers are sophisticated and friction kills deals",
+          "effects": { "days": 0, "cost": 0, "quality": -3, "risk": 3 },
+          "outcome": "The third house is a three-storey wall of glass the neighbors bought a view around. Every variance becomes precedent for the next one, and the canal-scape the renders sold erodes one approval at a time.",
+          "flags": ["loose-design-review"]
+        },
+        {
+          "id": "strict-slow",
+          "label": "Maximum strictness, committee-paced reviews",
+          "effects": { "days": 0, "cost": 80000, "quality": 2, "risk": 1 },
+          "outcome": "The standards hold and the process becomes the complaint: buyers wait months for comments, builders price the friction into bids, and sales velocity pays for the committee's calendar. Strictness needed the 3-week engine, not more meetings.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "senior-operator",
+      "title": "The senior living operator's late changes",
+      "brief": "The senior living operator — signed after design development — wants unit mix changes, wider corridors on two floors, and a commercial kitchen upgrade. The buildings are in construction documents. Module 11's multiplier says CD-stage changes cost 3–5x; the operator's lease makes them a partner you need happy.",
+      "options": [
+        {
+          "id": "price-and-negotiate",
+          "label": "Price the full ripple (design, permit amendment, schedule), then negotiate: operator funds the changes through lease terms, or takes the building as designed with a priced option list",
+          "effects": { "days": 10, "cost": 300000, "quality": 3, "risk": -1 },
+          "outcome": "The QS's ripple pricing turns a demand into a negotiation. The operator funds the corridor changes (their licensing needs them) and drops the kitchen upgrade when it appears on their side of the ledger. Partnership survives; the pro forma survives.",
+          "optimal": true
+        },
+        {
+          "id": "absorb-changes",
+          "label": "Absorb the changes — operator relationships outlast construction budgets",
+          "effects": { "days": 25, "cost": 1200000, "quality": 0, "risk": 1 },
+          "outcome": "The 3–5x multiplier runs its course at your expense, and you've taught a long-term tenant that late demands are free. Their fit-out phase will remember the lesson you taught, not the one you hoped.",
+          "acceptable": false
+        },
+        {
+          "id": "refuse-changes",
+          "label": "Refuse — the design freeze is the freeze, lease or no lease",
+          "effects": { "days": 5, "cost": 100000, "quality": -2, "risk": 2 },
+          "outcome": "Some of those changes serve THEIR care-standard licensing — refusing them risks an operator who can't open, which is worse than any change order. The freeze exists to force full-cost decisions, not to prevent necessary ones.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "retail-spec",
+      "title": "Retail shells: how finished is 'finished'?",
+      "brief": "The ~20,000 sf retail buildings need a spec decision before tenants exist: cold shell (structure and skin, tenant does everything), warm shell (HVAC, basic services, restrooms), or built-out speculative space. Tenant coordination is its own discipline — every fit-out touches your base building.",
+      "options": [
+        {
+          "id": "warm-shell",
+          "label": "Warm shell with a published tenant fit-out manual and landlord review of every tenant drawing set",
+          "effects": { "days": 0, "cost": 400000, "quality": 4, "risk": -1 },
+          "outcome": "Warm shell hits the leasing sweet spot — tenants can visualize and budget — and the fit-out manual keeps twenty future contractors from improvising against your base building systems.",
+          "optimal": true
+        },
+        {
+          "id": "cold-shell",
+          "label": "Cold shell — spend nothing until leases sign",
+          "effects": { "days": 0, "cost": 0, "quality": 0, "risk": 1 },
+          "outcome": "Capital-efficient and slow to lease: small tenants can't price a cold shell, so the space sits while the community asks why the retail is empty. The carrying cost quietly spends what the shell saved.",
+          "acceptable": true
+        },
+        {
+          "id": "spec-buildout",
+          "label": "Build out speculative vanilla-box interiors now",
+          "effects": { "days": 0, "cost": 900000, "quality": 0, "risk": 2 },
+          "outcome": "The first restaurant tenant demolishes your vanilla box on day one — food service needs grease, gas, and hoods no spec interior guessed right. Spec build-out works for offices; community retail is too use-specific to prebuild.",
+          "acceptable": false
+        }
+      ]
+    }
+  ],
+  "curveballs": [
+    {
+      "id": "water-quality-low",
+      "title": "Canal reading below threshold",
+      "description": "A monitoring station in the canal's inner reach reads below the EMP's dissolved-oxygen threshold during a hot, still week — with estate marketing live and DEPP on distribution for the monitoring reports.",
+      "chance": 0.35,
+      "effects": { "days": 0, "cost": 0 },
+      "armedByFlags": ["breached-early", "no-marine-qa", "released-early"],
+      "choices": [
+        {
+          "id": "flushing-retrofit",
+          "label": "Commission the flushing analysis and retrofit circulation pumps for the inner reach; brief DEPP and buyers with the plan in hand",
+          "effects": { "days": 15, "cost": 400000, "quality": 3, "risk": -2 },
+          "outcome": "The retrofit fixes the geometry the readings exposed — this is the mechanical-flushing outcome some Bahamian marina EIAs required from day one. Self-reported with a funded plan, it reads as stewardship; discovered without one, it reads as a defect.",
+          "optimal": true
+        },
+        {
+          "id": "wait-for-weather",
+          "label": "Attribute it to the hot spell and wait for the next reading",
+          "effects": { "days": 10, "cost": 100000, "quality": -3, "risk": 3 },
+          "outcome": "The next hot, still week produces the next low reading — the geometry didn't change because the weather did. Now the trend line is in DEPP's file and the estate buyers' attorneys have two data points instead of one.",
+          "acceptable": false
+        }
+      ],
+      "lesson": "Basin flushing is designed, not hoped for — and inner reaches are where circulation goes to die. A low reading is the canal telling you what the flushing model said quietly; retrofit pumps cost less than a frozen estate-lot program. (M4 callback: this event traces to how the basin was excavated and verified.)"
+    },
+    {
+      "id": "celebrity-dock",
+      "title": "The trophy buyer's trophy dock",
+      "description": "A high-profile buyer offers full ask on the largest estate lot — conditional on a dock configuration well outside the program standard: longer, higher, with a boat lift the bulkhead design never contemplated.",
+      "chance": 0.35,
+      "effects": { "days": 0, "cost": 0 },
+      "choices": [
+        {
+          "id": "engineer-inside-process",
+          "label": "Run it through the process at their expense: coastal engineer reviews the lift loads against the bulkhead, Port Department consulted, variance granted only if the engineering clears",
+          "effects": { "days": 5, "cost": 40000, "quality": 3, "risk": -1 },
+          "outcome": "The engineering trims the proposal to what the bulkhead can carry, the buyer pays for their own exceptionalism, and the variance file shows process, not favoritism. The next buyer's 'but you did it for them' meets a documented answer.",
+          "optimal": true
+        },
+        {
+          "id": "just-approve",
+          "label": "Approve it — full ask on the flagship lot sets everyone's comps",
+          "effects": { "days": 0, "cost": 100000, "quality": -4, "risk": 3 },
+          "outcome": "The lift loads work the bulkhead panel exactly as the engineer would have warned, and every subsequent buyer negotiates from the precedent. The comp you protected was pricing; the comp you surrendered was process.",
+          "acceptable": false
+        },
+        {
+          "id": "flat-refuse",
+          "label": "Refuse flat — the standard is the standard",
+          "effects": { "days": 0, "cost": 250000, "quality": 0, "risk": 0 },
+          "outcome": "The buyer walks to a competitor's waterfront. Defensible — but the engineering-review path could have kept both the sale AND the standard, which is what a process is FOR. Rules that can't process exceptions aren't strong, just brittle.",
+          "acceptable": true
+        }
+      ],
+      "lesson": "Exceptional requests get exceptional PROCESS, not exceptional outcomes: reviewed by the engineer whose structure carries the load, priced to the requester, documented as precedent. What you must never sell is the review itself."
+    },
+    {
+      "id": "care-standards-audit",
+      "title": "Care-standards inspection surprise",
+      "description": "The senior living licensing inspection applies a care-facility interpretation stricter than the design assumed — door hardware, call systems, and one stair configuration get flagged before the operator can license the building.",
+      "chance": 0.3,
+      "effects": { "days": 20, "cost": 450000 },
+      "lesson": "Senior living isn't housing with grab bars — it's a regulated care typology whose standards live partly in inspectors' interpretations. The mitigation is the operator's licensing consultant embedded in design review from schematic, not discovered at inspection. (M7)"
+    },
+    {
+      "id": "dock-defect",
+      "title": "Dock hardware failing early",
+      "description": "Eighteen months in, dock cleats and hinge hardware across the first installations show pitting and seizure — 304 stainless where the marine environment demanded 316.",
+      "chance": 0.25,
+      "effects": { "days": 8, "cost": 300000, "quality": -3 },
+      "armedByFlags": ["no-marine-qa"],
+      "lesson": "304 stainless pits in chloride service; 316 is the marine spec, at a 25–40% premium that is invisible next to replacement labor over water. Submittal review — the register that approves materials BEFORE purchase — is what catches the substitution. (S9)"
+    }
+  ]
+}

@@ -90,6 +90,49 @@ function validateQuestion(q: QuizQuestion, where: string): string[] {
   return errs;
 }
 
+/**
+ * Cross-phase flag graph: every flag a phase REFERENCES (armedByFlags,
+ * defusedByFlags, flagModifiers, requiresFlag, hiddenIfFlag) must be
+ * SETTABLE by some option in a phase with order <= the referencing
+ * phase's order — otherwise the callback can never fire.
+ */
+export function validateFlagGraph(phases: SimPhase[]): string[] {
+  const errs: string[] = [];
+  const setByOrder: { flag: string; order: number }[] = [];
+  for (const p of phases) {
+    const collect = (opts: { flags?: string[] }[] | undefined) => {
+      for (const o of opts ?? []) for (const f of o.flags ?? []) setByOrder.push({ flag: f, order: p.order });
+    };
+    for (const s of p.steps) collect(s.options);
+    for (const c of p.curveballs) collect(c.choices);
+  }
+  const settableBy = (flag: string, order: number) =>
+    setByOrder.some((s) => s.flag === flag && s.order <= order);
+
+  for (const p of phases) {
+    const check = (flag: string, where: string) => {
+      if (!settableBy(flag, p.order))
+        errs.push(`${p.id}/${where}: flag "${flag}" is never set by any phase at order <= ${p.order}`);
+    };
+    for (const c of p.curveballs) {
+      for (const f of c.armedByFlags ?? []) check(f, c.id);
+      for (const f of c.defusedByFlags ?? []) check(f, c.id);
+      for (const m of c.flagModifiers ?? []) check(m.flag, c.id);
+      for (const o of c.choices ?? []) {
+        if (o.requiresFlag) check(o.requiresFlag, `${c.id}/${o.id}`);
+        if (o.hiddenIfFlag) check(o.hiddenIfFlag, `${c.id}/${o.id}`);
+      }
+    }
+    for (const s of p.steps) {
+      for (const o of s.options) {
+        if (o.requiresFlag) check(o.requiresFlag, `${s.id}/${o.id}`);
+        if (o.hiddenIfFlag) check(o.hiddenIfFlag, `${s.id}/${o.id}`);
+      }
+    }
+  }
+  return errs;
+}
+
 export function validateSimPhase(p: SimPhase): string[] {
   const errs: string[] = [];
   const where = p.id ?? '<missing sim phase id>';

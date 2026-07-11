@@ -1,0 +1,181 @@
+{
+  "id": "phase7-handover",
+  "order": 7,
+  "title": "Phase 7 — Completion, Handover & Warranty",
+  "status": "ready",
+  "intro": "The last phase scores the whole game. Final surface asphalt goes down (the finishes-last payoff), the punch-out machine runs, the HOA and condo corporations take over — as-builts, warranties, reserve studies, the marine maintenance regime, DEPP monitoring closeout — and the warranty period begins. This is where every long-fuse decision from Phases 1–6 surfaces: the sim remembers your HVAC sizing, your grout sampling, your sand spec, your reserve honesty. Budget $18M, plan 240 working days.",
+  "startBudget": 18000000,
+  "plannedDays": 240,
+  "mapAreas": ["Final asphalt & streetscapes", "HOA / condo-corp turnover", "Warranty operations", "DEPP monitoring closeout"],
+  "steps": [
+    {
+      "id": "punch-model",
+      "title": "The punch-out machine",
+      "brief": "Hundreds of units need punch completion between substantial completion and closing. Two models: a dedicated punch crew (your payroll, fast, but doing other subs' warranty work at your cost) or trade-recall (each sub fixes their own work — free under warranty, slow, and scheduled at their convenience).",
+      "options": [
+        {
+          "id": "hybrid-punch",
+          "label": "Dedicated punch crew for speed, back-charging documented trade defects against retainage — with the daily log and inspection records as the evidence base",
+          "effects": { "days": 0, "cost": 250000, "quality": 5, "risk": -1 },
+          "outcome": "Closings never wait on a roofer's calendar, and the back-charge machinery (photos, logs, retainage) keeps the cost where it belongs. This is what the retainage was FOR.",
+          "optimal": true
+        },
+        {
+          "id": "trade-recall",
+          "label": "Trade-recall only — warranty work is the subs' obligation, not your payroll",
+          "effects": { "days": 25, "cost": 150000, "quality": -2, "risk": 1 },
+          "outcome": "Contractually pure, operationally slow: every punch list waits on a sub whose crews are on their next job. The OC-to-closing lag stretches, and the buyers' attorneys' letters arrive faster than the trades do.",
+          "acceptable": true
+        }
+      ]
+    },
+    {
+      "id": "reserve-honesty",
+      "title": "The reserve study",
+      "brief": "The HOA/condo reserve studies set what owners pay monthly for future replacements — roofs, pools, the marine maintenance regime, the beach renourishment reserve. Honest numbers make YOUR product's carrying cost look higher in sales material. Understated numbers sell better and detonate as a special assessment in year 3, with your name in the minutes.",
+      "options": [
+        {
+          "id": "honest-reserves",
+          "label": "Fund the studies honestly: real renourishment reserve (3–6% of beach capital), anode replacement cycles, dive surveys, coastal equipment lives — and put the numbers in the sales disclosures",
+          "effects": { "days": 0, "cost": 100000, "quality": 5, "risk": -3 },
+          "outcome": "Fees look honest because they are. The buyers this loses were buying a number that didn't exist; the community this builds can actually maintain what you built — which is what your name is attached to for thirty years.",
+          "optimal": true,
+          "defuses": ["assessment-scandal"]
+        },
+        {
+          "id": "understate",
+          "label": "Adopt the 'market-standard' (thin) reserve schedule — fees sell units",
+          "effects": { "days": 0, "cost": 0, "quality": -4, "risk": 4 },
+          "outcome": "The fees look great in the brochure. The beach's first renourishment, the anodes' first replacement cycle, and the pool equipment's real lifespan are now a year-3 special assessment — and the meeting where it lands will be recorded.",
+          "arms": ["assessment-scandal"],
+          "flags": ["understated-reserve"]
+        }
+      ]
+    },
+    {
+      "id": "handover-package",
+      "title": "The handover completeness score",
+      "brief": "Turnover to the owners' associations: as-builts, warranties, O&M manuals, the marine inspection/maintenance regime (annual visuals, dive surveys, chloride/cover surveys at years 5/10), DEPP monitoring obligations. Complete packages cost assembly effort now; incomplete ones cost the HOA's trust and your warranty exposure later.",
+      "options": [
+        {
+          "id": "complete-handover",
+          "label": "Full package, professionally assembled: indexed as-builts, warranty matrix with claim procedures, the marine regime written INTO the HOA budget, a joint walkthrough with the new boards",
+          "effects": { "days": 10, "cost": 200000, "quality": 5, "risk": -2 },
+          "outcome": "The boards inherit a system, not a box of paper. Every future repair crew finds the as-built; every warranty claim follows the matrix; the marine regime survives the handover because it's funded, not just described.",
+          "optimal": true
+        },
+        {
+          "id": "minimum-handover",
+          "label": "Statutory minimum — they can request documents as needed",
+          "effects": { "days": 0, "cost": 0, "quality": -3, "risk": 3 },
+          "outcome": "Year 2: the HOA's contractor drills into an unmarked force main because the as-built was 'available on request.' The marine maintenance regime nobody transferred becomes year-15 litigation — the KB called this one by name.",
+          "acceptable": false
+        }
+      ]
+    },
+    {
+      "id": "final-lift",
+      "title": "The final asphalt lift",
+      "brief": "The surface course — the sacrificial wear layer you protected through years of construction traffic — goes down last. Batch the whole community into one paving campaign (one mobilization, uniform surface, but every street briefly disrupted) or pave piecemeal as areas finish (buyers happy sooner, multiple mobilizations, visible seams).",
+      "options": [
+        {
+          "id": "batch-paving",
+          "label": "One batched campaign, sequenced with the binder-course repairs done first and residents noticed street-by-street",
+          "effects": { "days": 5, "cost": 100000, "quality": 5, "risk": -1 },
+          "outcome": "One mobilization, one plant run, one uniform surface — the finishes-last rule cashing out. The rutted intersections got milled and repaired under the binder-course inspection BEFORE the surface went over them.",
+          "optimal": true
+        },
+        {
+          "id": "piecemeal-paving",
+          "label": "Pave street-by-street as each area's construction ends",
+          "effects": { "days": 0, "cost": 350000, "quality": -2, "risk": 1 },
+          "outcome": "Every small paving visit carries the mobilization surcharge ('mobilize the paver for one cul-de-sac' is the KB's own cautionary phrase), and the joints between visits become the maintenance plan's first line items.",
+          "acceptable": true
+        }
+      ]
+    }
+  ],
+  "curveballs": [
+    {
+      "id": "mold-cluster",
+      "title": "Mold complaints, one house wave",
+      "description": "Warranty logs show a cluster: humidity and mold complaints concentrated in one production wave. The HVAC contractor's service techs report the units 'cool fine' — fast, in fact.",
+      "chance": 0.1,
+      "effects": { "days": 15, "cost": 900000, "quality": -6, "risk": 2 },
+      "armedByFlags": ["oversized-hvac"],
+      "defusedByFlags": ["right-sized-hvac"],
+      "lesson": "The sim reveals the cause: the Phase 3 'generous sizing' decision. Oversized AC short-cycles — cools fast without dehumidifying — and mold is the tropics' #1 warranty class precisely because it's a DESIGN defect wearing a maintenance costume. The fix now is equipment replacement in occupied homes; the fix then was a load calculation. (S7)"
+    },
+    {
+      "id": "condenser-wave",
+      "title": "The year-6 replacement wave, early",
+      "description": "Coastal salt air has been eating the standard-spec condenser coils since installation — the failure wave starts inside the warranty period instead of politely waiting for year 6.",
+      "chance": 0.1,
+      "effects": { "days": 10, "cost": 700000, "quality": -4 },
+      "armedByFlags": ["standard-condensers"],
+      "lesson": "The corrosion tax from Phase 3, invoiced: standard equipment in salt air is a replacement schedule, not a saving. Coastal-rated equipment's 15–35% premium was the cheap way to pay this bill. (S7)"
+    },
+    {
+      "id": "beach-loss",
+      "title": "Near-miss storm takes the beach's measure",
+      "description": "A named storm passes wide but its swell works the beach for three days. The monitoring survey quantifies the loss — and tests whether the reserve math was real.",
+      "chance": 0.35,
+      "effects": { "days": 5, "cost": 350000 },
+      "flagModifiers": [
+        {
+          "flag": "fine-sand",
+          "extraEffects": { "cost": 650000, "quality": -3 },
+          "note": "The Phase 4 sand decision surfaces: the fine spoil fraction went first and fastest, exactly as the spec predicted. The 'saved' $1.5M is being repaid with interest, one swell event at a time."
+        },
+        {
+          "flag": "understated-reserve",
+          "extraEffects": { "cost": 200000, "risk": 2 },
+          "note": "And the thin reserve can't cover its share — the renourishment becomes a developer contribution or an owner assessment, in public, during the warranty period."
+        }
+      ],
+      "lesson": "A nourished beach losing sand to a storm is the operating model, not a disaster — IF the sand met spec and the reserve was funded. This event prices both of those old decisions at once. (M5, S9)"
+    },
+    {
+      "id": "grout-spall",
+      "title": "The owner's inspector finds the voids",
+      "description": "An estate buyer's building inspector — thorough, as this price point buys — drills a sampled wall during a pre-closing inspection and finds ungrouted reinforced cells. His report circulates in the owners' Facebook group by evening.",
+      "chance": 0.1,
+      "effects": { "days": 25, "cost": 1200000, "quality": -8, "risk": 3 },
+      "armedByFlags": ["no-grout-sampling", "no-independent-qa"],
+      "lesson": "The verification you skipped, someone else eventually performs — at the least convenient moment, in the least controlled forum. The Phase 3 drilling program cost $90K; this discovery costs remediation plus a community-wide confidence crisis plus every future inspection being adversarial. (S4)"
+    },
+    {
+      "id": "assessment-scandal",
+      "title": "The year-3 special assessment, previewed",
+      "description": "The condo board's newly hired property manager re-runs the reserve study and presents the gap to an open owners' meeting: the funded schedule cannot cover the marine regime, the beach cycle, or the equipment lives. Owners do the math on who set the original numbers.",
+      "chance": 0.15,
+      "effects": { "days": 10, "cost": 800000, "quality": -6, "risk": 3 },
+      "armedByFlags": ["understated-reserve"],
+      "lesson": "Palm Cay's clubhouse meeting, recreated with you in the front of the room: owners hold developers publicly accountable for the gap between the brochure's fees and the asset's real carrying cost. Reserve honesty was the cheapest reputation insurance on the project."
+    },
+    {
+      "id": "groin-repair",
+      "title": "Groin armor degrading",
+      "description": "The year-2 dive survey finds the limestone armor on two exposed groin heads rounding and unraveling — design life arriving early, exactly where the wave climate said it would.",
+      "chance": 0.12,
+      "effects": { "days": 12, "cost": 900000, "quality": -3 },
+      "armedByFlags": ["limestone-armor"],
+      "lesson": "Soft stone on exposed structures is a repair schedule with a barge attached — every fix pays a marine mobilization. The Phase 4 zoned-armor option priced granite exactly where this event is now spending it. (M5, S9)"
+    },
+    {
+      "id": "monitoring-closeout",
+      "title": "DEPP closeout audit",
+      "description": "DEPP's closeout review reconciles every EMP condition against the monitoring record before releasing the environmental bond — gaps in the record become conditions on the release.",
+      "chance": 0.3,
+      "effects": { "days": 8, "cost": 120000 },
+      "flagModifiers": [
+        {
+          "flag": "emp-flowdown",
+          "extraEffects": { "days": -4, "cost": -70000 },
+          "note": "The flow-down discipline pays one last time: the contractors' monitoring records exist because their contracts required them verbatim — the audit reconciles clean and the bond releases on schedule."
+        }
+      ],
+      "lesson": "The environmental bond (up to 5% of project value) comes back when the record proves the EMP was lived, not filed. Compliance discipline is an asset with a maturity date — this is it."
+    }
+  ]
+}

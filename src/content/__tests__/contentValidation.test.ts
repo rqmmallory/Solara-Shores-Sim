@@ -1,5 +1,5 @@
 import { modules, simPhases } from '..';
-import { validateModule, validateSimPhase } from '../validate';
+import { validateFlagGraph, validateModule, validateSimPhase } from '../validate';
 
 describe('content validation', () => {
   it('has 14 modules mirroring the research doc', () => {
@@ -18,6 +18,14 @@ describe('content validation', () => {
 
   it.each(simPhases.map((p) => [p.id, p] as const))('sim phase %s passes validation', (_id, p) => {
     expect(validateSimPhase(p)).toEqual([]);
+  });
+
+  it('has 7 sim phases in order', () => {
+    expect(simPhases.map((p) => p.order)).toEqual([1, 2, 3, 4, 5, 6, 7]);
+  });
+
+  it('cross-phase flag graph is closed — every referenced flag is settable earlier', () => {
+    expect(validateFlagGraph(simPhases)).toEqual([]);
   });
 
   it('every non-placeholder question teaches (explanation present)', () => {

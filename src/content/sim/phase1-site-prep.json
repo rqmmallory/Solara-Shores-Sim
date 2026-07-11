@@ -6,7 +6,12 @@
   "intro": "The CEC is weeks away and the clock to September is running. This phase covers construction access from Yamacraw Hill Rd, clearing, survey control, the geotech confirmation program, crusher setup, and the first earthworks package. Your job: get the sequencing, contracting, and risk decisions right. Budget $7.5M, plan 120 working days. Wrong calls won't end the game — they'll cost you days, dollars, and quality, exactly like the real thing.",
   "startBudget": 7500000,
   "plannedDays": 120,
-  "mapAreas": ["Construction access (Yamacraw Hill Rd)", "Cleared & surveyed land", "Crusher & laydown compound", "First drainage wells"],
+  "mapAreas": [
+    "Construction access (Yamacraw Hill Rd)",
+    "Cleared & surveyed land",
+    "Crusher & laydown compound",
+    "First drainage wells"
+  ],
   "steps": [
     {
       "id": "cec-gate",
@@ -16,24 +21,45 @@
         {
           "id": "wait-paper-ready",
           "label": "Hold physical work until the CEC; spend the wait getting paper-ready (permit batches, long-lead orders, WSC/BPL agreements)",
-          "effects": { "days": 0, "cost": 0, "quality": 5, "risk": -2 },
+          "effects": {
+            "days": 0,
+            "cost": 0,
+            "quality": 5,
+            "risk": -2
+          },
           "outcome": "The CEC lands in five weeks. You mobilize into a project with its first permit batch submitted and its long-lead register open. The 'delay' cost you nothing — the calendar was gated anyway.",
           "optimal": true,
-          "defuses": ["depp-stopwork"]
+          "defuses": [
+            "depp-stopwork"
+          ]
         },
         {
           "id": "clear-early",
           "label": "Take the discount and start clearing — approval is 'likely'",
-          "effects": { "days": 15, "cost": 250000, "quality": -5, "risk": 4 },
+          "effects": {
+            "days": 15,
+            "cost": 250000,
+            "quality": -5,
+            "risk": 4
+          },
           "outcome": "A neighbor's photo of your machines reaches DEPP during consultation. Stop-work order, a formal warning on the record, and extra monitoring conditions written into your CEC. The discount is gone and your regulator relationship starts underwater.",
-          "arms": ["depp-stopwork"]
+          "arms": [
+            "depp-stopwork"
+          ]
         },
         {
           "id": "clear-corridor",
           "label": "Clear only the access corridor 'for survey purposes'",
-          "effects": { "days": 8, "cost": 90000, "quality": -3, "risk": 3 },
+          "effects": {
+            "days": 8,
+            "cost": 90000,
+            "quality": -3,
+            "risk": 3
+          },
           "outcome": "Legally it's still commencement. DEPP accepts your explanation with a warning letter — this time — but the adjacent HOAs now attend every consultation session with photos.",
-          "arms": ["depp-stopwork"]
+          "arms": [
+            "depp-stopwork"
+          ]
         }
       ]
     },
@@ -45,24 +71,46 @@
         {
           "id": "full-grid",
           "label": "Run the full boring grid plus void-grouting contingency in the budget",
-          "effects": { "days": 0, "cost": 180000, "quality": 5, "risk": -3 },
+          "effects": {
+            "days": 0,
+            "cost": 180000,
+            "quality": 5,
+            "risk": -3
+          },
           "outcome": "The grid finds two soft zones under the main spine road — priced and grouted as a planned line item, not a claim. Your unit-rate excavation contract now sits on real data.",
           "optimal": true,
-          "defuses": ["karst-void"]
+          "defuses": [
+            "karst-void"
+          ]
         },
         {
           "id": "spot-borings",
           "label": "Borings under buildings only; trust the roads to visual inspection",
-          "effects": { "days": 0, "cost": 80000, "quality": 0, "risk": 1 },
+          "effects": {
+            "days": 0,
+            "cost": 80000,
+            "quality": 0,
+            "risk": 1
+          },
           "outcome": "Half the data for half the money — buildings are covered, but the road corridors are now a bet.",
           "acceptable": true
         },
         {
           "id": "skip-geotech",
           "label": "Skip it — the contractor is right, it's all limestone",
-          "effects": { "days": 0, "cost": 0, "quality": -5, "risk": 4 },
+          "effects": {
+            "days": 0,
+            "cost": 0,
+            "quality": -5,
+            "risk": 4
+          },
           "outcome": "You saved $180K on the one investigation that converts random karst risk into priced line items. The rock will now tell you what it contains on its own schedule.",
-          "arms": ["karst-void"]
+          "arms": [
+            "karst-void"
+          ],
+          "flags": [
+            "no-geotech"
+          ]
         }
       ]
     },
@@ -74,25 +122,49 @@
         {
           "id": "unclassified",
           "label": "Take Bid B — unclassified, all-rock pricing",
-          "effects": { "days": 0, "cost": 350000, "quality": 5, "risk": -3 },
+          "effects": {
+            "days": 0,
+            "cost": 350000,
+            "quality": 5,
+            "risk": -3
+          },
           "outcome": "You pay the honest price up front. When the cut hits dense Lucayan limestone in month two, it's the contractor's rate, not your change order.",
           "optimal": true,
-          "defuses": ["rock-claim"]
+          "defuses": [
+            "rock-claim"
+          ]
         },
         {
           "id": "classified-cheap",
           "label": "Take Bid A — 15% cheaper, deal with rock claims if they come",
-          "effects": { "days": 0, "cost": 0, "quality": 0, "risk": 4 },
+          "effects": {
+            "days": 0,
+            "cost": 0,
+            "quality": 0,
+            "risk": 4
+          },
           "outcome": "The award looks great in this month's cost report. Every cubic yard of 'unexpectedly hard' rock is now a negotiation, and the contractor's estimator knew this island better than their bid price admitted.",
-          "arms": ["rock-claim"]
+          "arms": [
+            "rock-claim"
+          ],
+          "flags": [
+            "classified-excavation"
+          ]
         },
         {
           "id": "classified-capped",
           "label": "Take Bid A but negotiate a firm unit rate for rock over the threshold",
-          "effects": { "days": 5, "cost": 120000, "quality": 3, "risk": -1 },
+          "effects": {
+            "days": 5,
+            "cost": 120000,
+            "quality": 3,
+            "risk": -1
+          },
           "outcome": "A week of negotiation converts the open-ended classification risk into a fixed rock rate. Not as clean as unclassified, but the claim door is mostly closed.",
           "acceptable": true,
-          "defuses": ["rock-claim"]
+          "defuses": [
+            "rock-claim"
+          ]
         }
       ]
     },
@@ -104,21 +176,36 @@
         {
           "id": "crusher-onsite",
           "label": "Mobilize the crusher; run the mass-balance plan yourself and stage spoil by grade",
-          "effects": { "days": 10, "cost": 400000, "quality": 5, "risk": -2 },
+          "effects": {
+            "days": 10,
+            "cost": 400000,
+            "quality": 5,
+            "risk": -2
+          },
           "outcome": "Setup takes two weeks and $400K, then every yard of canal spoil becomes an asset. Across the program the avoided import cost pays the crusher back several times over — this is the cut-to-fill lever the whole project turns on.",
           "optimal": true
         },
         {
           "id": "haul-import",
           "label": "Keep it simple: haul out, import base",
-          "effects": { "days": 0, "cost": 900000, "quality": 0, "risk": 0 },
+          "effects": {
+            "days": 0,
+            "cost": 900000,
+            "quality": 0,
+            "risk": 0
+          },
           "outcome": "Simple, and you pay twice for the same material movement: disposal hauling out, import trucking in. The phase absorbs it; the program-level math will hurt much more.",
           "acceptable": false
         },
         {
           "id": "defer-decision",
           "label": "Defer — decide when the canal cut starts",
-          "effects": { "days": 15, "cost": 300000, "quality": -3, "risk": 1 },
+          "effects": {
+            "days": 15,
+            "cost": 300000,
+            "quality": -3,
+            "risk": 1
+          },
           "outcome": "Phase 1's road base gets imported at full price while you decide, and the crusher pad wasn't graded into the site logistics plan, so it costs more to retrofit later.",
           "acceptable": false
         }
@@ -132,16 +219,29 @@
         {
           "id": "independent-lab",
           "label": "Hire an independent materials testing lab reporting to YOU",
-          "effects": { "days": 0, "cost": 120000, "quality": 8, "risk": -2 },
+          "effects": {
+            "days": 0,
+            "cost": 120000,
+            "quality": 8,
+            "risk": -2
+          },
           "outcome": "The lab's first month catches under-compacted base behind the utility trenches — fixed for the cost of re-rolling, instead of discovered under a failed road in year three.",
           "optimal": true
         },
         {
           "id": "contractor-tests",
           "label": "Let the contractor self-test — cheaper and simpler",
-          "effects": { "days": 0, "cost": 0, "quality": -8, "risk": 3 },
+          "effects": {
+            "days": 0,
+            "cost": 0,
+            "quality": -8,
+            "risk": 3
+          },
           "outcome": "Every density report comes back passing. Every one. The data you'd need to challenge a failure later is being generated by the party who'd pay for it.",
-          "acceptable": false
+          "acceptable": false,
+          "flags": [
+            "no-independent-qa"
+          ]
         }
       ]
     },
@@ -153,24 +253,46 @@
         {
           "id": "plans-rehearsed",
           "label": "Require written plans from every contractor before June 1 and run a tabletop rehearsal",
-          "effects": { "days": 2, "cost": 40000, "quality": 5, "risk": -3 },
+          "effects": {
+            "days": 2,
+            "cost": 40000,
+            "quality": 5,
+            "risk": -3
+          },
           "outcome": "The rehearsal finds real gaps — nobody had assigned who lowers the crane, and the fuel for tie-down equipment was stored off-site. Fixed on paper in an afternoon instead of in a forecast cone at 48 hours.",
           "optimal": true,
-          "defuses": ["storm-warning"]
+          "defuses": [
+            "storm-warning"
+          ]
         },
         {
           "id": "plans-on-file",
           "label": "Collect written plans, skip the rehearsal",
-          "effects": { "days": 0, "cost": 10000, "quality": 2, "risk": -1 },
+          "effects": {
+            "days": 0,
+            "cost": 10000,
+            "quality": 2,
+            "risk": -1
+          },
           "outcome": "Plans exist, untested. Most of the value is there; the gaps will introduce themselves during the first real warning.",
           "acceptable": true
         },
         {
           "id": "wing-it",
           "label": "Deal with it if a storm actually comes",
-          "effects": { "days": 0, "cost": 0, "quality": -4, "risk": 4 },
+          "effects": {
+            "days": 0,
+            "cost": 0,
+            "quality": -4,
+            "risk": 4
+          },
           "outcome": "No triggers, no assignments, no rehearsal. If nothing forms this season you'll never know what this choice cost. The forecast doesn't consult your schedule.",
-          "arms": ["storm-warning"]
+          "arms": [
+            "storm-warning"
+          ],
+          "flags": [
+            "no-hurricane-culture"
+          ]
         }
       ]
     }
@@ -181,7 +303,12 @@
       "title": "DEPP stop-work order",
       "description": "A DEPP inspector arrives with photographs of pre-CEC land disturbance submitted during the public consultation. Work stops while the violation is processed.",
       "chance": 0.05,
-      "effects": { "days": 12, "cost": 150000, "quality": 0, "risk": 1 },
+      "effects": {
+        "days": 12,
+        "cost": 150000,
+        "quality": 0,
+        "risk": 1
+      },
       "lesson": "Commencement before the CEC is prohibited, and clearing is commencement. The cheapest compliance is the kind you never have to argue about."
     },
     {
@@ -189,26 +316,44 @@
       "title": "Karst void under the spine road",
       "description": "The grader drops a wheel into a soft pocket — a void the size of a garage under the main road corridor, exactly the kind of feature a boring grid maps in advance.",
       "chance": 0.35,
-      "effects": { "days": 0, "cost": 0 },
+      "effects": {
+        "days": 0,
+        "cost": 0
+      },
       "choices": [
         {
           "id": "grout-it",
           "label": "Stop, probe the extent, grout the void",
-          "effects": { "days": 8, "cost": 120000, "quality": 0, "risk": -1 },
+          "effects": {
+            "days": 8,
+            "cost": 120000,
+            "quality": 0,
+            "risk": -1
+          },
           "outcome": "Eight days and $120K — painful but final. The road above it will never know.",
           "optimal": true
         },
         {
           "id": "bridge-it",
           "label": "Bridge it with a reinforced slab and keep moving",
-          "effects": { "days": 4, "cost": 80000, "quality": -3, "risk": 1 },
+          "effects": {
+            "days": 4,
+            "cost": 80000,
+            "quality": -3,
+            "risk": 1
+          },
           "outcome": "Faster and cheaper today; the slab edge becomes a differential-settlement crack in the pavement within a few years — a warranty-period argument waiting to happen.",
           "acceptable": true
         },
         {
           "id": "fill-and-go",
           "label": "Dump rock fill in the hole and keep grading",
-          "effects": { "days": 1, "cost": 15000, "quality": -8, "risk": 3 },
+          "effects": {
+            "days": 1,
+            "cost": 15000,
+            "quality": -8,
+            "risk": 3
+          },
           "outcome": "Uncompacted fill in an unprobed void. The road will settle, the utilities in the corridor will shear, and the repair will happen under traffic with buyers watching.",
           "acceptable": false
         }
@@ -220,7 +365,12 @@
       "title": "Rock classification claim",
       "description": "The earthworks contractor files notice: the cut has reached rock 'materially harder than contemplated' and they want a new rate for roughly 40,000 cy. Under a classified-excavation contract, this is the letter you were always going to get.",
       "chance": 0.4,
-      "effects": { "days": 10, "cost": 450000, "quality": 0, "risk": 0 },
+      "effects": {
+        "days": 10,
+        "cost": 450000,
+        "quality": 0,
+        "risk": 0
+      },
       "lesson": "On an island made of rock, always demand unclassified/all-rock pricing or a pre-agreed firm rock rate. The classification clause is the single most disputed line item in Bahamian sitework — decide it at contract signing, not in a claim meeting."
     },
     {
@@ -228,19 +378,32 @@
       "title": "Tropical storm warning — 72 hours",
       "description": "A named storm's forecast cone touches New Providence. The 72-hour trigger is now: secure materials, review tie-downs, decide on demobilization.",
       "chance": 0.3,
-      "effects": { "days": 0, "cost": 0 },
+      "effects": {
+        "days": 0,
+        "cost": 0
+      },
       "choices": [
         {
           "id": "execute-plan",
           "label": "Execute the preparedness plan on its triggers",
-          "effects": { "days": 4, "cost": 60000, "quality": 0, "risk": -1 },
+          "effects": {
+            "days": 4,
+            "cost": 60000,
+            "quality": 0,
+            "risk": -1
+          },
           "outcome": "Four days lost to securing, demobilization, and re-start. The storm passes south; the site restarts on schedule. That's what a good outcome looks like — boring.",
           "optimal": true
         },
         {
           "id": "work-through",
           "label": "Keep working — it'll probably miss",
-          "effects": { "days": 9, "cost": 350000, "quality": -5, "risk": 2 },
+          "effects": {
+            "days": 9,
+            "cost": 350000,
+            "quality": -5,
+            "risk": 2
+          },
           "outcome": "It half-misses. Tropical-storm winds scatter unsecured formwork across the neighboring subdivision, the open excavation floods, and two weeks of pumping and cleanup follow — plus the neighbors' fence claims.",
           "acceptable": false
         }
@@ -252,7 +415,10 @@
       "title": "Clearing sub no-show",
       "description": "The clearing contractor's crews vanish for a week — they've split their fleet to another job that pays faster. Nassau is a small market; this happens to everyone once.",
       "chance": 0.25,
-      "effects": { "days": 6, "cost": 30000 },
+      "effects": {
+        "days": 6,
+        "cost": 30000
+      },
       "lesson": "Single-sourced trades hold your schedule hostage. The production-phase answer is 2–3 competing subs per trade; the immediate answer is a firm word, a recovery schedule, and remembering this at the next bid leveling."
     },
     {
@@ -260,19 +426,32 @@
       "title": "MOW queries the drainage submission",
       "description": "The Civil Design Section queries your drainage-well calculations on the enabling-works package. The clock restarts on a 6-week loop unless the response is fast and complete.",
       "chance": 0.3,
-      "effects": { "days": 0, "cost": 0 },
+      "effects": {
+        "days": 0,
+        "cost": 0
+      },
       "choices": [
         {
           "id": "full-response",
           "label": "Pull the civil engineer in for a same-week, complete response with the calculations MOW actually asked for",
-          "effects": { "days": 5, "cost": 25000, "quality": 2, "risk": -1 },
+          "effects": {
+            "days": 5,
+            "cost": 25000,
+            "quality": 2,
+            "risk": -1
+          },
           "outcome": "The response lands inside the review window and the permit issues with a fraction of the delay. Query loops punish slow answers more than wrong drawings.",
           "optimal": true
         },
         {
           "id": "partial-response",
           "label": "Send what you have now, argue the rest later",
-          "effects": { "days": 20, "cost": 90000, "quality": 0, "risk": 1 },
+          "effects": {
+            "days": 20,
+            "cost": 90000,
+            "quality": 0,
+            "risk": 1
+          },
           "outcome": "The incomplete response triggers a second query. The 6-week loop you feared becomes real, and the general conditions meter runs the whole time.",
           "acceptable": false
         }
@@ -284,7 +463,10 @@
       "title": "Wet month",
       "description": "Three weeks of afternoon downpours turn the cleared areas to standing water over rock. Earthwork productivity drops; the drainage wells aren't in yet.",
       "chance": 0.35,
-      "effects": { "days": 7, "cost": 60000 },
+      "effects": {
+        "days": 7,
+        "cost": 60000
+      },
       "lesson": "May–October is the rainy season (~1,250 mm/yr) — baseline weather, not bad luck. Realistic schedules carry weather days; the sim's par duration already assumes some. Sequencing drainage wells early buys productivity all season."
     }
   ]

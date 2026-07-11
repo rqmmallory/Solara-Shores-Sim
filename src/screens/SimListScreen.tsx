@@ -97,12 +97,13 @@ export default function SimListScreen() {
         );
       })}
 
-      <Card style={{ opacity: 0.5 }}>
-        <H2>Phases 3–8</H2>
+      <Card>
+        <H2>Your decisions follow you</H2>
         <Small>
-          Vertical + amenity core · Marine completion (plug breach, groins, beach) · Production
-          waves · Estate lots · Handover. Each phase is added as its own build increment once the
-          previous one plays well — same engine, new data files.
+          The sim tracks decisions ACROSS phases: contract clauses, spec choices, and shortcuts set
+          standing flags that arm or defuse events in later phases — the Phase 2 EMP clause decides
+          who pays for the Phase 4 stoppage, and Phase 7 surfaces every long-fuse consequence.
+          Open risk you finish a phase carrying rides into the next one.
         </Small>
       </Card>
     </Screen>

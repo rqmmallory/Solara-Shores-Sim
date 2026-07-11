@@ -6,6 +6,7 @@ import { fmtMoney } from '../engine/format';
 import { XP } from '../engine/progress';
 import { defaultRng } from '../engine/rng';
 import {
+  availableOptions,
   chooseOption,
   currentStep,
   debrief,
@@ -25,7 +26,9 @@ export default function SimRunScreen({ route, navigation }: Props) {
   const { phaseId } = route.params;
   const app = useAppState();
   const phase = simPhaseById.get(phaseId);
-  const [sim, setSim] = useState<SimState | null>(() => (phase ? initialSimState(phase) : null));
+  const [sim, setSim] = useState<SimState | null>(() =>
+    phase ? initialSimState(phase, app.simCarryFor(phase.id)) : null
+  );
   const [lastOutcome, setLastOutcome] = useState<{
     title: string;
     text: string;
@@ -38,13 +41,18 @@ export default function SimRunScreen({ route, navigation }: Props) {
     [phase, sim]
   );
 
-  // bank XP + best score once per finished run (in an effect — not render)
+  // bank XP + best score + the run snapshot (decisions/flags/risk carry
+  // into later phases) once per finished run — in an effect, not render
   useEffect(() => {
     if (!phase || !sim || !sim.finished || sim.pendingCurveball || banked) return;
     const d = debrief(phase, sim);
     const optimalXp = sim.log.filter((l) => l.optimal).length * XP.simStepOptimal;
     const acceptableXp = sim.log.filter((l) => l.acceptable && !l.optimal).length * XP.simStepAcceptable;
-    app.recordSimRun(phase.id, d.score, XP.simPhaseComplete + optimalXp + acceptableXp);
+    app.recordSimRun(phase.id, d.score, XP.simPhaseComplete + optimalXp + acceptableXp, {
+      decisions: sim.decisions,
+      flags: sim.flags,
+      finalRisk: sim.risk,
+    });
     setBanked(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sim?.finished, sim?.pendingCurveball, banked]);
@@ -143,7 +151,7 @@ export default function SimRunScreen({ route, navigation }: Props) {
             <H2>{pending.title}</H2>
             <Body>{pending.description}</Body>
           </Card>
-          {pending.choices?.map((o) => (
+          {availableOptions(pending.choices ?? [], sim).map((o) => (
             <OptionRow
               key={o.id}
               label={o.label}
@@ -161,7 +169,22 @@ export default function SimRunScreen({ route, navigation }: Props) {
         </>
       ) : step ? (
         <>
-          {sim.log.length === 0 && !lastOutcome ? <TeachBox>{phase.intro}</TeachBox> : null}
+          {sim.log.length === 0 && !lastOutcome ? (
+            <>
+              <TeachBox>{phase.intro}</TeachBox>
+              {sim.inheritedFlags.length > 0 || sim.carriedRisk > 0 ? (
+                <TeachBox tone="warn">
+                  Your earlier phases follow you in: {sim.inheritedFlags.length} standing decision
+                  {sim.inheritedFlags.length === 1 ? '' : 's'} (contracts signed, specs chosen,
+                  shortcuts taken)
+                  {sim.carriedRisk > 0
+                    ? ` and ${sim.carriedRisk} points of open risk carried forward`
+                    : ''}
+                  . Events in this phase can trace back to them.
+                </TeachBox>
+              ) : null}
+            </>
+          ) : null}
           <Small style={{ marginBottom: 4 }}>
             Decision {sim.stepIndex + 1} of {phase.steps.length}
           </Small>
@@ -169,7 +192,7 @@ export default function SimRunScreen({ route, navigation }: Props) {
             <H2>{step.title}</H2>
             <Body>{step.brief}</Body>
           </Card>
-          {step.options.map((o) => (
+          {availableOptions(step.options, sim).map((o) => (
             <OptionRow
               key={o.id}
               label={o.label}

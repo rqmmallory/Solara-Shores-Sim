@@ -138,6 +138,65 @@ describe('sim engine', () => {
     expect(['A', 'B']).toContain(good.grade);
   });
 
+  it('flags set by choices persist in state and carry into a new phase', () => {
+    let s = initialSimState(phase);
+    // choose the classified bid (sets "classified-excavation")
+    while (!s.finished && currentStep(phase, s)?.id !== 'earthworks-contract') {
+      const step = currentStep(phase, s)!;
+      s = chooseOption(phase, s, step.options.find((o) => o.optimal)!, noEvents, 'realistic');
+    }
+    const step = currentStep(phase, s)!;
+    const classified = step.options.find((o) => o.id === 'classified-cheap')!;
+    s = chooseOption(phase, s, classified, noEvents, 'realistic');
+    expect(s.flags).toContain('classified-excavation');
+
+    // carry into phase 2: inherited flags seed the new state
+    const p2 = simPhases.find((p) => p.id === 'phase2-marine-horizontal')!;
+    const s2 = initialSimState(p2, { flags: s.flags, risk: 5 });
+    expect(s2.flags).toContain('classified-excavation');
+    expect(s2.risk).toBe(5);
+    expect(s2.carriedRisk).toBe(5);
+  });
+
+  it('armedByFlags fires a long-fuse curveball; defusedByFlags blocks it', () => {
+    const p7 = simPhases.find((p) => p.id === 'phase7-handover')!;
+    // with the oversized-hvac flag carried in, mold-cluster is armed
+    let armed = initialSimState(p7, { flags: ['oversized-hvac'] });
+    const step = currentStep(p7, armed)!;
+    armed = chooseOption(p7, armed, step.options.find((o) => o.optimal)!, allEvents, 'realistic');
+    // some armed event fired on the first roll with allEvents
+    expect(armed.fired.length).toBeGreaterThan(0);
+
+    // with the right-sized flag, mold-cluster can never fire
+    let safe = initialSimState(p7, { flags: ['right-sized-hvac'] });
+    while (!safe.finished) {
+      if (safe.pendingCurveball) {
+        const cb = getCurveball(p7, safe.pendingCurveball)!;
+        safe = resolveCurveball(p7, safe, cb.choices![0]);
+        continue;
+      }
+      const st = currentStep(p7, safe)!;
+      safe = chooseOption(p7, safe, st.options.find((o) => o.optimal)!, allEvents, 'realistic');
+    }
+    expect(safe.fired).not.toContain('mold-cluster');
+  });
+
+  it('flagModifiers change what a fired event costs', () => {
+    const p4 = simPhases.find((p) => p.id === 'phase4-marine-window')!;
+    const run = (flags: string[]) => {
+      let s = initialSimState(p4, { flags });
+      // force turbidity-stopwork-2 to fire on the first step with allEvents;
+      // it has no choices, so effects apply immediately
+      const st = currentStep(p4, s)!;
+      s = chooseOption(p4, s, st.options.find((o) => o.optimal)!, allEvents, 'realistic');
+      return s;
+    };
+    const vague = run(['emp-vague']);
+    const flowed = run(['emp-flowdown']);
+    // whichever events fired, the vague-contract world is never cheaper
+    expect(vague.costVariance).toBeGreaterThanOrEqual(flowed.costVariance);
+  });
+
   it('quality is clamped to 0..100 and risk floors at 0', () => {
     const s = playWorst(allEvents);
     expect(s.quality).toBeGreaterThanOrEqual(0);

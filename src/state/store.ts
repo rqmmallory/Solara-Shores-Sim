@@ -8,12 +8,24 @@ import type { MathStats, ModuleStats, SimRecord } from '../engine/progress';
 import { emptyMathStats } from '../engine/progress';
 import type { SrsItem } from '../engine/spacedRepetition';
 
+/** the latest completed run of a phase — the canonical "what you did",
+ * carried into later phases as flags + open risk */
+export interface SimRunSnapshot {
+  phaseId: string;
+  decisions: { stepId: string; optionId: string }[];
+  flags: string[];
+  finalRisk: number;
+  score: number;
+}
+
 export interface PersistedState {
   version: 1;
   moduleStats: Record<string, ModuleStats>;
   mathStats: MathStats;
   srsQueue: SrsItem[];
   simRecords: SimRecord[];
+  /** keyed by phaseId — latest completed run per phase */
+  simRuns: Record<string, SimRunSnapshot>;
   settings: {
     curveballFrequency: CurveballFrequency;
   };
@@ -26,6 +38,7 @@ export function emptyState(): PersistedState {
     mathStats: emptyMathStats(),
     srsQueue: [],
     simRecords: [],
+    simRuns: {},
     settings: { curveballFrequency: 'realistic' },
   };
 }

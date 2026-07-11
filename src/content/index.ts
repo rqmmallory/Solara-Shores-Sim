@@ -22,6 +22,11 @@ import m14 from './modules/m14-sequence.json';
 
 import phase1 from './sim/phase1-site-prep.json';
 import phase2 from './sim/phase2-marine-horizontal.json';
+import phase3 from './sim/phase3-vertical-amenity.json';
+import phase4 from './sim/phase4-marine-window.json';
+import phase5 from './sim/phase5-production-condos.json';
+import phase6 from './sim/phase6-estates-senior-retail.json';
+import phase7 from './sim/phase7-handover.json';
 
 // JSON imports widen literal unions to string; the runtime validator
 // (validate.ts, exercised in tests) is the real guarantee.
@@ -33,7 +38,9 @@ export const modules: ContentModule[] = (raw as unknown as ContentModule[])
 
 export const moduleById = new Map(modules.map((m) => [m.id, m]));
 
-export const simPhases: SimPhase[] = ([phase1, phase2] as unknown as SimPhase[])
+export const simPhases: SimPhase[] = (
+  [phase1, phase2, phase3, phase4, phase5, phase6, phase7] as unknown as SimPhase[]
+)
   .slice()
   .sort((a, b) => a.order - b.order);
 
