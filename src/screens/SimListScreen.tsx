@@ -7,7 +7,7 @@ import type { CurveballFrequency } from '../engine/sim';
 import { WEATHER_TABLE } from '../engine/weather';
 import { useAppState } from '../state/AppState';
 import { Body, Card, H1, H2, Screen, Small, Tag } from '../ui/components';
-import ProjectMap from '../ui/ProjectMap';
+import SiteMapView from '../ui/SiteMapView';
 import { colors } from '../ui/theme';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -32,7 +32,7 @@ export default function SimListScreen() {
         built into the app.
       </Small>
 
-      <ProjectMap records={app.state.simRecords} />
+      <SiteMapView records={app.state.simRecords} />
 
       <Card>
         <Body style={{ fontWeight: '600', marginBottom: 4 }}>Curveball frequency</Body>
