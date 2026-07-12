@@ -12,8 +12,8 @@ backend), runnable in **Expo Go on iOS** during development.
 
 ```bash
 npm install
-npx expo start     # scan the QR code with Expo Go on your iPhone
-                   # from a Codespace/remote box: npx expo start --tunnel
+npm start          # scan the QR code with Expo Go on your iPhone
+                    # from a Codespace/remote box, add: -- --tunnel
 ```
 
 ```bash
@@ -21,19 +21,34 @@ npm test           # unit tests: engines + content validation
 npm run typecheck  # tsc --noEmit
 ```
 
-### Troubleshooting: "SDK 46" / metro TerminalReporter errors
+The `start`/`android`/`ios`/`web` scripts invoke
+`node ./node_modules/expo/bin/cli` directly (not the bare `expo` command),
+so a stale **global `expo-cli`** elsewhere on your `PATH` can't shadow them —
+this project is Expo SDK 57; the old global `expo-cli` package caps at SDK 46
+and is deprecated upstream.
 
-If `npm start` mentions **SDK 46**, offers to install `@types/react-native@~0.69.1`,
-or crashes with `Package subpath './src/lib/TerminalReporter' is not defined` —
-the deprecated **global `expo-cli`** (which caps at SDK 46) hijacked the command.
-This project is Expo SDK 57. Fix:
+### Still seeing "SDK 46" / metro TerminalReporter errors?
+
+That means something ran the bare `expo` binary directly instead of an npm
+script (e.g. you typed `expo start` yourself, or another tool in your
+Codespace invoked it). Diagnose and fix:
 
 ```bash
+which -a expo                     # if this lists more than one path, a
+                                   # global expo-cli is shadowing the local one
+npm ls -g --depth=0 | grep expo-cli
 npm uninstall -g expo-cli
-git checkout package.json package-lock.json   # discard what the old CLI added
-rm -rf node_modules && npm install
-npx expo start --tunnel
+hash -r                           # clear your shell's cached command lookup
+
+# confirm the LOCAL SDK 57 CLI is what actually runs:
+node ./node_modules/expo/bin/cli --version   # should print 57.x
+
+npm start -- --tunnel             # always use the npm script, not bare `expo`
 ```
+
+If `node ./node_modules/expo/bin/cli --version` doesn't print `57.x`,
+`node_modules` is out of sync with `package.json` — run
+`rm -rf node_modules && npm install` and try again.
 
 ## The three systems
 
