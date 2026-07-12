@@ -1,0 +1,154 @@
+{
+  "id": "v31-loads",
+  "order": 25,
+  "title": "V3-1 — Loads, Load Paths, and Why Shapes Fail Where They Do",
+  "short": "Loads",
+  "status": "ready",
+  "summary": "Every pound in a building must travel to the ground, and the path it takes — roof → beam → column → footing → rock — fails at its weakest link. PLAIN: loads are travelers looking for the ground. PRO: trace the load path, check the tributary area, know where tension lives.",
+  "sections": [
+    {
+      "heading": "Load paths and tributary area",
+      "body": "PLAIN: Every pound — the concrete itself, the furniture, the wind — has to travel somewhere, and the only place it can finally rest is the ground. The path is the LOAD PATH, and the load always finds the weakest link. Tributary area: imagine the floor as a pizza held up by people below — each column carries the slice nearest it, halfway to every neighbor. Double the column spacing and each column's slice doubles, which is why 'can we just remove this column?' is never a small question: its whole slice must find a new home. PRO: 'Trace the load path' is the first thing an engineer does with any drawing; 'there's no load path for that' means something will break making one. 'That column's picking up about 400 square feet' — tributary area × load per sf = the force in the member; the sanity check that doesn't need the engineer's math."
+    },
+    {
+      "heading": "Dead, live, environmental",
+      "body": "PLAIN: DEAD load is the building's own permanent weight — it never leaves (and it dominates: a 6-inch concrete slab weighs 75 psf before anyone stands on it). LIVE load comes and goes — people, furniture, a party. ENVIRONMENTAL loads are nature's additions — wind and flood here. Engineers design for unlucky combinations peaking together, with margins, because the day everything peaks at once is the day that matters. PRO: 'load combinations,' 'factored loads' — code multiplies loads up and strength down; 'designed for 40 psf live' is how capacity gets quoted. Residential live ~40 psf; balconies/assembly 60–100; concrete at 150 pcf."
+    },
+    {
+      "heading": "Compression, tension, bending, shear, buckling",
+      "body": "PLAIN: Push together = compression (concrete loves it). Pull apart = tension (concrete hates it; steel carries it). BENDING is sneaky — bend a beam and its bottom stretches while its top squeezes simultaneously, which is why steel goes in the bottom at midspan. SHEAR is a scissors cut, worst right next to supports — that's why the little steel loops (stirrups) cluster near beam ends. BUCKLING is the drinking-straw trick: press down and it doesn't crush, it suddenly bows sideways — slender things fail by buckling long before their material gives up, which is why bracing exists and why an unbraced green block wall is dangerous with nothing on it. PRO: 'tension face,' 'stirrups at the supports,' 'slenderness,' 'brace it off' — and the field classic: a cantilever's tension is on TOP (it droops like a diving board), so a balcony's main steel is in the top of the slab, and a crew that chairs it low has quietly halved the balcony. (S3's rule, physics edition.)"
+    }
+  ],
+  "quiz": [
+    {
+      "id": "v31-q1",
+      "type": "multipleChoice",
+      "teach": "PLAIN: each column holds the slice of floor nearest to it. PRO: tributary area = spacing × spacing on a regular grid.",
+      "prompt": "A retail tenant wants a column removed for open floor. Columns sit on a 20×20 ft grid with 150 psf total design load. What does the tributary math say the missing column was carrying?",
+      "choices": [
+        {
+          "text": "About 60,000 lb (400 sf × 150 psf) — a load that now needs a transfer beam engineered to walk it sideways to the neighbors, which is why you price that before sales hears 'yes'",
+          "correct": true,
+          "why": "Correct. 20×20 = 400 sf tributary; ×150 psf = 60,000 lb = 30 tons looking for a new home. Transfer structures are real and expensive — that's the conversation."
+        },
+        {
+          "text": "Little — the slab redistributes to the other columns naturally",
+          "why": "Slabs redistribute SOME load at the cost of overstressing spans never designed for it. 'Naturally' is doing illegal engineering in that sentence."
+        },
+        {
+          "text": "Whatever the column's own weight was",
+          "why": "The column's self-weight is trivial; its JOB — the 400 sf slice above it — is the 30 tons in question."
+        },
+        {
+          "text": "Can't estimate without full analysis",
+          "why": "The full analysis comes later; tributary area × load per sf is exactly the sanity-check arithmetic that tells you TODAY this is a big ask."
+        }
+      ],
+      "explanation": "PLAIN: the column was holding its slice of the pizza — remove the hand and the slice needs a new hand. PRO: 'tributary 400 sf at 150 psf, 60 kips to transfer — get the EOR to price the transfer beam before anyone promises the tenant.' (V3-1)"
+    },
+    {
+      "id": "v31-q2",
+      "type": "multipleChoice",
+      "teach": "A cantilever droops like a diving board — its TOP stretches.",
+      "prompt": "The site super reports balcony top steel 'sitting a bit low' before a condo pour. Why is this a stop-the-pour call rather than a note?",
+      "choices": [
+        {
+          "text": "The balcony's tension is on TOP — capacity scales with how high the steel sits (effective depth); bars sagging low quietly convert the designed balcony into a much weaker one, and balcony collapses worldwide trace to exactly this",
+          "correct": true,
+          "why": "Correct. Low top steel in a cantilever isn't a tolerance issue — it's a different, weaker structure. The pour makes it permanent; the stop costs a morning."
+        },
+        {
+          "text": "It's cosmetic — concrete covers the bars either way",
+          "why": "Cover hides position; physics uses it. The invisible inch of lost effective depth is a visible fraction of lost strength."
+        },
+        {
+          "text": "Only bottom steel position matters in slabs",
+          "why": "In SIMPLE spans, yes — the cantilever flips the rule. The flip is the classic field error and the reason this check has its own name on the hold-point script."
+        },
+        {
+          "text": "The engineer can recalculate around it after the pour",
+          "why": "Recalculation after the pour discovers the deficiency; it can't add capacity. Chairs before concrete; math can't chair bars retroactively."
+        }
+      ],
+      "explanation": "PLAIN: the balcony pulls on top, so the metal must ride high — bars that sag were never doing the job. PRO: 'verify cantilever top steel at design height before every pour; quantify effective-depth loss if in doubt and hold.' (V3-1, S3)"
+    },
+    {
+      "id": "v31-q3",
+      "type": "multipleChoice",
+      "teach": "The drinking-straw demonstration: slender things bow sideways before they crush.",
+      "prompt": "A truss maker offers longer spans with lighter chords. What question does buckling force you to ask?",
+      "choices": [
+        {
+          "text": "What bracing/bridging does the lighter chord require — slender members fail by bowing sideways long before material strength matters, so the bracing schedule IS the design",
+          "correct": true,
+          "why": "Correct. Lighter and longer means more slender; slenderness fails by buckling; and buckling is prevented by bracing that must be installed, inspected, and never 'omitted for now.'"
+        },
+        {
+          "text": "Whether the lighter steel is weaker material",
+          "why": "Material strength barely enters — a slender strut at half its buckling length carries 4x. Geometry and bracing govern, not the mill certificate."
+        },
+        {
+          "text": "Whether the price break is real",
+          "why": "Commercially fair, structurally beside the point — the truss can be cheaper AND fine, IF its bracing requirements travel with it to the field."
+        },
+        {
+          "text": "Nothing — their engineer designed it",
+          "why": "Their design assumes bracing your crews must install. The failure mode is the gap between the design's assumptions and the site's habits."
+        }
+      ],
+      "explanation": "PLAIN: press a straw — it bows, it doesn't crush; skinnier and longer bows sooner, unless held in the middle. PRO: 'lighter chords = tighter bridging/bracing schedule; the bracing goes on the inspection checklist or the span comes off the order.' (V3-1)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "v31_live_psf", "label": "Residential live load", "unit": "psf", "min": 40, "max": 40 },
+    { "id": "v31_balcony_psf", "label": "Balcony/assembly live load", "unit": "psf", "min": 60, "max": 100 },
+    { "id": "v31_concrete_pcf", "label": "Concrete unit weight", "unit": "pcf", "min": 150, "max": 150 }
+  ],
+  "mathProblems": [
+    {
+      "id": "v31-p1",
+      "generator": "unitRate",
+      "difficulty": 2,
+      "title": "Tributary pizza problem",
+      "context": "Column load = tributary area × total design load per sf. On a regular grid the tributary area is spacing × spacing — the sanity check every drawing review starts with.",
+      "params": {
+        "qtyLabel": "tributary area",
+        "qty": { "min": 200, "max": 600 },
+        "qtyUnit": "sf",
+        "rateLabel": "total design load",
+        "rate": { "min": 120, "max": 200 },
+        "rateUnit": "$/sf",
+        "answerLabel": "column load (lb)",
+        "answerUnit": "lb"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "v31-d1",
+      "title": "The open-floor request",
+      "scenario": "The retail leasing team has a signed letter of intent conditional on removing one interior column for an open floor plan. Sales wants a same-day yes. The column sits on the standard grid; the structural drawings are at CD. Nobody has asked the structural engineer yet.",
+      "options": [
+        {
+          "id": "price-the-transfer",
+          "label": "Walk the tributary math yourself today (spacing² × psf — it's a 30-ton question), then get the EOR to price the transfer structure and its schedule hit BEFORE responding to the tenant",
+          "outcome": "The tributary arithmetic takes five minutes and reframes the conversation from 'remove a post' to 'buy a transfer beam.' The EOR's price makes the tenant decision honest — sometimes worth it for an anchor tenant, never worth it unpriced.",
+          "optimal": true
+        },
+        {
+          "id": "say-yes-figure-later",
+          "label": "Say yes — engineers solve these things",
+          "outcome": "Engineers do solve it: with a transfer beam at CD-stage change multipliers (M11's 3–5x), a deeper structure that eats ceiling height, and a schedule hit — all discovered after the yes, priced by the party with no alternative left.",
+          "acceptable": false
+        },
+        {
+          "id": "flat-no",
+          "label": "Refuse — the grid is the grid",
+          "outcome": "Structurally tidy, commercially lazy: transfer structures are bought all the time when the tenant math justifies them. A no without a price is as unexamined as a yes without one.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "The tributary check is the manager's superpower: five minutes of pizza-slice arithmetic tells you whether a request is trivial or a 30-ton engineering purchase — BEFORE anyone promises anything. Loads don't disappear; they get re-routed, and re-routing is priced. (V3-1)"
+    }
+  ]
+}

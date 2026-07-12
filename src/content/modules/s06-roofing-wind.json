@@ -1,0 +1,183 @@
+{
+  "id": "s06-roofing-wind",
+  "order": 20,
+  "title": "S6 — Roofing and Wind-Resistant Detailing (The Hurricane Module)",
+  "short": "Wind & Roofs",
+  "status": "ready",
+  "summary": "Wind uplift must travel roof covering → sheathing → truss → strap → ring beam → wall steel → footing → rock, with every link CONNECTED. Hurricanes fail the weakest link, and the weakest link is almost always a connection. PLAIN: the storm tries to pull the roof off; every part must hold the next. PRO: load path, zone nailing, strap schedules, opening protection as structure.",
+  "sections": [
+    {
+      "heading": "The load path is the exam question",
+      "body": "PLAIN: In a storm, the roof is a wing — air rushing over it pulls UP. That pull has to be handed down, piece to piece, all the way to the rock: covering to sheathing, sheathing to truss, truss to strap, strap to ring beam, ring beam to wall steel, wall to footing. A chain — and hurricanes are professional weak-link finders. The weak link is almost never a broken beam; it's a connection someone under-nailed. PRO: 'trace the uplift load path' — engineered trusses anchored with hurricane straps embedded in or bolted to the ring beam at EVERY truss; strap-to-truss nailing with EVERY hole filled ('three nails in a ten-hole strap' is the classic shortcut); ring-shank nails; hips outperform gables (no flat end wall catching pressure — relevant at plan selection)."
+    },
+    {
+      "heading": "Corners, zones, and the secondary barrier",
+      "body": "PLAIN: Wind doesn't pull evenly — it pulls hardest at roof corners and edges, two to three times harder than the middle, which is why the nailing pattern TIGHTENS there. And accept now: in a design storm the roof covering WILL lose pieces — the sealed underlayment beneath it decides whether the interior floods. PRO: components-and-cladding zone maps; sheathing nailing 6/6 or 6/4 in edge zones vs 6/12 field; peel-and-stick or sealed underlayment as the secondary water barrier; metal standing-seam preferred over shingles for wind rating and insurer pricing ($9–16/sf vs $4.5–7.5, repaid through premiums and storm performance)."
+    },
+    {
+      "heading": "Openings are structure",
+      "body": "PLAIN: One broken window in a storm lets the wind INSIDE, where it pushes up on the roof from below while the outside sucks up — the two can nearly double the total uplift. That's why impact glass and shutters are structural equipment, not fancy options. PRO: 'internal pressurization' — one breached opening converts the building to partially-enclosed design pressures; opening protection is part of the wind design, and the inspection hold points are strap embedment BEFORE the ring beam pour (retrofit = epoxy anchors at 10x), strap nailing, sheathing pattern by zone, and underlayment laps/penetrations."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "s06-q1",
+      "type": "sequencing",
+      "teach": "Uplift travels the load path link by link — order is the anatomy.",
+      "prompt": "Trace the wind-uplift load path from the storm to the ground:",
+      "items": [
+        "Roof covering resists suction and stays attached",
+        "Sheathing, nailed to zone pattern, holds the covering's load",
+        "Trusses carry the sheathing",
+        "Hurricane straps tie every truss to the ring beam",
+        "Ring beam distributes into the wall reinforcement",
+        "Wall steel carries down to the footing",
+        "Footing bears the fight into the rock"
+      ],
+      "explanation": "PLAIN: every piece hands its pull to the next — a chain from shingle to bedrock. PRO: 'covering → sheathing → truss → strap → bond beam → wall steel → footing.' Hurricanes fail the weakest LINK, and the link is almost always a connection — which is why the inspection program lives at the connections. (S6)"
+    },
+    {
+      "id": "s06-q2",
+      "type": "multipleChoice",
+      "teach": "Uplift pressure is not uniform across a roof.",
+      "prompt": "Why does the sheathing nailing pattern tighten at roof edges and corners?",
+      "choices": [
+        {
+          "text": "Corner and edge uplift runs 2–3x the field pressure — corners are where roofs unzip, so the code's zone maps concentrate fasteners exactly there",
+          "correct": true,
+          "why": "Correct. Wind accelerating around edges creates the strongest suction at corners; the first panel lost there peels its neighbors — 'unzipping.'"
+        },
+        {
+          "text": "Edges are where sheets meet, so more nails close the gaps",
+          "why": "Joint coverage is a side effect. The driver is aerodynamic: measured corner pressures are multiples of mid-roof."
+        },
+        {
+          "text": "It's conservatism — uniform nailing would do",
+          "why": "Zone maps come from wind-tunnel and storm-damage data, not caution. Uniform nailing sized for corners wastes field nails; sized for field, loses corners."
+        },
+        {
+          "text": "Corners flex more structurally",
+          "why": "Truss stiffness is a different topic — the zones map PRESSURE, not deflection."
+        }
+      ],
+      "explanation": "PLAIN: wind pulls hardest at the roof's corners — so that's where the extra nails go. PRO: '6/6 or 6/4 edge-zone nailing vs 6/12 field, ring-shank, verified by zone at inspection.' The pattern IS the wind rating. (S6)"
+    },
+    {
+      "id": "s06-q3",
+      "type": "multipleChoice",
+      "teach": "A building's wind design assumes it stays closed.",
+      "prompt": "Why is one breached window a structural event rather than a water problem?",
+      "choices": [
+        {
+          "text": "The breach pressurizes the interior — inside pushing up while outside sucks up can nearly double net roof uplift, which is why opening protection is part of the structure, not an accessory",
+          "correct": true,
+          "why": "Correct. 'Internal pressurization': the building becomes a bag being inflated inside a vacuum. Shutters and impact glazing are load-path equipment."
+        },
+        {
+          "text": "Water damage through the opening ruins finishes",
+          "why": "True and secondary — the structural event is the pressure change, which threatens the ROOF, not the carpet."
+        },
+        {
+          "text": "Broken glass endangers occupants",
+          "why": "A real hazard, but the design-level answer is pressure: one opening changes the load case for the whole roof."
+        },
+        {
+          "text": "It isn't structural if the roof straps are good",
+          "why": "Straps sized for enclosed-building uplift meet nearly double the load when the envelope breaches — the margin you paid for is spent by one window."
+        }
+      ],
+      "explanation": "PLAIN: a storm that gets inside blows the lid off from within — keep it out and the roof only fights half the battle. PRO: 'one breach converts the design to partially-enclosed pressures; opening protection is structural.' (S6, V3-2)"
+    },
+    {
+      "id": "s06-q4",
+      "type": "multipleChoice",
+      "teach": "Suppliers substitute; engineers of record approve.",
+      "prompt": "The truss supplier substitutes a strap clip with a lower uplift rating, 'equivalent per their engineer.' What's the acceptance path?",
+      "choices": [
+        {
+          "text": "YOUR engineer of record reviews and approves — or rejects — the substitution; the supplier's engineer certifies their product, not your building's load path",
+          "correct": true,
+          "why": "Correct. 'Equivalent' is a claim about their component; whether it serves YOUR design's uplift schedule at YOUR spacing is the EOR's call, in writing, through the submittal process."
+        },
+        {
+          "text": "Accept — their engineer stamped it",
+          "why": "Their stamp covers their product's capacity, not its adequacy in your specific load path. Two different professional opinions with two different scopes."
+        },
+        {
+          "text": "Reject all substitutions on principle",
+          "why": "Substitutions through proper review are normal procurement — supply chains change. The principle is REVIEW, not refusal."
+        },
+        {
+          "text": "Accept if the rating difference is under 10%",
+          "why": "Percentage rules of thumb aren't engineering — margins vary by connection and location. The EOR knows which straps had spare capacity; you don't."
+        }
+      ],
+      "explanation": "PLAIN: the person who designed your building says yes or no to swapped parts — not the person selling the swap. PRO: 'substitution through the submittal register, EOR approval before purchase' — Module 10's submittal discipline meeting S6's load path. (S6, M10)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "s06_corner_mult", "label": "Corner uplift vs field", "unit": "x", "min": 2, "max": 3 },
+    { "id": "s06_strap_cap", "label": "Hurricane strap capacity", "unit": "lb", "min": 400, "max": 1500 },
+    { "id": "s06_metal_sf", "label": "Metal standing-seam roof", "unit": "$/sf", "min": 9, "max": 16 },
+    { "id": "s06_shingle_sf", "label": "Shingle roof", "unit": "$/sf", "min": 4.5, "max": 7.5 }
+  ],
+  "mathProblems": [
+    {
+      "id": "s06-p1",
+      "generator": "massBalance",
+      "difficulty": 2,
+      "title": "Metal vs shingle across the program",
+      "context": "The roofing premium per house times the program: treat houses as both cut and fill, and the per-house delta as the rate — the up-front cost of the better wind rating, to weigh against insurance premiums and storm performance for 302 buyers.",
+      "params": {
+        "cutCy": { "min": 250, "max": 302 },
+        "fillCy": { "min": 250, "max": 302 },
+        "savedPerCy": { "min": 1800, "max": 3200 }
+      }
+    },
+    {
+      "id": "s06-p2",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "The strap retrofit multiplier",
+      "context": "Straps embedded before the ring-beam pour cost their catalog price. Straps remembered after = epoxy anchors at roughly 10x. Price the forgetting.",
+      "params": {
+        "qtyLabel": "trusses needing retrofit anchors",
+        "qty": { "min": 30, "max": 200 },
+        "qtyUnit": "trusses",
+        "rateLabel": "epoxy retrofit per truss",
+        "rate": { "min": 80, "max": 150 },
+        "rateUnit": "$/each",
+        "answerLabel": "retrofit cost",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "s06-d1",
+      "title": "Storm at 60% roof completion",
+      "scenario": "A tropical storm watch goes up with a house wave at 60% roofs: some houses dried in, some with bare trusses, several with sheathing partially nailed and bundles staged on top. The preparedness plan's 48-hour actions are due. The roofing sub proposes 'nail everything as far as we get and tarp the rest' — maximum progress before landfall.",
+      "options": [
+        {
+          "id": "triage-by-state",
+          "label": "Triage per the plan: COMPLETE nailing on nearly-done roofs (a fully-nailed deck is wind-strong), STRIP loose sheathing from barely-started ones (partial decks are sails), ground and band all staged bundles, and photograph everything for insurance",
+          "outcome": "The counterintuitive half — REMOVING material from barely-sheathed roofs — is what the plan exists to have decided in advance: a 30% nailed deck is a wing with pre-started fasteners. The photo record settles the insurance conversation months before it starts.",
+          "optimal": true
+        },
+        {
+          "id": "nail-everything",
+          "label": "Race to nail as much as possible everywhere",
+          "outcome": "The nearly-done roofs benefit; the barely-started ones end up 50% nailed — the worst possible state, enough sheathing to catch wind, not enough nails to hold it. The storm redistributes those panels across the phase, and some into the neighbors' yards.",
+          "acceptable": false
+        },
+        {
+          "id": "tarp-and-leave",
+          "label": "Tarp everything and evacuate early",
+          "outcome": "Tarps in tropical-storm wind are confetti with grommets. Early evacuation is right for PEOPLE; for the structures, tarping instead of triage leaves every partial deck exactly as dangerous as the wind finds it.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Partial roofs are the most wind-vulnerable state a house passes through, and the correct actions differ BY COMPLETION STATE — finish the finishable, strip the un-holdable, secure the loose, document everything. That triage logic is what a preparedness plan pre-decides, because nobody reasons well at 48 hours. (S6, M1)"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "id": "v37-coastal",
+  "order": 31,
+  "title": "V3-7 — Coastal Process Science: Why Beaches Move",
+  "short": "Coastal",
+  "status": "ready",
+  "summary": "A beach is not a place, it's a flow: sand rivers along the shore (longshore transport), the profile breathes on-offshore with storms and calms, and grain size is destiny. A groin is a wall across the sand river — with a guilty secret downstream. PLAIN: sand is always moving; you're managing a current, not placing a carpet. PRO: littoral drift, sediment budgets, equilibrium profiles, pre-filled groin fields, the baseline survey that's legally priceless.",
+  "sections": [
+    {
+      "heading": "The sand river",
+      "body": "PLAIN: Waves almost never arrive straight-on — they hit at a slight angle, push sand up the beach at that angle, and gravity drags it straight back. Every wave moves each grain a small zigzag step sideways; millions of waves make a slow river of sand flowing along the shore. A beach that 'stays put' is a checkbook that balances: sand arriving equals sand leaving. Your rocky Yamacraw shoreline is rocky BECAUSE its checkbook runs a permanent deficit — you're not building a beach, you're depositing a large balance (fill) and slowing the withdrawals (groins). PRO: 'littoral drift,' 'sediment budget,' 'net vs gross transport,' 'erosive shoreline — negative budget.'"
+    },
+    {
+      "heading": "What a groin does, and its guilty secret",
+      "body": "PLAIN: A groin is a wall across the sand river: sand piles up on the upstream side (success!) and the downstream side STARVES, because the river past the wall carries less while the waves keep withdrawing. Groins don't create sand — they redistribute your fill and everyone's drift. So the design answer is a groin FIELD (several, spaced so each compartment holds a stable pocket), PRE-FILLED with imported sand (so your groins trap your sand, not the neighbors'), tapered at the downdrift end — and the neighbor beyond your last groin is either a monitoring-and-mitigation commitment or a plaintiff. Palm Cay's half-moon pocket coves are this logic in built form. PRO: 'downdrift starvation,' 'pre-fill the groin field,' 'terminal groin taper,' 'headland breakwater / pocket beach,' 'equilibrium shoreline orientation'; field spacing ≈ 2–4× groin length, engineer's model governs."
+    },
+    {
+      "heading": "The breathing profile, grain size, and the long game",
+      "body": "PLAIN: Beaches also move on-offshore: storms cut the dry beach down and drag sand to an offshore bar (it looks destroyed); calm long waves push much of it back by themselves. A beach has a preferred underwater shape — dump fill steeper than that shape and the sea re-grades it immediately, so the dry beach 'shrinks' alarmingly in year one even though the sand only moved underwater. Owners panic; you won't, because the monitoring surveys measure the whole profile, not the dry width. Grain size is destiny: coarser sand stands steeper and stays; finer flattens and flees — the physics behind M5's non-negotiable sand spec. Sea level rises slowly; on a flat carbonate island small vertical = large horizontal, so finished floors, seawall caps, and marina decks carry freeboard margin. PRO: 'storm bar / recovery,' 'equilibrium (Dean) profile,' 'profile adjustment losses year one' (10–25% of dry-beach APPEARANCE), 'design width vs advanced-fill width,' 'overfill ratio' 1.1–1.5× (extra fill because some loss is designed-in, not failure), 'freeboard for SLR over the design life.'"
+    }
+  ],
+  "quiz": [
+    {
+      "id": "v37-q1",
+      "type": "multipleChoice",
+      "teach": "The zigzag mechanism: angled wave up, gravity straight back down.",
+      "prompt": "Explain why sand flows ALONG the shore rather than just in and out.",
+      "choices": [
+        {
+          "text": "Waves arrive at a slight angle and push sand diagonally up the beach; the backwash drains straight down the slope — each wave nets a small sideways step, and millions of waves make a river of sand along the coast",
+          "correct": true,
+          "why": "Correct — the zigzag walk. That river (littoral drift) is what groins interrupt and sediment budgets account for."
+        },
+        {
+          "text": "Ocean currents drag the sand parallel to shore",
+          "why": "Offshore currents matter far out; in the surf zone where beaches live, the ANGLED-WAVE zigzag dominates the transport."
+        },
+        {
+          "text": "Wind blows the dry sand along the beach",
+          "why": "Aeolian transport reshapes dunes; the volumetric river runs in the water, wave by wave."
+        },
+        {
+          "text": "It doesn't — sand only moves in and out",
+          "why": "Cross-shore movement is real (the breathing profile) but the LONGSHORE river is why downdrift neighbors exist as a concept — and as plaintiffs."
+        }
+      ],
+      "explanation": "PLAIN: every wave nudges every grain a tiny step sideways — add up a year of waves and the beach is a conveyor. PRO: 'longshore transport / littoral drift; net vs gross; the sediment budget is the beach.' (V3-7)"
+    },
+    {
+      "id": "v37-q2",
+      "type": "multipleChoice",
+      "teach": "Pre-filling a groin field means importing the sand your groins will trap.",
+      "prompt": "Why must the groin field be PRE-FILLED with imported sand rather than left to 'fill naturally'?",
+      "choices": [
+        {
+          "text": "An empty groin field fills by starving the drift — i.e., by eating the downdrift neighbors' beach; pre-filling means your compartments start full and the river past your last groin keeps flowing at nearly its natural rate",
+          "correct": true,
+          "why": "Correct. 'Fill naturally' is a euphemism for 'confiscate the neighbors' sand supply' — the exact downdrift starvation that turns adjacent HOAs into plaintiffs."
+        },
+        {
+          "text": "Natural filling is too slow for marketing",
+          "why": "It IS slow — but the disqualifying problem is WHOSE sand does the filling. The speed issue is commercial; the source issue is legal and physical."
+        },
+        {
+          "text": "Pre-filling makes the groins structurally stronger",
+          "why": "Sand against a groin changes loading marginally; the pre-fill logic is sediment-budget ethics, not structural."
+        },
+        {
+          "text": "DEPP requires it as a permit formality",
+          "why": "DEPP requires it BECAUSE of the downdrift physics — the regulation encodes the mechanism; it isn't arbitrary paperwork."
+        }
+      ],
+      "explanation": "PLAIN: build the trap already full, so it doesn't have to rob anyone to fill itself. PRO: 'pre-fill the compartments to design volume with the overfill ratio (1.1–1.5×); taper the terminal groin; monitor the downdrift baseline.' (V3-7, M5)"
+    },
+    {
+      "id": "v37-q3",
+      "type": "multipleChoice",
+      "teach": "Year-one 'losses' split into two very different categories.",
+      "prompt": "Year-one survey: dry beach width down 25%, but total profile volume down only 6%. What do you tell the owners' meeting?",
+      "choices": [
+        {
+          "text": "Mostly good news, honestly delivered: the sea re-graded the fill to its equilibrium underwater shape — most of the 'lost' beach moved offshore within the profile, still yours, still doing its wave-energy job; the real loss (6%) is inside the designed-for overfill allowance",
+          "correct": true,
+          "why": "Correct. Profile adjustment (10–25% of dry APPEARANCE in year one) is designed-in, which is why the overfill ratio existed. The whole-profile survey is what lets you say this with numbers instead of hope."
+        },
+        {
+          "text": "Apologize — a quarter of the beach is gone",
+          "why": "The DRY WIDTH shrank; the SAND mostly didn't leave. Apologizing for equilibrium adjustment teaches owners to panic at physics — and undermines the real story the data tells."
+        },
+        {
+          "text": "Blame an unusually stormy year",
+          "why": "Maybe partially true and entirely beside the point — the adjustment was predicted at design. Blaming weather for a designed-in process spends credibility you'll need for actual storm losses."
+        },
+        {
+          "text": "Say nothing until year two's survey",
+          "why": "Owners watching their beach 'shrink' don't wait for data you're withholding — the first-news rule (M13) applies to physics too."
+        }
+      ],
+      "explanation": "PLAIN: the beach didn't leave — it lay down. The sea reshaped the pile into its preferred underwater slope, and the survey proves the sand is still on the property. PRO: 'profile adjustment vs volumetric loss; design width vs advanced-fill width; the whole-profile monitoring is the answer to every dry-width panic.' (V3-7, M5)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "v37_overfill", "label": "Overfill ratio", "unit": "x design volume", "min": 1.1, "max": 1.5 },
+    { "id": "v37_yr1_adjust", "label": "Year-1 profile adjustment (dry appearance)", "unit": "%", "min": 10, "max": 25 },
+    { "id": "v37_spacing_mult", "label": "Groin field spacing", "unit": "x groin length", "min": 2, "max": 4 }
+  ],
+  "mathProblems": [
+    {
+      "id": "v37-p1",
+      "generator": "percentOf",
+      "difficulty": 2,
+      "title": "The overfill order",
+      "context": "The advanced-fill volume exceeds design volume by the overfill ratio — extra sand ordered because year-one adjustment loss is designed-in, not failure. Compute the EXTRA volume (ratio minus 1, as a percentage).",
+      "params": {
+        "baseLabel": "design fill volume",
+        "base": { "min": 60000, "max": 150000 },
+        "baseUnit": "cy",
+        "pct": { "min": 10, "max": 50 },
+        "answerLabel": "overfill volume to order",
+        "answerUnit": "cy"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "v37-d1",
+      "title": "Groin field or Palm Cay coves?",
+      "scenario": "The coastal engineer presents two beach architectures: (A) five groins + 120,000 cy of pre-fill — more continuous beach, higher downdrift interaction to model and monitor; (B) three headland breakwaters forming pocket coves, Palm Cay style — nearly self-contained sediment cells, calmer swimming, less total dry beach, different permit profile. Marketing wants maximum beach length; the neighbors' HOA will read the EIA's downdrift section with a lawyer.",
+      "options": [
+        {
+          "id": "compare-on-four-axes",
+          "label": "Have the engineer score both on downdrift risk, swimmer experience, lifecycle cost (renourishment cycle differs), and permit friction — with the Palm Cay coves' actual storm performance (free full-scale modeling, ten minutes away) as evidence",
+          "outcome": "The comparison usually narrows to: coves cost more per foot of beach but nearly eliminate the downdrift fight and renourish less often — on a site flanked by organized neighbors, that trade frequently wins. Either way, the decision is made on the four axes that matter, with a built precedent as data.",
+          "optimal": true
+        },
+        {
+          "id": "max-beach",
+          "label": "Take the groin field — marketing's beach-length number is the product",
+          "outcome": "Defensible IF the downdrift modeling is bulletproof and the monitoring-and-mitigation commitment is funded — you've chosen the architecture with the most neighbors in it. The beach is longer; so is the EIA's most contested section.",
+          "acceptable": true
+        },
+        {
+          "id": "split-the-shoreline",
+          "label": "Do both — groins on one reach, coves on another, without re-modeling the combined system",
+          "outcome": "Coastal structures interact: the cove field changes the wave climate and sand supply the groin field sees. Mixing architectures un-modeled means neither behaves as designed — the shoreline is one system, not a menu.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Beach architecture is a systems choice: groin fields buy length and downdrift obligations; pocket coves buy stability and permit peace at higher unit cost. Palm Cay's built coves on your exact wave climate are the cheapest model run you'll ever get — walk them after the next big swell. (V3-7, M5, Appendix C)"
+    }
+  ]
+}

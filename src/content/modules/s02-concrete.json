@@ -1,0 +1,194 @@
+{
+  "id": "s02-concrete",
+  "order": 16,
+  "title": "S2 — Concrete Materials and Mix Design",
+  "short": "Concrete",
+  "status": "ready",
+  "summary": "The chemistry in one paragraph, why the water/cement ratio governs everything, the Bahamian specifics (absorptive limestone aggregate, imported cement, hot-weather concreting as the permanent condition), and the testing regime. PLAIN: less water makes stronger glue. PRO: w/c ratio drives strength AND permeability; everything else manages workability around that fact.",
+  "sections": [
+    {
+      "heading": "The chemistry and the one ratio that rules it",
+      "body": "PLAIN: Cement plus water makes a glue (the reaction is called hydration) that binds the sand and stone skeleton together. The less water you use beyond what the reaction needs, the denser and stronger the glue — extra water just evaporates and leaves tiny holes. So when a placement crew asks for 'a little water in the drum' to make the pour easier, they're asking to drill microscopic holes through your structure. PRO: strength is governed overwhelmingly by the water/cement ratio — w/c ~0.55 for general work, ≤0.40 for marine/splash-zone elements where PERMEABILITY (chloride ingress) matters more than strength. The correct answer to a wet-drum request is a plasticizer/superplasticizer — workability without water. Spec language: f'c = specified 28-day compressive strength; typical tiers 3,000–4,000 psi residential slabs/footings, 4,000–5,000 psi condo frames, 5,000+ psi with w/c ≤0.40 for bulkhead caps and exposed marine frames."
+    },
+    {
+      "heading": "Bahamian specifics",
+      "body": "PLAIN: Your coarse aggregate is crushed local limestone — softer and thirstier than granite; it drinks mix water, so the batch plant must pre-wet it or correct for its moisture, or the concrete arrives different every truck. And never, ever seawater or beach sand in structural concrete — the salt destroys the steel inside from day one. PRO: aggregate absorption / moisture correction at the plant, or field slump becomes a lottery; unwashed marine aggregates are a classic island-construction scandal. Cement is imported (duty-free since 2025). At your volume, negotiate ready-mix plant capacity commitments — or run the on-site batch plant math: it pays above roughly 15–25,000 cy of demand and de-risks the pour schedule, at the cost of mix QC responsibility moving to YOU."
+    },
+    {
+      "heading": "Hot-weather concreting and the testing regime",
+      "body": "PLAIN: Your permanent condition is hot, sunny, breezy — fresh concrete's surface dries faster than the inside can supply water, and the surface cracks like mud in the sun. The kit: pour big slabs at dawn or night, damp the ground first, block the wind, fog the air, slow the set with retarder — and CURE it: keep it wet for 7 days, because concrete that dries early stops getting stronger and can lose 20–30% of its potential. PRO: plastic-shrinkage controls per the evaporation-rate nomograph; curing as a specified PAY ITEM (what isn't paid for doesn't happen); truck time limit ~90 minutes or 300 drum revolutions from batching — heat argues rejection at the margin. Testing: slump at the truck against the submitted mix; cylinder sets per pour (break pairs at 7 days for early warning, 28 for acceptance, spares for disputes), one set per 50–100 cy. Low 28-day break → the investigation LADDER: curing/testing chain first, then cores from the structure, then the engineer's evaluation — removal is the last rung, not the first."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "s02-q1",
+      "type": "multipleChoice",
+      "teach": "Water in fresh concrete beyond what hydration needs doesn't disappear — it evaporates and leaves pore space.",
+      "prompt": "The placement crew asks the driver for 'a little water in the drum' on a hot afternoon. What's actually being requested?",
+      "choices": [
+        {
+          "text": "A permanent strength and permeability penalty in exchange for twenty minutes of easier placement — the correct fix is a plasticizer, not water",
+          "correct": true,
+          "why": "Correct. PLAIN: water drills microscopic holes in the glue. PRO: raising w/c cuts strength and raises permeability — in your chloride climate, the permeability is the worse half."
+        },
+        {
+          "text": "A harmless workability adjustment within tolerance",
+          "why": "Slump adjustment at the truck with WATER changes the w/c the engineer designed. The tolerance path is admixture, documented, per the approved mix."
+        },
+        {
+          "text": "Standard practice in hot climates",
+          "why": "Hot climates are exactly where the temptation is strongest and the damage worst — heat already fights the mix; extra water finishes the job."
+        },
+        {
+          "text": "Acceptable if the testing lab is told",
+          "why": "Telling the lab documents the defect; it doesn't prevent it. The cylinders will honestly report the weaker concrete you approved."
+        }
+      ],
+      "explanation": "The sim makes jobsite water addition a recurring temptation because reality does. PLAIN: less water, stronger glue. PRO: 'water in the drum is theft from the structure' — hold slump with superplasticizer, reject the wet-drum culture early and publicly. (S2)"
+    },
+    {
+      "id": "s02-q2",
+      "type": "multipleChoice",
+      "teach": "7-day cylinder breaks are the early-warning system: they typically reach ~65–70% of f'c.",
+      "prompt": "7-day breaks on a condo column pour come in at 55% of f'c. The frame crew is ready to pour the next level. What now?",
+      "choices": [
+        {
+          "text": "Hold the next level and run the investigation ladder: check the curing/testing chain first, then cores if 28-day breaks confirm, then the engineer — most low breaks are testing problems, but you don't stack floors on a maybe",
+          "correct": true,
+          "why": "Correct. The ladder exists because badly-cured CYLINDERS are more common than bad CONCRETE — but the next level waits while you find out which this is."
+        },
+        {
+          "text": "Pour on — 28-day breaks are what count",
+          "why": "If the 28s come in low with another level on top, the fix involves demolition under load. The 7-day number exists precisely to stop this bet."
+        },
+        {
+          "text": "Demolish the columns now",
+          "why": "Removal is the LAST rung. 55% at 7 days with a fouled curing chain is a paperwork problem; jumping to demolition wastes real structure on unverified data."
+        },
+        {
+          "text": "Add more cylinders to the next pour",
+          "why": "Better sampling next time doesn't answer the question standing formed and loaded right now."
+        }
+      ],
+      "explanation": "PLAIN: a warning light means stop and look, not floor it or scrap the car. PRO: 'run the ladder — curing chain, then cores, then the EOR; strip nothing, pour nothing past an open question.' This is also the sim's Phase 3 cylinder event. (S2)"
+    },
+    {
+      "id": "s02-q3",
+      "type": "multipleChoice",
+      "teach": "Ready-mix trucks have a clock: hydration doesn't wait for traffic.",
+      "prompt": "A truck arrives at 95 minutes from batching in 90°F heat. The pour is short-handed and the next truck is 40 minutes out. Accept?",
+      "choices": [
+        {
+          "text": "Reject — the standard limit is ~90 minutes or 300 drum revolutions, and heat accelerates set; 95 hot minutes is concrete already stiffening in the drum",
+          "correct": true,
+          "why": "Correct. The limit exists because late concrete gets placed with extra water (the S2 sin) or placed stiff and honeycombed. Heat argues rejection at the margin, not leniency."
+        },
+        {
+          "text": "Accept — 5 minutes over is a rounding error",
+          "why": "At 70°F maybe a judgment call; at 90°F the set clock ran fast the whole trip. The margin case in heat resolves toward rejection."
+        },
+        {
+          "text": "Accept with water to restore slump",
+          "why": "The classic double defect: late concrete PLUS raised w/c. You'd be paying full price for the worst truck of the day."
+        },
+        {
+          "text": "Accept but pour it in a footing instead of the column",
+          "why": "Re-routing marginal concrete to 'less critical' elements builds a project whose least-inspected members got the worst material. Footings carry everything."
+        }
+      ],
+      "explanation": "PLAIN: concrete is perishable, like dough — there's a window, and heat shrinks it. PRO: '90 minutes or 300 revolutions, whichever first; hot weather tightens it.' Rejection stings once; the culture it sets protects every pour after. (S2)"
+    },
+    {
+      "id": "s02-q4",
+      "type": "multipleChoice",
+      "teach": "Curing = keeping concrete wet and warm enough to keep hydrating after placement.",
+      "prompt": "Why should curing be a specified, PAID line item rather than an assumed practice?",
+      "choices": [
+        {
+          "text": "Because uncured tropical concrete loses 20–30% of potential strength and craze-cracks — and unpaid work reliably doesn't happen; the sim models skipped curing as a defect that surfaces months later",
+          "correct": true,
+          "why": "Correct. Curing is invisible, boring, and happens after the crew's exciting part is done — exactly the profile of work that gets skipped unless it's paid and inspected."
+        },
+        {
+          "text": "It shouldn't — curing is the contractor's means and methods",
+          "why": "Means-and-methods logic works where results are immediately verifiable. Curing's failure shows up in months-later strength and surface defects — pay for it, inspect it."
+        },
+        {
+          "text": "Because curing compound is expensive",
+          "why": "The materials are cheap; the LABOR and attention over 7 days is what evaporates without a pay item."
+        },
+        {
+          "text": "Only mass pours need specified curing",
+          "why": "In this sun-and-wind climate every slab is a curing problem — the thin ones dry out fastest."
+        }
+      ],
+      "explanation": "PLAIN: concrete keeps getting stronger only while it stays wet — a week of wet burlap is strength you already paid the cement for. PRO: '7-day wet cure or approved compound, as a measured pay item, verified daily.' Deferred-defect events in the sim trace to exactly this line. (S2)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "s02_fc_psi", "label": "Specified strength f'c", "unit": "psi", "min": 3000, "max": 5000 },
+    { "id": "s02_readymix_cy", "label": "Ready-mix delivered Nassau", "unit": "$/cy", "min": 180, "max": 280 },
+    { "id": "s02_plant_setup", "label": "On-site batch plant setup", "unit": "$", "min": 400000, "max": 1200000 },
+    { "id": "s02_pump_cy", "label": "Concrete pumping", "unit": "$/cy", "min": 8, "max": 15 },
+    { "id": "s02_cylinder_freq", "label": "Cylinder set coverage", "unit": "cy/set", "min": 50, "max": 100 }
+  ],
+  "mathProblems": [
+    {
+      "id": "s02-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Concrete for a condo frame",
+      "context": "Frame concrete volume × delivered rate — the number the batch-plant decision competes against.",
+      "params": {
+        "qtyLabel": "frame concrete volume",
+        "qty": { "min": 2000, "max": 6000 },
+        "qtyUnit": "cy",
+        "rateLabel": "ready-mix rate",
+        "rate": "s02_readymix_cy",
+        "rateUnit": "$/cy",
+        "answerLabel": "concrete supply cost",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "s02-p2",
+      "generator": "massBalance",
+      "difficulty": 3,
+      "title": "The batch-plant break-even",
+      "context": "On-site batching saves a margin per cy versus ready-mix at program volume. Model it as reuse: program demand (cut) vs the volume where the plant applies (fill), times the per-cy saving — then compare mentally to the $400K–1.2M setup.",
+      "params": {
+        "cutCy": { "min": 15000, "max": 45000 },
+        "fillCy": { "min": 15000, "max": 45000 },
+        "savedPerCy": { "min": 25, "max": 60 }
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "s02-d1",
+      "title": "Batch plant or ready-mix for the condo program",
+      "scenario": "Twelve condo buildings plus production housing put your concrete demand well past 20,000 cy. On-site batching costs $400K–1.2M to set up and moves mix QC onto your organization; ready-mix keeps QC at the supplier but puts every pour in Nassau traffic and someone else's dispatch queue. Your QS wants the cy math; your super wants schedule control; your testing lab wants to know who they'd be checking.",
+      "options": [
+        {
+          "id": "run-the-math-then-plant",
+          "label": "Run the break-even honestly (demand × per-cy saving vs setup + QC staffing), and if it clears — as it should at this volume — take the plant WITH a dedicated QC tech and moisture-corrected aggregate handling",
+          "outcome": "The math clears at your volume, and the schedule benefit compounds it: pours start when your frame cycle says so. The QC responsibility is real — the tech, the moisture corrections, the calibration log — and it's the price of owning your supply.",
+          "optimal": true
+        },
+        {
+          "id": "readymix-committed",
+          "label": "Ready-mix with contracted capacity commitments from two suppliers",
+          "outcome": "A legitimate answer that keeps QC at the supplier and costs a commitment premium. Your frame cycle now shares fate with two plants you don't control — dual-sourcing covers breakdown, not the season everyone pours at once.",
+          "acceptable": true
+        },
+        {
+          "id": "plant-no-qc",
+          "label": "Take the plant, skip the dedicated QC tech — the mix design is proven",
+          "outcome": "The plant without the QC is the worst of both: you've taken supplier-grade responsibility with jobsite-grade attention. The first wet-aggregate morning ships six trucks of lottery slump before anyone notices — and now they're YOUR trucks.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "On-site batching pays above roughly 15–25,000 cy — but the decision is really about responsibility: the plant buys schedule control at the price of owning mix QC. Take both halves or neither. (S2)"
+    }
+  ]
+}

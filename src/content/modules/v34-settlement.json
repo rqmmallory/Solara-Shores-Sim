@@ -1,0 +1,171 @@
+{
+  "id": "v34-settlement",
+  "order": 28,
+  "title": "V3-4 — Differential Settlement: The Crack-Maker",
+  "short": "Settlement",
+  "status": "ready",
+  "summary": "Settling isn't the problem; settling UNEVENLY is — a building that sinks together is fine, a building that sinks at one corner has to bend, and block buildings don't bend, they crack. The signature: stair-step cracks, sticking doors, sloping floors. The cause: different ground under different parts. PLAIN: one soft spot under one corner. PRO: angular distortion, transitions, the remedy ladder from monitoring to underpinning.",
+  "sections": [
+    {
+      "heading": "Uniform vs differential",
+      "body": "PLAIN: If a whole building sinks half an inch together, nobody ever knows. If one corner sinks half an inch and the rest doesn't, the building must bend to follow — and masonry doesn't bend, it CRACKS. The classic signature: stair-step cracks through block joints, doors that stop closing, a floor with a slope. The cause is always the same species: softer or different ground under one part — half the footing on rock and half on a filled soft pocket (your karst risk exactly), an addition on new fill against original on rock, a utility trench backfilled loose under one wall line. PRO: tolerable total settlement ~1 in; tolerable differential ~1/2 in over 30 ft — angular distortion ~1/500 to 1/300 before visible damage. 'The building's hinging over a hard point'; 'the footing's bridging a soft spot.'"
+    },
+    {
+      "heading": "Transitions are where it bites",
+      "body": "PLAIN: Trouble concentrates at every CHANGE — rock-to-fill lines, building-to-addition joints, pavement-to-structure edges. The bump at the end of every bridge in the world is differential settlement: the bridge on piles doesn't move, the road on dirt does. Your site rule stands: the exceptions are voids and pockets, so foundations get probed, and any footing straddling a cut/fill line gets engineering attention, not hope. PRO: 'watch your transitions'; 'don't found half on cut and half on fill' — step the footing to rock, or thicken and reinforce it to bridge, by design rather than accident."
+    },
+    {
+      "heading": "The remedy ladder",
+      "body": "PLAIN: When cracks appear, you climb a ladder from cheap to expensive: watch it (crack gauges, re-read monthly — a moving crack is a live problem, a dormant one is history) → measure it (survey the floor levels to map WHAT is sinking) → probe it (find the soft zone) → fix the ground (grout the void) or fix the footing. The expensive last word is UNDERPIN — supporting an existing footing from below. PRO: crack gauges $50–150; compaction grouting $2,000–6,000/injection point; underpinning $500–1,500/lf of footing; 'monitor → levels → probe → grout/underpin' is the diagnostic sequence, and skipping to the expensive rungs before the data is in wastes money in both directions."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "v34-q1",
+      "type": "multipleChoice",
+      "teach": "Crack patterns are diagnostic — stair-steps through block joints tell a specific story.",
+      "prompt": "House 214 shows stair-step cracking over the garage corner 8 months after closing. What's the correct sequence?",
+      "choices": [
+        {
+          "text": "Monitor with crack gauges → survey floor levels to map the movement → probe the ground at the moving corner → then grout or underpin per what the probing finds; meanwhile handle the buyer per the warranty program, honestly",
+          "correct": true,
+          "why": "Correct — the diagnostic ladder in order. Gauges answer 'active or dormant'; levels answer 'what's moving'; probing answers 'why'; and only then does money get spent on the right fix."
+        },
+        {
+          "text": "Underpin immediately — structural cracks demand structural response",
+          "why": "Underpinning a dormant crack (the void may have finished collapsing) wastes $500–1,500/lf on history. The gauges cost $100 and answer the question first."
+        },
+        {
+          "text": "Cosmetic repair — hairline cracks are settling-in",
+          "why": "'Settling-in' is what stair-step cracking gets called by people who haven't surveyed the levels. Structural until proven otherwise — and this pattern points at the ground."
+        },
+        {
+          "text": "Deny the warranty claim — soil movement is excluded",
+          "why": "On THIS site, a settlement crack points at karst or fill compaction — construction-era responsibilities. Denial before diagnosis is how warranty disputes become litigation."
+        }
+      ],
+      "explanation": "PLAIN: watch it, measure it, probe it, then fix exactly what you found. PRO: 'gauges monthly → level survey → probe → grout/underpin' — and note the sim callback: skipped proof-rolls and geotech surface as exactly this warranty cluster. (V3-4, S1)"
+    },
+    {
+      "id": "v34-q2",
+      "type": "multipleChoice",
+      "teach": "The bridge bump: piles don't settle, embankments do.",
+      "prompt": "Why does trouble concentrate at TRANSITIONS — rock-to-fill lines, additions, pavement-to-structure edges?",
+      "choices": [
+        {
+          "text": "Because differential settlement needs a DIFFERENCE — two zones settling identically crack nothing; the damage happens along the line where support conditions change, which is why footings straddling cut/fill lines get engineered, not hoped",
+          "correct": true,
+          "why": "Correct. Uniformity is harmless; the gradient does the damage — and gradients live at transitions. The bump at every bridge end is this principle with traffic on it."
+        },
+        {
+          "text": "Transitions are built last and rushed",
+          "why": "Sometimes true, but the mechanism is physical: even perfectly built transitions join ground that settles differently."
+        },
+        {
+          "text": "Water collects at transitions",
+          "why": "Drainage can aggravate, but dry transitions crack too — the driver is differential support, not moisture."
+        },
+        {
+          "text": "They don't — cracks appear randomly",
+          "why": "Crack surveys say otherwise with boring consistency: additions, trench lines, cut/fill boundaries. Random-looking cracks usually map onto a transition someone forgot."
+        }
+      ],
+      "explanation": "PLAIN: cracks grow where the ground changes personality — hunt the change lines on the site plan and you've predicted the cracks. PRO: 'watch your transitions; step to rock or reinforce to bridge, never straddle by accident.' (V3-4)"
+    },
+    {
+      "id": "v34-q3",
+      "type": "multipleChoice",
+      "teach": "A condo footprint crossing a mapped filled sinkhole is a foundation-strategy decision.",
+      "prompt": "Rank the response options for a condo building over a mapped filled karst feature.",
+      "choices": [
+        {
+          "text": "Compare on total cost and risk: relocate the footprint (cheap if planning allows), deep-probe + grout (targeted, proven), mat foundation (bridges variation), piles to sound rock (certain, priciest) — the geotech's characterization picks; dogma doesn't",
+          "correct": true,
+          "why": "Correct. All four are legitimate; the feature's depth, extent, and fill quality decide. A shallow well-mapped pocket wants grout; a deep chaotic one may want piles or a new address."
+        },
+        {
+          "text": "Always piles — certainty is worth anything",
+          "why": "Piles under a building that grouting would have served at a fifth the price is certainty as waste. 'Worth anything' is not an engineering criterion."
+        },
+        {
+          "text": "Always relocate — never build over karst",
+          "why": "On THIS island everything is over karst somewhere — the question is characterized vs uncharacterized. Mapped and treated beats unmapped and avoided-into."
+        },
+        {
+          "text": "The mat foundation, since it bridges everything",
+          "why": "Mats bridge VARIATION, not voids of arbitrary size — a mat over an untreated collapsing feature is a stiffer way to tilt. It's a candidate, not a default."
+        }
+      ],
+      "explanation": "PLAIN: four tools, one decision rule — match the fix to what the probing actually found. PRO: 'relocate / probe-and-grout / mat / piles, ranked by the geotech's characterization and the QS's numbers.' (V3-4, S1)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "v34_gauge", "label": "Crack monitoring gauge", "unit": "$/each", "min": 50, "max": 150 },
+    { "id": "v34_grout_point", "label": "Compaction grouting", "unit": "$/point", "min": 2000, "max": 6000 },
+    { "id": "v34_underpin_lf", "label": "Underpinning", "unit": "$/lf", "min": 500, "max": 1500 }
+  ],
+  "mathProblems": [
+    {
+      "id": "v34-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Grouting program for a soft zone",
+      "context": "Compaction grouting prices per injection point on a grid across the soft zone — the middle rung of the remedy ladder.",
+      "params": {
+        "qtyLabel": "injection points",
+        "qty": { "min": 10, "max": 60 },
+        "qtyUnit": "points",
+        "rateLabel": "grouting rate",
+        "rate": "v34_grout_point",
+        "rateUnit": "$/point",
+        "answerLabel": "grouting program",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "v34-p2",
+      "generator": "unitRate",
+      "difficulty": 2,
+      "title": "The underpinning bill",
+      "context": "Underpinning — the expensive word — prices per linear foot of footing supported from below. This is what the remedy ladder's cheap early rungs are protecting you from.",
+      "params": {
+        "qtyLabel": "footing length to underpin",
+        "qty": { "min": 40, "max": 200 },
+        "qtyUnit": "lf",
+        "rateLabel": "underpinning rate",
+        "rate": "v34_underpin_lf",
+        "rateUnit": "$/lf",
+        "answerLabel": "underpinning cost",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "v34-d1",
+      "title": "The addition on new fill",
+      "scenario": "The clubhouse expansion (a Phase 6 add) joins new construction on six feet of recent structural fill to the original building founded on rock. The architect's drawings show the two structures rigidly connected — shared walls, continuous floor slab, one roofline. The geotech's report note about 'differential settlement at the interface' hasn't made it into the details.",
+      "options": [
+        {
+          "id": "joint-the-interface",
+          "label": "Require an engineered movement joint at the old/new interface — structurally separate systems, flexible closure details, the slab and roofline detailed to move independently",
+          "outcome": "The joint costs detailing effort and a visible line the architect must design around — and it converts an inevitable differential (new fill WILL settle more than rock, however well compacted) into a planned movement instead of a growing crack through shared finishes.",
+          "optimal": true
+        },
+        {
+          "id": "rigid-connection",
+          "label": "Build it as drawn — the fill was compacted to 98%, it won't move",
+          "outcome": "98% compaction minimizes settlement; it doesn't zero it — and rock settles at exactly zero. The difference, small as it is, concentrates along the rigid connection line and opens the classic addition crack through the shared wall within two wet seasons.",
+          "acceptable": false
+        },
+        {
+          "id": "overexcavate",
+          "label": "Over-excavate the addition to rock so both halves found identically",
+          "outcome": "The physics-perfect answer — both on rock, no differential — priced in six feet of rock excavation across the footprint. Sometimes the numbers work; run them against the joint before choosing the expensive purity.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Additions are transitions wearing architecture: new fill meets old rock at exactly the line where the drawings show rigid connection. Either found both halves alike, or JOINT the interface and let them move — the one wrong answer is rigid hope. (V3-4, V3-5)"
+    }
+  ]
+}

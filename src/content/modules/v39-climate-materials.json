@@ -1,0 +1,180 @@
+{
+  "id": "v39-climate-materials",
+  "order": 33,
+  "title": "V3-9 — Climate & Materials Science: How the Bahamas Attacks Buildings",
+  "short": "Climate",
+  "status": "ready",
+  "summary": "Tropical-marine means the attack is constant, chemical, and biological rather than violent (except hurricanes): salt aerosol, humidity + dew point, UV, biology — and knowing what you DON'T face (freeze-thaw, frost depth, snow) is real money. Plus weather-vs-climate on the jobsite: climate sets your specs; weather sets your day. PLAIN: know your enemy list, and your not-enemy list. PRO: exposure classes, dew-point discipline, the vapor-barrier flip, weather task gating.",
+  "sections": [
+    {
+      "heading": "Your climate's weapons, ranked",
+      "body": "PLAIN: (1) SALT AEROSOL — the sea throws microscopic salt into the air; it settles on everything within roughly a mile of shore, worst in the first few hundred feet (your beach club and condos 1–2 are in the kill zone). Salt + metal + moisture = a corrosion battery running 24/7, attacking ABOVE ground: condensers, panels, hardware, fixtures. (2) HUMIDITY + HEAT — the engine for everything else: corrosion roughly doubles pace per ~18°F where moisture's present; mold farms any surface sustained above ~60–70% RH; and DEW POINT is the sneaky mechanism — chill any surface below the air's dew point (here 72–75°F much of the year) and water condenses on it out of thin air. Every over-cooled wall, every uninsulated chilled pipe, every duct in a hot attic is a condensation machine. This is WHY oversized AC = mold (S7). (3) UV — tropical sun is a slow flamethrower for polymers: paints chalk, sealants embrittle; budget repaint/reseal at roughly half temperate intervals (5–8 yr exposed coastal). (4) BIOLOGY — mold, subterranean and drywood termites (another reason for the concrete culture), marine borers, roots in every joint. (5) HURRICANES — the violent exception; the materials angle is WIND-DRIVEN RAIN: water arriving horizontally under pressure, testing flashings and window installs at pressures gravity never applies. PRO: 'C5-marine coating environment,' 'coastal-rated everything within the kill zone,' 'keep surfaces above dew point,' 'water-managed wall assembly, glazing tested at design pressure.'"
+    },
+    {
+      "heading": "What you DON'T face, and the comparative table",
+      "body": "PLAIN: No freeze-thaw (so no air-entrainment in concrete), no frost depth (footings can sit nearly at grade on rock — northern builders dig 4 ft purely to get below frost), no snow load, minimal seismic, small daily temperature swings. Knowing what NOT to pay for is real money — the sim includes 'delete the irrelevant spec item' problems. The comparative literacy: COLD/WET fights freeze-thaw, frost heave, snow, interior vapor barriers, road-salt corrosion. HOT-ARID fights giant daily swings (double the joint math), flash-drying, dust, expansive clays (heave — settlement in reverse). TEMPERATE fights long damp, rot, moss. TROPICAL-MARINE (you) fights chemistry and biology over ice and physics. The professional's transfer skill: arrive anywhere, ask 'which enemy dominates here,' re-rank every spec decision accordingly. PRO: exposure/durability classes by code region — F freeze-thaw, C chlorides (yours), S sulfates; the vapor-barrier flip (V3-5) as the interview classic."
+    },
+    {
+      "heading": "Weather (days) vs climate (years) on the jobsite",
+      "body": "PLAIN: Climate sets your specs; weather sets your day. RAIN: no concrete finishing (ruined surface), no compacting wet fill (pumping), no painting/render, no asphalt on wet base, trench safety review. HEAT: concrete evaporation-rate limits (the S2 kit), worker heat-stress productivity drops measurably on peak afternoons (10–30%) — hydration, shade, and schedule shifts are safety AND productivity; asphalt actually LIKES heat (longer compaction window). WIND: crane lifts stop around 20–30 mph, plastic-shrinkage risk multiplies, no membrane/sheet work, dust complaints. STORM WATCH: the 72/48/24-hour preparedness ladder. PRO: the app's weather engine gates tasks exactly this way — weather state → blocked/degraded tasks → productivity multipliers — so the player internalizes which trades die on which forecast."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "v39-q1",
+      "type": "multipleChoice",
+      "teach": "The sweating-glass analogy: a cold drink sweats because its surface is below the air's dew point.",
+      "prompt": "Why does an over-cooled condo wall grow mold in this climate?",
+      "choices": [
+        {
+          "text": "The chilled surface drops below the humid air's dew point (72–75°F here much of the year) and condenses water out of thin air — sustained surface moisture above the ~60–70% RH threshold is a mold farm; walls sweat exactly like the cold glass",
+          "correct": true,
+          "why": "Correct. Indoor rain by refrigeration: the wall didn't leak — it CONDENSED. Keep surfaces above dew point (right-sized AC, insulated chilled surfaces, ducts in conditioned space) and the farm never opens."
+        },
+        {
+          "text": "Cold walls attract airborne spores",
+          "why": "Spores are everywhere always — the limiting resource is WATER, and the cold surface manufactures it from humid air."
+        },
+        {
+          "text": "The AC's condensate drains leak into the wall",
+          "why": "A real but separate defect. The dew-point mechanism needs no leak — the moisture arrives through the air, invisibly, nightly."
+        },
+        {
+          "text": "Paint in the tropics traps moisture",
+          "why": "Coating permeability matters at the margins; the driver is surface temperature vs dew point. Fix the temperature and the paint is irrelevant."
+        }
+      ],
+      "explanation": "PLAIN: chill anything below the air's sweat-line and it drips — walls included. PRO: 'keep surfaces above dew point; vapor drive runs outside-in here; mold is a design defect wearing a housekeeping costume.' (V3-9, S7, V3-5)"
+    },
+    {
+      "id": "v39-q2",
+      "type": "multipleChoice",
+      "teach": "Knowing what NOT to pay for is climate literacy's cash value.",
+      "prompt": "Which spec item should be DELETED from a set adapted from Florida/US-northern standards?",
+      "choices": [
+        {
+          "text": "Air-entrainment in the concrete and 4-ft frost-depth footings — both are armor against freeze-thaw and frost heave, enemies that never visit this island; footings on rock can found nearly at grade",
+          "correct": true,
+          "why": "Correct. Air-entrainment costs strength and money to defeat ice that never forms; frost-depth digging is pure imported habit. Delete both, spend the savings on the chloride war you ARE fighting."
+        },
+        {
+          "text": "The impact glazing — it's a cold-climate item",
+          "why": "Backwards — impact protection is a HURRICANE item and non-negotiable here (S6's internal pressurization). Know which armor is yours."
+        },
+        {
+          "text": "The 2.5-inch marine cover requirement",
+          "why": "That's your PRIMARY enemy's armor (chlorides, S9) — the last thing to delete."
+        },
+        {
+          "text": "Nothing — more protection is always safer",
+          "why": "Irrelevant protection isn't safe, it's expensive — and sometimes harmful (air-entrainment trades away strength; interior vapor barriers actively damage tropical walls)."
+        }
+      ],
+      "explanation": "PLAIN: don't buy a snow shovel for Nassau — and notice the specs that ARE snow shovels. PRO: 'exposure class C governs here, not F; delete freeze-thaw provisions, keep every chloride and wind provision, and flag any detail imported from a different climate for review.' (V3-9, V3-5)"
+    },
+    {
+      "id": "v39-q3",
+      "type": "multipleChoice",
+      "teach": "The weather engine's task-gating table: which trades die on which forecast.",
+      "prompt": "Tomorrow's forecast: 25–30 mph sustained wind, dry, hot. Which activities are blocked or degraded?",
+      "choices": [
+        {
+          "text": "Crane lifts stop (20–30 mph limits), membrane/sheet work is off, and any concrete finishing carries multiplied plastic-shrinkage risk (wind is the evaporation-rate driver) — while earthwork and interior trades run normally, and asphalt actually benefits from the heat",
+          "correct": true,
+          "why": "Correct. Wind is the crane-killer and the slab-surface killer; heat alone extends the asphalt window. Reading the forecast BY TRADE is the daily scheduling skill."
+        },
+        {
+          "text": "Everything stops — high wind is high wind",
+          "why": "Blanket shutdowns waste the trades wind doesn't touch. The skill is selective gating: the excavator doesn't care; the crane and the fresh slab do."
+        },
+        {
+          "text": "Nothing stops — it's not raining",
+          "why": "Rain is one column of the table, not the whole table. Dry 28-mph wind grounds every crane pick and shreds every unweighted membrane on site."
+        },
+        {
+          "text": "Only marine work is weather-dependent",
+          "why": "Marine work has the WINDOW (seasonal); land work has the DAY (task gating). Both calendars run simultaneously."
+        }
+      ],
+      "explanation": "PLAIN: wind grounds cranes and dries fresh concrete too fast; heat helps asphalt; rain kills finishing and compaction — every forecast is a to-do list edit. PRO: 'weather state → blocked/degraded tasks → productivity multipliers,' the lookup the sim's weather engine runs. (V3-9)"
+    },
+    {
+      "id": "v39-q4",
+      "type": "multipleChoice",
+      "teach": "Wind-driven rain arrives horizontally, under pressure.",
+      "prompt": "Why do wall assemblies that shed ordinary rain perfectly still leak in a tropical storm?",
+      "choices": [
+        {
+          "text": "Storm rain arrives horizontally under wind pressure — it climbs laps, penetrates joints, and pressurizes cavities that gravity-rain never tests; flashings, window installs, and drainage planes must be designed and TESTED at design pressure",
+          "correct": true,
+          "why": "Correct. Gravity detailing assumes water falls down; a design storm throws it sideways and pushes. 'Test the glazing at design pressure' exists because the difference is qualitative."
+        },
+        {
+          "text": "Storm rain is heavier per drop",
+          "why": "Volume matters less than VECTOR and PRESSURE — sideways water under load finds paths downward water never visits."
+        },
+        {
+          "text": "They don't — code assemblies handle all rain",
+          "why": "Code assemblies handle what they're detailed and tested for; wind-driven-rain performance is a specific, testable property that generic details lack."
+        },
+        {
+          "text": "Storm damage lets the water in first",
+          "why": "Intact assemblies leak under driven rain too — no breakage required, just pressure differentials across imperfect laps."
+        }
+      ],
+      "explanation": "PLAIN: storms throw water sideways and push it uphill — walls built only for falling water lose. PRO: 'wind-driven rain intrusion; water-managed assembly; field-test glazing and flashings at design pressure before the season proves them for you.' (V3-9, S6)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "v39_killzone_ft", "label": "Salt kill zone, worst", "unit": "ft from surf", "min": 500, "max": 1000 },
+    { "id": "v39_dewpoint_f", "label": "Dew point, much of the year", "unit": "°F", "min": 72, "max": 75 },
+    { "id": "v39_repaint_yr", "label": "Repaint/reseal cycle, exposed coastal", "unit": "years", "min": 5, "max": 8 },
+    { "id": "v39_heat_loss_pct", "label": "Heat productivity loss, peak afternoons", "unit": "%", "min": 10, "max": 30 },
+    { "id": "v39_crane_mph", "label": "Crane wind limit", "unit": "mph", "min": 20, "max": 30 }
+  ],
+  "mathProblems": [
+    {
+      "id": "v39-p1",
+      "generator": "percentOf",
+      "difficulty": 2,
+      "title": "The heat-productivity tax",
+      "context": "Peak-summer afternoons cost 10–30% of output where work continues without schedule shifts. Price the tax on a month of summer labor — then compare to the cost of dawn starts.",
+      "params": {
+        "baseLabel": "monthly direct labor across the program",
+        "base": { "min": 800000, "max": 2500000 },
+        "baseUnit": "$",
+        "pct": "v39_heat_loss_pct",
+        "answerLabel": "heat productivity loss",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "v39-d1",
+      "title": "The tiered VE answer",
+      "scenario": "A value-engineering pass proposes a standard-duty hardware and fixtures package saving $340K across the program versus coastal-rated. The VE consultant's spreadsheet treats every building identically — but your buildings aren't identical: the beach club and condos 1–2 sit in the first few hundred feet of salt kill zone; the inland production houses sit a half-mile back behind vegetation.",
+      "options": [
+        {
+          "id": "tier-by-exposure",
+          "label": "Tier the spec by exposure zone: marine-grade in the kill zone (where the corrosion clock runs fastest), standard-duty inland where the aerosol load is a fraction — capturing most of the saving without buying the year-6 replacement wave on the flagship buildings",
+          "outcome": "The tiered answer is the climate-literate one: exposure is a gradient, not a constant, and the spec should follow it. You keep perhaps 60% of the VE saving and none of the beach club's year-6 hardware failure — the correct VE answer was never all-or-nothing.",
+          "optimal": true
+        },
+        {
+          "id": "take-it-all",
+          "label": "Take the full $340K — warranties exist",
+          "outcome": "Inland, you'll get away with it; in the kill zone, salt does what salt does and warranties don't cover environment. The oceanfront replacement wave lands at year 5–7 in occupied buildings — the HOA sentiment event the sim's Phase 7 has been waiting for.",
+          "acceptable": false
+        },
+        {
+          "id": "refuse-it-all",
+          "label": "Refuse — marine-grade everywhere, no exceptions",
+          "outcome": "Safe and wasteful: the inland houses' door hardware doesn't live in the aerosol zone, and the premium there buys protection against an enemy that barely visits. Blanket specs are the same climate illiteracy as blanket deletions, pointed the other way.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Exposure zoning is the master move of climate-literate specification: rank the enemy's intensity across YOUR site (kill zone to sheltered inland), and let the spec tier follow the gradient. Most VE fights dissolve when 'where' enters the spreadsheet. (V3-9, S7, S9)"
+    }
+  ]
+}

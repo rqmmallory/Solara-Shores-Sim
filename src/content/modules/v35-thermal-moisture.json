@@ -1,0 +1,155 @@
+{
+  "id": "v35-thermal-moisture",
+  "order": 29,
+  "title": "V3-5 — Thermal and Moisture Movement: Everything Breathes",
+  "short": "Movement",
+  "status": "ready",
+  "summary": "Materials change size and you can't stop them — only plan for them. Restrain concrete's movement and it makes its own room: it cracks. Joints are you deciding where the cracks go. Wood moves with moisture, not heat. And climates differ in WHICH enemy dominates — the transferable literacy. PLAIN: give movement somewhere to happen. PRO: control vs expansion joints, sawcut windows, EMC and acclimatization, exposure classes.",
+  "sections": [
+    {
+      "heading": "Heat, restraint, and joints",
+      "body": "PLAIN: Heat things and they grow; cool them and they shrink. Concrete and steel grow about the same per degree — the happy accident that makes reinforced concrete possible. A 100-ft concrete face through a 50°F swing moves about a third of an inch — small, but concrete is so stiff that PREVENTING that movement takes enormous force, so unjointed concrete makes its own room: it cracks. Joints are the whole philosophy: you decide where the cracks go instead of letting the concrete decide. PRO: CTE ~5.5×10⁻⁶/°F concrete, ~6.5 steel; 'restraint cracking' (movement + something holding still = crack); CONTROL joints are deliberate weak lines — sawcuts in slabs (spacing in feet ≈ 2–3× thickness in inches: a 4-in slab gets joints every 8–12 ft; cut within the 4–12 hour window — after the slab holds a saw, before it cracks on its own schedule) — vs EXPANSION/ISOLATION joints, real gaps with flexible filler letting big pieces move independently: long bulkhead runs, building wings, slab-to-column isolation. And drying shrinkage needs no temperature at all: concrete shrinks ~0.05% as it dries over months — a 100-ft slab wants to lose ~5/8 in, the reason new slabs crack with zero temperature change. 'The joints are the design' is a sentence your structural engineer will respect."
+    },
+    {
+      "heading": "Wood moves with moisture",
+      "body": "PLAIN: Wood barely notices temperature but swells and shrinks with humidity — much more across the grain than along it. Doors stick in the rainy season and rattle in March. You don't fight it: ACCLIMATIZE (let wood reach local moisture before installing), leave movement gaps, fasten so movement is allowed. In this climate exterior wood also stays damp enough to invite rot and termites — why Bahamian construction is a concrete culture with wood confined to ventilated roofs and finishes. PRO: equilibrium moisture content ~12–15% outdoors here vs 6–9% in conditioned interiors — wood moved from a humid warehouse into a chilled condo shrinks AFTER installation (the gapped-floor callback); 'acclimatize the material'; 'tangential vs radial shrinkage.'"
+    },
+    {
+      "heading": "The comparative lesson: which enemy dominates where",
+      "body": "PLAIN: In cold country the killer is FREEZE-THAW — water in concrete pores freezes and expands ~9%, a jack inside the stone cycling hundreds of times a winter, which is why northern concrete is air-entrained (microscopic bubbles giving ice room to push) and why the Bahamas skips air-entrainment entirely: you don't buy armor for an enemy that never comes. Hot-arid country fights giant daily swings (double the movement math) and flash-drying. Your tropical-marine enemy list is heat-that-never-relents, humidity, salt, UV, and biology. Same physics everywhere; a different term dominates — a CM who knows WHICH term dominates WHERE can work anywhere. PRO: 'exposure class' is the code's way of saying which enemy applies: F for freeze-thaw, C for corrosion/chlorides (yours), S for sulfates."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "v35-q1",
+      "type": "multipleChoice",
+      "teach": "Sawcut control joints must exist before the slab's own shrinkage stresses beat them to it.",
+      "prompt": "The slab crew wants to sawcut joints 'tomorrow morning' after a late-afternoon pour. Why is timing the whole question?",
+      "choices": [
+        {
+          "text": "The window is roughly 4–12 hours: after the slab can hold a saw without raveling, but BEFORE it accumulates enough shrinkage stress to crack on its own schedule — tomorrow morning may be after the slab already chose its own crack lines",
+          "correct": true,
+          "why": "Correct. A control joint that arrives after the random cracks is decoration. In this heat, the window leans early — night pours often get cut before dawn."
+        },
+        {
+          "text": "Morning cutting is fine — concrete needs a day to be sawable",
+          "why": "Backwards on both ends: modern early-entry saws cut within hours, and hot-climate slabs build shrinkage stress fast. Waiting a day forfeits the race."
+        },
+        {
+          "text": "Timing is aesthetic — cracks happen regardless",
+          "why": "Cracks happen regardless — WHERE is the decision. The joint invites the crack to a straight, sealed, maintainable line instead of a random wander."
+        },
+        {
+          "text": "Joints should be cut before the pour",
+          "why": "That's tooled/formed jointing, an option for some work — SAWCUT joints by definition happen after placement, inside the window."
+        }
+      ],
+      "explanation": "PLAIN: cut the tidy line before the slab draws its own messy one — there's a window, and heat shrinks it. PRO: 'early-entry saw, 4–12 hours, spacing 2–3× thickness in feet; the joint layout is on the drawings, the timing is on the super.' (V3-5)"
+    },
+    {
+      "id": "v35-q2",
+      "type": "multipleChoice",
+      "teach": "Control joints and expansion joints solve different problems.",
+      "prompt": "The 1,400-ft bulkhead cap needs joints. Which kind, and why is this worth a design-review hour?",
+      "choices": [
+        {
+          "text": "Both: control joints at regular spacing deciding where shrinkage cracks go, AND true expansion joints with flexible filler and waterstops at longer intervals letting the run move — 1,400 ft of restrained concrete in daily sun WILL move, and every unplanned crack is a chloride highway",
+          "correct": true,
+          "why": "Correct. Long exposed marine runs need the full joint hierarchy — and in chloride service, joint design is corrosion design: cracks are ingress paths (S9)."
+        },
+        {
+          "text": "Neither — the cap is continuous for strength",
+          "why": "A 'continuous' 1,400-ft cap is continuous until its first summer, then it's jointed wherever it decided to crack — unsealed, over your rebar."
+        },
+        {
+          "text": "Just pour it in short segments over several weeks",
+          "why": "Segmented pours create joints by default — cold joints, unplanned and undetailed. The design question (spacing, waterstops, sealant) still needed answering; you just answered it accidentally."
+        },
+        {
+          "text": "One expansion joint in the middle",
+          "why": "700 ft between movement provisions is ~350% over any sane spacing — the concrete will supplement your one joint with dozens of its own."
+        }
+      ],
+      "explanation": "PLAIN: a very long concrete ribbon in the sun needs planned places to crack AND real gaps to breathe. PRO: 'control joints at design spacing, expansion joints with waterstops at intervals, sealed — in the splash zone, joint discipline IS durability discipline.' (V3-5, S9)"
+    },
+    {
+      "id": "v35-q3",
+      "type": "multipleChoice",
+      "teach": "The vapor-barrier flip is the classic climate-literacy interview question.",
+      "prompt": "A US-trained architect details the condo walls with an interior vapor barrier, copied from northern practice. What's wrong?",
+      "choices": [
+        {
+          "text": "Vapor drive here runs OUTSIDE-IN — hot humid exterior air pushing toward cool dry interiors — the exact reverse of cold climates; an interior barrier traps that moisture inside the wall against the cooled surface, farming mold in the assembly",
+          "correct": true,
+          "why": "Correct. Barrier placement flips with climate: it belongs toward the warm-humid side. A Canadian wall detail in Nassau is a condensation trap with a permit."
+        },
+        {
+          "text": "Nothing — vapor barriers are universal good practice",
+          "why": "The BARRIER is universal; its POSITION is climatic. Wrong-side placement is worse than none — it stops the wall drying inward, the only direction it had."
+        },
+        {
+          "text": "Vapor barriers aren't needed in concrete construction",
+          "why": "Concrete moderates but doesn't exempt — interior finishes, furring, and insulation still create condensation planes that need managed vapor design."
+        },
+        {
+          "text": "The problem is the material, not the position",
+          "why": "Any material in that position does the damage — the physics is WHERE the condensation plane lands relative to the barrier, not what the barrier is made of."
+        }
+      ],
+      "explanation": "PLAIN: moisture pushes from the hot wet side toward the cool dry side — here that's outside-in, so the wall must dry toward the room, not be sealed from it. PRO: 'vapor drive reverses in tropical climates; barrier toward the exterior side, assembly dries inward — the single best example of why climate literacy matters.' (V3-5, V3-9)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "v35_cte", "label": "Concrete CTE", "unit": "millionths/°F", "min": 5.5, "max": 6.5 },
+    { "id": "v35_joint_mult", "label": "Slab joint spacing multiplier", "unit": "x thickness (in) = ft", "min": 2, "max": 3 },
+    { "id": "v35_sawcut_hr", "label": "Sawcut window", "unit": "hours", "min": 4, "max": 12 },
+    { "id": "v35_emc_out", "label": "Wood EMC outdoors here", "unit": "%", "min": 12, "max": 15 }
+  ],
+  "mathProblems": [
+    {
+      "id": "v35-p1",
+      "generator": "unitRate",
+      "difficulty": 2,
+      "title": "Thermal movement of a long element",
+      "context": "Movement (inches) = length (ft) × 12 × CTE × ΔT. For a compact version: movement per 100 ft ≈ 0.0066 in per °F of swing at concrete's CTE. Multiply the swing by that rate.",
+      "params": {
+        "qtyLabel": "temperature swing",
+        "qty": { "min": 30, "max": 60 },
+        "qtyUnit": "°F",
+        "rateLabel": "movement per °F per 100 ft",
+        "rate": 0.0066,
+        "rateUnit": "$/°F",
+        "answerLabel": "movement per 100 ft (inches)",
+        "answerUnit": "inches"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "v35-d1",
+      "title": "The imported hardwood deck",
+      "scenario": "The beach club's design calls for imported hardwood decking. The shipment arrives at 18% moisture content from a humid container, and the installer proposes laying it immediately into the shaded, breeze-cooled, partially air-conditioned beach club structure — 'hardwood is stable, that's why you paid for it.' The install window is tight against the opening date.",
+      "options": [
+        {
+          "id": "acclimatize",
+          "label": "Stack and sticker the decking on site for acclimatization, measure MC until it approaches the service environment's equilibrium, then install with specified movement gaps",
+          "outcome": "The wood sheds its container moisture BEFORE the fasteners lock it down — the shrinkage happens in the stack, not the deck. The opening date takes a modest hit that the punch list would have taken anyway, in gap form.",
+          "optimal": true
+        },
+        {
+          "id": "install-now",
+          "label": "Install now — the schedule needs it and hardwood is stable",
+          "outcome": "'Stable' means slower, not immune: at 18% MC into a drier service environment, every board shrinks after installation — gapped decking, proud fasteners, cupped boards at the AC boundary. The callback is literal: wood moved from a humid warehouse into a chilled space shrinks in place.",
+          "acceptable": false
+        },
+        {
+          "id": "kiln-spec-next-time",
+          "label": "Install now but spec kiln-dried-to-service-MC for future orders",
+          "outcome": "Half a lesson: the future spec is right, and this shipment still shrinks in the deck. Fixing procurement going forward doesn't dry the boards going down this week.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Wood equilibrates to its environment whether you schedule it or not — the only choice is whether the movement happens in the acclimatization stack or in the finished work. Measure MC, match it to service conditions, gap for the residual. (V3-5)"
+    }
+  ]
+}

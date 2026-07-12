@@ -1,0 +1,151 @@
+{
+  "id": "v33-water-buoyancy",
+  "order": 27,
+  "title": "V3-3 — Water Pressure, Buoyancy, and Uplift",
+  "short": "Buoyancy",
+  "status": "ready",
+  "summary": "Water pushes on everything, from every side, and it never gets tired — 62.4 pounds per square foot per foot of depth, sideways on walls and UPWARD on floors. Anything hollow in groundwater is a boat whether you meant it or not. The site's secret antagonist, with the floating pool as its signature story. PLAIN: empty things in wet ground want to float. PRO: hydrostatic head, uplift checks, relief valves, why you can't dewater karst.",
+  "sections": [
+    {
+      "heading": "The floating pool",
+      "body": "PLAIN: Water pressure grows with depth — every foot down adds about 62 pounds per square foot — and it pushes UP on floors as hard as sideways on walls. Anything hollow sitting in groundwater displaces water, and water pushes back with the weight of what was displaced (Archimedes — the oldest law in this app). Your groundwater sits within about 5 feet of the surface, so everything deep is in the water. The famous case: an EMPTY SWIMMING POOL FLOATS — drain one in high groundwater and it can pop out of the ground like a plastic cup held under and released. That's why pool shells get hydrostatic relief valves (one-way flaps in the floor that let groundwater IN when outside pressure wins — flooding your pool is cheaper than launching it), and the rule: never drain a pool in high groundwater without checking. PRO: 'hydrostatic head,' 'uplift,' 'the structure wants to float'; relief valves ~1 per 200–300 sf of pool floor; the same physics anchors buried fuel tanks (your marina's get deadmen or ballast), lift-station wet wells, any basement."
+    },
+    {
+      "heading": "The numbers beat intuition",
+      "body": "PLAIN: 8 feet of water head is about 500 psf of uplift. A 20×40-ft empty pool 8 ft deep in groundwater feels an upward push of roughly 400,000 pounds — 200 tons trying to launch it — against a shell weighing maybe 60–80 tons. The shell loses that fight every time, without valves, anchors, or staying full. PRO: run the buoyancy check: uplift = footprint × head × 62.4; resist with dead weight + anchors + relief; safety factor ≥1.2–1.5. Every buried hollow thing on the project gets this check — it's a standing line on the structural review list (M8's pools, S7's wet wells, the marina's tanks)."
+    },
+    {
+      "heading": "Dewatering, and why the canals work in the wet",
+      "body": "PLAIN: To build below the water table you must move the water out of the way — sump pumps for small pits, wellpoints (a line of little straws sucking the water table down) for bigger ones. The New Providence twist: the limestone is so porous that the water refills as fast as you pump — chasing your tail. That's why the canal strategy excavates in the wet or behind rock plugs instead of trying to dry the ocean out of a sponge. PRO: 'you can't dewater a karst aquifer economically at scale — work in the wet or behind a plug'; 'drawdown,' 'recharge rate'; pumped groundwater is often brackish and its discharge is an EMP item; wellpoint systems $15–40K/month mobilized."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "v33-q1",
+      "type": "multipleChoice",
+      "teach": "The app's signature story problem: the pool that becomes a boat.",
+      "prompt": "Year 3: O&M drafts a procedure to drain the clubhouse pool for retiling. What is step zero?",
+      "choices": [
+        {
+          "text": "Check the groundwater level (and verify the hydrostatic relief valves are functional) BEFORE draining — an empty shell in high groundwater is a boat, and this one weighs less than the water it displaces",
+          "correct": true,
+          "why": "Correct. The drain procedure's first line is a groundwater check: drain in the dry season if possible, confirm relief valves operate, monitor during the empty period."
+        },
+        {
+          "text": "Order the tile",
+          "why": "The tile survives either way. The SHELL is what pops out of the ground if step zero gets skipped."
+        },
+        {
+          "text": "Drain slowly to be safe",
+          "why": "Buoyancy doesn't care about rate — 200 tons of uplift arrives with the emptiness, fast or slow. Slow draining just schedules the launch."
+        },
+        {
+          "text": "Nothing special — pools get drained everywhere",
+          "why": "In deep-water-table places, yes. Five feet above groundwater on porous rock, a drained pool is a physics demonstration with a repair bill."
+        }
+      ],
+      "explanation": "PLAIN: an empty pool in wet ground is a plastic cup held underwater — let go and it jumps. PRO: 'buoyancy check before any planned dewatering of the shell; relief valves verified; drain against the seasonal low water table.' (V3-3, M8)"
+    },
+    {
+      "id": "v33-q2",
+      "type": "multipleChoice",
+      "teach": "Uplift = footprint × head × 62.4 pcf. The check is arithmetic; the failure is spectacular.",
+      "prompt": "A lift-station wet well pops 4 inches during construction after a rainy week. What happened?",
+      "choices": [
+        {
+          "text": "The water table rose, the empty well's buoyancy beat its dead weight plus whatever held it, and it floated 4 inches — construction-stage uplift, the classic case because the well is empty and its ballast/anchors may not be complete yet",
+          "correct": true,
+          "why": "Correct. Construction is the vulnerable window: the structure exists (displacing water) but its permanent hold-downs, ballast, and contents don't. Rain week = head increase = launch."
+        },
+        {
+          "text": "Settlement in reverse — the ground swelled",
+          "why": "Limestone doesn't swell like clay. The well didn't get pushed by ground; it got FLOATED by water — Archimedes, not soil mechanics."
+        },
+        {
+          "text": "Poor concrete cured and expanded",
+          "why": "Concrete's expansion is measured in hundredths of an inch — this is a four-INCH rigid-body movement, the signature of flotation."
+        },
+        {
+          "text": "Seismic activity",
+          "why": "Minimal seismicity here, and earthquakes don't selectively lift the hollow thing 4 inches after a rainy week. The water table did."
+        }
+      ],
+      "explanation": "PLAIN: the rain raised the water and the empty concrete can floated — now it must be re-seated, re-leveled, and properly held down. PRO: 'construction-stage buoyancy: flood the structure or ballast it until the permanent resistance (anchors, backfill, contents) exists; SF ≥1.2–1.5 at every stage.' (V3-3, S7)"
+    },
+    {
+      "id": "v33-q3",
+      "type": "multipleChoice",
+      "teach": "Dewatering works by pumping the water table down locally — unless the ground refills it as fast as you pump.",
+      "prompt": "Why can't you dewater the canal excavations the way a mainland contractor would dewater a basement?",
+      "choices": [
+        {
+          "text": "The limestone is so porous that recharge matches pumping — you'd be trying to dry the ocean out of a sponge, which is why the canal strategy is work-in-the-wet or behind rock plugs cut last",
+          "correct": true,
+          "why": "Correct. Wellpoints beat silty sands with slow recharge; a karst aquifer connected to the sea laughs at them. The strategy changed because the physics did."
+        },
+        {
+          "text": "Pumping permits are unobtainable",
+          "why": "Discharge is an EMP item but obtainable — the barrier is hydraulic, not bureaucratic: infinite recharge from a porous, sea-connected aquifer."
+        },
+        {
+          "text": "Pumps corrode too fast in brackish water",
+          "why": "Marine-duty pumps exist. The problem isn't equipment life; it's that the hole refills at the rate of the aquifer, forever."
+        },
+        {
+          "text": "You can — it just needs more pumps",
+          "why": "'More pumps' against ocean-connected karst is a fuel bill with no end state — the drawdown cone never forms because the recharge is effectively unlimited."
+        }
+      ],
+      "explanation": "PLAIN: this rock is a sponge sitting in the sea — pump the hole dry and the sea refills it through the walls. PRO: 'karst recharge defeats economical dewatering at scale; excavate in the wet, or dry behind an unexcavated plug breached last.' This is WHY Module 4's canal method looks the way it does. (V3-3, M4)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "v33_water_pcf", "label": "Water unit weight", "unit": "pcf", "min": 62.4, "max": 62.4 },
+    { "id": "v33_uplift_sf", "label": "Uplift safety factor", "unit": "x", "min": 1.2, "max": 1.5 },
+    { "id": "v33_wellpoint_month", "label": "Wellpoint system, mobilized", "unit": "$/month", "min": 15000, "max": 40000 }
+  ],
+  "mathProblems": [
+    {
+      "id": "v33-p1",
+      "generator": "estimateBuildup",
+      "difficulty": 3,
+      "title": "The buoyancy check",
+      "context": "Uplift = footprint (sf) × head (ft) × 62.4 pcf. Build it as lines: footprint × head gives cubic feet of displaced water below the water table; × 62.4 gives pounds of uplift. The contingency line here plays the safety factor's role — resistance must exceed the total.",
+      "params": {
+        "scopeLabel": "uplift on an empty pool shell (lb)",
+        "contingencyPct": { "min": 20, "max": 50 },
+        "lines": [
+          { "label": "Displaced volume × water weight", "qty": { "min": 4000, "max": 10000 }, "rate": 62.4, "qtyUnit": "cf displaced", "rateUnit": "$/cf" }
+        ]
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "v33-d1",
+      "title": "Anchoring the fuel tanks",
+      "scenario": "The marina's buried fuel tanks sit with the water table at 3 feet. Empty tanks (and they WILL be empty sometimes — deliveries, maintenance, a slow season) are maximum-buoyancy objects. The options: deadman anchors (buried concrete blocks strapped to the tanks), a cast concrete ballast slab above them, or the supplier's standard hold-down straps to grade 'as installed everywhere.'",
+      "options": [
+        {
+          "id": "run-the-numbers",
+          "label": "Run the buoyancy calc at worst case (tanks empty, water table at seasonal high) with SF 1.2–1.5, and size deadmen or ballast slab from the math — then verify the anchor installation as a hold point before backfill",
+          "outcome": "The calc takes the engineer an hour and sizes the resistance honestly; the hold point (straps tensioned, deadmen placed, photographed) makes it real. A floated fuel tank is an environmental incident, a fire code event, and a marina closure in one package — this is cheap prevention.",
+          "optimal": true
+        },
+        {
+          "id": "supplier-standard",
+          "label": "Supplier's standard straps — they install these everywhere",
+          "outcome": "'Everywhere' includes places with deep water tables. Standard details assume standard conditions; your water table at 3 feet is not one. The calc either validates their detail (fine — now you know) or catches the gap the warranty won't cover.",
+          "acceptable": true
+        },
+        {
+          "id": "keep-them-full",
+          "label": "Skip anchoring — operations will keep the tanks full",
+          "outcome": "An operational promise doing a structural job: the first maintenance drain-down, delivery gap, or slow September meets the first king tide, and 100,000 pounds of uplift tests a procedures manual. Physics enforced by memo is not enforced.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Buoyancy resistance must be STRUCTURAL, not procedural — tanks will be empty someday, and the water table doesn't read the operations manual. Uplift = footprint × head × 62.4, SF 1.2–1.5, resistance built and verified before backfill. (V3-3, M4)"
+    }
+  ]
+}

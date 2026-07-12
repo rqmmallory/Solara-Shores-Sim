@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { modules } from '../content';
+import { modules, moduleVolume, VOLUME_LABELS } from '../content';
 import { moduleProficiency } from '../engine/progress';
 import { useAppState } from '../state/AppState';
 import { Body, Card, H1, H2, Meter, Screen, Small, Tag } from '../ui/components';
@@ -17,15 +17,21 @@ export default function LearnScreen() {
     <Screen>
       <H1>Knowledge Modules</H1>
       <Small style={{ marginBottom: 12 }}>
-        One module per section of the project research. Read the explainers, then quiz — misses come
-        back on a spaced schedule until they stick.
+        Three volumes: the project itself, trade-level construction science, and the physics
+        backbone. Read the explainers, then quiz — misses come back on a spaced schedule until they
+        stick. Content pairs PLAIN (the mechanism, simply) with PRO (how you'd say it on site).
       </Small>
-      {modules.map((m) => {
+      {modules.map((m, i) => {
+        const vol = moduleVolume(m);
+        const isFirstOfVolume = i === 0 || moduleVolume(modules[i - 1]) !== vol;
         const prof = moduleProficiency(m, state.moduleStats[m.id]);
         const placeholder = m.status === 'placeholder';
         return (
+          <View key={m.id}>
+            {isFirstOfVolume ? (
+              <H2>{VOLUME_LABELS[vol]}</H2>
+            ) : null}
           <TouchableOpacity
-            key={m.id}
             onPress={() => nav.navigate('Module', { moduleId: m.id })}
             disabled={placeholder}
           >
@@ -51,6 +57,7 @@ export default function LearnScreen() {
               )}
             </Card>
           </TouchableOpacity>
+          </View>
         );
       })}
     </Screen>

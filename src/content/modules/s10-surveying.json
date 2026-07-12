@@ -1,0 +1,153 @@
+{
+  "id": "s10-surveying",
+  "order": 24,
+  "title": "S10 — Surveying, Layout, and Datums",
+  "short": "Surveying",
+  "status": "ready",
+  "summary": "Survey control is the invisible foundation every trade's layout hangs from — and vertical datum discipline matters brutally on a project where land drawings, marine drawings, and flood elevations may each reference a different zero. PLAIN: everyone must measure from the same marks, or every error multiplies. PRO: control network, one project datum with published conversions, as-builts before backfill as a payment condition.",
+  "sections": [
+    {
+      "heading": "Control: the invisible foundation",
+      "body": "PLAIN: Before anything is built, surveyors set permanent reference marks — benchmarks for height, monuments for position — and every wall, pipe, and road is measured FROM those marks. If a mark is wrong, or gets nudged by a dozer and nobody notices, the error copies itself into everything measured from it. PRO: a project-wide survey control network, protected from construction traffic and RE-VERIFIED quarterly; single-source error in control propagates into every structure. Subdivision monumentation by a licensed Bahamian land surveyor produces the legal plats attorneys convey — the sell-the-same-lot-twice defense from Module 11, in the ground."
+    },
+    {
+      "heading": "Datums: whose zero?",
+      "body": "PLAIN: 'Height' means nothing without agreeing what zero is — and land maps, nautical charts, and flood maps each use a DIFFERENT zero. Six inches of disagreement about zero, multiplied along a mile of bulkhead, is a seven-figure mistake. PRO: mean sea level vs chart low-water datums vs the project benchmark; Module 11's canal-edge datum dispute is a survey question. Every drawing set states its datum; the CM enforces ONE project datum with published conversions. Coastal units carry minimum finished-floor elevations — freeboard typically +1 ft above design flood — and pouring a slab 8 inches low is a demolition conversation, which is why slab elevation checks against flood/finished-floor requirements sit on the layout hold-point list."
+    },
+    {
+      "heading": "Layout hold points and the as-built rule",
+      "body": "PLAIN: Four moments where a surveyor's hour saves a demolition: lot corners set legally; building corners staked and SETBACKS verified before the footing dig (MOW's first inspection checks setbacks with a tape); slab heights checked against flood requirements before pouring; and every underground pipe SURVEYED BEFORE BURIAL — because the record drawing is the only map any future repair crew will ever have. PRO: make as-built-before-backfill a CONTRACTUAL PAYMENT CONDITION — no survey, no payment for the buried work. Licensed survey crew $1,200–2,000/day; the cheapest insurance on the utilities budget."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "s10-q1",
+      "type": "multipleChoice",
+      "teach": "Benchmarks disagree only when something moved — the question is what, and since when.",
+      "prompt": "Mid-project, two benchmarks disagree by 0.15 ft. What's the response?",
+      "choices": [
+        {
+          "text": "Freeze vertical-critical work measured from either mark, re-run the level loop from a trusted external origin to find which moved and when, then audit everything built from the bad mark in that window",
+          "correct": true,
+          "why": "Correct. One of the two is lying, and everything measured from it since it moved inherits the lie — the audit window matters as much as the fix."
+        },
+        {
+          "text": "Average the two and continue",
+          "why": "Averaging a good mark with a disturbed one poisons both. Marks aren't opinions to be split — one moved, and the loop finds which."
+        },
+        {
+          "text": "Use the more convenient benchmark",
+          "why": "Convenience is how the disturbed mark (usually the one nearer the construction traffic that hit it) gets chosen."
+        },
+        {
+          "text": "0.15 ft is within tolerance — proceed",
+          "why": "Within tolerance for WHAT? A finished-floor at +1 ft freeboard, a bulkhead cap, a gravity sewer at 1/4 in/ft — 0.15 ft breaks all three."
+        }
+      ],
+      "explanation": "PLAIN: when two rulers disagree, stop measuring and find the broken ruler — everything measured with it is suspect. PRO: 'freeze vertical work, re-run the loop from external control, audit the affected window.' Quarterly re-verification exists to shrink that window. (S10)"
+    },
+    {
+      "id": "s10-q2",
+      "type": "multipleChoice",
+      "teach": "A house staked wrong becomes a house built wrong with remarkable efficiency.",
+      "prompt": "A footing is poured 2 ft into the side setback. What's the realistic decision frame?",
+      "choices": [
+        {
+          "text": "Variance application vs demolition math: price both paths (variance odds, legal cost, neighbor consent, delay vs demolish-and-repour) — and fix the layout verification gap that let a mis-staked house reach concrete",
+          "correct": true,
+          "why": "Correct. Encroachments resolve through either forgiveness (variance) or correction (demolition), priced honestly — and the systemic fix (corner stakeout verification as a hold point) matters more than this house."
+        },
+        {
+          "text": "Demolish immediately — encroachment is encroachment",
+          "why": "Sometimes right, but variances exist, neighbors consent, and boards grant relief — pricing the paths BEFORE swinging hammers is the manager's job."
+        },
+        {
+          "text": "Build on — setbacks are guidelines",
+          "why": "Setbacks are law, checked by MOW's first inspection with a tape, and an encroaching house may be unconveyable — the title problem is worse than the concrete problem."
+        },
+        {
+          "text": "Shift the house 2 ft on the same footing",
+          "why": "The footing IS the encroachment — walls placed off-center on it just add a structural eccentricity to a legal problem."
+        }
+      ],
+      "explanation": "PLAIN: fix-it-with-paper vs fix-it-with-a-jackhammer — price both, pick honestly, and make sure the next stakeout gets checked before the dig. PRO: 'variance-vs-demolition analysis; corner stakeout + setback verification as a pre-excavation hold point.' (S10)"
+    },
+    {
+      "id": "s10-q3",
+      "type": "multipleChoice",
+      "teach": "The as-built survey is the only map of what's buried.",
+      "prompt": "A utility contractor backfilled 900 ft of sewer main without the as-built survey. What response fixes the record AND the behavior?",
+      "choices": [
+        {
+          "text": "Withhold payment for the unbacked-up work per the contract's as-built-before-backfill condition; require locating/verification (potholing at intervals) at the contractor's cost to reconstruct the record",
+          "correct": true,
+          "why": "Correct. The payment condition exists for this moment — the record gets rebuilt at the expense of whoever buried it unrecorded, and no crew forgets the second time."
+        },
+        {
+          "text": "Accept the design drawings as the record",
+          "why": "Design shows intent; as-builts show reality — and buried reality deviates (that's WHY the survey exists). The future repair crew digging on design drawings finds the main with an excavator tooth."
+        },
+        {
+          "text": "Fine the contractor and move on",
+          "why": "A fine punishes without fixing — the record is still blank for 900 ft. The remedy must produce the MAP."
+        },
+        {
+          "text": "Excavate all 900 ft and re-survey",
+          "why": "Full re-excavation is the nuclear version — interval potholing plus locator verification reconstructs the record at a tenth the destruction."
+        }
+      ],
+      "explanation": "PLAIN: the map of buried pipes is drawn in the one moment they're visible — miss it and someone pays to see them again. PRO: 'as-built before backfill as a payment condition; reconstruction by potholing at the contractor's cost when violated.' (S10)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "s10_survey_day", "label": "Licensed survey crew", "unit": "$/day", "min": 1200, "max": 2000 },
+    { "id": "s10_freeboard_ft", "label": "Finished-floor freeboard above design flood", "unit": "ft", "min": 1, "max": 2 }
+  ],
+  "mathProblems": [
+    {
+      "id": "s10-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "The survey program, priced",
+      "context": "Control verification, stakeouts, slab checks, and as-builts across a phase — crew-days times the day rate. Compare it mentally to one demolished slab.",
+      "params": {
+        "qtyLabel": "survey crew-days per phase",
+        "qty": { "min": 30, "max": 120 },
+        "qtyUnit": "crew-days",
+        "rateLabel": "crew day rate",
+        "rate": "s10_survey_day",
+        "rateUnit": "$/day",
+        "answerLabel": "phase survey program",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "s10-d1",
+      "title": "One datum to rule them all",
+      "scenario": "Design kickoff for the marine packages. The civil drawings reference the national land datum, the coastal engineer's models use a chart low-water datum, and the flood elevations reference yet another zero. Everyone insists their datum is standard in their discipline — and they're all correct. The bulkhead caps, finished floors, and marina decks will be built from these drawings by different contractors.",
+      "options": [
+        {
+          "id": "one-project-datum",
+          "label": "Declare ONE project datum now: commission the surveyor to establish the master benchmark, publish signed conversion tables to every discipline datum, and require every drawing set to state its datum and conversion on the title block",
+          "outcome": "Every discipline keeps its native language and every drawing carries the translation. The Module 11 canal-edge dispute becomes impossible — not because engineers stopped disagreeing, but because 'which zero' now has one signed answer on file.",
+          "optimal": true
+        },
+        {
+          "id": "convert-at-review",
+          "label": "Let each discipline use its own datum; catch conversions at drawing review",
+          "outcome": "Review catches most conversions — and the one it misses is a six-inch error along a mile of bulkhead. Relying on vigilance to do a system's job works right up until the reviewer has a busy week.",
+          "acceptable": true
+        },
+        {
+          "id": "assume-standard",
+          "label": "Assume everyone converts correctly — professionals handle datums daily",
+          "outcome": "Professionals handle THEIR datum daily; interfaces between datums are exactly where professional confidence breeds unchecked assumptions. The bulkhead cap discovers the discrepancy empirically, at spring tide, with docks attached.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Datum discipline is cheap exactly once — before drawings multiply. One project datum, published conversions, datum stated on every sheet: three rules that convert a seven-figure risk into a title-block habit. (S10, M11)"
+    }
+  ]
+}

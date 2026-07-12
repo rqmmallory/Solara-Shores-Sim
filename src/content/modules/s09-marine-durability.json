@@ -1,0 +1,186 @@
+{
+  "id": "s09-marine-durability",
+  "order": 23,
+  "title": "S9 — Marine Concrete, Steel, and Durability Science",
+  "short": "Marine Durability",
+  "status": "ready",
+  "summary": "The chloride mechanism governs your entire west half: salt reaches the steel, rust expands 4–6x, the cover spalls, and the cycle runs away. Defense in depth: low permeability, real cover, crack control, then metallurgy and cathodic protection. Plus galvanic couples (dissimilar metals in seawater are batteries) and the inspection regime the HOA inherits. PLAIN: salt + steel + water = a slow explosion. PRO: w/c ≤0.40, 2.5–3 in cover, 316 not 304, anodes on a survey cycle.",
+  "sections": [
+    {
+      "heading": "The chloride mechanism — know it cold",
+      "body": "PLAIN: Salt water seeps through concrete's invisible pores until it reaches the steel. The steel's thin protective skin dissolves; rust begins; and rust takes up 4–6 TIMES the space of the steel it came from — a slow-motion explosion inside the concrete that cracks and pops the cover off, which lets more salt in, faster. The splash zone — wetted and dried, salted and oxygenated, over and over — corrodes fastest; permanently drowned concrete actually fares better (little oxygen down there). PRO: chloride ingress → depassivation → expansive corrosion → cover spalling → runaway. Defense in depth: LOW PERMEABILITY first (w/c ≤0.40, supplementary cementitious materials — fly ash/slag/silica fume refine the pores), COVER 2.5–3 in+, CRACK CONTROL (cracks are chloride highways — design and cure to limit them), then optionally coated/stainless bar, inhibitors, membranes."
+    },
+    {
+      "heading": "Galvanic couples and metallurgy",
+      "body": "PLAIN: Two different metals touching in seawater make a battery — and the battery eats one of them. An aluminum rail on stainless bolts? The rail dies for the bolts' sins. So: match metals, or isolate them with plastic washers and sleeves. And stainless isn't stainless: the cheaper grade (304) pits and fails in chloride service; marine hardware is 316. PRO: galvanic series intuition — the less noble metal sacrifices; isolate or match; spec 316 (not 304 — pits in chloride) at a 25–40% premium that's invisible next to replacement-over-water labor; hot-dip galvanize (not zinc-plate) carbon steel; treatment-rated fasteners for marine timber (modern treatments corrode standard steel). CATHODIC PROTECTION uses the battery on purpose: sacrificial zinc/aluminum anodes bolted to sheet piles and marine steelwork are consumed INSTEAD of the structure, replaced on a survey cycle — a permanent line item in the marina's operating budget."
+    },
+    {
+      "heading": "The regime the HOA inherits",
+      "body": "PLAIN: Marine structures aren't finished, ever — they're maintained. Someone must look above water yearly, dive below periodically, and measure how fast the sacrificial anodes are being eaten (their consumption rate is a health report on the whole system). Write that regime and its funding into the handover, or it silently doesn't happen until year 15's lawsuit. PRO: annual above-water visual; periodic dive surveys ($10–30K — anode wastage %, scour at structures, bulkhead alignment); chloride/cover surveys on critical concrete at years 5/10; anode design life 5–15 years; the regime and its reserve funding go INTO the handover package (M7/M12) — 'or the marina becomes year-15 litigation' is the KB's exact warning."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "s09-q1",
+      "type": "sequencing",
+      "teach": "The chloride-to-spall chain is a causal sequence — each step enables the next.",
+      "prompt": "Order the chloride corrosion mechanism:",
+      "items": [
+        "Chlorides migrate through the concrete's pore water toward the steel",
+        "The rebar's passive oxide film is destroyed",
+        "Corrosion begins on the bare steel",
+        "Rust occupies 4–6x the steel's volume, straining the concrete",
+        "Expansion cracks and spalls the cover",
+        "Open cracks admit more chloride and oxygen — the cycle runs away"
+      ],
+      "explanation": "PLAIN: salt gets in, the armor dissolves, rust swells, the cover pops, and everything speeds up. PRO: 'ingress → depassivation → expansive corrosion → spall → runaway' — every marine durability spec (w/c, cover, crack control, metallurgy) attacks a specific link in this chain. (S9)"
+    },
+    {
+      "id": "s09-q2",
+      "type": "multipleChoice",
+      "teach": "Exposure zones corrode at very different rates.",
+      "prompt": "Rank the exposure zones of a bulkhead by corrosion aggressiveness.",
+      "choices": [
+        {
+          "text": "Splash/tidal zone worst (oxygen + chloride + wet/dry cycling), atmospheric zone next (salt aerosol), permanently submerged best (oxygen-starved)",
+          "correct": true,
+          "why": "Correct — the counterintuitive part is the bottom: drowned steel corrodes SLOWLY because corrosion needs oxygen, and there's little down there."
+        },
+        {
+          "text": "Deepest is worst — more water pressure forces salt in",
+          "why": "Pressure isn't the driver; OXYGEN is. The submerged zone is the calmest place on the structure, chemically."
+        },
+        {
+          "text": "All equal — salt water is salt water",
+          "why": "The wet/dry cycling of the splash zone concentrates salt and feeds oxygen with every cycle — it's several times faster than either neighbor."
+        },
+        {
+          "text": "Atmospheric worst — air has the most oxygen",
+          "why": "Oxygen without constant chloride delivery is only half the recipe. The splash zone has both, refreshed twice a tide."
+        }
+      ],
+      "explanation": "PLAIN: the worst spot is where the sea slaps and dries, slaps and dries — salt AND air, forever. PRO: 'splash zone governs the design — that's where the bulkhead caps, the 316 hardware, and the survey attention go.' (S9)"
+    },
+    {
+      "id": "s09-q3",
+      "type": "multipleChoice",
+      "teach": "Sacrificial anodes are consumed at a rate the design predicted — deviations are diagnostic.",
+      "prompt": "Year-3 dive survey: anodes are 70% consumed against a model prediction of 40%. What does accelerated consumption tell you?",
+      "choices": [
+        {
+          "text": "Something is drawing more protective current than designed — stray current, coating damage exposing more bare steel, or a new galvanic couple; survey and FIND THE FAULT, don't just fatten the anodes",
+          "correct": true,
+          "why": "Correct. Anode consumption is the system's fuel gauge — burning fuel twice as fast means the load doubled, and replacing the tank without finding out why treats the symptom."
+        },
+        {
+          "text": "The anodes were undersized — install bigger ones",
+          "why": "Maybe eventually — but sizing was designed to the modeled steel area. Consumption at 175% of model means the MODEL's assumptions broke somewhere findable."
+        },
+        {
+          "text": "Normal variation — seawater differs year to year",
+          "why": "Salinity and temperature move consumption by percents, not by 75%. This deviation is a signal, not noise."
+        },
+        {
+          "text": "Good news — the anodes are working hard",
+          "why": "They're working hard at a job that got bigger without telling you. Find out what grew: damaged coating? a marina tenant's leaking shore power (stray current)?"
+        }
+      ],
+      "explanation": "PLAIN: the sacrificial metal is being eaten fast because something is asking for more protection — find out what before feeding it more metal. PRO: 'anode wastage is diagnostic: check for stray current, coating breakdown, new couples; survey, then respecify.' (S9)"
+    },
+    {
+      "id": "s09-q4",
+      "type": "multipleChoice",
+      "teach": "Say it like a pro: the hardware spec conversation.",
+      "prompt": "The dock contractor proposes 304 stainless hardware at 20% savings over 316. The PRO-register response is:",
+      "choices": [
+        {
+          "text": "'304 pits in chloride service — it's not a marine grade. Spec stays 316; the premium is invisible next to replacing seized hardware over water in year four'",
+          "correct": true,
+          "why": "Correct — the metallurgical fact (pitting corrosion of 304 in chlorides), the spec decision, and the lifecycle justification in two sentences."
+        },
+        {
+          "text": "'Stainless is stainless — approved'",
+          "why": "The words 'stainless steel' cover alloys with wildly different chloride performance. 304's pitting in marine service is exactly the trap the submittal review exists to catch."
+        },
+        {
+          "text": "'Split the difference: 304 above water, 316 below'",
+          "why": "Backwards even as a compromise — the splash and spray zones ABOVE water are the aggressive ones. And dock hardware lives in spray by definition."
+        },
+        {
+          "text": "'Use carbon steel and paint it well'",
+          "why": "Painted carbon steel in the splash zone is a maintenance subscription with missed payments. Hot-dip galvanizing has roles; dock cleats and hinges aren't one."
+        }
+      ],
+      "explanation": "PLAIN: the cheaper 'stainless' gets tiny deep holes in seawater and fails; the marine grade doesn't. PRO: '316, not 304 — pitting resistance in chlorides; 25–40% premium, priced against replacement labor over water.' The sim's dock-defect event is this substitution slipping through. (S9)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "s09_rust_expansion", "label": "Rust expansion vs steel", "unit": "x", "min": 4, "max": 6 },
+    { "id": "s09_dive_survey", "label": "Dive survey", "unit": "$", "min": 10000, "max": 30000 },
+    { "id": "s09_316_premium", "label": "316 vs 304 premium", "unit": "%", "min": 25, "max": 40 },
+    { "id": "s09_anode_life", "label": "Anode design life", "unit": "years", "min": 5, "max": 15 },
+    { "id": "s09_duplex_coating", "label": "Duplex coating on steel", "unit": "$/sf", "min": 8, "max": 15 }
+  ],
+  "mathProblems": [
+    {
+      "id": "s09-p1",
+      "generator": "percentOf",
+      "difficulty": 1,
+      "title": "The 316 premium",
+      "context": "Marine hardware package at the 316-over-304 premium — the number that looks large until you price a hardware replacement campaign over water.",
+      "params": {
+        "baseLabel": "marina hardware package (304 basis)",
+        "base": { "min": 200000, "max": 800000 },
+        "baseUnit": "$",
+        "pct": "s09_316_premium",
+        "answerLabel": "316 upgrade premium",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "s09-p2",
+      "generator": "unitRate",
+      "difficulty": 2,
+      "title": "Coating the sheet piles",
+      "context": "Duplex coating (galvanize + paint system) prices per square foot of steel — both faces count, and the splash-zone band gets the full system.",
+      "params": {
+        "qtyLabel": "coated steel area",
+        "qty": { "min": 20000, "max": 80000 },
+        "qtyUnit": "sf",
+        "rateLabel": "duplex coating rate",
+        "rate": "s09_duplex_coating",
+        "rateUnit": "$/sf",
+        "answerLabel": "coating package",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "s09-d1",
+      "title": "Bulkhead alternates: steel + anodes vs concrete panels",
+      "scenario": "Final bulkhead system decision, 8,000+ lf: steel sheet pile with duplex coating and sacrificial anodes (cheaper installed, needs the anode replacement cycle and dive surveys forever) versus king-pile concrete panel system (higher first cost, low-permeability marine mix, no anodes — but concrete's own chloride clock runs on cover and crack control). The QS has first costs; the coastal engineer insists on a 40-year lifecycle model.",
+      "options": [
+        {
+          "id": "forty-year-model",
+          "label": "Decide on the 40-year model: first cost + maintenance regime (anodes, surveys, coating renewal vs chloride/cover surveys and joint care) + repair ACCESS costs — and write whichever regime wins into the HOA's funded handover",
+          "outcome": "The model, not the bid tab, picks the system — and either answer is defensible ONLY with its maintenance regime funded and transferred. The unfunded version of either system is the same year-15 litigation with different rust.",
+          "optimal": true
+        },
+        {
+          "id": "cheapest-installed",
+          "label": "Steel on first cost; the HOA can figure out maintenance later",
+          "outcome": "The anode cycle and dive surveys aren't optional extras on a steel system — they ARE the system. Unfunded, the anodes waste out silently around year 8, the steel starts paying the corrosion bill itself, and 'later' turns out to mean a special assessment with your name in the recitals.",
+          "acceptable": false
+        },
+        {
+          "id": "concrete-everywhere",
+          "label": "Concrete panels everywhere — no anodes, no dive surveys, done",
+          "outcome": "'Maintenance-free' concrete is a marketing phrase, not a material property: its chloride clock runs on cover execution and crack behavior, and it still needs the year-5/10 surveys. You've paid the premium and kept most of the obligation — acceptable, if you knew that going in.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Marine structures are systems-plus-regimes: the bulkhead you buy includes the inspections and consumables it needs forever. Lifecycle modeling picks the system; handover funding keeps it alive; and 'maintenance-free' is not a thing the splash zone sells. (S9, M5, M7)"
+    }
+  ]
+}

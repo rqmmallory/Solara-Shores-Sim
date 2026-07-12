@@ -1,0 +1,193 @@
+{
+  "id": "s07-mep",
+  "order": 21,
+  "title": "S7 — MEP Fundamentals for the Non-MEP Manager",
+  "short": "MEP",
+  "status": "ready",
+  "summary": "Enough plumbing, electrical, and HVAC to manage the trades: drainage slope is sacred, the corrosion tax on coastal electrical is real, and tropical HVAC is dehumidification first — oversized AC makes mold. Plus the coordination discipline that is the actual CM skill. PLAIN: water flows downhill, salt eats metal, cold surfaces sweat. PRO: quarter-inch per foot, coastal-rated equipment, Manual-J right-sizing.",
+  "sections": [
+    {
+      "heading": "Plumbing: pressure up, gravity down",
+      "body": "PLAIN: Supply water is pushed (pressure); waste water only falls (gravity) — and its slope is sacred: too flat and solids strand, and a flat or back-graded drain cast INTO a slab is jackhammer work to fix. That's why the slab plumbing gets surveyed before every pour. PRO: 1/4 in per ft standard for small drains; slab rough-in survey is a mandatory hold point; vents protect trap seals (sewer-gas complaints = venting defects); pressure math for the condos: ~0.43 psi lost per foot of elevation plus friction — upper floors may need booster pumps off WSC pressure. Community scale: gravity mains → lift stations → the package WWTP; grease interceptors at every food outlet (clubhouse, sports bar, beach club) or the WWTP dies young."
+    },
+    {
+      "heading": "Electrical: sizing and the corrosion tax",
+      "body": "PLAIN: Houses need 150–200A services; condo buildings need real load calculations and meter banks. And the sea eats electrical equipment — panels, AC condensers, fixtures — anything standard-grade within the salt zone gets replaced in 5–7 years. PRO: coastal-rated equipment (coated-coil condensers, stainless/NEMA-appropriate enclosures) at a 15–35% premium, or budget the replacement wave; standby power is near-mandatory at community scale — a lift station without backup power overflows sewage in the first long outage; community generator $250–800K; solar-ready conduit is cheap now and expensive later."
+    },
+    {
+      "heading": "HVAC: dehumidification first, and the coordination discipline",
+      "body": "PLAIN: In the tropics, air conditioning's real job is wringing water out of the air. An OVERSIZED unit cools the room so fast it shuts off before dehumidifying — cold, clammy, and eventually moldy. Bigger is not better; calculated is better. PRO: Manual-J-type load calc, right-size (~1 ton per 450–600 sf here, calc governs), ducts in conditioned/sealed space, fresh-air strategy that doesn't import humidity, condensate disposal designed (every unit drips constantly). Mold is the #1 tropical warranty class and is designed out, not cleaned out. The actual CM skill is COORDINATION: coordinated shop drawings before frame pours (M7 stacking), sleeve/embed drawings to the concrete crew, rough-in inspections at every close-up, and commissioning for the commercial buildings — fire alarm/sprinkler acceptance, kitchen hoods, WWTP process proving — with the authorities booked weeks ahead."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "s07-q1",
+      "type": "multipleChoice",
+      "teach": "The slab pour will bury the drainage piping forever — the survey is the last look.",
+      "prompt": "The pre-pour survey shows one bathroom group 40 ft from the stack at dead-flat grade. The pour is scheduled for 6 AM. Stop it?",
+      "choices": [
+        {
+          "text": "Yes — a flat drain cast into concrete strands solids for the life of the house, and the fix is a jackhammer; a day's pour delay is the cheapest this problem will ever be",
+          "correct": true,
+          "why": "Correct. At 1/4 in/ft, 40 ft needs 10 inches of fall; dead-flat means the line never worked. The pour is the point of no return."
+        },
+        {
+          "text": "Pour — water finds its way",
+          "why": "Water maybe; solids strand at zero slope, forever. 'It'll probably drain' is a warranty claim with a schedule."
+        },
+        {
+          "text": "Pour, and increase the fixture flow to compensate",
+          "why": "Flow doesn't create fall. The physics is elevation, and after 6 AM the elevation is permanent."
+        },
+        {
+          "text": "Pour around that bathroom and fix it later",
+          "why": "A blockout is actually a legitimate variant of stopping — but only as a planned, formed blockout, not an improvised gap in a structural slab at 5:45 AM."
+        }
+      ],
+      "explanation": "PLAIN: drains only work downhill, and after the pour the hill is cast in stone. PRO: 'quarter-inch per foot, surveyed before every pour, hold point — no sign-off, no concrete.' This is why the slab rough-in survey sits on the mandatory list. (S7)"
+    },
+    {
+      "id": "s07-q2",
+      "type": "multipleChoice",
+      "teach": "AC removes moisture only while it's running — a unit that cycles off quickly barely dehumidifies.",
+      "prompt": "Explain the oversized-AC-makes-mold mechanism (the one behind the sim's Phase 7 warranty cluster).",
+      "choices": [
+        {
+          "text": "The oversized unit hits the thermostat's temperature fast and shuts off before pulling meaningful moisture — the space is cold but humid, surfaces drop below the air's dew point, condensation feeds mold",
+          "correct": true,
+          "why": "Correct. Short-cycling is the term: cooling capacity outran the dehumidification time. Cold + humid = condensing surfaces = mold farm."
+        },
+        {
+          "text": "Bigger units leak more refrigerant",
+          "why": "Leakage is a maintenance issue unrelated to sizing. The mechanism is runtime: moisture removal needs the coil cold and the air moving across it for TIME."
+        },
+        {
+          "text": "Oversized ducts collect condensation",
+          "why": "Duct condensation is real (uninsulated ducts in hot attics) but it's a different defect — the sizing mechanism is short-cycling."
+        },
+        {
+          "text": "It doesn't — more cooling is more drying",
+          "why": "The seductive intuition that builds moldy houses. Drying is a function of runtime, and oversizing kills runtime."
+        }
+      ],
+      "explanation": "PLAIN: the too-big AC wins the temperature race and quits before finishing the moisture job — like a dishwasher that stops after the rinse. PRO: 'Manual-J load calc, right-size, design for latent load; mold is designed out, not cleaned out.' (S7, V3-9)"
+    },
+    {
+      "id": "s07-q3",
+      "type": "multipleChoice",
+      "teach": "Lift stations pump sewage uphill — with electricity.",
+      "prompt": "Why is backup power for the lift stations described as near-mandatory rather than optional resilience?",
+      "choices": [
+        {
+          "text": "A lift station without power doesn't pause — it overflows raw sewage in the first long outage, into your canals and streets, on an island grid where long outages are a design condition",
+          "correct": true,
+          "why": "Correct. The wet well keeps filling whether the pumps run or not. The failure mode isn't inconvenience; it's an environmental incident with your marina attached."
+        },
+        {
+          "text": "Buyers expect generators at this price point",
+          "why": "Standby power IS a sales feature — but the lift stations would need it in a community of saints. Sewage physics doesn't care about the market segment."
+        },
+        {
+          "text": "BPL requires it for connection",
+          "why": "The utility cares about your connection, not your wet wells. This requirement comes from consequence analysis, not the interconnection agreement."
+        },
+        {
+          "text": "It's only needed during hurricane season",
+          "why": "Grid outages here aren't seasonal — and the wet well fills at dinner time year-round."
+        }
+      ],
+      "explanation": "PLAIN: the sewage pump that stops doesn't wait — it overflows. PRO: 'auto-transfer standby at every lift station, or one community plant with ATS — designed in, exercised monthly.' Failure lands in YOUR canal, upstream of YOUR estate lots. (S7, M12 risk #9)"
+    },
+    {
+      "id": "s07-q4",
+      "type": "multipleChoice",
+      "teach": "Commissioning is the proving phase: systems demonstrated working, witnessed by authorities.",
+      "prompt": "Why do commissioning authorities get booked weeks ahead instead of when the building is 'ready'?",
+      "choices": [
+        {
+          "text": "Because inspector calendars are queues, and fire alarm/sprinkler acceptance gates the OC — booking backward from their available dates is schedule design; booking at 'ready' adds their backlog to your OC date",
+          "correct": true,
+          "why": "Correct. The commissioning sequence (alarm → sprinkler → hoods → elevators) has dependencies AND external calendars — plan around both or the finished building waits on a diary."
+        },
+        {
+          "text": "Early booking gets discount rates",
+          "why": "Authorities don't discount; they schedule. The value of early booking is CALENDAR position, which converts directly to OC date."
+        },
+        {
+          "text": "It's a courtesy that builds relationships",
+          "why": "Relationships help (Module 13), but the mechanism is queueing math: their backlog becomes your revenue delay unless you're already in the book."
+        },
+        {
+          "text": "Commissioning can run before construction completes anyway",
+          "why": "Some pre-testing can; ACCEPTANCE tests need finished systems — which is why the finish schedule gets built backward from the booked dates."
+        }
+      ],
+      "explanation": "PLAIN: the inspector's diary is part of your schedule — get in it early. PRO: 'book AHJs weeks out, sequence completion backward from acceptance dates.' The sim's elevator-backlog and fuel-commissioning events are this lesson wearing different hats. (S7, M7)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "s07_drain_slope", "label": "Drain slope, small pipe", "unit": "in/ft", "min": 0.25, "max": 0.25 },
+    { "id": "s07_elec_rough", "label": "House electrical rough", "unit": "$/house", "min": 6000, "max": 10000 },
+    { "id": "s07_ton_per_sf", "label": "HVAC right-sizing", "unit": "sf/ton", "min": 450, "max": 600 },
+    { "id": "s07_coastal_premium", "label": "Coastal equipment premium", "unit": "%", "min": 15, "max": 35 },
+    { "id": "s07_generator", "label": "Community standby generator", "unit": "$", "min": 250000, "max": 800000 }
+  ],
+  "mathProblems": [
+    {
+      "id": "s07-p1",
+      "generator": "crewRatio",
+      "difficulty": 1,
+      "title": "Tonnage for a house",
+      "context": "Right-sizing math: conditioned area ÷ sf-per-ton (climate-adjusted; the load calc governs, but this is the sanity check). Round up to the unit size.",
+      "params": {
+        "unitLabel": "sf of conditioned area",
+        "active": { "min": 1400, "max": 2600 },
+        "staffLabel": "tons (nominal)",
+        "ratio": "s07_ton_per_sf"
+      }
+    },
+    {
+      "id": "s07-p2",
+      "generator": "percentOf",
+      "difficulty": 2,
+      "title": "The corrosion tax, priced up front",
+      "context": "Coastal-rated electrical and HVAC equipment carries a 15–35% premium over standard — the alternative is a year-5–7 replacement wave in occupied homes.",
+      "params": {
+        "baseLabel": "program equipment package (standard grade)",
+        "base": { "min": 1500000, "max": 5000000 },
+        "baseUnit": "$",
+        "pct": "s07_coastal_premium",
+        "answerLabel": "coastal-rating premium",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "s07-d1",
+      "title": "Lift station backup: per-station or one plant",
+      "scenario": "Four lift stations serve the community. Option A: a standby generator with automatic transfer at each station (four small units, four fuel systems, four maintenance contracts). Option B: one community generator plant with automatic transfer feeding the stations plus the amenity core (bigger unit, single point of maintenance — and a single point of failure, plus distribution runs). The sales team notes 'community backup power' is a brochure line either way.",
+      "options": [
+        {
+          "id": "engineer-the-topology",
+          "label": "Let consequence analysis pick: stations closest to the canal get dedicated units (overflow there is an environmental incident), the rest plus amenities share the community plant — a hybrid sized by failure cost, with monthly exercised transfers",
+          "outcome": "The hybrid puts redundancy where the consequence is worst (sewage near your marina water) and efficiency where it's tolerable. The monthly exercise log — generators that never run don't start — is the part everyone forgets and the audit remembers.",
+          "optimal": true
+        },
+        {
+          "id": "one-plant",
+          "label": "One community plant — simplest to maintain, best brochure",
+          "outcome": "Efficient until the single point fails during the single outage it existed for — with all four stations filling at once. Defensible with rigorous maintenance and a portable-generator connection point at each station as the manual backstop.",
+          "acceptable": true
+        },
+        {
+          "id": "defer-to-later",
+          "label": "Rough in the transfer switches, buy generators 'when the budget recovers'",
+          "outcome": "The switches without the generators are hope with wiring. The first long outage arrives before the budget does, and the overflow report writes itself — including the line item you deferred.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Backup power topology is consequence engineering: rank the failure costs (sewage to the canal > dark clubhouse), put hard redundancy at the top of the list, and exercise everything monthly — standby equipment that's never run is decoration. (S7)"
+    }
+  ]
+}

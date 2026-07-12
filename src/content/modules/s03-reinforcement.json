@@ -1,0 +1,198 @@
+{
+  "id": "s03-reinforcement",
+  "order": 17,
+  "title": "S3 — Reinforcement: Why, Where, and the Detailing Rules",
+  "short": "Rebar",
+  "status": "ready",
+  "summary": "Concrete is strong squeezed and weak stretched; steel carries the stretch. Every rebar rule follows three physics requirements: the steel must be WHERE tension occurs, BONDED well enough to develop its force, and PROTECTED from corrosion. PLAIN: put the metal where the pulling happens. PRO: development length, lap splices, cover by exposure class.",
+  "sections": [
+    {
+      "heading": "Where tension lives",
+      "body": "PLAIN: Bend a beam and its underside stretches — that's where the steel goes for a simple span. But run the beam continuously over a middle support and the TOP stretches over that support — the counterintuitive one, and exactly where lazy crews omit bars. Around openings, cracks want to start at the corners — diagonal bars head them off. And in hurricane country the wind pushes AND sucks, so walls and roofs see load in both directions — Bahamian detailing doubles up where a calm-climate design wouldn't. PRO: 'bottom steel at midspan, top steel over supports' is the continuous-member catechism; corner bars at ring-beam corners are the single most common Bahamian field defect and the reason ring-beam inspection is a hold point — a hurricane finds every un-lapped corner. Cantilevers flip everything: a balcony droops like a diving board, so its TENSION IS ON TOP — a crew that chairs the top steel low has quietly halved the balcony's strength. Balcony collapses worldwide trace to exactly this."
+    },
+    {
+      "heading": "Development and splicing",
+      "body": "PLAIN: A bar can only pull as hard as its grip on the concrete — and grip is built up over length, like a rope buried in sand. Too short an embedment and the bar pulls out before it pulls hard. Where one bar ends and another continues, they overlap enough to hand the force across. PRO: development length ~40–60 bar diameters depending on strength/cover/position (a #5 bar needs roughly 25–40 inches); lap splices ≈1.3× development length, STAGGERED, never all at one section, never at points of maximum tension. Hooks (90°/180°) substitute where straight length doesn't fit — ring-beam corners and footing dowels. A forgotten dowel for the next pour = drilled-and-epoxied retrofit at 10x the cost of remembering."
+    },
+    {
+      "heading": "Cover: the corrosion clock",
+      "body": "PLAIN: Concrete shields the steel from salt and water — but only as thick as the actual cover, which is set by little plastic or concrete chairs, not by a laborer's eyeball. Skimp the cover and nothing happens for 5–10 years; then the steel rusts, swells, and blows the surface off. PRO: cast against earth 3 in; exposed to weather 1.5–2 in; marine/splash zone 2.5–3 in minimum WITH a low-permeability mix. In the splash zone consider epoxy-coated or stainless bar and galvanized ties. Field inspection checklist at every rebar hold point: bar size/grade vs drawings (Grade 60 standard), spacing, laps located and sized, corners and intersections detailed, chairs giving specified cover top AND bottom, bars tied and clean (rust film fine; mill scale, mud, oil not), and the embeds/dowels for the NEXT pour present."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "s03-q1",
+      "type": "multipleChoice",
+      "teach": "A cantilever — a balcony, a canopy — is a diving board: it droops, so its top surface stretches.",
+      "prompt": "Where does the main steel go in a balcony slab, and what does a crew chairing it low actually do?",
+      "choices": [
+        {
+          "text": "In the TOP of the slab — tension is on top of a cantilever; chairing it low moves the steel away from the tension face and can halve the balcony's capacity",
+          "correct": true,
+          "why": "Correct. Balcony collapses worldwide trace to exactly this: top steel that sagged or was chaired low, quietly converting the design section into something much weaker."
+        },
+        {
+          "text": "In the bottom, like any slab",
+          "why": "That's the SIMPLE SPAN rule. Cantilevers flip it — the diving board stretches on top. This flip is the classic field-crew error."
+        },
+        {
+          "text": "Centered in the slab for both directions",
+          "why": "Mid-depth steel is half-useless in both directions — effective depth is what turns steel area into strength."
+        },
+        {
+          "text": "It doesn't matter if the bar count is right",
+          "why": "Position IS the design: the same bars at the wrong depth are a different, weaker structure wearing the right drawing number."
+        }
+      ],
+      "explanation": "PLAIN: put the metal where the pulling happens — and a balcony pulls on top. PRO: 'top steel on the cantilever, chaired at design height, verified before the pour' — this check is on your hold-point script because gravity doesn't re-read the drawings. (S3)"
+    },
+    {
+      "id": "s03-q2",
+      "type": "multipleChoice",
+      "teach": "The ring beam ties the whole wall system together — and its corners are where continuity is made or lost.",
+      "prompt": "Why is ring-beam corner detailing the single most common Bahamian field defect worth a dedicated hold point?",
+      "choices": [
+        {
+          "text": "Corners need continuous or matching hooked bars to carry tension around the turn — omit them and each wall's ring beam ends at the corner, and a hurricane finds every un-lapped corner",
+          "correct": true,
+          "why": "Correct. The ring beam's whole job is continuity under load reversal; a corner without lapped/hooked bars is a gap in the hurricane structure wearing a concrete costume."
+        },
+        {
+          "text": "Corners are hard to pour",
+          "why": "Placement is manageable; the defect is missing STEEL, not bad concrete — and it's invisible the moment the pour covers it."
+        },
+        {
+          "text": "Corner forms blow out most often",
+          "why": "Formwork pressure is an S5 problem. The corner-bar omission is a detailing shortcut that no blowout ever reveals."
+        },
+        {
+          "text": "MOW inspectors only check corners",
+          "why": "Inspectors check more than corners — but YOUR hold point exists because this specific omission is common, concealed, and hurricane-critical."
+        }
+      ],
+      "explanation": "PLAIN: the ring beam is a belt around the house — a belt with a cut at every corner holds nothing. PRO: 'continuous corner bars or matching hooks, lapped 1.3 Ld, inspected before the pour' — one of the four every-house hold points. (S3, M12)"
+    },
+    {
+      "id": "s03-q3",
+      "type": "multipleChoice",
+      "teach": "Cover failures have a fuse measured in years.",
+      "prompt": "A poured slab turns out to have had sparse bottom chairs — bars likely sat on grade, cover gone on the tension face. The options are investigate, accept, or demolish. What's first?",
+      "choices": [
+        {
+          "text": "Investigate: a covermeter survey ($2–5K) maps actual bar positions and cover non-destructively — decisions about acceptance, topping, or removal follow the data",
+          "correct": true,
+          "why": "Correct. The survey converts 'likely sat on grade' into a map. Maybe most bars held position and the fix is local; maybe not — but nobody should accept OR demolish on a guess."
+        },
+        {
+          "text": "Accept — the slab poured fine and looks good",
+          "why": "Cover failures look perfect for 5–10 years, then spall. 'Looks good' is precisely what this defect always looks like."
+        },
+        {
+          "text": "Demolish — cover is structural, no debate",
+          "why": "Cover on grade-cast slabs is about corrosion clock more than strength; a survey might show a topping or sealer strategy saves the slab. Data before dynamite."
+        },
+        {
+          "text": "Add a warranty reserve and move on",
+          "why": "Reserving for a defect you could map and possibly fix now is pricing ignorance instead of buying knowledge."
+        }
+      ],
+      "explanation": "PLAIN: find out where the bars actually are before deciding anything — there's a tool for that. PRO: 'covermeter survey, map the cover, then engineer the response.' In your chloride climate, cover is the corrosion clock — and chairs cost cents. (S3, S9)"
+    },
+    {
+      "id": "s03-q4",
+      "type": "multipleChoice",
+      "teach": "Say it like a pro: splice rules in one sentence.",
+      "prompt": "Which is the correct PRO-register instruction for lapping bars in the ring beam?",
+      "choices": [
+        {
+          "text": "'Lap 1.3 times development length, staggered, and keep splices away from midspan tension zones and corners'",
+          "correct": true,
+          "why": "Correct — length, stagger, and location: the three things a splice can get wrong, in one enforceable sentence."
+        },
+        {
+          "text": "'Overlap the bars a couple of feet and tie them well'",
+          "why": "'A couple of feet' may or may not be 1.3 Ld for the bar in question — and says nothing about stagger or location, the two subtler failures."
+        },
+        {
+          "text": "'Weld all splices for certainty'",
+          "why": "Field-welding rebar without qualified procedures EMBRITTLES it — welding is the exception requiring engineering, not the certain option."
+        },
+        {
+          "text": "'Butt the bars tight and grout the joint'",
+          "why": "Butted bars transfer nothing — force crosses a splice through the surrounding concrete over the LAP length. Tight butting is a zero-strength joint."
+        }
+      ],
+      "explanation": "PLAIN: overlapping bars hand their force to each other through the concrete — enough overlap, not all in one place, not where the pulling is worst. PRO: '1.3 Ld, staggered, out of max-tension zones.' (S3)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "s03_dev_length_db", "label": "Development length", "unit": "bar diameters", "min": 40, "max": 60 },
+    { "id": "s03_rebar_lb", "label": "Rebar supplied + placed, Nassau", "unit": "$/lb", "min": 0.9, "max": 1.6 },
+    { "id": "s03_covermeter", "label": "Covermeter survey", "unit": "$/building", "min": 2000, "max": 5000 },
+    { "id": "s03_stainless_mult", "label": "Stainless vs black bar", "unit": "x", "min": 4, "max": 6 }
+  ],
+  "mathProblems": [
+    {
+      "id": "s03-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Rebar package for a condo frame",
+      "context": "Frame reinforcement prices per pound supplied and placed — and the tonnage surprises people: reinforced concrete is a steel structure wearing stone.",
+      "params": {
+        "qtyLabel": "reinforcement tonnage",
+        "qty": { "min": 150000, "max": 500000 },
+        "qtyUnit": "lb",
+        "rateLabel": "supply + place rate",
+        "rate": "s03_rebar_lb",
+        "rateUnit": "$/lb",
+        "answerLabel": "rebar package cost",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "s03-p2",
+      "generator": "unitRate",
+      "difficulty": 2,
+      "title": "The forgotten dowel, priced",
+      "context": "A dowel cast in place costs its bar price. A dowel remembered AFTER the pour is drilled-and-epoxied at roughly 10x. Multiply the field's forgetfulness by the retrofit rate.",
+      "params": {
+        "qtyLabel": "forgotten dowels across the pour",
+        "qty": { "min": 20, "max": 120 },
+        "qtyUnit": "dowels",
+        "rateLabel": "drill-and-epoxy retrofit",
+        "rate": { "min": 45, "max": 90 },
+        "rateUnit": "$/each",
+        "answerLabel": "retrofit cost",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "s03-d1",
+      "title": "Splash-zone bulkhead cap: black bar deep, or stainless shallow?",
+      "scenario": "The bulkhead cap design offers two compliant paths: black (carbon) rebar at 3 inches of cover with the low-permeability mix, or stainless bar at 2 inches — stainless costs 4–6x per pound but shrugs at chloride. The cap is the splash-zone element: wet-dry cycling, oxygen, salt — the fastest-corroding exposure on the project, on 8,000+ feet of your premium canal edge.",
+      "options": [
+        {
+          "id": "lifecycle-model",
+          "label": "Model both over 50 years with the coastal engineer: black bar's repair/replacement cycle in splash exposure vs stainless's premium — and let the caps' repair ACCESS cost (marine mobilization over estate-lot docks) weigh in",
+          "outcome": "The model usually lands on stainless (or at least stainless in the cap's top mat): the premium is large per pound and small per project, while cap repairs in year 20 happen over occupied docks from the water. First-cost thinking loses to access-cost thinking here.",
+          "optimal": true
+        },
+        {
+          "id": "black-deep",
+          "label": "Black bar at 3-inch cover — the code-compliant standard",
+          "outcome": "Legitimate and common — IF the cover is actually achieved (chairs, inspection) and the mix permeability holds. You've bet 50 years on field execution of a 1-inch tolerance, on the element with the worst exposure and the worst repair access.",
+          "acceptable": true
+        },
+        {
+          "id": "cheapest-passes",
+          "label": "Black bar at 2 inches — it passed a calc once and saves concrete",
+          "outcome": "Under-covered black bar in the splash zone is the S9 chloride mechanism with a countdown: passive film destroyed, rust at 4–6x volume, spalled caps along the showcase canal in year 8–12. Nobody who understood the exposure signed this.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Splash-zone elements get lifecycle decisions, not first-cost decisions — the exposure is the harshest and the repair access the worst. Cover, permeability, and metallurgy are three dials on the same corrosion clock; the engineer sets them TOGETHER. (S3, S9)"
+    }
+  ]
+}

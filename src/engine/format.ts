@@ -14,6 +14,11 @@ export function fmtNum(x: number): string {
 }
 
 function trim(x: number): string {
+  // tiny coefficients (0.00256 psf/mph², CTE values) need significant
+  // digits, not fixed decimals — otherwise they render as 0
+  if (x !== 0 && Math.abs(x) < 0.1) {
+    return Number(x.toPrecision(3)).toString();
+  }
   const r = Math.round(x * 100) / 100;
   return r.toLocaleString('en-US', { maximumFractionDigits: 2 });
 }

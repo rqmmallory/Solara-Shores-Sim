@@ -1,0 +1,197 @@
+{
+  "id": "s04-masonry",
+  "order": 18,
+  "title": "S4 — Masonry (CMU): The 302-House Trade",
+  "short": "Masonry",
+  "status": "ready",
+  "summary": "The system anatomy of the reinforced block wall (and the hidden failure — ungrouted 'reinforced' cells), mortar vs grout as different materials with different jobs, the workmanship items that decide quality scores, and the takt math the production game runs on. PLAIN: blocks, bars, and the concrete poured down the holes. PRO: grouted cells at 24–32 oc, bond beam, consolidation, cleanouts.",
+  "sections": [
+    {
+      "heading": "System anatomy and the hidden failure",
+      "body": "PLAIN: A Bahamian house wall is concrete blocks stacked in overlapping courses, with steel bars standing in some of the hollow cells — and those cells filled solid with a soupy concrete (grout) so the bar and the wall become one thing. The hidden failure: a bar standing in an EMPTY cell looks identical from outside and carries almost nothing. PRO: vertical reinforcement in grouted cells at corners, jamb sides of openings, and 24–32 in on center (high-wind practice, vs 48+ in calm climates); horizontal ring/bond beam at top of wall tying into the roof anchorage; lintels over openings; all reinforced cells grouted with pea-gravel grout, high slump (8–11 in) so it FLOWS, and consolidated (rodded/vibrated) so the bar is encased. Verification is inspection-at-grouting plus RANDOM CELL DRILLING — the sampling program that catches what eyes can't."
+    },
+    {
+      "heading": "Mortar is not grout",
+      "body": "PLAIN: Mortar is the paste between blocks — it beds and glues them. Grout is the pourable concrete that fills the reinforced cells. They look like cousins and do different jobs: crews substituting stiff mortar into cells (because it's on the board already) leave voids the bar was counting on. PRO: Type S mortar (~1,800 psi) for structural exterior; grout ~2,000+ psi at 8–11 in slump; the substitution is a defect, full stop. Block strength: standard units ~1,900–2,000 psi net — verify supplier certs, because local block quality varies and a bad batch telegraphs as cracked walls a year later. Cleanouts at the wall base for high-lift grouting, or low-lift pours ≤5 ft."
+    },
+    {
+      "heading": "Workmanship and the takt",
+      "body": "PLAIN: The quality items are visible if you look: full mortar joints (not just buttered corners), walls plumb and level, joints raked for render bond, and — a safety item, not a quality item — green walls BRACED until the ring beam and roof exist, because an unbraced fresh block wall in a squall is a fatality mechanism. PRO: tolerances ±1/4 in in 10 ft; bracing per the safety program (ties to M12); render cured like concrete or it crazes. Takt math for the production game: a competent 3–4 person crew lays 400–700 blocks/day; a typical house runs 2,500–4,500 blocks → block phase ≈ 5–9 crew-days, then ring beam form/pour +3–4 days. Sequence per house: slab cure → layout → first courses/level check (hold point) → walls with reinforced cells → lintels → ring beam form/rebar (hold point) → pour → strip/cure → trusses. Push crews past sustainable pace and the first-pass inspection rate — your quality KPI — degrades on schedule."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "s04-q1",
+      "type": "multipleChoice",
+      "teach": "Random cell drilling samples completed walls to estimate the real grouting defect rate.",
+      "prompt": "A random drill of 20 grouted cells finds 3 voided. What's the statistically literate response?",
+      "choices": [
+        {
+          "text": "Expand the sampling, map affected houses by crew and date, remediate by drill-and-grout, and put the responsible crew on 100% inspection until their rate recovers",
+          "correct": true,
+          "why": "Correct. A 15% sample defect rate estimates the population — the walls you didn't drill have voids too, clustered by whoever and whenever produced these three."
+        },
+        {
+          "text": "Grout the three holes and carry on — that's what sampling found",
+          "why": "Sampling ESTIMATES, it doesn't enumerate. Fixing only the found defects treats the sample as the whole population — the rest wait for wind."
+        },
+        {
+          "text": "Drill every cell in every house",
+          "why": "100% drilling of sound work destroys more than it finds. Expand sampling first; go house-wide only where the mapping points."
+        },
+        {
+          "text": "Fire the block subs and start over",
+          "why": "The mapping hasn't even identified WHICH crew yet. Statistical response first, personnel decisions on the data it produces."
+        }
+      ],
+      "explanation": "PLAIN: three bad out of twenty checked means the unchecked walls hide more — find the pattern, fix the cluster. PRO: 'expand the sample, map by crew and date, remediate, escalate inspection on the source.' This is the sim's Phase 3 grout event, and the reason the drilling program exists at all. (S4)"
+    },
+    {
+      "id": "s04-q2",
+      "type": "multipleChoice",
+      "teach": "Mortar beds blocks; grout fills cells. Different materials, different consistencies, different jobs.",
+      "prompt": "Why is a crew shoveling leftover mortar into reinforced cells a defect rather than a thrifty habit?",
+      "choices": [
+        {
+          "text": "Stiff mortar can't flow around the bar and consolidate like 8–11 inch slump grout — it bridges and leaves voids, so the 'reinforced' cell is a bar in a pocket of air and crumbs",
+          "correct": true,
+          "why": "Correct. Grout's soupy consistency is not sloppiness — it's the property that lets it encase the bar to the bottom of the cell. Mortar's stiffness guarantees it won't."
+        },
+        {
+          "text": "Mortar is weaker than grout",
+          "why": "The psi difference matters less than the CONSISTENCY difference — even strong mortar bridges in a cell. Encasement, not strength, is what fails."
+        },
+        {
+          "text": "It isn't a defect if the cell looks full at the top",
+          "why": "'Full at the top' is what every bridged cell looks like — the void is below, which is exactly why verification is drilling, not looking."
+        },
+        {
+          "text": "Mixing materials violates the supplier warranty",
+          "why": "Paperwork is not the issue; a hollow hurricane wall is."
+        }
+      ],
+      "explanation": "PLAIN: the cell-filler has to pour like thick soup so it wraps the bar all the way down — the block glue can't do that. PRO: 'pea-gravel grout, 8–11 slump, consolidated; mortar in cells is a rejected defect.' (S4)"
+    },
+    {
+      "id": "s04-q3",
+      "type": "multipleChoice",
+      "teach": "A freshly-laid block wall has no roof, no ring beam, and mortar that hasn't cured — it's a sail on a hinge.",
+      "prompt": "Why is wall bracing treated as a safety protocol rather than a quality preference?",
+      "choices": [
+        {
+          "text": "An unbraced green wall in a squall is a fatality mechanism — 8 feet of block falls on whoever is beside it, and squalls here arrive on summer afternoons like clockwork",
+          "correct": true,
+          "why": "Correct. Until the ring beam and roof tie it in, the wall is a freestanding panel held by uncured paste. Bracing is the difference between a weather event and a funeral."
+        },
+        {
+          "text": "Unbraced walls go out of plumb",
+          "why": "They do — but tolerance is the least of it. The category error is treating a collapse hazard as a quality item."
+        },
+        {
+          "text": "Insurance requires it",
+          "why": "It does, because of the fatalities. The requirement follows the physics, not the other way around."
+        },
+        {
+          "text": "Bracing speeds up the next trade",
+          "why": "It slightly impedes them, honestly — which is why crews skip it, which is why it's enforced as safety, not suggested as practice."
+        }
+      ],
+      "explanation": "PLAIN: a fresh block wall is a domino the size of a room — prop it until the building holds it. PRO: 'brace green walls until the bond beam and roof structure are in; toolbox-talk it every wave.' Ties to M12's safety program. (S4)"
+    },
+    {
+      "id": "s04-q4",
+      "type": "multipleChoice",
+      "teach": "The takt math: crew rate × house block count → crew-days per house → program schedule.",
+      "prompt": "Pushing block crews from 500 to 700 blocks/day for a quarter would recover two weeks of schedule. What does the production model predict?",
+      "choices": [
+        {
+          "text": "First-pass inspection rates degrade — joints thin, cells miss grout lifts, corners rush — and the rework plus re-inspection costs more schedule than the sprint recovered",
+          "correct": true,
+          "why": "Correct. 700 is the top of the SUSTAINABLE range for the best crews on good days; mandating it program-wide converts quality margin into invisible defects at hurricane-critical details."
+        },
+        {
+          "text": "Nothing — 700 is within the published range",
+          "why": "The range describes crew capability across conditions, not a dial you set. The best crews hit 700 sometimes; requiring it always is how the league table finds its new bottom."
+        },
+        {
+          "text": "Material shortages become the constraint",
+          "why": "Block supply scales with purchase orders; the fragile input is CARE at the details — laps, cells, corners — which is exactly what pace pressure consumes."
+        },
+        {
+          "text": "Crews will simply refuse",
+          "why": "Worse: they'll comply. Output is visible and quality is concealed — pace pressure gets exactly the trade you didn't want."
+        }
+      ],
+      "explanation": "PLAIN: people rushing lay more blocks and hide more mistakes — and block-wall mistakes hide inside the wall. PRO: 'takt to sustainable crew rates; watch first-pass rate as the leading indicator when pace rises.' The sim's overpace flag arms exactly these consequences. (S4, M6)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "s04_crew_rate", "label": "Block crew output", "unit": "blocks/day", "min": 400, "max": 700 },
+    { "id": "s04_blocks_house", "label": "Blocks per house", "unit": "blocks", "min": 2500, "max": 4500 },
+    { "id": "s04_block_unit", "label": "Block, delivered", "unit": "$/unit", "min": 2.2, "max": 3.5 },
+    { "id": "s04_mason_day", "label": "Mason day rate", "unit": "BSD/day", "min": 180, "max": 350 },
+    { "id": "s04_bar_spacing", "label": "Vertical bar spacing (high-wind)", "unit": "in oc", "min": 24, "max": 32 }
+  ],
+  "mathProblems": [
+    {
+      "id": "s04-p1",
+      "generator": "takt",
+      "difficulty": 2,
+      "title": "Block phase across a wave",
+      "context": "Crew-days per house = blocks per house ÷ crew rate. Then the wave: houses × days-per-house ÷ parallel crews. This is the production game's core arithmetic.",
+      "params": {
+        "unitLabel": "houses (block stage)",
+        "qty": { "min": 20, "max": 60 },
+        "daysPerUnit": { "min": 5, "max": 9 },
+        "crewLabel": "block crews",
+        "crews": { "min": 3, "max": 7 }
+      }
+    },
+    {
+      "id": "s04-p2",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Block buyout for a wave",
+      "context": "Developer-supplied materials (the labor-only model): blocks per house × houses × unit price, bought in bulk ahead of the wave.",
+      "params": {
+        "qtyLabel": "blocks for the wave",
+        "qty": { "min": 100000, "max": 270000 },
+        "qtyUnit": "blocks",
+        "rateLabel": "unit price",
+        "rate": "s04_block_unit",
+        "rateUnit": "$/unit",
+        "answerLabel": "block buyout",
+        "answerUnit": "$",
+        "wastePct": { "min": 1, "max": 2 }
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "s04-d1",
+      "title": "Seconds-grade block at 30% off",
+      "scenario": "Your block supplier offers seconds-grade units — cosmetic flaws, uncertified strength — at 30% off, pitched for 'garden walls and site work.' The buyout clerk loves it; the structural engineer hasn't been asked. On a 302-house program the discount is real money, and so is the question of where uncertified block can and cannot go.",
+      "options": [
+        {
+          "id": "zone-it",
+          "label": "Accept for genuinely non-structural uses only — freestanding garden walls, planters, dumpster enclosures — with physically separated stockpiles, distinct marking, and the structural certs still verified on every structural delivery",
+          "outcome": "The discount gets captured exactly where strength doesn't matter, and the segregation discipline (separate stockpiles, marked pallets) is what keeps a forklift driver from feeding seconds into a house wall on a busy Tuesday. The system, not the intention, is the control.",
+          "optimal": true
+        },
+        {
+          "id": "refuse-all",
+          "label": "Refuse — one grade of block on site, ever",
+          "outcome": "Maximum safety, real cost: you've paid structural prices for planter walls across the whole program. Defensible if your logistics can't guarantee segregation — which is an honest question worth asking before answering.",
+          "acceptable": true
+        },
+        {
+          "id": "take-broadly",
+          "label": "Take it for 'low-stress' uses including interior partition walls — the engineer can bless it later",
+          "outcome": "'Low-stress' drifted from garden wall to partition without anyone drawing the line, and uncertified block is now inside occupied structures with no cert trail. A bad batch telegraphs as cracked walls in year one — and the paper trail shows you bought the crack at a discount.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Material substitutions are zoning problems: the money is real where the risk is absent, and the risk is absolute where the certs matter. The control that makes zoning safe is physical segregation and marking — good intentions don't survive a busy laydown yard. (S4)"
+    }
+  ]
+}

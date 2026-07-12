@@ -12,18 +12,40 @@ backend), runnable in **Expo Go on iOS** during development.
 
 ```bash
 npm install
-npm start          # scan the QR code with Expo Go on your iPhone
+npx expo start     # scan the QR code with Expo Go on your iPhone
+                   # from a Codespace/remote box: npx expo start --tunnel
 ```
 
 ```bash
-npm test           # 42 unit tests: engines + content validation
+npm test           # unit tests: engines + content validation
 npm run typecheck  # tsc --noEmit
+```
+
+### Troubleshooting: "SDK 46" / metro TerminalReporter errors
+
+If `npm start` mentions **SDK 46**, offers to install `@types/react-native@~0.69.1`,
+or crashes with `Package subpath './src/lib/TerminalReporter' is not defined` —
+the deprecated **global `expo-cli`** (which caps at SDK 46) hijacked the command.
+This project is Expo SDK 57. Fix:
+
+```bash
+npm uninstall -g expo-cli
+git checkout package.json package-lock.json   # discard what the old CLI added
+rm -rf node_modules && npm install
+npx expo start --tunnel
 ```
 
 ## The three systems
 
-1. **Knowledge modules (Learn tab)** — one module per section of the research
-   knowledge base (14 total). Explainer sections, then mixed quizzes: multiple
+1. **Knowledge modules (Learn tab)** — 33 modules across three KB volumes:
+   Vol 1 the project (M1–M14), Vol 2 trade-level construction science
+   (S1–S10: compaction, concrete, rebar, masonry, formwork, wind detailing,
+   MEP, asphalt, marine durability, surveying), Vol 3 the physics backbone
+   (V3-1..9: loads, lateral systems, buoyancy, settlement, movement, crack
+   diagnosis, coastal processes, fire/egress, climate & materials). Vol 2/3
+   content is **dual-register**: PLAIN (the mechanism, simply) paired with
+   PRO (field vernacular), so you learn to speak the trade, not just
+   understand it. Explainer sections, then mixed quizzes: multiple
    choice, sequencing ("put these phases in order"), and subcontract-vs-direct-manage
    scenarios. Every question has a `teach` blurb before and an `explanation`
    after — right or wrong. Missed questions enter a **Leitner spaced-repetition
@@ -53,11 +75,19 @@ npm run typecheck  # tsc --noEmit
      with curveballs to match (lost mobilization, turbidity standby, bulkhead
      rework, canal karst, factory slip, WWTP design gaps).
 
-   Choices move four meters — schedule slip, cost variance, quality, open
-   risk — and can **arm** or **defuse** later curveballs. No game-overs: the
-   debrief grades the run against realistic slip/contingency allowances and
-   explains every call. Phases 3–8 are added one at a time as pure data files
-   once the prior phase plays well.
+   All seven phases are playable, sequentially unlocked, and — the core
+   design — **decisions track ACROSS phases**: choices set persistent flags
+   stored with each completed run; later phases inherit them (plus leftover
+   open risk). A Phase 2 EMP contract clause decides who pays for the Phase 4
+   turbidity stoppage; Phase 3's HVAC sizing decides Phase 7's mold cluster;
+   Phase 7 (handover/warranty) surfaces every long-fuse shortcut. Curveballs
+   can be armed, defused, or cost-modified by flags (`armedByFlags` /
+   `defusedByFlags` / `flagModifiers`), and the flag graph is validated
+   closed in CI. Choices move four meters — schedule slip, cost variance,
+   quality, open risk — with no game-overs: debriefs grade against realistic
+   allowances and explain every call. A **Weather Desk** on the Sim tab
+   carries V3-9's task-gating table (which trades die on which forecast),
+   implemented as an engine lookup ready for day-based sim ticks.
 
 **Gamification** is framed on the real goal: a **Project Readiness** score
 (50% knowledge / 25% estimating / 25% sim) with a countdown to the September 1

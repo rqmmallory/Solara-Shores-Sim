@@ -1,0 +1,149 @@
+{
+  "id": "v36-cracks",
+  "order": 30,
+  "title": "V3-6 — Reading Cracks: The Diagnostic Alphabet",
+  "short": "Cracks",
+  "status": "ready",
+  "summary": "A crack is a message; the pattern tells you who sent it. Six authors with six signatures — plastic shrinkage, drying shrinkage, thermal, settlement, structural overload, corrosion — and the manager's rules: direction and location first, active vs dormant second, pattern over width, and in a chloride climate every crack is also a corrosion door. PLAIN: cracks are handwriting. PRO: flexural at midspan, diagonal shear at supports, delamination along the bar lines.",
+  "sections": [
+    {
+      "heading": "The six authors",
+      "body": "PLAIN & PRO, paired per author: (1) PLASTIC SHRINKAGE — first hours of a pour: shallow, parallel, mid-slab cracks like dried mud; the surface dried faster than the concrete could supply water — your sun-and-breeze climate's most common pour-day defect, cosmetic-to-minor, prevented by S2's hot-weather kit. PRO: 'plastic shrinkage from high evap rate — should've fogged and covered.' (2) DRYING SHRINKAGE — weeks to months: fine, fairly straight cracks at regular intervals or at re-entrant corners (inside corners of L-shapes are stress concentrators — why slab-opening corners get diagonal bars). PRO: 'shrinkage cracking — look at the joint layout.' (3) THERMAL — like shrinkage but tracking temperature history; big pours that got hot inside crack as the core cools. PRO: 'thermal gradient cracking; should've been treated as mass concrete.' (4) SETTLEMENT — V3-4's stair-steps through masonry, diagonals radiating from door/window corners, width taper telling you which side dropped. Structural until proven otherwise. PRO: 'differential settlement — get levels and monitor.' (5) STRUCTURAL/OVERLOAD — located exactly where V3-1 says tension lives: flexural cracks on the tension face at midspan, diagonal shear cracks near supports at ~45°. The member is talking about its capacity. Engineer, NOW. PRO: 'flexural at midspan / diagonal shear at the support — get the EOR out here.' (6) CORROSION — cracks running ALONG the rebar lines, rust staining, eventually spalls: the steel expanding inside. Your climate's long-fuse killer. PRO: 'delamination along the bar — chain-drag/covermeter survey.'"
+    },
+    {
+      "heading": "The manager's rules",
+      "body": "PLAIN: Direction and location first — cracks form perpendicular to the pull, so the crack's geometry points back at the force. Active vs dormant second — put a gauge on it and re-read: a moving crack is a live problem, a dormant one is history. Width matters less than pattern — a hairline in the WRONG place (45° at a beam support) beats a wide one in the right place (mid-panel shrinkage). And in your chloride climate, every crack is a corrosion door — sealing has value even when structure is fine. PRO: hairline <0.3 mm generally cosmetic in dry interiors but SEALABLE in marine exposure; gauges read monthly; chain-drag survey $0.05–0.15/sf; no joints = random map cracking on the slab's own schedule."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "v36-q1",
+      "type": "multipleChoice",
+      "teach": "Crack identification: pattern, timing, location.",
+      "prompt": "A 45° diagonal crack appears near a condo transfer-beam support. Which author, and what's the first hour's response?",
+      "choices": [
+        {
+          "text": "Structural — diagonal shear cracking at a support is the member talking about its capacity; the EOR is on the phone in the first hour, the area below gets shored/cordoned, and nobody 'monitors' an active shear crack casually",
+          "correct": true,
+          "why": "Correct. Location (support) + orientation (45°) = shear signature, on the one member type (transfer beam) carrying a column's whole tributary load. This is the page-the-engineer pattern."
+        },
+        {
+          "text": "Shrinkage — concrete cracks, it's what it does",
+          "why": "Shrinkage cracks are fine, fairly straight, mid-panel, pattern-spaced. A 45° diagonal AT A SUPPORT is the geometry of shear — the one misdiagnosis you cannot afford."
+        },
+        {
+          "text": "Thermal — big transfer beams run hot curing",
+          "why": "Thermal cracking in mass pours is real but appears during/after curing with its own pattern. A service-stage diagonal at the support reads structural until the EOR says otherwise."
+        },
+        {
+          "text": "Settlement — get levels first",
+          "why": "Settlement's signature is stair-steps and corner diagonals in MASONRY, tapering widths. In a concrete transfer beam, the 45° support diagonal outranks every other hypothesis — engineer first, levels later."
+        }
+      ],
+      "explanation": "PLAIN: a slanted crack next to where a big beam sits on its support is the beam saying 'I'm struggling' — that call goes to the engineer within the hour. PRO: 'diagonal shear cracking at the support — shore below, cordon, EOR on site today.' (V3-6, V3-1)"
+    },
+    {
+      "id": "v36-q2",
+      "type": "multipleChoice",
+      "teach": "The two-register explanation is a skill: the same truth for a buyer and for your engineer.",
+      "prompt": "An owner walkthrough finds hairline mid-panel cracks in the garage slab. What's the calm, correct, two-register handling?",
+      "choices": [
+        {
+          "text": "PLAIN for the buyer: 'concrete shrinks slightly as it dries and these hairlines are that — cosmetic, sealed as part of punch, and here's the gauge showing they're not moving.' PRO in the file: 'drying shrinkage, <0.3mm, dormant per gauge, sealed per marine-exposure practice' — and the closing stays on schedule",
+          "correct": true,
+          "why": "Correct. The pattern (fine, mid-panel, straight) is shrinkage; the response is honest explanation + gauge evidence + sealing (chloride climate) + documentation. Panic and dismissal are both wrong."
+        },
+        {
+          "text": "Tell them all concrete cracks and move on",
+          "why": "True and trust-destroying: 'it's normal' without the mechanism, the gauge, and the seal reads as brush-off — and this buyer talks to the next buyer."
+        },
+        {
+          "text": "Promise slab replacement to protect the sale",
+          "why": "Replacing sound slabs over cosmetic shrinkage teaches the community that complaints mint concrete — and the replacement slab will shrink too."
+        },
+        {
+          "text": "Refer them to the structural engineer for reassurance",
+          "why": "Escalating cosmetic hairlines to the EOR signals doubt where none exists and burns the engineer's time — reserve that phone call for the patterns that earn it."
+        }
+      ],
+      "explanation": "PLAIN: know which cracks are normal, say why simply, prove it with a gauge, seal it because salt air. PRO: 'ID the pattern, document dormancy, seal per exposure, close on schedule.' The dual-register fluency is the customer-facing half of crack literacy. (V3-6)"
+    },
+    {
+      "id": "v36-q3",
+      "type": "multipleChoice",
+      "teach": "Corrosion cracks have a unique geometry: they follow the steel.",
+      "prompt": "Year-2 balcony soffits show cracks running in straight lines with rust staining bleeding through. Why does this pattern jump the queue, and what's the investigation?",
+      "choices": [
+        {
+          "text": "Cracks ALONG bar lines + rust bleed = corrosion expanding inside the concrete — the long-fuse killer in this climate; scope a chain-drag/covermeter survey to map delamination and cover BEFORE pricing any repair, because the visible cracks are the mechanism's late stage",
+          "correct": true,
+          "why": "Correct. Rust at 4–6x volume is jacking the cover off from within (S9); what you see is advanced. The survey defines the true extent — repairs priced off visible cracks alone always underscope."
+        },
+        {
+          "text": "Shrinkage cracks that happened to align",
+          "why": "Shrinkage doesn't bleed rust or follow the reinforcement layout. Geometry along the bars IS the corrosion signature."
+        },
+        {
+          "text": "Cosmetic staining from formwork ties",
+          "why": "Tie stains are spots at tie locations. LINEAR staining along bar lines with cracking is expansion from inside — a different animal with a schedule."
+        },
+        {
+          "text": "Structural overload of the balconies",
+          "why": "Overload cracks run perpendicular to the main steel at the tension face (V3-1) — these run ALONG the bars. Reading the direction is the whole diagnostic."
+        }
+      ],
+      "explanation": "PLAIN: straight rust-stained lines tracing the hidden steel mean the steel is rusting and swelling — and there's always more than shows. PRO: 'delamination along the bars — chain-drag the soffits, covermeter the cover, map before pricing.' Balconies + salt air + low cover is the V3-1/S3/S9 trifecta. (V3-6)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "v36_hairline_mm", "label": "Hairline threshold", "unit": "mm", "min": 0.3, "max": 0.3 },
+    { "id": "v36_chaindrag_sf", "label": "Chain-drag survey", "unit": "$/sf", "min": 0.05, "max": 0.15 }
+  ],
+  "mathProblems": [
+    {
+      "id": "v36-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Surveying the soffits",
+      "context": "Chain-drag/delamination survey priced per square foot across the suspect areas — the mapping that keeps corrosion repairs honestly scoped.",
+      "params": {
+        "qtyLabel": "soffit area to survey",
+        "qty": { "min": 5000, "max": 40000 },
+        "qtyUnit": "sf",
+        "rateLabel": "survey rate",
+        "rate": "v36_chaindrag_sf",
+        "rateUnit": "$/sf",
+        "answerLabel": "survey cost",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "v36-d1",
+      "title": "The crack log",
+      "scenario": "Three years in, cracks of every family exist somewhere on the project: pour-day crazing on a pool deck, shrinkage lines in garage slabs, one monitored stair-step over a grouted void, sealed hairlines on the bulkhead cap. A new owner's-side building inspector (hired for an estate closing) photographs ALL of them into one alarming report titled 'Widespread Cracking Observed.' The buyer's attorney forwards it with a deadline.",
+      "options": [
+        {
+          "id": "answer-with-the-log",
+          "label": "Respond with your standing crack log: each photographed crack already identified by mechanism, gauged where warranted, sealed per exposure, with dates — plus an offer to walk the inspector through the diagnostic reasoning on site",
+          "outcome": "The 'widespread cracking' report meets a document that classified every crack before the inspector found it. The attorney's deadline dissolves into a site walk where your super speaks both registers — and the closing proceeds on the strength of the paperwork you kept all along.",
+          "optimal": true
+        },
+        {
+          "id": "dispute-the-report",
+          "label": "Have your engineer write a rebuttal calling the report alarmist",
+          "outcome": "Dueling experts, no shared facts: without your own crack-by-crack record, the rebuttal is opinion against photographs — and photographs win deadlines. The engineer's letter costs more than the log would have and persuades less.",
+          "acceptable": true
+        },
+        {
+          "id": "seal-everything-fast",
+          "label": "Send a crew to seal and paint every crack before responding",
+          "outcome": "The inspector has photographs of cracks that are now mysteriously invisible — which reads exactly as it looks. Concealment after documentation is the one move that converts cosmetic cracking into a credibility problem with legs.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Crack literacy pays twice: on site (right response, right speed) and on paper (the log that answers every future report). Identify by mechanism, gauge the questionable, seal per exposure, and WRITE IT DOWN — the diagnostic alphabet is also your legal defense. (V3-6, M10)"
+    }
+  ]
+}

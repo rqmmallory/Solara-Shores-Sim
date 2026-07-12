@@ -1,0 +1,171 @@
+{
+  "id": "s08-roads-asphalt",
+  "order": 22,
+  "title": "S8 — Roads and Asphalt Paving",
+  "short": "Asphalt",
+  "status": "ready",
+  "summary": "Pavement is a layered spring — subgrade, base, prime, binder, then (last, always last) the surface course. Asphalt is temperature-critical: the compaction window closes as the mat cools. And on an island, the paver mobilization economics say: batch the paving. PLAIN: layers, heat, and timing. PRO: 98% base, binder through construction, surface course as the sacrificial wear layer.",
+  "sections": [
+    {
+      "heading": "The layered spring",
+      "body": "PLAIN: A road is layers, each protecting the one below and supported by the one beneath: your rock subgrade (excellent) → compacted crushed-limestone base → a sticky prime coat so the asphalt bonds → the coarse structural binder course → and finally the fine surface course. The surface course is the SACRIFICIAL WEAR LAYER — the shoes of the road — and you don't wear your good shoes to pour concrete, which is the materials-science version of Module 3's finishes-last rule. PRO: base 6–8 in at 98% Proctor; binder 1.5–2.5 in; surface 1–1.5 in placed after construction traffic ends; crown/cross-slope 2% to swales and drainage wells — ponding on a new road is a grade-survey failure, not bad luck."
+    },
+    {
+      "heading": "Temperature is the whole game",
+      "body": "PLAIN: Asphalt arrives hot (~275–300°F) and can only be compacted while it stays hot enough to move (~above 175°F) — thin lifts on breezy days cool in MINUTES, so the rollers follow the paver immediately, not eventually. PRO: breakdown, intermediate, and finish rolling passes in sequence behind the paver; density verified by cores or gauge at 92–96% of theoretical max; joints — longitudinal and transverse — are the failure-initiation points, so hot joints and proper overlap matter. Cores at 1 per 500–1,000 tons."
+    },
+    {
+      "heading": "Island paving logistics",
+      "body": "PLAIN: Asphalt binder is imported and plants are few — paving happens when the plant runs, and sending a paver to do one cul-de-sac costs almost as much as a whole street day. So paving gets BATCHED: accumulated into campaigns that fill plant runs and amortize mobilization. PRO: paver mobilization $15–40K; asphalt $110–160/ton placed; schedule paving windows around plant runs and weather (no placement on wet base); the 'mobilize for one cul-de-sac' job is the unit-rate horror story every island QS tells."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "s08-q1",
+      "type": "multipleChoice",
+      "teach": "The surface course is the finest, prettiest, least structural layer.",
+      "prompt": "Why does the surface course go down LAST — after years of construction traffic ran on the binder?",
+      "choices": [
+        {
+          "text": "It's the sacrificial wear layer — placing it before heavy traffic ends spends the road's finished skin on dump trucks, then you buy it twice",
+          "correct": true,
+          "why": "Correct. The binder course is built to carry construction; the surface course is built to be the road buyers drive on. Sequence is the whole economics."
+        },
+        {
+          "text": "The surface course needs the binder to cure for years first",
+          "why": "Asphalt doesn't cure like concrete — the wait is about TRAFFIC, not chemistry."
+        },
+        {
+          "text": "Surface asphalt is a different plant product that's scarce",
+          "why": "It's a finer mix from the same plants. Availability isn't the driver; wear preservation is."
+        },
+        {
+          "text": "Regulations require staged paving",
+          "why": "No regulation — just the finishes-last rule with a materials-science reason. The sim punishes early finishing because reality invoices it."
+        }
+      ],
+      "explanation": "PLAIN: don't put the good carpet down while the movers are still walking through. PRO: 'binder carries construction; mill and repair the binder's wounds; surface course in one batched campaign at the end.' (S8, M3)"
+    },
+    {
+      "id": "s08-q2",
+      "type": "multipleChoice",
+      "teach": "Compaction must finish before the mat cools below workable temperature.",
+      "prompt": "Why do the rollers follow the paver IMMEDIATELY, and what happens on a windy, cool evening with a thin lift?",
+      "choices": [
+        {
+          "text": "The mat is only compactable above ~175°F, and a thin lift in wind loses that in minutes — rollers that lag produce a low-density mat that ravels and fails young",
+          "correct": true,
+          "why": "Correct. The compaction window is a cooling curve; thin lifts + wind + cool air steepen it brutally. The roller schedule IS the quality plan."
+        },
+        {
+          "text": "Rolling hot uses less fuel",
+          "why": "Efficiency is incidental — below the cessation temperature, no amount of rolling achieves density. The window closes physically."
+        },
+        {
+          "text": "It keeps the paving train compact for traffic control",
+          "why": "Logistics nicety; the driver is mat temperature. You can re-route traffic — you can't re-heat the mat."
+        },
+        {
+          "text": "Nothing — asphalt can be re-rolled next morning",
+          "why": "Cold asphalt under a roller just cracks. Density not achieved in the window is not achievable, only removable."
+        }
+      ],
+      "explanation": "PLAIN: asphalt is only squeezable while hot, and it cools like coffee — faster in wind, faster when thin. PRO: 'place ≥275°F, compact before ~175°F; breakdown roller ON the paver's heels; watch thin lifts on windy days.' Density 92–96% TMD by core. (S8)"
+    },
+    {
+      "id": "s08-q3",
+      "type": "multipleChoice",
+      "teach": "Core results are the pavement's acceptance test.",
+      "prompt": "Cores on a street come back at 90% of theoretical max density against a 92–96% spec. Accept with penalty, or remove?",
+      "choices": [
+        {
+          "text": "It depends on where and how much — isolated low cores in low-traffic areas often take a priced penalty (reduced pay, extended warranty); systematic lows or main-road failures get removed, because under-compacted mats fail young under load",
+          "correct": true,
+          "why": "Correct. Acceptance-with-penalty exists because removal isn't free either — but it's a tool for MARGINAL, LOCALIZED shortfalls, not a discount program for bad paving."
+        },
+        {
+          "text": "Always accept with penalty — 2% is invisible",
+          "why": "Density-to-life curves are steep: a few points of air voids can halve pavement life. The penalty must price the LIFE lost, and on main roads it usually can't."
+        },
+        {
+          "text": "Always remove — spec is spec",
+          "why": "Removing a whole cul-de-sac mat over one marginal core wastes money the penalty mechanism exists to save. Rigidity is not rigor."
+        },
+        {
+          "text": "Re-roll the street and re-core",
+          "why": "The window closed weeks ago (see the cooling curve) — cold re-rolling cracks the mat. The choice is genuinely penalty or removal."
+        }
+      ],
+      "explanation": "PLAIN: a slightly-squishy road in a quiet corner can be paid for as slightly-worse; a squishy main road gets rebuilt. PRO: 'evaluate extent, location, and traffic; pay-factor the marginal, remove the systematic.' Your QA lab's cores are what make either answer enforceable. (S8, M12)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "s08_asphalt_ton", "label": "Asphalt placed", "unit": "$/ton", "min": 110, "max": 160 },
+    { "id": "s08_paver_mob", "label": "Paver mobilization", "unit": "$", "min": 15000, "max": 40000 },
+    { "id": "s08_density_pct", "label": "Density acceptance", "unit": "% TMD", "min": 92, "max": 96 }
+  ],
+  "mathProblems": [
+    {
+      "id": "s08-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Surface course campaign",
+      "context": "The final lift across the community: tonnage × placed rate, in one batched campaign — the payoff of protecting the binder for years.",
+      "params": {
+        "qtyLabel": "surface course tonnage",
+        "qty": { "min": 3000, "max": 12000 },
+        "qtyUnit": "tons",
+        "rateLabel": "placed asphalt rate",
+        "rate": "s08_asphalt_ton",
+        "rateUnit": "$/ton",
+        "answerLabel": "final lift campaign",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "s08-p2",
+      "generator": "unitRate",
+      "difficulty": 2,
+      "title": "The cul-de-sac mobilization tax",
+      "context": "Piecemeal paving pays the paver mobilization repeatedly. Count the extra visits piecemeal paving would take and price the tax.",
+      "params": {
+        "qtyLabel": "extra paver mobilizations (piecemeal vs batched)",
+        "qty": { "min": 4, "max": 12 },
+        "qtyUnit": "visits",
+        "rateLabel": "mobilization each",
+        "rate": "s08_paver_mob",
+        "rateUnit": "$",
+        "answerLabel": "piecemeal paving tax",
+        "answerUnit": "$"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "s08-d1",
+      "title": "Rutted binder under the final lift",
+      "scenario": "The binder course carried construction traffic for 14 months and shows rutting at two intersections plus scattered patches where utility crossings were cut. The surface-course campaign is mobilizing in three weeks. The paving sub offers: (a) mill and repave the damaged binder areas first, (b) a leveling course over the ruts, or (c) 'the surface course will hide it.'",
+      "options": [
+        {
+          "id": "mill-first",
+          "label": "Mill and repave the rutted intersections and failed patches, THEN the surface course over sound binder everywhere",
+          "outcome": "The intersections — where every wheel brakes and turns — get a sound structure under the wear layer. 'Hide it' would have telegraphed every rut through the new mat within two summers; milling first is why the final lift stays flat for its design life.",
+          "optimal": true
+        },
+        {
+          "id": "leveling-course",
+          "label": "Leveling course over the ruts, surface over everything",
+          "outcome": "Cheaper than milling and workable where deformation is minor — but a leveling course over STRUCTURALLY failed binder (those intersections) is smoothing over movement that will continue underneath. Fine for the scattered patches; wrong for the intersections.",
+          "acceptable": true
+        },
+        {
+          "id": "hide-it",
+          "label": "Let the surface course hide it — it's an inch and a half of new asphalt",
+          "outcome": "Ruts reflect through thin overlays like handwriting through tracing paper — the deformation mechanism is still live below. Year two: the new road shows the old ruts, and now the repair means milling through the surface you just paid for.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "The binder course's construction wounds get REPAIRED, not carpeted: distress reflects through overlays because its cause survives underneath. Inspect the binder like a subgrade before the final lift — it is one. (S8)"
+    }
+  ]
+}

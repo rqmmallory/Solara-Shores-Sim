@@ -2,9 +2,13 @@ import { modules, simPhases } from '..';
 import { validateFlagGraph, validateModule, validateSimPhase } from '../validate';
 
 describe('content validation', () => {
-  it('has 14 modules mirroring the research doc', () => {
-    expect(modules).toHaveLength(14);
-    expect(modules.map((m) => m.order)).toEqual([...Array(14)].map((_, i) => i + 1));
+  it('has 33 modules across the three KB volumes', () => {
+    expect(modules).toHaveLength(33);
+    expect(modules.map((m) => m.order)).toEqual([...Array(33)].map((_, i) => i + 1));
+    // volume boundaries: M1-14 project, S1-10 science, V3-1..9 physics
+    expect(modules.filter((m) => m.id.startsWith('m'))).toHaveLength(14);
+    expect(modules.filter((m) => m.id.startsWith('s'))).toHaveLength(10);
+    expect(modules.filter((m) => m.id.startsWith('v'))).toHaveLength(9);
   });
 
   it('module ids are unique', () => {

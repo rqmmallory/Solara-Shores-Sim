@@ -1,0 +1,151 @@
+{
+  "id": "v38-fire-egress",
+  "order": 32,
+  "title": "V3-8 — Fire Science and Egress: Buying Minutes",
+  "short": "Fire & Egress",
+  "status": "ready",
+  "summary": "Buildings can't be fireproof; they're designed to fail slowly and predictably so people get out. Everything in fire code buys minutes somewhere: detect early, suppress before flashover, contain in compartments, evacuate through counted-and-measured paths. PLAIN: the design goal is time. PRO: flashover, ratings and penetrations, occupant load, two remote exits, defend-in-place.",
+  "sections": [
+    {
+      "heading": "Flashover and the strategy",
+      "body": "PLAIN: A fire grows in a room until FLASHOVER — the moment radiant heat ignites everything at once, often just 3–8 minutes in a furnished room — after which nobody survives inside it. So the strategy is a relay of minutes: detect early (alarms), suppress early (sprinklers exist mainly to PREVENT flashover, and they win overwhelmingly), contain (compartments), evacuate (egress). PRO: 'flashover,' 'fuel load,' 'the sprinkler controlled it to a one-head fire' — the phrase that describes most sprinklered-building fires."
+    },
+    {
+      "heading": "Compartments, ratings, and the holes",
+      "body": "PLAIN: Rated walls and floors are TIMERS — a '1-hour wall' holds fire back for about an hour of standard test fire. But the rating is only as good as its weakest hole: every pipe, duct, and cable through a rated wall needs FIRESTOPPING, and doors in rated walls are rated, self-closing, and never wedged open. The condos live on this — unit separations, protected stairs, shafts. PRO: 'fire-resistance rating,' 'protect the penetrations,' 'self-closers,' 'draftstopping/fireblocking' in concealed spaces. The inspector's flashlight goes straight to the penetrations — so should your QC, at every close-up."
+    },
+    {
+      "heading": "Egress in one breath",
+      "body": "PLAIN: From any point, a person must reach safety within a limited travel distance, through paths wide enough for the crowd, with TWO separate ways out — separated enough that one fire can't block both. Doors swing with the flow for crowds; exit lights work in blackout; stairs are the choke point and sized like it. Assembly spaces — your sports bar, beach club: crowds plus alcohol — get the strictest numbers, and OCCUPANT LOAD (computed from area, not chosen by marketing) drives everything: the sports bar's legal capacity is an egress calculation. Senior living adds the hard truth that occupants evacuate slowly or not at all: more compartmentation, wider doors, sprinklers non-negotiable — 'defend in place.' PRO: 'means of egress,' 'common path of travel,' occupant load factors ~15 sf/person unconcentrated assembly / 7 net concentrated; travel distance ~200 ft / 250 sprinklered; two exits above ~49 occupants; egress width ~0.2 in/person stairs, 0.15 doors."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "v38-q1",
+      "type": "multipleChoice",
+      "teach": "Sprinklers aren't primarily for extinguishing — they're for interrupting the growth curve.",
+      "prompt": "Why do sprinklers 'exist mainly to prevent flashover'?",
+      "choices": [
+        {
+          "text": "Flashover — everything igniting at once, often 3–8 minutes in — is the survivability cliff; a sprinkler head opening early keeps the fire small and the room survivable, which is why sprinklered fires so often end as 'controlled by one head'",
+          "correct": true,
+          "why": "Correct. The sprinkler's job is to break the growth curve before the cliff — extinguishment is a bonus; time is the product."
+        },
+        {
+          "text": "They extinguish fires completely before the department arrives",
+          "why": "Often they merely CONTROL — which is the point: a controlled pre-flashover fire is an inconvenience; a post-flashover room is a fatality scene."
+        },
+        {
+          "text": "They protect the structure from heat damage",
+          "why": "Structural protection is a side benefit — the design driver is keeping the ROOM survivable during the minutes people need."
+        },
+        {
+          "text": "Insurance discounts require them",
+          "why": "Insurers discount them because of the flashover math, not the other way around."
+        }
+      ],
+      "explanation": "PLAIN: a room fire has a countdown to the moment everything burns at once; the sprinkler stops the clock. PRO: 'suppress pre-flashover; sprinklers win overwhelmingly; defend-in-place strategies lean on them absolutely.' (V3-8)"
+    },
+    {
+      "id": "v38-q2",
+      "type": "multipleChoice",
+      "teach": "Penetration hunting: rated assemblies fail at their holes.",
+      "prompt": "The kitchen designer routes a grease duct through the rated corridor wall with a plastic sleeve. Name the violations.",
+      "choices": [
+        {
+          "text": "Two: the penetration breaches the rated wall without a listed firestop system, and a GREASE duct — the building's highest-fire-risk duct — gets special enclosure/rating rules of its own that a plastic sleeve mocks twice over",
+          "correct": true,
+          "why": "Correct. Any unprotected penetration voids the wall's timer; grease ducts (kitchen fires' favorite highway) carry their own enclosure requirements on top."
+        },
+        {
+          "text": "One: plastic isn't allowed in commercial kitchens",
+          "why": "The material is the least of it — the WALL's rating is breached, and the DUCT's own protection rules are ignored. Two systems violated, not one product."
+        },
+        {
+          "text": "None, if the duct has a damper somewhere",
+          "why": "Dampers are part of listed penetration solutions in specific configurations — and often prohibited in grease ducts specifically (grease + closing damper = trapped fire). 'Somewhere' is not a system."
+        },
+        {
+          "text": "It's the fire inspector's problem to catch",
+          "why": "It's your QC's problem to catch at rough-in, when it costs a re-route — the inspector catching it at commissioning costs the OC date."
+        }
+      ],
+      "explanation": "PLAIN: the fire wall is a dam, and every unsealed pipe hole is a hole in the dam — and the greasy duct is the worst possible thing to pass through unprotected. PRO: 'listed firestop systems at every penetration; grease duct enclosure per its own rules; penetration QC at every close-up.' (V3-8, S7)"
+    },
+    {
+      "id": "v38-q3",
+      "type": "multipleChoice",
+      "teach": "Occupant load is computed, and everything downstream recalculates from it.",
+      "prompt": "A layout revision adds a mezzanine to the sports bar. What recalculates?",
+      "choices": [
+        {
+          "text": "The chain: added area → added occupant load (area ÷ load factor) → required egress width → possibly a second stair → sprinkler and alarm design → and the M11 change-cost multiplier on all of it",
+          "correct": true,
+          "why": "Correct. Occupant load is the root variable — touch the area and every egress quantity downstream re-derives, at whatever design stage you've reached (and its multiplier)."
+        },
+        {
+          "text": "Just the seat count on the license",
+          "why": "The license number IS the egress calculation's output — you can't revise the answer without re-running the chain that produced it."
+        },
+        {
+          "text": "Nothing if the mezzanine is 'storage'",
+          "why": "Calling occupied space storage until the fire marshal visits is a strategy with a short shelf life and your OC attached to it."
+        },
+        {
+          "text": "Only the structural loads",
+          "why": "Those too (V3-1's tributary math) — but the life-safety chain is the one that can demand a second STAIR, which is the expensive surprise."
+        }
+      ],
+      "explanation": "PLAIN: more floor means more people means wider ways out — maybe a whole new stair. PRO: 'occupant load drives egress width drives exit count; recalculate the chain before approving the render.' The sports bar's capacity is an egress calc, not a marketing choice. (V3-8, M11)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "v38_flashover_min", "label": "Flashover window, furnished room", "unit": "minutes", "min": 3, "max": 8 },
+    { "id": "v38_load_factor", "label": "Assembly occupant load factor", "unit": "sf/person", "min": 7, "max": 15 },
+    { "id": "v38_travel_ft", "label": "Travel distance limit", "unit": "ft", "min": 200, "max": 250 },
+    { "id": "v38_stair_width", "label": "Stair egress width", "unit": "in/person", "min": 0.2, "max": 0.2 }
+  ],
+  "mathProblems": [
+    {
+      "id": "v38-p1",
+      "generator": "crewRatio",
+      "difficulty": 2,
+      "title": "The sports bar's legal capacity",
+      "context": "Occupant load = floor area ÷ load factor (sf per person). This number — not marketing's — is the bar's capacity, and every egress quantity derives from it. Round up.",
+      "params": {
+        "unitLabel": "sf of assembly floor area",
+        "active": { "min": 2000, "max": 6000 },
+        "staffLabel": "occupants (legal load)",
+        "ratio": "v38_load_factor"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "v38-d1",
+      "title": "Commissioning week goes sideways",
+      "scenario": "Fire alarm and sprinkler acceptance tests on Condo Building 2 fail on sequence-of-operations — dampers and door releases don't respond to the right zones in the right order. The fire authority's next available re-test slot is five weeks out unless someone begs. Closings are scheduled against this building's OC in three weeks. The alarm sub says the fix is 'a week of programming.'",
+      "options": [
+        {
+          "id": "war-room-it",
+          "label": "Treat it as the revenue emergency it is: alarm sub on nights to fix and pre-test with a full self-witnessed dry run, personal call to the authority for a cancellation slot, buyers' attorneys notified of a POSSIBLE two-week slip now rather than a certain surprise later",
+          "outcome": "The dry run is what earns the early re-test — authorities re-prioritize applicants who demonstrably won't waste the visit. The early notice to buyers converts a breach conversation into a scheduling one. Maybe you claw back three of the five weeks; all of them were on the table only because you moved today.",
+          "optimal": true
+        },
+        {
+          "id": "queue-quietly",
+          "label": "Take the five-week slot and tell buyers when it's certain",
+          "outcome": "The OC slips five full weeks — the sub's week of programming plus four weeks of queue you never contested — and buyers learn of the slip at maximum lateness with minimum goodwill. Every week is general conditions plus interest plus trust.",
+          "acceptable": false
+        },
+        {
+          "id": "partial-occupancy",
+          "label": "Pursue a temporary/partial occupancy for floors away from the affected zones",
+          "outcome": "Sometimes available, always conditional — and life-safety systems are BUILDING systems, so partial occupancy against an alarm that fails sequence testing is a hard ask that spends authority goodwill you'll want for the re-test. Explore it, but as a parallel path, not the plan.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Life-safety commissioning gates the OC and the OC gates revenue — which makes a failed acceptance test a financial event measured in weeks. The response is a war room, not a queue position: fix fast, PROVE it's fixed before the authority returns, and tell the money side early. This is why S7 booked the authorities weeks ahead — and why the sequence-of-operations gets pre-tested before they ever arrive. (V3-8, S7, M14)"
+    }
+  ]
+}

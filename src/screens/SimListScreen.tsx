@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { simPhases } from '../content';
 import type { CurveballFrequency } from '../engine/sim';
+import { WEATHER_TABLE } from '../engine/weather';
 import { useAppState } from '../state/AppState';
 import { Body, Card, H1, H2, Screen, Small, Tag } from '../ui/components';
 import ProjectMap from '../ui/ProjectMap';
@@ -20,6 +21,7 @@ export default function SimListScreen() {
   const nav = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const app = useAppState();
   const freq = app.state.settings.curveballFrequency;
+  const [showWeather, setShowWeather] = useState(false);
 
   return (
     <Screen>
@@ -96,6 +98,38 @@ export default function SimListScreen() {
           </TouchableOpacity>
         );
       })}
+
+      <TouchableOpacity onPress={() => setShowWeather(!showWeather)}>
+        <Card>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <H2>Weather Desk {showWeather ? '−' : '+'}</H2>
+          </View>
+          <Small>
+            Climate sets your specs; weather sets your day. Which trades die on which forecast
+            (V3-9's task-gating table).
+          </Small>
+          {showWeather
+            ? Object.values(WEATHER_TABLE)
+                .filter((w) => w.state !== 'clear')
+                .map((w) => (
+                  <View key={w.state} style={{ marginTop: 10 }}>
+                    <Body style={{ fontWeight: '700', color: colors.warn }}>{w.label}</Body>
+                    {w.blocked.length > 0 ? (
+                      <Small>Blocked: {w.blocked.join('; ')}</Small>
+                    ) : null}
+                    {w.degraded.length > 0 ? (
+                      <Small>
+                        Degraded:{' '}
+                        {w.degraded.map((d) => `${d.task} (×${d.multiplier})`).join('; ')}
+                      </Small>
+                    ) : null}
+                    {w.favored.length > 0 ? <Small>Favored: {w.favored.join('; ')}</Small> : null}
+                    <Small style={{ fontStyle: 'italic' }}>{w.note}</Small>
+                  </View>
+                ))
+            : null}
+        </Card>
+      </TouchableOpacity>
 
       <Card>
         <H2>Your decisions follow you</H2>

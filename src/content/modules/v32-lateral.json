@@ -1,0 +1,154 @@
+{
+  "id": "v32-lateral",
+  "order": 26,
+  "title": "V3-2 — Lateral Systems: Surviving Being Pushed Sideways",
+  "short": "Lateral",
+  "status": "ready",
+  "summary": "Gravity is easy; wind is the hard problem — and wind force grows with the SQUARE of speed, so 150 mph pushes four times harder than 75. The sideways skeleton: walls catch, diaphragms carry, shear walls walk it down. PLAIN: a building needs a sideways plan. PRO: q = 0.00256V², diaphragms and chords, shear walls and hold-downs, torsion from lopsided stiffness.",
+  "sections": [
+    {
+      "heading": "The square law and the three-part skeleton",
+      "body": "PLAIN: Buildings are born good at holding themselves UP; wind pushes them SIDEWAYS, and a building with no sideways plan is a house of cards. Double the wind speed and the push quadruples — that's why a 150-mph storm isn't 'a bit worse' than 75, it's four times the force. The sideways skeleton has three parts: the walls facing the wind catch the push; each floor and the roof act as a DIAPHRAGM — a big flat beam lying on its side — carrying the push across to the stiff walls; and SHEAR WALLS walk it down to the foundation. Roof → diaphragm → shear wall → footing: the lateral load path, horizontal twin of V3-1's vertical one. PRO: velocity pressure q ≈ 0.00256 × V² (psf, V in mph): 75 mph → ~14 psf; 150 → ~58 psf before shape factors — and components-and-cladding pressures on windows and roof corners run higher still. 'Diaphragm chords and collectors,' 'shear wall segments,' 'drag the load into the wall.'"
+    },
+    {
+      "heading": "Connections, overturning, torsion",
+      "body": "PLAIN: The wind doesn't blow buildings over so much as it PULLS THEM APART AT THE JOINTS — a building can be plenty strong for gravity and still fail sideways if any of the three parts, or the connections BETWEEN them, is missing. Push a tall narrow box near its top and it tips: the whole building has the same urge, resisted by the foundation and by hold-downs at shear-wall ends — and here the dead weight you cursed in V3-1 becomes your friend (heavy buildings resist tipping and uplift; one reason concrete suits hurricane country). TORSION: if the stiff walls are all on one side, the wind spins the building like a door on a hinge — layouts want stiffness roughly balanced. PRO: 'overturning moment,' 'uplift at the hold-downs' (3–15+ kip capacities), 'torsional irregularity,' 'center of rigidity vs center of pressure,' drift limits ~H/400–H/600."
+    },
+    {
+      "heading": "Your condos, specifically",
+      "body": "PLAIN: In your condo buildings, the concrete floor slabs are excellent diaphragms, and the stair and elevator cores plus selected walls are the shear system. So when reviewing structural drawings: FIND THE SHEAR WALLS FIRST — and treat any architect's request to punch openings in them as a structural negotiation, not a courtesy. PRO: core-wall systems; openings in shear walls change the segment capacities and sometimes the whole lateral scheme; the M11 change-cost multiplier applies with special violence to lateral elements because they're the least visible and the most systemic."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "v32-q1",
+      "type": "multipleChoice",
+      "teach": "Wind force scales with velocity SQUARED: q ≈ 0.00256 × V².",
+      "prompt": "Why is a 150-mph design storm four times the problem of a 75-mph storm, not two?",
+      "choices": [
+        {
+          "text": "Wind pressure grows with the square of speed — 0.00256 × 75² ≈ 14 psf vs 0.00256 × 150² ≈ 58 psf — doubling the wind quadruples the push",
+          "correct": true,
+          "why": "Correct. The square law is why hurricane categories escalate so brutally, and why 'a bit windier' is never a bit."
+        },
+        {
+          "text": "Faster wind carries more debris",
+          "why": "Debris is real (it's why impact glazing exists) but the FORCE math itself already quadrupled before the first coconut flies."
+        },
+        {
+          "text": "It doesn't — force is proportional to speed",
+          "why": "Kinetic energy of moving air scales with V² — the proportional intuition is the one the square law exists to correct."
+        },
+        {
+          "text": "Higher winds last longer",
+          "why": "Duration matters for fatigue and water, but the design pressure — the number the structure must resist at any instant — is the squared one."
+        }
+      ],
+      "explanation": "PLAIN: double the wind, four times the shove. PRO: 'q = 0.00256V²; 150 mph is ~58 psf base, with C&C multipliers of 2–3x at corners and edges on top.' The square law is the whole reason Bahamian detailing looks paranoid to visitors from calm places. (V3-2, S6)"
+    },
+    {
+      "id": "v32-q2",
+      "type": "multipleChoice",
+      "teach": "The diaphragm is the floor doing structural work sideways.",
+      "prompt": "What does it mean that each floor acts as a 'diaphragm — a big flat beam lying on its side'?",
+      "choices": [
+        {
+          "text": "The floor collects the wind push from the walls that caught it and spans horizontally across the building, delivering the load to the stiff shear walls — a beam whose span is the building's width",
+          "correct": true,
+          "why": "Correct. The floor plate bends in its own plane like a deep flat beam; its 'supports' are the shear walls. That's why diaphragm continuity and connections matter as much as wall strength."
+        },
+        {
+          "text": "The floor flexes vertically to absorb gusts",
+          "why": "Vertical flex is a gravity/vibration topic. The diaphragm action is IN-PLANE — the floor working edgewise."
+        },
+        {
+          "text": "It's a metaphor with no structural meaning",
+          "why": "It's literal engineering: diaphragms have chords, collectors, and design forces, and a floor cut up by openings can fail as one."
+        },
+        {
+          "text": "The floor's weight damps the sway",
+          "why": "Mass affects dynamics, but the diaphragm's job is force TRANSFER — carrying the push sideways to the walls that can take it down."
+        }
+      ],
+      "explanation": "PLAIN: the floor is a tray that carries the sideways push to the strong walls. PRO: 'diaphragm spans between shear walls; chords take the flexure, collectors drag load into the walls.' Concrete slabs — your condos — are excellent at this; big openings in them are structural events. (V3-2)"
+    },
+    {
+      "id": "v32-q3",
+      "type": "multipleChoice",
+      "teach": "Find the shear walls first — then guard them.",
+      "prompt": "At DD review, the architect proposes opening up a condo stair-core wall for a double-height lobby feature. What is that wall, probably, and what's the correct posture?",
+      "choices": [
+        {
+          "text": "Probably a primary shear wall — the core IS the lateral system; the opening is a structural negotiation with the EOR priced at the M11 multiplier, not a courtesy to grant at a review meeting",
+          "correct": true,
+          "why": "Correct. Stair/elevator cores are where lateral systems live in buildings like yours. An opening changes segment capacities and possibly the whole scheme — and the wind will test the result."
+        },
+        {
+          "text": "Just a wall — architecture owns walls",
+          "why": "Some walls are partitions; core walls are the building's spine against a 150-mph design wind. Knowing which is which is exactly the review skill V3-2 teaches."
+        },
+        {
+          "text": "Fine if the opening is under 50% of the wall",
+          "why": "Percentage rules aren't lateral engineering — position, boundary elements, and the remaining segments' capacities decide it, and only the EOR runs that math."
+        },
+        {
+          "text": "Refuse all core openings forever",
+          "why": "Engineered openings in shear walls exist everywhere — the posture is 'negotiate with the EOR, priced,' not 'never.' Rigidity without analysis is the same sin as approval without it."
+        }
+      ],
+      "explanation": "PLAIN: that wall is one of the few keeping the tower upright in a storm — punching holes in it is a negotiation with physics, chaired by the engineer. PRO: 'find the shear walls first on every set; core openings go through the EOR with the change multiplier attached.' (V3-2, M11)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "v32_wind_mph", "label": "Design wind speed", "unit": "mph", "min": 150, "max": 180 },
+    { "id": "v32_cc_mult", "label": "C&C corner/edge multiplier", "unit": "x", "min": 2, "max": 3 },
+    { "id": "v32_holddown_kip", "label": "Hold-down capacity", "unit": "kips", "min": 3, "max": 15 }
+  ],
+  "mathProblems": [
+    {
+      "id": "v32-p1",
+      "generator": "unitRate",
+      "difficulty": 2,
+      "title": "The square law, computed",
+      "context": "q ≈ 0.00256 × V². Square the wind speed, multiply by 0.00256 — the base velocity pressure in psf before shape factors. Compute V × V first, then × 0.00256.",
+      "params": {
+        "qtyLabel": "wind speed squared (V², compute V×V for the sampled V below)",
+        "qty": { "min": 22500, "max": 32400 },
+        "qtyUnit": "mph²",
+        "rateLabel": "pressure coefficient",
+        "rate": 0.00256,
+        "rateUnit": "$/mph²",
+        "answerLabel": "velocity pressure q (psf)",
+        "answerUnit": "psf"
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "v32-d1",
+      "title": "The glass wall facing the ocean",
+      "scenario": "The beach club design shows a 60-ft open glass wall facing the sea — the money view, and marketing's favorite render. Glass carries no lateral load, so that entire face contributes nothing to the sideways skeleton while catching the site's worst wind exposure. The structural engineer's options all cost something: moment frames hidden in the mullion lines, deeper returns on the side shear walls, or a visible brace the architect will hate.",
+      "options": [
+        {
+          "id": "price-the-openness",
+          "label": "Have the EOR price the lateral options honestly (frames vs stiffened returns vs brace) with the C&C glazing pressures at design wind — then choose the view WITH its structural cost on the table",
+          "outcome": "The open face is buyable — beach clubs buy it all the time — but it's a purchase: moment frames at the salt-zone premium, glazing at 2–3x field pressures, tested at design pressure. Choosing it priced is design; choosing it from the render is hope.",
+          "optimal": true
+        },
+        {
+          "id": "render-first",
+          "label": "Approve the render; the engineer will make it work somehow",
+          "outcome": "'Somehow' arrives at CD as a moment-frame change order at the M11 multiplier, plus glazing spec upgrades nobody budgeted — the same money as the honest path plus the multiplier, minus the chance to consider alternatives.",
+          "acceptable": false
+        },
+        {
+          "id": "shrink-the-glass",
+          "label": "Cut the opening down until conventional shear walls work",
+          "outcome": "Cheapest structure, diminished flagship: the beach club's economics run on exactly that view. Worth considering only after the open version is priced — value engineering before pricing isn't engineering, just flinching.",
+          "acceptable": true
+        }
+      ],
+      "debrief": "Open faces on windward exposures are lateral-system purchases: the wall that isn't there must be replaced by frames, returns, or braces that are. Price the openness at design wind — including the C&C glazing pressures — and let the flagship decision be a decision. (V3-2, S6, M7)"
+    }
+  ]
+}

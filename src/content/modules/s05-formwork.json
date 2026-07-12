@@ -1,0 +1,168 @@
+{
+  "id": "s05-formwork",
+  "order": 19,
+  "title": "S5 — Formwork, Shoring, and the Condo Frame",
+  "short": "Formwork",
+  "status": "ready",
+  "summary": "Formwork is a temporary structure that must be engineered like a permanent one: fresh concrete is a FLUID pushing on forms, suspended slabs sit on shoring carrying the full wet load, and shores release on cylinder data — never the calendar. PLAIN: wet concrete is heavy soup in a box. PRO: form pressure by pour rate, strip on field-cured breaks, reshore the levels below.",
+  "sections": [
+    {
+      "heading": "Fresh concrete is a fluid",
+      "body": "PLAIN: Until it sets, concrete pushes on its forms like water pushes on a dam — and the faster and higher you pour, the harder it pushes. Blowouts (a form bursting mid-pour) are almost always someone pouring faster than the form was designed for. PRO: lateral form pressure runs from ~150 pcf equivalent fluid on slow pours up to FULL LIQUID HEAD on fast ones — thousands of psf on tall column and wall forms. Pour rate is a design input, written on the form drawings; exceeding it is a discipline failure, not bad luck. And embeds, sleeves, and blockouts for MEP must be IN the form before the pour — the S7/M7 coordination discipline lands physically here."
+    },
+    {
+      "heading": "Shoring, stripping, and the multistorey rhythm",
+      "body": "PLAIN: A new suspended slab can't hold itself — it sits on a forest of props (shoring) carrying the entire wet weight. The props stay until the concrete is strong enough, and 'strong enough' is measured by breaking test cylinders cured NEXT TO the slab — not by counting days, because concrete gains strength on temperature's schedule, not the calendar's. Meanwhile the floors below get props back (reshoring) because a young building is several weak floors carrying each other. PRO: strip on field-cured cylinders or maturity method at the engineer's thresholds (50–75% f'c by member type); reshore 2–3 levels; the rhythm is 'pour L3 while L2 is reshored and L1 cures.' Premature stripping is the classic frame-collapse cause worldwide — the sim makes 'the schedule wants the shores out' a recurring pressure event because every real project has it weekly."
+    },
+    {
+      "heading": "Cycle economics",
+      "body": "PLAIN: Forms are rented muscles — they earn by being reused, and the crew's speed plus the form system sets how fast floors happen. PRO: handset plywood vs engineered panel/table forms is a mobilization-vs-cycle-time trade (M7's 2–4 week floor cycle; table forms win on repetitive buildings). Formwork runs $8–18/sf of CONTACT AREA — a number that surprises people, because the temporary structure can rival the permanent one's concrete cost. Deck flatness tolerances flow straight into finish budgets: a wavy deck is bought back later as self-leveling underlayment."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "s05-q1",
+      "type": "multipleChoice",
+      "teach": "Field-cured cylinders live next to the slab they represent, gaining strength at the slab's actual temperature.",
+      "prompt": "7-day field-cured cylinders read 62% of f'c; the stripping table requires 70%. The crane schedule wants the forms tomorrow. What releases the shores?",
+      "choices": [
+        {
+          "text": "Cylinder data at threshold, or the engineer's written reshore plan — never the crane schedule; hold for the next breaks or engineer the early strip properly",
+          "correct": true,
+          "why": "Correct. The two legitimate paths are DATA (wait for 70%) or ENGINEERING (EOR-designed reshores for the actual loads, in writing). The calendar and the crane are neither."
+        },
+        {
+          "text": "The calendar — 7 days is the standard stripping age",
+          "why": "Ages are rules of thumb for average temperatures; the cylinders exist because concrete doesn't read calendars. 62% IS the slab's answer."
+        },
+        {
+          "text": "The super's judgment — the pour looks right",
+          "why": "Strength is invisible; 'looks right' describes the surface of every under-strength slab that ever collapsed. That's what cylinders are FOR."
+        },
+        {
+          "text": "Strip and monitor for deflection",
+          "why": "Deflection monitoring detects the failure in progress — a plan for watching the collapse rather than preventing it."
+        }
+      ],
+      "explanation": "PLAIN: props come out when the concrete says so, and the concrete speaks through the test cylinders next to it. PRO: 'strip on field-cured breaks at the table thresholds, or on the EOR's stamped reshore plan — nothing else.' Premature stripping is the classic frame-collapse cause worldwide. (S5)"
+    },
+    {
+      "id": "s05-q2",
+      "type": "multipleChoice",
+      "teach": "Lateral pressure on forms depends on how fast the fluid concrete rises in them.",
+      "prompt": "A column form blows out at level 2 — the same form's 30th reuse. What does the root-cause investigation check?",
+      "choices": [
+        {
+          "text": "Pour rate against the form's design rate, vibration practice, AND the form's condition at reuse #30 — blowouts have three usual authors and this form had all three opportunities",
+          "correct": true,
+          "why": "Correct. Fast pour = pressure past design; over-vibration = re-fluidized pressure; and 30 reuses = fatigued ties and worn plywood. Root cause means checking all three, not picking the convenient one."
+        },
+        {
+          "text": "The concrete supplier's mix",
+          "why": "Mix affects pressure marginally (retarders extend the fluid period), but blowouts are a form-side event: rate, vibration, condition."
+        },
+        {
+          "text": "Just replace the form and repour",
+          "why": "Without the root cause, the replacement form meets the same pour crew and the same habits at level 3."
+        },
+        {
+          "text": "The weather that day",
+          "why": "Temperature shifts set time slightly — a second-order factor next to rate, vibration, and a 30-reuse form."
+        }
+      ],
+      "explanation": "PLAIN: the box burst because the soup rose too fast, got shaken too much, or the box was worn out — find out which before filling the next box. PRO: 'check rate vs design, vibration discipline, and reuse condition; retire forms on an inspection cycle, not on failure.' (S5)"
+    },
+    {
+      "id": "s05-q3",
+      "type": "multipleChoice",
+      "teach": "Reshoring puts props back under recently-stripped floors while upper floors pour.",
+      "prompt": "Why does a young concrete building need 2–3 levels of reshores below the pour?",
+      "choices": [
+        {
+          "text": "Because the freshest slab can't carry the wet load above it alone — reshores spread the construction load down through several young floors that share it, none of which has full strength yet",
+          "correct": true,
+          "why": "Correct. The building under construction carries loads its design never sees in service — a wet slab plus formwork plus crew, landing on 2-week-old concrete. Reshores make the young floors a team."
+        },
+        {
+          "text": "To keep the lower floors flat",
+          "why": "Deflection control is a side benefit; the primary job is LOAD SHARING during the weeks when every floor is weaker than its design."
+        },
+        {
+          "text": "As fall protection anchor points",
+          "why": "Safety systems are separate — reshores are structure, doing structural work."
+        },
+        {
+          "text": "Only cold climates need reshoring",
+          "why": "Heat speeds curing but the wet load above doesn't care — the rhythm (pour L3, reshore L2, cure L1) is universal multistorey practice."
+        }
+      ],
+      "explanation": "PLAIN: a young building is a stack of weak floors helping each other hold the newest one — the props are how they help. PRO: 'reshore 2–3 levels per the formwork engineer's plan; construction loads govern, not service loads.' (S5)"
+    }
+  ],
+  "mathVariables": [
+    { "id": "s05_formwork_sf", "label": "Formwork, contact area", "unit": "$/sf", "min": 8, "max": 18 },
+    { "id": "s05_floor_cycle", "label": "Floor cycle", "unit": "working days", "min": 10, "max": 20 },
+    { "id": "s05_strip_pct", "label": "Stripping threshold", "unit": "% of f'c", "min": 50, "max": 75 }
+  ],
+  "mathProblems": [
+    {
+      "id": "s05-p1",
+      "generator": "unitRate",
+      "difficulty": 1,
+      "title": "Formwork package, one building",
+      "context": "Formwork prices per square foot of CONTACT AREA — every face the concrete touches. The number rivals the concrete itself.",
+      "params": {
+        "qtyLabel": "form contact area",
+        "qty": { "min": 60000, "max": 180000 },
+        "qtyUnit": "sf",
+        "rateLabel": "formwork rate",
+        "rate": "s05_formwork_sf",
+        "rateUnit": "$/sf",
+        "answerLabel": "formwork package",
+        "answerUnit": "$"
+      }
+    },
+    {
+      "id": "s05-p2",
+      "generator": "takt",
+      "difficulty": 2,
+      "title": "Frame program duration",
+      "context": "Floors × cycle days ÷ concurrent frames (crane and form sets permitting) — the arithmetic behind the handset-vs-table-forms decision.",
+      "params": {
+        "unitLabel": "floors across the condo program",
+        "qty": { "min": 36, "max": 48 },
+        "daysPerUnit": "s05_floor_cycle",
+        "crewLabel": "concurrent frame crews",
+        "crews": { "min": 2, "max": 4 }
+      }
+    }
+  ],
+  "decisionPoints": [
+    {
+      "id": "s05-d1",
+      "title": "Handset or tables for twelve buildings",
+      "scenario": "The formwork subcontractor offers handset plywood (low mobilization, floor cycle ~18 days, crews know it cold) or an engineered table-form system (+$600K mobilization/rental, cycle ~12 days, needs the bigger crane and a training week). Twelve near-identical buildings, roughly 40 floors total. General conditions burn $150–400K/month at program scale.",
+      "options": [
+        {
+          "id": "table-math",
+          "label": "Run the reuse math: 40 floors × 6 saved days = 240 crane-and-GC days against the $600K premium — take the tables, with the training week and crane upgrade priced in",
+          "outcome": "Six days per floor across 40 floors is roughly a year of program time; against GC burn alone the tables repay several times over, and the engineered system brings its own shoring/reshore design — one less improvised thing on the frame.",
+          "optimal": true
+        },
+        {
+          "id": "handset-familiar",
+          "label": "Handset — cheap to start and the crews are fluent",
+          "outcome": "Every floor cycle runs the slow way, forty times. The 'saved' mobilization is repaid in general conditions within the first two buildings, and deck flatness variability buys underlayment later. Familiarity was worth something; not a year.",
+          "acceptable": true
+        },
+        {
+          "id": "tables-no-training",
+          "label": "Take the tables, skip the training week — the schedule can't spare it",
+          "outcome": "The first building's cycle runs LONGER than handset while crews learn on production, and the learning shows up as damaged panels and a near-miss crane pick. The system's speed was never in the aluminum — it was in crews who know the sequence.",
+          "acceptable": false
+        }
+      ],
+      "debrief": "Formwork economics are reuse economics: mobilization divides by every floor it serves, and cycle days multiply by all of them. On repetitive buildings the engineered system nearly always wins — IF you pay its entry costs honestly, training included. (S5)"
+    }
+  ]
+}
