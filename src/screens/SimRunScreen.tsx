@@ -19,6 +19,7 @@ import {
   SimState,
 } from '../engine/sim';
 import { PREP_RISK_RELIEF, prepStatus } from '../engine/prep';
+import { RANKS, rankForXp } from '../engine/career';
 import { mentorById, mentorReaction, phaseHost } from '../content/mentors';
 import { useAppState } from '../state/AppState';
 import { Body, Btn, Card, Celebrate, Collapsible, H1, H2, Meter, OptionRow, Screen, Small, Tag, TeachBox } from '../ui/components';
@@ -47,6 +48,7 @@ export default function SimRunScreen({ route, navigation }: Props) {
     return initialSimState(phase, carry);
   };
   const host = phaseHost(phaseId);
+  const rankIndex = rankForXp(app.totalXp).index;
   const [sim, setSim] = useState<SimState | null>(startState);
   const [lastOutcome, setLastOutcome] = useState<{
     title: string;
@@ -191,6 +193,20 @@ export default function SimRunScreen({ route, navigation }: Props) {
         {ADVISORS.map((a) => {
           const used = sim.advisorsUsed.includes(a.id);
           const affordable = app.state.capital >= a.cost;
+          const locked = (a.unlockRank ?? 0) > rankIndex;
+          if (locked) {
+            return (
+              <View key={a.id} style={{ marginTop: 6 }}>
+                <Btn
+                  label={`🔒 ${a.label} — unlock at ${RANKS[a.unlockRank ?? 0].title}`}
+                  kind="ghost"
+                  disabled
+                  style={{ marginTop: 0 }}
+                  onPress={() => {}}
+                />
+              </View>
+            );
+          }
           return (
             <View key={a.id} style={{ marginTop: 6 }}>
               <Btn

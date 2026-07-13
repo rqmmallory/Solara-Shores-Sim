@@ -118,6 +118,9 @@ export interface Advisor {
   blurb: string;
   /** which mentor NPC delivers this advisor's help (see content/mentors) */
   mentorId: string;
+  /** CM rank index required to unlock this advisor (0 = available from day one).
+   * Higher-tier help unlocks as you climb — rank is a key that opens tools. */
+  unlockRank?: number;
 }
 
 export const ADVISORS: Advisor[] = [
@@ -145,7 +148,40 @@ export const ADVISORS: Advisor[] = [
     blurb:
       'A resequencing workshop with your supers and key subs recovers 5 days of slip. Schedule is bought back with planning, not shouting.',
   },
+  // ---- higher-tier advisors, unlocked as you climb the CM rank ladder ----
+  {
+    id: 'safety-audit',
+    label: 'Independent safety audit',
+    cost: 180,
+    mentorId: 'foreman',
+    unlockRank: 2,
+    blurb:
+      'An external audit closes out hazards before they bite: +18 safety and −1 open risk. Recovering an unsafe job is possible — but it costs, which is the lesson.',
+  },
+  {
+    id: 'crew-welfare',
+    label: 'Crew welfare & retention',
+    cost: 150,
+    mentorId: 'foreman',
+    unlockRank: 3,
+    blurb:
+      'Proper welfare facilities, fair rates and a retention bonus lift crew morale by 20. Good subs come back at good numbers — morale is a schedule tool.',
+  },
+  {
+    id: 'value-engineering',
+    label: 'Value-engineering study',
+    cost: 260,
+    mentorId: 'qs',
+    unlockRank: 4,
+    blurb:
+      'A VE workshop trims $250K of cost while holding function — a small quality trade (−2). Value engineering is disciplined cost-cutting, not corner-cutting.',
+  },
 ];
+
+/** advisors available at a given CM rank — higher tiers unlock as you climb */
+export function availableAdvisors(rankIndex: number): Advisor[] {
+  return ADVISORS.filter((a) => (a.unlockRank ?? 0) <= rankIndex);
+}
 
 export function advisorById(id: string): Advisor | undefined {
   return ADVISORS.find((a) => a.id === id);
@@ -193,6 +229,47 @@ export function applyAdvisor(s: SimState, advisorId: string): SimState {
             kind: 'info',
             title: 'Acceleration workshop',
             detail: 'Resequencing with the trades recovers 5 working days of slip.',
+          },
+        ],
+      };
+    case 'safety-audit':
+      return {
+        ...base,
+        safety: clamp(base.safety + 18, 0, 100),
+        risk: Math.max(0, base.risk - 1),
+        log: [
+          ...base.log,
+          {
+            kind: 'info',
+            title: 'Independent safety audit',
+            detail: 'An external audit closes out hazards: +18 safety, −1 open risk.',
+          },
+        ],
+      };
+    case 'crew-welfare':
+      return {
+        ...base,
+        morale: clamp(base.morale + 20, 0, 100),
+        log: [
+          ...base.log,
+          {
+            kind: 'info',
+            title: 'Crew welfare & retention',
+            detail: 'Welfare facilities and a retention bonus lift crew morale by 20.',
+          },
+        ],
+      };
+    case 'value-engineering':
+      return {
+        ...base,
+        costVariance: base.costVariance - 250000,
+        quality: clamp(base.quality - 2, 0, 100),
+        log: [
+          ...base.log,
+          {
+            kind: 'info',
+            title: 'Value-engineering study',
+            detail: 'A VE workshop trims $250K while holding function (−2 quality).',
           },
         ],
       };

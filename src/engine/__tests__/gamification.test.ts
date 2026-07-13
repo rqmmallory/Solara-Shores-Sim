@@ -2,7 +2,7 @@ import { modules } from '../../content';
 import { LEARNING_PATH, nextOnPath, PATH_THRESHOLD, pathProgress } from '../learningPath';
 import { PHASE_PREP, PREP_THRESHOLD, prepStatus } from '../prep';
 import { capitalForXp, emptyModuleStats, ModuleStats } from '../progress';
-import { ADVISORS, applyAdvisor, initialSimState } from '../sim';
+import { ADVISORS, applyAdvisor, availableAdvisors, initialSimState } from '../sim';
 import { simPhases } from '../../content';
 
 /** build stats where the given modules are fully mastered */
@@ -53,6 +53,25 @@ describe('sim advisors', () => {
     const ids = ADVISORS.map((a) => a.id);
     expect(new Set(ids).size).toBe(ids.length);
     for (const a of ADVISORS) expect(a.cost).toBeGreaterThan(0);
+  });
+
+  it('gates higher-tier advisors behind CM rank', () => {
+    const atStart = availableAdvisors(0).map((a) => a.id);
+    expect(atStart).toContain('qs-review'); // rank 0 always available
+    expect(atStart).not.toContain('safety-audit'); // unlocks at rank 2
+    expect(atStart).not.toContain('value-engineering'); // unlocks at rank 4
+
+    const veteran = availableAdvisors(5).map((a) => a.id);
+    expect(veteran).toContain('safety-audit');
+    expect(veteran).toContain('crew-welfare');
+    expect(veteran).toContain('value-engineering');
+  });
+
+  it('new advisors move the safety, morale and cost meters', () => {
+    const s0 = initialSimState(phase);
+    expect(applyAdvisor(s0, 'safety-audit').safety).toBe(Math.min(100, s0.safety + 18));
+    expect(applyAdvisor(s0, 'crew-welfare').morale).toBe(Math.min(100, s0.morale + 20));
+    expect(applyAdvisor(s0, 'value-engineering').costVariance).toBe(s0.costVariance - 250000);
   });
 });
 

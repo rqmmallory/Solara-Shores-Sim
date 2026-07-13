@@ -213,6 +213,11 @@ function CareerCard() {
         Reputation is 65% the grades you deliver on site and 35% what you know. It's what will
         unlock bigger developments in career mode.
       </Small>
+      {rank.next ? (
+        <Small style={{ marginTop: 4, color: colors.accent }}>
+          Climbing rank unlocks new sim advisors — safety audits, crew welfare, value engineering.
+        </Small>
+      ) : null}
     </Card>
   );
 }

@@ -163,6 +163,10 @@ always to understand the construction better.
 
 - **CM rank** (`engine/career.ts`) — an 8-rung ladder (Site Cadet →
   Development Director) off total XP, shown on Home with progress to the next.
+  Rank is also a **key that unlocks advisors**: an independent safety audit
+  (rank 2), crew welfare & retention (rank 3) and a value-engineering study
+  (rank 4) appear in the sim's advisor bar as you climb — each leveraging the
+  new safety/morale/cost meters, so climbing the ladder gives you better tools.
 - **Company reputation** — 65% the grades you deliver on site, 35% what you
   know. It's the hook that will gate bigger projects in career mode.
 - **Achievements** (`engine/achievements.ts`) — 14 data-driven milestones
