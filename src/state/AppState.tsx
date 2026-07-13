@@ -13,13 +13,18 @@ import {
   capitalForXp,
   emptyModuleStats,
   MathStats,
+  mathReadiness,
   ModuleStats,
+  moduleProficiency,
   projectReadiness,
   ReadinessBreakdown,
   recordMathAttempt,
   SimRecord,
   XP,
 } from '../engine/progress';
+import { companyReputation, rankForXp } from '../engine/career';
+import { evaluateAchievements, rewardFor } from '../engine/achievements';
+import { nextOnPath } from '../engine/learningPath';
 import { dueItems, recordMiss, recordReviewPass, SrsItem } from '../engine/spacedRepetition';
 import { emptyState, loadState, PersistedState, saveStateDebounced } from './store';
 
@@ -71,6 +76,44 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (ready) saveStateDebounced(state);
+  }, [state, ready]);
+
+  // award achievements whenever the game state that could satisfy one changes.
+  // Reads a pure snapshot; only mutates when something new unlocks, so it
+  // converges in a single pass and never loops.
+  useEffect(() => {
+    if (!ready) return;
+    const gradable = modules.filter((m) => m.status !== 'placeholder');
+    const knowledge =
+      gradable.length === 0
+        ? 0
+        : Math.round(
+            gradable.reduce((acc, m) => acc + moduleProficiency(m, state.moduleStats[m.id]), 0) /
+              gradable.length
+          );
+    const totalXp =
+      Object.values(state.moduleStats).reduce((acc, m) => acc + m.xp, 0) + state.mathStats.xp;
+    const ctx = {
+      totalXp,
+      capital: state.capital,
+      modulesMastered: gradable.filter((m) => moduleProficiency(m, state.moduleStats[m.id]) >= 70).length,
+      pathComplete: nextOnPath(state.moduleStats) === null,
+      mathAttempts: state.mathStats.attempts,
+      mathReadiness: mathReadiness(state.mathStats),
+      projectsCompleted: state.simRecords.length,
+      bestGrade: state.simRecords.reduce((acc, r) => Math.max(acc, r.bestScore), 0),
+      reputation: companyReputation(knowledge, state.simRecords),
+      rankIndex: rankForXp(totalXp).index,
+    };
+    const newly = evaluateAchievements(ctx, state.achievements);
+    if (newly.length > 0) {
+      mutate((s) => ({
+        ...s,
+        achievements: [...s.achievements, ...newly],
+        capital: s.capital + rewardFor(newly),
+      }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, ready]);
 
   const mutate = useCallback((fn: (s: PersistedState) => PersistedState) => {

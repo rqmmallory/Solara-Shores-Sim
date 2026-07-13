@@ -4,10 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { modules, readyModules } from '../content';
 import { mentorById } from '../content/mentors';
+import { ACHIEVEMENTS, achievementById } from '../engine/achievements';
+import { companyReputation, rankForXp, reputationTier } from '../engine/career';
 import { LEARNING_PATH, nextOnPath, pathProgress } from '../engine/learningPath';
 import { daysToGroundbreak, levelForXp, moduleProficiency } from '../engine/progress';
 import { useAppState } from '../state/AppState';
-import { Body, Btn, Card, H1, H2, Meter, Screen, Small, TeachBox } from '../ui/components';
+import { Body, Btn, Card, H1, H2, Meter, Screen, Small, Tag, TeachBox } from '../ui/components';
 import MentorBubble from '../ui/MentorBubble';
 import { colors } from '../ui/theme';
 import type { RootStackParamList } from '../navigation/types';
@@ -74,6 +76,8 @@ export default function HomeScreen() {
         </Small>
       </Card>
 
+      <CareerCard />
+
       {due > 0 ? (
         <Card style={{ borderColor: colors.warn }}>
           <Body style={{ fontWeight: '600' }}>
@@ -90,6 +94,8 @@ export default function HomeScreen() {
       )}
 
       <LearningPathCard />
+
+      <AchievementsCard />
 
       <Card>
         <Body style={{ fontWeight: '600' }}>Readiness exam</Body>
@@ -115,6 +121,88 @@ export default function HomeScreen() {
         modules light up as research drops into the content files — no app update needed.
       </Small>
     </Screen>
+  );
+}
+
+/**
+ * Career card: your Construction-Manager rank (the long climb) and your
+ * company's reputation (the market's trust, which gates bigger projects).
+ * Both read from the same signals as everything else — build well and study
+ * deeply and they rise together.
+ */
+function CareerCard() {
+  const app = useAppState();
+  const rank = rankForXp(app.totalXp);
+  const rep = companyReputation(app.readiness.knowledge, app.state.simRecords);
+  return (
+    <Card>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
+        <Body style={{ fontWeight: '700', color: colors.accent }}>{rank.rank.title}</Body>
+        <Small>CM rank {rank.index + 1}/8</Small>
+      </View>
+      <Small style={{ marginBottom: 4 }}>{rank.rank.blurb}</Small>
+      <Meter
+        label={rank.next ? `Next: ${rank.next.title}` : 'Top of the ladder'}
+        value={rank.fraction * 100}
+        color={colors.accent}
+        suffix="%"
+      />
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 8 }}>
+        <Body style={{ fontWeight: '600' }}>Company reputation</Body>
+        <Tag label={reputationTier(rep)} color={rep >= 70 ? colors.good : colors.teal} />
+      </View>
+      <Meter label="" value={rep} color={rep >= 70 ? colors.good : colors.teal} suffix="%" />
+      <Small style={{ marginTop: 2 }}>
+        Reputation is 65% the grades you deliver on site and 35% what you know. It's what will
+        unlock bigger developments in career mode.
+      </Small>
+    </Card>
+  );
+}
+
+/**
+ * Achievements: the milestone wall. Shows how many you've unlocked and the
+ * next few still to chase — always another goal in view.
+ */
+function AchievementsCard() {
+  const app = useAppState();
+  const unlocked = new Set(app.state.achievements);
+  const doneCount = unlocked.size;
+  const nextUp = ACHIEVEMENTS.filter((a) => !unlocked.has(a.id)).slice(0, 3);
+  const recent = app.state.achievements.slice(-3).reverse();
+  return (
+    <Card>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Body style={{ fontWeight: '600' }}>Achievements</Body>
+        <Small>
+          {doneCount}/{ACHIEVEMENTS.length}
+        </Small>
+      </View>
+      <Meter label="" value={doneCount} max={ACHIEVEMENTS.length} color={colors.good} />
+      {recent.length > 0 ? (
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 6 }}>
+          {recent.map((id) => {
+            const a = achievementById(id);
+            if (!a) return null;
+            return <Tag key={id} label={`${a.icon} ${a.name}`} color={colors.good} />;
+          })}
+        </View>
+      ) : null}
+      {nextUp.length > 0 ? (
+        <>
+          <Small style={{ marginTop: 6, color: colors.text, fontWeight: '600' }}>Next to unlock</Small>
+          {nextUp.map((a) => (
+            <Small key={a.id} style={{ marginTop: 2 }}>
+              {a.icon} {a.name} — {a.description} (+B${a.reward})
+            </Small>
+          ))}
+        </>
+      ) : (
+        <Small style={{ marginTop: 6, color: colors.good }}>
+          Every achievement unlocked. You've done the whole board.
+        </Small>
+      )}
+    </Card>
   );
 }
 

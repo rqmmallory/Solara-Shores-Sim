@@ -33,6 +33,8 @@ export interface PersistedState {
    * literally funds better building.
    */
   capital: number;
+  /** ids of achievements the player has unlocked (see engine/achievements) */
+  achievements: string[];
   settings: {
     curveballFrequency: CurveballFrequency;
   };
@@ -47,6 +49,7 @@ export function emptyState(): PersistedState {
     simRecords: [],
     simRuns: {},
     capital: 0,
+    achievements: [],
     settings: { curveballFrequency: 'realistic' },
   };
 }
