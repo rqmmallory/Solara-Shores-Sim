@@ -53,6 +53,10 @@ export interface SimState {
   fired: string[];
   /** curveball currently awaiting the player's response, if any */
   pendingCurveball: string | null;
+  /** advisor actions already purchased this run (each once per phase) */
+  advisorsUsed: string[];
+  /** QS engaged: option cost/schedule impacts shown before choosing */
+  revealEffects: boolean;
   log: SimLogEntry[];
   finished: boolean;
   decisions: { stepId: string; optionId: string }[];
@@ -82,10 +86,105 @@ export function initialSimState(phase: SimPhase, carry?: SimCarry): SimState {
     defused: [],
     fired: [],
     pendingCurveball: null,
+    advisorsUsed: [],
+    revealEffects: false,
     log: [],
     finished: false,
     decisions: [],
   };
+}
+
+// ---------------------------------------------------------------- advisors
+
+/**
+ * Advisor actions — spend CM Capital (B$, earned by learning) on the
+ * kind of help a real developer buys. Each usable once per phase run.
+ * The teaching point IS the mechanic: money spent on certainty and
+ * de-risking early is the cheapest money on a project.
+ */
+export interface Advisor {
+  id: string;
+  label: string;
+  cost: number; // B$
+  blurb: string;
+}
+
+export const ADVISORS: Advisor[] = [
+  {
+    id: 'qs-review',
+    label: 'Bring in the QS',
+    cost: 150,
+    blurb:
+      'Your quantity surveyor prices every option before you choose — cost and schedule impacts shown for the rest of this phase. Consultants cost money; flying blind costs more.',
+  },
+  {
+    id: 'reserve-release',
+    label: 'Release management reserve',
+    cost: 250,
+    blurb:
+      'Board-approved reserve drawdown: −$300K of cost variance. Real projects hold reserves above the contingency for exactly this.',
+  },
+  {
+    id: 'acceleration',
+    label: 'Acceleration workshop',
+    cost: 200,
+    blurb:
+      'A resequencing workshop with your supers and key subs recovers 5 days of slip. Schedule is bought back with planning, not shouting.',
+  },
+];
+
+export function advisorById(id: string): Advisor | undefined {
+  return ADVISORS.find((a) => a.id === id);
+}
+
+/** Apply a purchased advisor. Assumes capital was already deducted. */
+export function applyAdvisor(s: SimState, advisorId: string): SimState {
+  if (s.advisorsUsed.includes(advisorId) || s.finished) return s;
+  const base: SimState = { ...s, advisorsUsed: [...s.advisorsUsed, advisorId] };
+  switch (advisorId) {
+    case 'qs-review':
+      return {
+        ...base,
+        revealEffects: true,
+        log: [
+          ...base.log,
+          {
+            kind: 'info',
+            title: 'QS engaged',
+            detail:
+              'Option impacts are now priced before you choose, for the rest of this phase — the leveling-sheet view of every decision.',
+          },
+        ],
+      };
+    case 'reserve-release':
+      return {
+        ...base,
+        costVariance: base.costVariance - 300000,
+        log: [
+          ...base.log,
+          {
+            kind: 'info',
+            title: 'Management reserve released',
+            detail: 'The board approves a $300K reserve drawdown against documented variances.',
+          },
+        ],
+      };
+    case 'acceleration':
+      return {
+        ...base,
+        slipDays: base.slipDays - 5,
+        log: [
+          ...base.log,
+          {
+            kind: 'info',
+            title: 'Acceleration workshop',
+            detail: 'Resequencing with the trades recovers 5 working days of slip.',
+          },
+        ],
+      };
+    default:
+      return s;
+  }
 }
 
 /** options visible given the flags accumulated across phases */

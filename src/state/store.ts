@@ -26,6 +26,13 @@ export interface PersistedState {
   simRecords: SimRecord[];
   /** keyed by phaseId — latest completed run per phase */
   simRuns: Record<string, SimRunSnapshot>;
+  /**
+   * CM Capital (B$) — the spendable currency. Earned by every learning
+   * activity (B$1 per 2 XP), spent inside sim runs on advisor actions
+   * (QS reviews, reserve releases, acceleration workshops). Learning
+   * literally funds better building.
+   */
+  capital: number;
   settings: {
     curveballFrequency: CurveballFrequency;
   };
@@ -39,6 +46,7 @@ export function emptyState(): PersistedState {
     srsQueue: [],
     simRecords: [],
     simRuns: {},
+    capital: 0,
     settings: { curveballFrequency: 'realistic' },
   };
 }

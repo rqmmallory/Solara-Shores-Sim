@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { modules, readyModules } from '../content';
+import { LEARNING_PATH, nextOnPath, pathProgress } from '../engine/learningPath';
 import { daysToGroundbreak, levelForXp, moduleProficiency } from '../engine/progress';
 import { useAppState } from '../state/AppState';
 import { Body, Btn, Card, H1, H2, Meter, Screen, Small, TeachBox } from '../ui/components';
@@ -49,6 +50,14 @@ export default function HomeScreen() {
           </Small>
         </View>
         <Meter label="" value={lvl.into} max={lvl.needed} color={colors.accent} />
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 6 }}>
+          <Body style={{ fontWeight: '600', color: colors.accent }}>B$ {app.state.capital}</Body>
+          <Small>CM Capital — earned by learning (B$1 per 2 XP)</Small>
+        </View>
+        <Small style={{ marginTop: 2 }}>
+          Spend it in the sim on advisors: QS option pricing, reserve releases, acceleration
+          workshops. Studying literally funds better building.
+        </Small>
       </Card>
 
       {due > 0 ? (
@@ -65,6 +74,8 @@ export default function HomeScreen() {
           needed, just show up.
         </TeachBox>
       )}
+
+      <LearningPathCard />
 
       <Card>
         <Body style={{ fontWeight: '600' }}>Readiness exam</Body>
@@ -90,5 +101,49 @@ export default function HomeScreen() {
         modules light up as research drops into the content files — no app update needed.
       </Small>
     </Screen>
+  );
+}
+
+/**
+ * The Learning Path: all 33 modules in first-principles order — physics
+ * intuition before trade science before project management. Shows where
+ * you are and what's next.
+ */
+function LearningPathCard() {
+  const nav = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const app = useAppState();
+  const steps = pathProgress(app.state.moduleStats);
+  const doneCount = steps.filter((s) => s.done).length;
+  const next = nextOnPath(app.state.moduleStats);
+
+  return (
+    <Card>
+      <Body style={{ fontWeight: '600' }}>Learning Path</Body>
+      <Meter
+        label={`First principles → trade science → running the project`}
+        value={doneCount}
+        max={LEARNING_PATH.length}
+        color={colors.teal}
+        suffix={` / ${LEARNING_PATH.length}`}
+      />
+      {next ? (
+        <>
+          <Small style={{ marginTop: 4 }}>
+            Next on the path: <Small style={{ color: colors.text, fontWeight: '600' }}>{next.short}</Small>{' '}
+            ({next.proficiency}% — reach 70% to advance)
+          </Small>
+          <Btn
+            label={`Study ${next.short}`}
+            kind="teal"
+            onPress={() => nav.navigate('Module', { moduleId: next.moduleId })}
+          />
+        </>
+      ) : (
+        <Small style={{ marginTop: 4, color: colors.good }}>
+          Path complete — every module at 70%+. Keep the review queue clear and re-run the sim for
+          the grades you want to defend.
+        </Small>
+      )}
+    </Card>
   );
 }

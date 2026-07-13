@@ -29,6 +29,11 @@ export const XP = {
   simPhaseComplete: 100,
 } as const;
 
+/** CM Capital earn rule: B$1 per 2 XP, on every XP-earning activity */
+export function capitalForXp(xp: number): number {
+  return Math.ceil(Math.max(0, xp) / 2);
+}
+
 export function levelForXp(xp: number): { level: number; into: number; needed: number } {
   // level n needs 100 * n XP beyond the previous level
   let level = 1;

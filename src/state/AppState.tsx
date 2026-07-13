@@ -10,6 +10,7 @@ import React, {
 import { modules, simPhases } from '../content';
 import type { CurveballFrequency } from '../engine/sim';
 import {
+  capitalForXp,
   emptyModuleStats,
   MathStats,
   ModuleStats,
@@ -48,6 +49,8 @@ interface AppStateValue {
   /** flags + carried risk for starting a given phase, built from earlier
    * phases' latest completed runs */
   simCarryFor: (phaseId: string) => { flags: string[]; risk: number };
+  /** spend CM Capital (B$); returns false (and spends nothing) if short */
+  spendCapital: (amount: number) => boolean;
   setCurveballFrequency: (f: CurveballFrequency) => void;
 }
 
@@ -100,6 +103,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
         return {
           ...s,
           srsQueue,
+          capital: s.capital + capitalForXp(gained),
           moduleStats: {
             ...s.moduleStats,
             [moduleId]: {
@@ -129,6 +133,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
         const gained = seen ? 0 : optimal ? XP.decisionOptimal : acceptable ? XP.decisionAcceptable : 0;
         return {
           ...s,
+          capital: s.capital + capitalForXp(gained),
           moduleStats: {
             ...s.moduleStats,
             [moduleId]: {
@@ -145,10 +150,14 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   const recordMath = useCallback(
     (correct: boolean, absPctError: number, difficulty: number) => {
-      mutate((s) => ({
-        ...s,
-        mathStats: recordMathAttempt(s.mathStats, correct, absPctError, difficulty),
-      }));
+      mutate((s) => {
+        const mathStats = recordMathAttempt(s.mathStats, correct, absPctError, difficulty);
+        return {
+          ...s,
+          mathStats,
+          capital: s.capital + capitalForXp(mathStats.xp - s.mathStats.xp),
+        };
+      });
     },
     [mutate]
   );
@@ -176,6 +185,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
           ...s,
           simRecords,
           simRuns: { ...s.simRuns, [phaseId]: { phaseId, score, ...snapshot } },
+          capital: s.capital + capitalForXp(xp),
           moduleStats: { ...s.moduleStats, __sim__: { ...ms, xp: ms.xp + xp } },
         };
       });
@@ -201,6 +211,15 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       return { flags: [...new Set(flags)], risk };
     },
     []
+  );
+
+  const spendCapital = useCallback(
+    (amount: number): boolean => {
+      if (stateRef.current.capital < amount) return false;
+      mutate((s) => ({ ...s, capital: s.capital - amount }));
+      return true;
+    },
+    [mutate]
   );
 
   const setCurveballFrequency = useCallback(
@@ -232,9 +251,10 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       recordMath,
       recordSimRun,
       simCarryFor,
+      spendCapital,
       setCurveballFrequency,
     };
-  }, [ready, state, recordQuizResult, recordDecisionSeen, recordMath, recordSimRun, simCarryFor, setCurveballFrequency]);
+  }, [ready, state, recordQuizResult, recordDecisionSeen, recordMath, recordSimRun, simCarryFor, spendCapital, setCurveballFrequency]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

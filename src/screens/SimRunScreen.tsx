@@ -5,7 +5,10 @@ import { simPhaseById } from '../content';
 import { fmtMoney } from '../engine/format';
 import { XP } from '../engine/progress';
 import { defaultRng } from '../engine/rng';
+import type { SimEffects } from '../content/schema';
 import {
+  ADVISORS,
+  applyAdvisor,
   availableOptions,
   chooseOption,
   currentStep,
@@ -15,6 +18,7 @@ import {
   resolveCurveball,
   SimState,
 } from '../engine/sim';
+import { PREP_RISK_RELIEF, prepStatus } from '../engine/prep';
 import { useAppState } from '../state/AppState';
 import { Body, Btn, Card, H1, H2, Meter, OptionRow, Screen, Small, Tag, TeachBox } from '../ui/components';
 import { colors } from '../ui/theme';
@@ -26,9 +30,20 @@ export default function SimRunScreen({ route, navigation }: Props) {
   const { phaseId } = route.params;
   const app = useAppState();
   const phase = simPhaseById.get(phaseId);
-  const [sim, setSim] = useState<SimState | null>(() =>
-    phase ? initialSimState(phase, app.simCarryFor(phase.id)) : null
+  // prep-bonus interlock: studying the phase's linked modules to >=60%
+  // average proficiency starts the run with reduced risk exposure
+  const prep = useMemo(
+    () => prepStatus(phaseId, app.state.moduleStats),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [phaseId]
   );
+  const startState = () => {
+    if (!phase) return null;
+    const carry = app.simCarryFor(phase.id);
+    if (prep.qualified) carry.risk = Math.max(0, carry.risk - PREP_RISK_RELIEF);
+    return initialSimState(phase, carry);
+  };
+  const [sim, setSim] = useState<SimState | null>(startState);
   const [lastOutcome, setLastOutcome] = useState<{
     title: string;
     text: string;
@@ -106,7 +121,7 @@ export default function SimRunScreen({ route, navigation }: Props) {
         <Btn
           label="Run it again"
           onPress={() => {
-            setSim(initialSimState(phase));
+            setSim(startState());
             setLastOutcome(null);
             setBanked(false);
           }}
@@ -138,6 +153,40 @@ export default function SimRunScreen({ route, navigation }: Props) {
         <Meter label="Open risk exposure" value={sim.risk} max={Math.max(10, sim.risk)} color={sim.risk <= 2 ? colors.teal : colors.bad} />
       </Card>
 
+      {/* advisor bar: spend CM Capital (earned by learning) on real help */}
+      <Card>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <Body style={{ fontWeight: '600' }}>Advisors</Body>
+          <Tag label={`B$ ${app.state.capital}`} color={colors.accent} />
+        </View>
+        <Small style={{ marginBottom: 4 }}>
+          Spend the capital your studying earned. Each advisor once per phase.
+        </Small>
+        {ADVISORS.map((a) => {
+          const used = sim.advisorsUsed.includes(a.id);
+          const affordable = app.state.capital >= a.cost;
+          return (
+            <View key={a.id} style={{ marginTop: 6 }}>
+              <Btn
+                label={used ? `${a.label} ✓` : `${a.label} — B$${a.cost}`}
+                kind={used ? 'ghost' : 'teal'}
+                disabled={used || !affordable}
+                style={{ marginTop: 0 }}
+                onPress={() => {
+                  if (app.spendCapital(a.cost)) {
+                    setSim((s) => (s ? applyAdvisor(s, a.id) : s));
+                    setLastOutcome({ title: a.label, text: a.blurb, tone: 'good' });
+                  }
+                }}
+              />
+              {!used && !affordable ? (
+                <Small>Need B$ {a.cost} — earn capital in Learn and Math.</Small>
+              ) : null}
+            </View>
+          );
+        })}
+      </Card>
+
       {lastOutcome && (
         <TeachBox tone={lastOutcome.tone}>
           {lastOutcome.title}: {lastOutcome.text}
@@ -155,6 +204,7 @@ export default function SimRunScreen({ route, navigation }: Props) {
             <OptionRow
               key={o.id}
               label={o.label}
+              detail={sim.revealEffects ? fmtEffectPreview(o.effects) : undefined}
               onPress={() => {
                 const next = resolveCurveball(phase, sim, o);
                 setSim(next);
@@ -183,6 +233,20 @@ export default function SimRunScreen({ route, navigation }: Props) {
                   . Events in this phase can trace back to them.
                 </TeachBox>
               ) : null}
+              {prep.qualified ? (
+                <TeachBox tone="good">
+                  Prep bonus active: you studied this phase's modules (
+                  {prep.modules.map((m) => m.short).join(', ')}) to {prep.avgProficiency}% —
+                  starting risk reduced by {PREP_RISK_RELIEF}. Knowing the material before the
+                  decisions is what preparation buys.
+                </TeachBox>
+              ) : prep.modules.length > 0 ? (
+                <TeachBox>
+                  Prep tip: study {prep.modules.map((m) => m.short).join(', ')} to 60%+ average
+                  proficiency before running this phase to start with reduced risk (currently{' '}
+                  {prep.avgProficiency}%).
+                </TeachBox>
+              ) : null}
             </>
           ) : null}
           <Small style={{ marginBottom: 4 }}>
@@ -196,6 +260,7 @@ export default function SimRunScreen({ route, navigation }: Props) {
             <OptionRow
               key={o.id}
               label={o.label}
+              detail={sim.revealEffects ? fmtEffectPreview(o.effects) : undefined}
               onPress={() => {
                 const next = chooseOption(phase, sim, o, defaultRng, app.state.settings.curveballFrequency);
                 setSim(next);
@@ -211,6 +276,17 @@ export default function SimRunScreen({ route, navigation }: Props) {
       ) : null}
     </Screen>
   );
+}
+
+/** the QS's option pricing: shown before choosing once qs-review is bought */
+function fmtEffectPreview(e: SimEffects): string {
+  const parts: string[] = [];
+  const sign = (n: number) => (n > 0 ? `+${n}` : `${n}`);
+  if (e.days) parts.push(`${sign(e.days)} days`);
+  if (e.cost) parts.push(`${e.cost > 0 ? '+' : '−'}${fmtMoney(Math.abs(e.cost))}`);
+  if (e.quality) parts.push(`quality ${sign(e.quality)}`);
+  if (e.risk) parts.push(`risk ${sign(e.risk)}`);
+  return parts.length ? `QS estimate: ${parts.join(' · ')}` : 'QS estimate: no direct impact';
 }
 
 function Row({ k, v }: { k: string; v: string }) {

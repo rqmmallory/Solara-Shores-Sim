@@ -108,6 +108,22 @@ If `node ./node_modules/expo/bin/cli --version` doesn't print `57.x`,
 (50% knowledge / 25% estimating / 25% sim) with a countdown to the September 1
 groundbreak, plus XP/levels per module. No streaks, no arbitrary badges.
 
+**CM Capital (B$)** is the spendable currency: every learning activity earns
+B$1 per 2 XP, and it's spent *inside sim runs* on advisor actions that mirror
+real CM practice — **Bring in the QS** (option cost/schedule impacts priced
+before you choose, the leveling-sheet view), **Release management reserve**
+(−$300K cost variance), and an **Acceleration workshop** (recovers 5 days of
+slip). Each once per phase. Studying literally funds better building.
+
+Two interlocks tie learning to the sim:
+- **Prep bonus** — each phase has linked study modules (`engine/prep.ts`);
+  reach 60% average proficiency across them before running the phase and you
+  start with reduced risk exposure.
+- **Learning Path** — all 33 modules in first-principles order (site → physics
+  intuition → trade science → coast → production → running the business), with
+  a next-step card on Home. Each module's PLAIN register assumes only what
+  earlier path entries taught.
+
 ## Content architecture — how to drop research in
 
 All project knowledge lives in JSON under `src/content/` — app code never
