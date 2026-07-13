@@ -44,7 +44,7 @@ export default function SimListScreen() {
         );
       })()}
 
-      <IsoSiteMap records={app.state.simRecords} />
+      <IsoSiteMap districts={app.state.districts} />
 
       <Card>
         <Body style={{ fontWeight: '600', marginBottom: 4 }}>Curveball frequency</Body>

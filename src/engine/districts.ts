@@ -39,6 +39,9 @@ export interface District {
   checkpoints: { phaseId: string; stage: number }[];
   /** base fill rate in stages per day of elapsed time (before modifiers) */
   baseRatePerDay: number;
+  /** stage index at which vertical structure begins to rise on the map —
+   * before it, parcels read as ground; from it, buildings extrude. */
+  structureStage: number;
 }
 
 export const DISTRICTS: District[] = [
@@ -61,6 +64,7 @@ export const DISTRICTS: District[] = [
       { phaseId: 'phase7-handover', stage: 7 },
     ],
     baseRatePerDay: 2.0,
+    structureStage: 5,
   },
   {
     id: 'marine',
@@ -83,6 +87,7 @@ export const DISTRICTS: District[] = [
       { phaseId: 'phase6-estates-senior-retail', stage: 8 },
     ],
     baseRatePerDay: 1.2,
+    structureStage: 6,
   },
   {
     id: 'housing',
@@ -113,6 +118,7 @@ export const DISTRICTS: District[] = [
       { phaseId: 'phase7-handover', stage: 14 },
     ],
     baseRatePerDay: 1.0,
+    structureStage: 7,
   },
   {
     id: 'amenity',
@@ -134,6 +140,7 @@ export const DISTRICTS: District[] = [
       { phaseId: 'phase6-estates-senior-retail', stage: 7 },
     ],
     baseRatePerDay: 1.0,
+    structureStage: 4,
   },
   {
     id: 'condos',
@@ -154,6 +161,7 @@ export const DISTRICTS: District[] = [
       { phaseId: 'phase5-production-condos', stage: 7 },
     ],
     baseRatePerDay: 0.9,
+    structureStage: 2,
   },
 ];
 

@@ -3,20 +3,25 @@ import { Animated, Dimensions, Easing, ScrollView, StyleSheet, Text, View } from
 import Svg, { G, Polygon, Text as SvgText } from 'react-native-svg';
 import { siteZones, SiteZone, ZoneCategory } from '../content/siteMap';
 import { solidsBounds, svgPoints, ZONE_HEIGHT, zoneSolid } from '../engine/iso';
-import { resolveZoneVisual, siteBuildProgress } from '../engine/siteMapState';
-import type { SimRecord } from '../engine/progress';
+import {
+  DISTRICTS,
+  DistrictProgress,
+  districtById,
+  districtOfZone,
+  districtPercent,
+  stageAt,
+} from '../engine/districts';
 import { tapFeedback } from './feedback';
-import { colors, space } from './theme';
+import { colors } from './theme';
 
 /**
  * The living site: the real master-plan parcels rendered as an isometric
- * 2.5D scene. Flat land reads as ground; completing a phase makes its
- * parcels EXTRUDE into shaded buildings that rise out of the ground on
- * entry. Tap any parcel for its build status. Same decision engine
- * underneath — this is the map made immersive, not a second game.
+ * 2.5D scene, driven by live district progress. Each parcel shows its work
+ * front's current construction stage and extrudes into a building as that
+ * front fills toward the ceiling your decisions authorised — continuously,
+ * over real time. Tap any parcel for its build status.
  */
 
-// built-state colour per category (roof/top face); walls are shaded darker
 const BUILT_COLOR: Record<ZoneCategory, string> = {
   road: '#46566B',
   retail: '#A97BC9',
@@ -35,6 +40,28 @@ const BUILT_COLOR: Record<ZoneCategory, string> = {
 const RAW_COLOR = '#1E4632'; // untouched bush
 const CLEARED_COLOR = '#5A4A28'; // graded dirt pad
 
+interface ZoneVisual {
+  icon: string;
+  label: string;
+  tier: 'raw' | 'cleared' | 'built';
+  /** 0..1 how far the parcel's structure has risen, for extrusion height */
+  buildFrac: number;
+}
+
+/** resolve a parcel's current look from its district's live progress */
+function zoneVisual(zone: SiteZone, districts: Record<string, DistrictProgress>): ZoneVisual {
+  const dId = districtOfZone(zone.id);
+  const d = dId ? districtById(dId) : undefined;
+  if (!d) return { icon: '🌿', label: 'Raw land', tier: 'raw', buildFrac: 0 };
+  const pos = districts[d.id]?.pos ?? 0;
+  const stage = stageAt(d, pos);
+  const tier: ZoneVisual['tier'] = pos < 1 ? 'raw' : pos < d.structureStage ? 'cleared' : 'built';
+  const last = d.stages.length - 1;
+  const denom = Math.max(1, last - d.structureStage);
+  const buildFrac = Math.max(0, Math.min(1, (pos - d.structureStage) / denom));
+  return { icon: stage.icon, label: stage.label, tier, buildFrac };
+}
+
 function shade(hex: string, factor: number): string {
   const h = hex.replace('#', '');
   const r = Math.round(parseInt(h.slice(0, 2), 16) * factor);
@@ -44,38 +71,39 @@ function shade(hex: string, factor: number): string {
   return `rgb(${cl(r)},${cl(g)},${cl(b)})`;
 }
 
-export default function IsoSiteMap({ records }: { records: SimRecord[] }) {
+export default function IsoSiteMap({ districts }: { districts: Record<string, DistrictProgress> }) {
   const [selected, setSelected] = useState<SiteZone | null>(null);
-  const completedPhaseIds = useMemo(() => new Set(records.map((r) => r.phaseId)), [records]);
-  const estateBuilt = useMemo(
-    () => siteBuildProgress(siteZones, completedPhaseIds),
-    [completedPhaseIds]
-  );
 
-  // resolve each zone's current visual + full extrusion height
+  const estateBuilt = useMemo(() => {
+    const avg =
+      DISTRICTS.reduce((a, d) => a + districtPercent(d, districts[d.id]?.pos ?? 0), 0) /
+      DISTRICTS.length;
+    return Math.round(avg);
+  }, [districts]);
+
+  // each parcel's current visual + its live extrusion height
   const resolved = useMemo(
     () =>
       siteZones.map((zone) => {
-        const visual = resolveZoneVisual(zone, completedPhaseIds);
-        const fullHeight = visual.tier === 'built' ? ZONE_HEIGHT[zone.category] : 0;
-        return { zone, visual, fullHeight };
+        const v = zoneVisual(zone, districts);
+        const fullHeight = ZONE_HEIGHT[zone.category];
+        return { zone, v, fullHeight, curHeight: fullHeight * v.buildFrac };
       }),
-    [completedPhaseIds]
+    [districts]
   );
 
-  // viewBox is computed at full height so the canvas never resizes mid-reveal
+  // viewBox is fixed to the fully-built estate so the canvas never resizes as
+  // buildings rise
   const bounds = useMemo(
-    () => solidsBounds(resolved.map((r) => zoneSolid(r.zone, r.fullHeight))),
-    [resolved]
+    () => solidsBounds(siteZones.map((z) => zoneSolid(z, ZONE_HEIGHT[z.category]))),
+    []
   );
-
-  // painter's order: draw far parcels first
   const order = useMemo(
-    () => resolved.map((r) => r.zone.id).sort((a, b) => depthOf(a) - depthOf(b)),
-    [resolved]
+    () => siteZones.map((z) => z.id).sort((a, b) => depthOf(a) - depthOf(b)),
+    []
   );
 
-  // one-time "buildings rise out of the ground" reveal on mount / phase change
+  // one-time "rise out of the ground" reveal on mount
   const [grow, setGrow] = useState(0);
   const growAnim = useRef(new Animated.Value(0)).current;
   useEffect(() => {
@@ -89,12 +117,14 @@ export default function IsoSiteMap({ records }: { records: SimRecord[] }) {
       useNativeDriver: false,
     }).start();
     return () => growAnim.removeListener(id);
-  }, [growAnim, completedPhaseIds]);
+  }, [growAnim]);
 
   const screenWidth = Dimensions.get('window').width;
   const pxWidth = Math.max(screenWidth - 48, 320) * 1.5;
   const pxHeight = (pxWidth * bounds.height) / bounds.width;
   const iconFont = bounds.width * 0.028;
+
+  const selVisual = selected ? zoneVisual(selected, districts) : null;
 
   return (
     <View style={styles.wrap}>
@@ -106,7 +136,7 @@ export default function IsoSiteMap({ records }: { records: SimRecord[] }) {
         <View style={styles.progressTrack}>
           <View style={[styles.progressFill, { width: `${estateBuilt}%` }]} />
         </View>
-        <Text style={styles.hint}>Finish phases to raise the buildings · tap any parcel</Text>
+        <Text style={styles.hint}>Crews keep building over time · tap any parcel</Text>
       </View>
 
       <ScrollView horizontal showsHorizontalScrollIndicator style={{ maxHeight: 440 }}>
@@ -120,18 +150,17 @@ export default function IsoSiteMap({ records }: { records: SimRecord[] }) {
               {order.map((id) => {
                 const r = resolved.find((x) => x.zone.id === id)!;
                 const isSel = selected?.id === id;
-                const h = r.fullHeight * grow;
+                const h = r.curHeight * grow;
                 const solid = zoneSolid(r.zone, h);
-                const flat = r.fullHeight === 0;
+                const flat = h <= 0.01;
                 const topColor =
-                  r.visual.tier === 'raw'
+                  r.v.tier === 'raw'
                     ? RAW_COLOR
-                    : r.visual.tier === 'cleared'
+                    : r.v.tier === 'cleared'
                       ? CLEARED_COLOR
                       : BUILT_COLOR[r.zone.category];
                 return (
                   <G key={id} onPress={() => { tapFeedback(); setSelected(r.zone); }}>
-                    {/* ground shadow the volume sits on */}
                     {!flat ? (
                       <Polygon points={svgPoints(solid.base)} fill={shade(topColor, 0.32)} />
                     ) : null}
@@ -147,14 +176,14 @@ export default function IsoSiteMap({ records }: { records: SimRecord[] }) {
                       stroke={isSel ? colors.accent : shade(topColor, 0.45)}
                       strokeWidth={isSel ? bounds.width * 0.006 : bounds.width * 0.0015}
                     />
-                    {r.zone.w >= 12 || r.visual.tier === 'built' ? (
+                    {r.zone.w >= 12 || r.v.tier === 'built' ? (
                       <SvgText
                         x={solid.center.x}
                         y={solid.center.y + iconFont * 0.35}
                         fontSize={iconFont}
                         textAnchor="middle"
                       >
-                        {r.visual.icon}
+                        {r.v.icon}
                       </SvgText>
                     ) : null}
                   </G>
@@ -165,14 +194,12 @@ export default function IsoSiteMap({ records }: { records: SimRecord[] }) {
         </ScrollView>
       </ScrollView>
 
-      {selected ? (
+      {selected && selVisual ? (
         <View style={styles.detail}>
           <Text style={styles.detailTitle}>
-            {resolveZoneVisual(selected, completedPhaseIds).icon} {selected.name}
+            {selVisual.icon} {selected.name}
           </Text>
-          <Text style={styles.detailStatus}>
-            {resolveZoneVisual(selected, completedPhaseIds).label}
-          </Text>
+          <Text style={styles.detailStatus}>{selVisual.label}</Text>
         </View>
       ) : (
         <Text style={styles.hint}>Tap any parcel for its build status.</Text>
@@ -180,7 +207,7 @@ export default function IsoSiteMap({ records }: { records: SimRecord[] }) {
 
       <View style={styles.legendRow}>
         <LegendDot color={RAW_COLOR} label="raw land" />
-        <LegendDot color={CLEARED_COLOR} label="cleared" />
+        <LegendDot color={CLEARED_COLOR} label="under way" />
         <LegendDot color={BUILT_COLOR.condo} label="built" />
       </View>
     </View>
