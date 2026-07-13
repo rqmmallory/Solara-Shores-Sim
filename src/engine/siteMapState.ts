@@ -43,6 +43,23 @@ export function resolveZoneVisual(zone: SiteZone, completedPhaseIds: Set<string>
   };
 }
 
+/**
+ * Estate build progress, 0..100 — the single "how built is the whole thing"
+ * number that lets the player watch the development emerge. Each parcel
+ * contributes: untouched land 0, cleared/enabled 0.2, and building through its
+ * own stages 0.4→1.0. Averaged across every parcel on the master plan.
+ */
+export function siteBuildProgress(zones: SiteZone[], completedPhaseIds: Set<string>): number {
+  if (zones.length === 0) return 0;
+  const sum = zones.reduce((acc, z) => {
+    const v = resolveZoneVisual(z, completedPhaseIds);
+    if (v.tier === 'built') return acc + (0.4 + 0.6 * v.progress);
+    if (v.tier === 'cleared') return acc + 0.2;
+    return acc;
+  }, 0);
+  return Math.round((sum / zones.length) * 100);
+}
+
 /** sanity helper used by content validation: every stage's phaseId must exist */
 export function unknownPhaseRefs(zones: SiteZone[]): string[] {
   const errs: string[] = [];

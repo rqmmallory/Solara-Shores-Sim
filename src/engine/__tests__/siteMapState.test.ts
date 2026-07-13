@@ -1,5 +1,6 @@
 import { siteZones } from '../../content/siteMap';
-import { resolveZoneVisual, unknownPhaseRefs } from '../siteMapState';
+import { resolveZoneVisual, siteBuildProgress, unknownPhaseRefs } from '../siteMapState';
+import { simPhases } from '../../content';
 
 describe('site map zone data', () => {
   it('has unique zone ids', () => {
@@ -14,6 +15,16 @@ describe('site map zone data', () => {
       expect(z.x + z.w).toBeLessThanOrEqual(100.01);
       expect(z.y + z.h).toBeLessThanOrEqual(100.01);
     }
+  });
+
+  it('estate build progress rises monotonically as phases complete', () => {
+    const empty = siteBuildProgress(siteZones, new Set());
+    expect(empty).toBe(0);
+    const afterPrep = siteBuildProgress(siteZones, new Set(['phase1-site-prep']));
+    expect(afterPrep).toBeGreaterThan(empty);
+    const allPhases = siteBuildProgress(siteZones, new Set(simPhases.map((p) => p.id)));
+    expect(allPhases).toBeGreaterThan(afterPrep);
+    expect(allPhases).toBeLessThanOrEqual(100);
   });
 
   it('every stage references a real, correctly-ordered sim phase', () => {

@@ -3,7 +3,7 @@ import { Animated, Dimensions, Easing, ScrollView, StyleSheet, Text, View } from
 import Svg, { G, Polygon, Text as SvgText } from 'react-native-svg';
 import { siteZones, SiteZone, ZoneCategory } from '../content/siteMap';
 import { solidsBounds, svgPoints, ZONE_HEIGHT, zoneSolid } from '../engine/iso';
-import { resolveZoneVisual } from '../engine/siteMapState';
+import { resolveZoneVisual, siteBuildProgress } from '../engine/siteMapState';
 import type { SimRecord } from '../engine/progress';
 import { tapFeedback } from './feedback';
 import { colors, space } from './theme';
@@ -47,6 +47,10 @@ function shade(hex: string, factor: number): string {
 export default function IsoSiteMap({ records }: { records: SimRecord[] }) {
   const [selected, setSelected] = useState<SiteZone | null>(null);
   const completedPhaseIds = useMemo(() => new Set(records.map((r) => r.phaseId)), [records]);
+  const estateBuilt = useMemo(
+    () => siteBuildProgress(siteZones, completedPhaseIds),
+    [completedPhaseIds]
+  );
 
   // resolve each zone's current visual + full extrusion height
   const resolved = useMemo(
@@ -95,7 +99,13 @@ export default function IsoSiteMap({ records }: { records: SimRecord[] }) {
   return (
     <View style={styles.wrap}>
       <View style={styles.header}>
-        <Text style={styles.title}>Solara Shores — live site</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
+          <Text style={styles.title}>Solara Shores — live site</Text>
+          <Text style={[styles.title, { color: colors.good }]}>{estateBuilt}% built</Text>
+        </View>
+        <View style={styles.progressTrack}>
+          <View style={[styles.progressFill, { width: `${estateBuilt}%` }]} />
+        </View>
         <Text style={styles.hint}>Finish phases to raise the buildings · tap any parcel</Text>
       </View>
 
@@ -204,6 +214,14 @@ const styles = StyleSheet.create({
   header: { marginBottom: 8 },
   title: { color: colors.text, fontWeight: '700', fontSize: 14, marginBottom: 2 },
   hint: { color: colors.muted, fontSize: 10 },
+  progressTrack: {
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: colors.cardAlt,
+    overflow: 'hidden',
+    marginVertical: 4,
+  },
+  progressFill: { height: 6, borderRadius: 3, backgroundColor: colors.good },
   canvas: {
     backgroundColor: '#0A1420',
     borderRadius: 10,

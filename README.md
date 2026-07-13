@@ -108,9 +108,12 @@ If `node ./node_modules/expo/bin/cli --version` doesn't print `54.x`,
    Phase 7 (handover/warranty) surfaces every long-fuse shortcut. Curveballs
    can be armed, defused, or cost-modified by flags (`armedByFlags` /
    `defusedByFlags` / `flagModifiers`), and the flag graph is validated
-   closed in CI. Choices move four meters — schedule slip, cost variance,
-   quality, open risk — with no game-overs: debriefs grade against realistic
-   allowances and explain every call. A **Weather Desk** on the Sim tab
+   closed in CI. Choices move six meters — schedule slip, cost variance,
+   quality, **safety**, **crew morale**, and open risk — with no game-overs:
+   debriefs grade against realistic allowances and explain every call. Safety
+   is the non-negotiable meter: taking on risk erodes it automatically and a
+   low final safety score penalises the whole grade (you can't buy back an
+   unsafe job). A **Weather Desk** on the Sim tab
    carries V3-9's task-gating table (which trades die on which forecast),
    implemented as an engine lookup ready for day-based sim ticks.
 
@@ -152,6 +155,31 @@ Teaching still comes first, but the delivery is built to draw you in:
   (success / warning / error patterns), and a confetti **phase-complete
   celebration**. All built on React Native's `Animated`, so it runs in Expo
   Go with no custom native build.
+
+## Progression, economy & career
+
+The long game — every loop keeps a next goal in view, and the way to hit it is
+always to understand the construction better.
+
+- **CM rank** (`engine/career.ts`) — an 8-rung ladder (Site Cadet →
+  Development Director) off total XP, shown on Home with progress to the next.
+- **Company reputation** — 65% the grades you deliver on site, 35% what you
+  know. It's the hook that will gate bigger projects in career mode.
+- **Achievements** (`engine/achievements.ts`) — 14 data-driven milestones
+  across learning, estimating, building and career; each pays CM Capital and
+  is evaluated from a pure state snapshot, so adding one is a one-line append.
+- **Daily challenges & weekly contracts** (`engine/challenges.ts`) —
+  bite-sized goals drawn deterministically from the date, claimable once per
+  period for CM Capital.
+- **Adaptive mentor** (`engine/mentorGuidance.ts`) — assistance scales with
+  your mastery of a topic: coaching → guiding → nudging → observing. Low levels
+  prompt reasoning ("name the failure mode") instead of handing you the answer;
+  as you master a module its mentor visibly steps back.
+- **Estate build progress** — a live "% built" gauge on the site map so you
+  watch the development emerge as phases complete.
+
+Everything above reads from the same signals as the readiness score, so there
+is exactly one source of truth for "where the player is."
 
 ## Content architecture — how to drop research in
 
