@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, Dimensions, Easing, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Animated, Dimensions, Easing, PanResponder, StyleSheet, Text, View } from 'react-native';
 import Svg, { G, Polygon, Text as SvgText } from 'react-native-svg';
 import { siteZones, SiteZone, ZoneCategory } from '../content/siteMap';
 import { solidsBounds, svgPoints, ZONE_HEIGHT, zoneSolid } from '../engine/iso';
@@ -11,6 +11,7 @@ import {
   districtPercent,
   stageAt,
 } from '../engine/districts';
+import { Btn } from './components';
 import { tapFeedback } from './feedback';
 import { colors } from './theme';
 
@@ -19,8 +20,18 @@ import { colors } from './theme';
  * 2.5D scene, driven by live district progress. Each parcel shows its work
  * front's current construction stage and extrudes into a building as that
  * front fills toward the ceiling your decisions authorised — continuously,
- * over real time. Tap any parcel for its build status.
+ * over real time. Pan-drag and pinch-zoom to explore; tap any parcel for its
+ * build status.
+ *
+ * Pan/zoom uses core React Native `PanResponder` + `Animated` rather than
+ * react-native-gesture-handler/reanimated: those need a native worklets
+ * runtime that can't be verified without an on-device test, whereas
+ * PanResponder is pure JS and guaranteed to run anywhere Expo Go does.
  */
+
+const MIN_SCALE = 1;
+const MAX_SCALE = 3.5;
+const TAP_SLOP = 6; // px of movement still treated as a tap, not a drag
 
 const BUILT_COLOR: Record<ZoneCategory, string> = {
   road: '#46566B',
@@ -71,6 +82,10 @@ function shade(hex: string, factor: number): string {
   return `rgb(${cl(r)},${cl(g)},${cl(b)})`;
 }
 
+function clamp(n: number, lo: number, hi: number): number {
+  return Math.max(lo, Math.min(hi, n));
+}
+
 export default function IsoSiteMap({ districts }: { districts: Record<string, DistrictProgress> }) {
   const [selected, setSelected] = useState<SiteZone | null>(null);
 
@@ -94,13 +109,15 @@ export default function IsoSiteMap({ districts }: { districts: Record<string, Di
 
   // viewBox is fixed to the fully-built estate so the canvas never resizes as
   // buildings rise
-  const bounds = useMemo(
-    () => solidsBounds(siteZones.map((z) => zoneSolid(z, ZONE_HEIGHT[z.category]))),
-    []
-  );
+  const solidsByZone = useMemo(() => {
+    const m = new Map<string, ReturnType<typeof zoneSolid>>();
+    for (const z of siteZones) m.set(z.id, zoneSolid(z, ZONE_HEIGHT[z.category]));
+    return m;
+  }, []);
+  const bounds = useMemo(() => solidsBounds([...solidsByZone.values()]), [solidsByZone]);
   const order = useMemo(
-    () => siteZones.map((z) => z.id).sort((a, b) => depthOf(a) - depthOf(b)),
-    []
+    () => siteZones.map((z) => z.id).sort((a, b) => solidsByZone.get(a)!.depth - solidsByZone.get(b)!.depth),
+    [solidsByZone]
   );
 
   // one-time "rise out of the ground" reveal on mount
@@ -120,11 +137,73 @@ export default function IsoSiteMap({ districts }: { districts: Record<string, Di
   }, [growAnim]);
 
   const screenWidth = Dimensions.get('window').width;
-  const pxWidth = Math.max(screenWidth - 48, 320) * 1.5;
+  const viewportWidth = Math.max(screenWidth - 48, 320);
+  const pxWidth = viewportWidth;
   const pxHeight = (pxWidth * bounds.height) / bounds.width;
   const iconFont = bounds.width * 0.028;
 
   const selVisual = selected ? zoneVisual(selected, districts) : null;
+
+  // ---- pan/pinch-zoom (core PanResponder + Animated, no gesture-handler) ----
+  const scale = useRef(new Animated.Value(1)).current;
+  const translate = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
+  const scaleRef = useRef(1);
+  const translateRef = useRef({ x: 0, y: 0 });
+  const pinchStartDist = useRef<number | null>(null);
+  const pinchStartScale = useRef(1);
+  const panStart = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const sId = scale.addListener(({ value }) => { scaleRef.current = value; });
+    const tId = translate.addListener((v) => { translateRef.current = v; });
+    return () => {
+      scale.removeListener(sId);
+      translate.removeListener(tId);
+    };
+  }, [scale, translate]);
+
+  const resetView = () => {
+    tapFeedback();
+    Animated.parallel([
+      Animated.spring(scale, { toValue: 1, useNativeDriver: false }),
+      Animated.spring(translate, { toValue: { x: 0, y: 0 }, useNativeDriver: false }),
+    ]).start();
+    scaleRef.current = 1;
+    translateRef.current = { x: 0, y: 0 };
+  };
+
+  const panResponder = useRef(
+    PanResponder.create({
+      // never steal a plain tap — only take over once there's real movement
+      // or a second finger, so tapping a parcel's onPress still fires
+      onStartShouldSetPanResponder: () => false,
+      onMoveShouldSetPanResponder: (_evt, g) =>
+        g.numberActiveTouches === 2 || Math.abs(g.dx) > TAP_SLOP || Math.abs(g.dy) > TAP_SLOP,
+      onPanResponderGrant: () => {
+        pinchStartDist.current = null;
+        panStart.current = { ...translateRef.current };
+      },
+      onPanResponderMove: (evt, gesture) => {
+        const touches = evt.nativeEvent.touches;
+        if (touches.length === 2) {
+          const [t1, t2] = touches;
+          const dist = Math.hypot(t1.pageX - t2.pageX, t1.pageY - t2.pageY);
+          if (pinchStartDist.current == null) {
+            pinchStartDist.current = dist;
+            pinchStartScale.current = scaleRef.current;
+          } else {
+            const next = clamp((dist / pinchStartDist.current) * pinchStartScale.current, MIN_SCALE, MAX_SCALE);
+            scale.setValue(next);
+          }
+        } else if (touches.length === 1) {
+          translate.setValue({ x: panStart.current.x + gesture.dx, y: panStart.current.y + gesture.dy });
+        }
+      },
+      onPanResponderRelease: () => {
+        pinchStartDist.current = null;
+      },
+    })
+  ).current;
 
   return (
     <View style={styles.wrap}>
@@ -136,60 +215,71 @@ export default function IsoSiteMap({ districts }: { districts: Record<string, Di
         <View style={styles.progressTrack}>
           <View style={[styles.progressFill, { width: `${estateBuilt}%` }]} />
         </View>
-        <Text style={styles.hint}>Crews keep building over time · tap any parcel</Text>
+        <Text style={styles.hint}>Crews keep building over time · drag to pan · pinch to zoom</Text>
       </View>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator style={{ maxHeight: 440 }}>
-        <ScrollView showsVerticalScrollIndicator style={{ maxHeight: 440 }}>
-          <View style={[styles.canvas, { width: pxWidth, height: pxHeight }]}>
-            <Svg
-              width={pxWidth}
-              height={pxHeight}
-              viewBox={`${bounds.minX} ${bounds.minY} ${bounds.width} ${bounds.height}`}
-            >
-              {order.map((id) => {
-                const r = resolved.find((x) => x.zone.id === id)!;
-                const isSel = selected?.id === id;
-                const h = r.curHeight * grow;
-                const solid = zoneSolid(r.zone, h);
-                const flat = h <= 0.01;
-                const topColor =
-                  r.v.tier === 'raw'
-                    ? RAW_COLOR
-                    : r.v.tier === 'cleared'
-                      ? CLEARED_COLOR
-                      : BUILT_COLOR[r.zone.category];
-                return (
-                  <G key={id} onPress={() => { tapFeedback(); setSelected(r.zone); }}>
-                    {!flat ? (
-                      <Polygon points={svgPoints(solid.base)} fill={shade(topColor, 0.32)} />
-                    ) : null}
-                    {solid.walls.map((w, wi) => (
-                      <Polygon key={wi} points={svgPoints(w.pts)} fill={shade(topColor, w.shade)} />
-                    ))}
-                    <Polygon
-                      points={svgPoints(solid.top)}
-                      fill={topColor}
-                      stroke={isSel ? colors.accent : shade(topColor, 0.45)}
-                      strokeWidth={isSel ? bounds.width * 0.006 : bounds.width * 0.0015}
-                    />
-                    {r.zone.w >= 12 || r.v.tier === 'built' ? (
-                      <SvgText
-                        x={solid.center.x}
-                        y={solid.center.y + iconFont * 0.35}
-                        fontSize={iconFont}
-                        textAnchor="middle"
-                      >
-                        {r.v.icon}
-                      </SvgText>
-                    ) : null}
-                  </G>
-                );
-              })}
-            </Svg>
-          </View>
-        </ScrollView>
-      </ScrollView>
+      <View style={[styles.canvas, { width: viewportWidth, height: Math.min(pxHeight, 440) }]}>
+        <Animated.View
+          {...panResponder.panHandlers}
+          style={{
+            width: pxWidth,
+            height: pxHeight,
+            transform: [
+              { translateX: translate.x },
+              { translateY: translate.y },
+              { scale },
+            ],
+          }}
+        >
+          <Svg
+            width={pxWidth}
+            height={pxHeight}
+            viewBox={`${bounds.minX} ${bounds.minY} ${bounds.width} ${bounds.height}`}
+          >
+            {order.map((id) => {
+              const r = resolved.find((x) => x.zone.id === id)!;
+              const isSel = selected?.id === id;
+              const h = r.curHeight * grow;
+              const solid = zoneSolid(r.zone, h);
+              const flat = h <= 0.01;
+              const topColor =
+                r.v.tier === 'raw'
+                  ? RAW_COLOR
+                  : r.v.tier === 'cleared'
+                    ? CLEARED_COLOR
+                    : BUILT_COLOR[r.zone.category];
+              return (
+                <G key={id} onPress={() => { tapFeedback(); setSelected(r.zone); }}>
+                  {!flat ? (
+                    <Polygon points={svgPoints(solid.base)} fill={shade(topColor, 0.32)} />
+                  ) : null}
+                  {solid.walls.map((w, wi) => (
+                    <Polygon key={wi} points={svgPoints(w.pts)} fill={shade(topColor, w.shade)} />
+                  ))}
+                  <Polygon
+                    points={svgPoints(solid.top)}
+                    fill={topColor}
+                    stroke={isSel ? colors.accent : shade(topColor, 0.45)}
+                    strokeWidth={isSel ? bounds.width * 0.006 : bounds.width * 0.0015}
+                  />
+                  {r.zone.w >= 12 || r.v.tier === 'built' ? (
+                    <SvgText
+                      x={solid.center.x}
+                      y={solid.center.y + iconFont * 0.35}
+                      fontSize={iconFont}
+                      textAnchor="middle"
+                    >
+                      {r.v.icon}
+                    </SvgText>
+                  ) : null}
+                </G>
+              );
+            })}
+          </Svg>
+        </Animated.View>
+      </View>
+
+      <Btn label="Reset view" kind="ghost" onPress={resetView} style={{ marginTop: 6 }} />
 
       {selected && selVisual ? (
         <View style={styles.detail}>
@@ -209,12 +299,6 @@ export default function IsoSiteMap({ districts }: { districts: Record<string, Di
       </View>
     </View>
   );
-}
-
-/** depth key mirrors iso painter order without recomputing full solids */
-function depthOf(zoneId: string): number {
-  const z = siteZones.find((s) => s.id === zoneId)!;
-  return z.x * 2 + z.w + (z.y + z.h) * 4;
 }
 
 function LegendDot({ color, label }: { color: string; label: string }) {
