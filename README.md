@@ -86,11 +86,19 @@ If `node ./node_modules/expo/bin/cli --version` doesn't print `54.x`,
 
 3. **Subdivision simulation (Sim tab)** — the actual project, phase by phase,
    on a **living isometric site map** (`ui/IsoSiteMap.tsx`, projection math in
-   `engine/iso.ts`) that renders the real master-plan parcels in 2.5D and
-   *extrudes them into shaded buildings that rise out of the ground* — driven
-   by the **district construction model** (see "The living estate" below), not
-   just binary phase completion. Tap any parcel for its build status. Phases
-   unlock sequentially (the critical path is the critical path). Playable now:
+   `engine/iso.ts`) traced from the real master-plan sheets (Lotus Design, 18
+   May 2026, A1–A4): the marina's branching basin, all 15 condo buildings'
+   distinct footprints, the real lake-chain and amenity-core shapes, the
+   senior-living campus cluster, and lot "waves" that follow the actual block
+   outline — hand-traced polygons (`content/siteMap.ts`), not abstract
+   rectangles. `engine/iso.ts` extrudes **any** simple polygon (not just
+   boxes) into a shaded 2.5D volume. **Drag to pan, pinch with two fingers to
+   zoom** (core `PanResponder`/`Animated` — no native gesture library, so it's
+   guaranteed to run in Expo Go). Parcels *extrude into buildings that rise
+   out of the ground* as their work front builds — driven by the **district
+   construction model** (see "The living estate" below), not just binary
+   phase completion. Tap any parcel for its build status. Phases unlock
+   sequentially (the critical path is the critical path). Playable now:
    - **Phase 1 — Enabling Works & Site Prep**: six decision gates (CEC timing,
      geotech, rock classification, crusher, QA lab, hurricane prep) plus a
      curveball pool (karst void, rock claim, storm warning, permit query, sub
