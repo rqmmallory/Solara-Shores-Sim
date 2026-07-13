@@ -185,6 +185,19 @@ export interface SimEffects {
   quality?: number;
   /** compliance/risk exposure delta; higher = more exposed */
   risk?: number;
+  /**
+   * site-safety delta, 0–100 scale. In construction safety is the
+   * non-negotiable meter: cutting it may save days/dollars now but a low
+   * final safety score penalises the whole phase grade — you cannot buy
+   * back an unsafe job. Adding risk also erodes safety automatically.
+   */
+  safety?: number;
+  /**
+   * crew/subcontractor morale delta, 0–100 scale. Low morale shows up as
+   * turnover, slower work and rework on a real site; here it colours the
+   * debrief and rewards treating the workforce as a system, not a cost.
+   */
+  morale?: number;
 }
 
 export interface SimOption {

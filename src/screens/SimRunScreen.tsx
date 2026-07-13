@@ -114,6 +114,8 @@ export default function SimRunScreen({ route, navigation }: Props) {
           <Row k="Duration" v={`${d.finalDays} days (plan ${d.plannedDays} + ${d.slipAllowanceDays} allowance)`} />
           <Row k="Cost variance" v={`${fmtMoney(d.spentVariance)} vs ${fmtMoney(d.contingencyAllowance)} contingency`} />
           <Row k="Quality" v={`${d.quality}/100`} />
+          <Row k="Safety" v={`${d.safety}/100${d.safetyPenalty > 0 ? ` (−${d.safetyPenalty} to grade)` : ''}`} />
+          <Row k="Crew morale" v={`${d.morale}/100`} />
           <Row k="Open risk carried forward" v={`${d.risk}`} />
           <Row k="Optimal calls" v={`${d.optimalCount}/${d.decisionCount}`} />
         </Card>
@@ -172,6 +174,8 @@ export default function SimRunScreen({ route, navigation }: Props) {
           suffix="k"
         />
         <Meter label="Quality" value={sim.quality} color={sim.quality >= 70 ? colors.good : colors.warn} />
+        <Meter label="Safety" value={sim.safety} color={sim.safety >= 80 ? colors.good : sim.safety >= 60 ? colors.warn : colors.bad} />
+        <Meter label="Crew morale" value={sim.morale} color={sim.morale >= 70 ? colors.good : sim.morale >= 55 ? colors.warn : colors.bad} />
         <Meter label="Open risk exposure" value={sim.risk} max={Math.max(10, sim.risk)} color={sim.risk <= 2 ? colors.teal : colors.bad} />
       </Card>
 

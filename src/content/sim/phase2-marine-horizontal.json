@@ -27,7 +27,8 @@
             "days": 10,
             "cost": 150000,
             "quality": 5,
-            "risk": -3
+            "risk": -3,
+            "morale": 3
           },
           "outcome": "The longer tender takes two extra weeks and the leveling sheet earns its keep — the raw low bidder was 12% 'cheaper' by excluding rock pre-treatment. One mobilization now covers everything through the bulkheads.",
           "optimal": true,
@@ -42,7 +43,8 @@
             "days": 0,
             "cost": 400000,
             "quality": 0,
-            "risk": 3
+            "risk": 3,
+            "morale": -4
           },
           "outcome": "Each package looks competitive in isolation; each pays its own mobilization. The dredge contractor's spread demobilizes after the canal package while the bulkhead award is still in tender.",
           "arms": [
@@ -75,7 +77,8 @@
             "days": 0,
             "cost": -2200000,
             "quality": 5,
-            "risk": -1
+            "risk": -1,
+            "safety": 4
           },
           "outcome": "Hundreds of thousands of yards move at quarry prices, clean rock streams to the crusher, and turbidity exposure shrinks because most yardage never touches water. The net saving lands even if a second mobilization proves necessary.",
           "optimal": true,
@@ -90,7 +93,9 @@
             "days": 0,
             "cost": 1400000,
             "quality": 0,
-            "risk": 2
+            "risk": 2,
+            "safety": -6,
+            "morale": -3
           },
           "outcome": "Simpler for the contractor, expensive for you: yardage that could have been quarried is now dredged in a weather window under turbidity monitoring. 'Simpler' was never priced against the delta.",
           "arms": [
@@ -126,7 +131,8 @@
             "days": 0,
             "cost": 100000,
             "quality": 5,
-            "risk": -3
+            "risk": -3,
+            "safety": 2
           },
           "outcome": "The contractor prices the obligations knowingly (slightly higher bid — that's honesty, not cost), and the first turbidity stoppage is a procedure instead of a fight. The standby question was answered before it was asked.",
           "optimal": true,
@@ -183,7 +189,8 @@
             "days": 0,
             "cost": 180000,
             "quality": 8,
-            "risk": -2
+            "risk": -2,
+            "safety": 3
           },
           "outcome": "Month three, the survey shows claimed quantities 9% above the actual bottom — corrected in that month's certification, quietly, with data. The contractor's applications get accurate from then on. The survey program has already paid for itself.",
           "optimal": true,
@@ -201,7 +208,8 @@
             "days": 0,
             "cost": 0,
             "quality": -6,
-            "risk": 3
+            "risk": 3,
+            "safety": -5
           },
           "outcome": "You are now paying per cubic yard, as measured by the party being paid. And the bulkhead alignment drift nobody measured becomes visible exactly when the dock installers show up with straight docks for a curved wall.",
           "arms": [
@@ -240,7 +248,9 @@
             "days": -10,
             "cost": 200000,
             "quality": 0,
-            "risk": 3
+            "risk": 3,
+            "morale": -4,
+            "safety": -2
           },
           "outcome": "Two weeks saved at award; every gap in the 60% design is now a change order with sole-source pricing. Lump sum only works on complete scope — you fixed the price of the drawn part and opened the wallet on the rest.",
           "arms": [
@@ -304,7 +314,8 @@
             "days": 0,
             "cost": 0,
             "quality": -3,
-            "risk": 4
+            "risk": 4,
+            "safety": -4
           },
           "outcome": "Surplus switchgear exists — with unknown history, mismatched ratings, and warranty stories BPL's interconnection engineers have heard before. Betting the revenue gate on salvage-yard luck is not a procurement strategy.",
           "arms": [

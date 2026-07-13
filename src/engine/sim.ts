@@ -35,6 +35,13 @@ export interface SimState {
   costVariance: number;
   /** 0..100, starts at 70 — "how well built is what you built" */
   quality: number;
+  /** 0..100, starts at 90 — site safety. The non-negotiable meter: a low
+   * final safety score caps the phase grade (you can't buy back an unsafe
+   * job). Adding risk erodes it automatically. */
+  safety: number;
+  /** 0..100, starts at 75 — crew/subcontractor morale. Colours the debrief
+   * and rewards managing the workforce as a system. */
+  morale: number;
   /** open risk exposure — unresolved liabilities you carry (seeds from
    * the previous phase's final risk: shortcuts ride forward) */
   risk: number;
@@ -78,6 +85,8 @@ export function initialSimState(phase: SimPhase, carry?: SimCarry): SimState {
     slipDays: 0,
     costVariance: 0,
     quality: 70,
+    safety: 90,
+    morale: 75,
     risk,
     carriedRisk: risk,
     flags,
@@ -202,11 +211,17 @@ export function availableOptions(options: SimOption[], s: SimState): SimOption[]
 }
 
 function applyEffects(s: SimState, e: SimEffects): SimState {
+  // safety erodes with explicit cuts AND with any risk you take on — an
+  // exposed job is an unsafe job. Defusing risk (negative e.risk) does not
+  // auto-restore safety; you have to actively invest in it.
+  const safetyFromRisk = Math.max(0, e.risk ?? 0);
   return {
     ...s,
     slipDays: s.slipDays + (e.days ?? 0),
     costVariance: s.costVariance + (e.cost ?? 0),
     quality: clamp(s.quality + (e.quality ?? 0), 0, 100),
+    safety: clamp(s.safety + (e.safety ?? 0) - safetyFromRisk, 0, 100),
+    morale: clamp(s.morale + (e.morale ?? 0), 0, 100),
     risk: Math.max(0, s.risk + (e.risk ?? 0)),
   };
 }
@@ -390,7 +405,11 @@ export interface SimDebrief {
   spentVariance: number;
   contingencyAllowance: number;
   quality: number;
+  safety: number;
+  morale: number;
   risk: number;
+  /** points the low-safety guard subtracted from the weighted score */
+  safetyPenalty: number;
   optimalCount: number;
   decisionCount: number;
   headline: string;
@@ -410,7 +429,11 @@ export function debrief(phase: SimPhase, s: SimState): SimDebrief {
   const costScore = clamp(100 - (Math.max(0, s.costVariance - contingency) / phase.startBudget) * 250, 0, 100);
   const qualScore = s.quality;
   const riskScore = clamp(100 - s.risk * 10, 0, 100);
-  const score = Math.round(schedScore * 0.3 + costScore * 0.3 + qualScore * 0.25 + riskScore * 0.15);
+  const weighted = schedScore * 0.3 + costScore * 0.3 + qualScore * 0.25 + riskScore * 0.15;
+  // safety guard: below 60 it bites hard — you cannot buy back an unsafe job.
+  // A well-run phase never reaches the threshold, so good play is unaffected.
+  const safetyPenalty = s.safety >= 60 ? 0 : Math.round((60 - s.safety) * 0.6);
+  const score = clamp(Math.round(weighted) - safetyPenalty, 0, 100);
 
   const optimalCount = s.log.filter((l) => l.optimal).length;
   const decisionCount = s.log.filter((l) => l.kind === 'decision' || (l.kind === 'curveball' && l.optimal !== undefined)).length;
@@ -426,6 +449,16 @@ export function debrief(phase: SimPhase, s: SimState): SimDebrief {
   else
     notes.push(`Cost: ${money(s.costVariance)} of variance blew through the ${money(contingency)} contingency. Ask which decisions traded a visible cost now for an invisible one later.`);
   notes.push(`Quality ended at ${s.quality}/100 — quality only moves when you pay for systems (testing labs, geotech, rehearsals) before you need them.`);
+  if (s.safety < 60)
+    notes.push(`Safety ended at ${s.safety}/100 and cost you ${safetyPenalty} points off the grade. On a real site this is where people get hurt and the job gets shut down — safety is never the line item you trim.`);
+  else if (s.safety < 80)
+    notes.push(`Safety held at ${s.safety}/100 — acceptable, but every risk you took nibbled at it. The best CMs treat safety as the constraint, not the trade-off.`);
+  else
+    notes.push(`Safety stayed strong at ${s.safety}/100 — you didn't buy schedule or cost with exposure. That's how the job runs incident-free.`);
+  if (s.morale < 55)
+    notes.push(`Crew morale sank to ${s.morale}/100 — expect turnover, slower production and rework a real site would now be paying for. The workforce is a system you manage, not a cost you squeeze.`);
+  else if (s.morale >= 85)
+    notes.push(`Crew morale is high at ${s.morale}/100 — well-sequenced work and fair calls keep good subs coming back at good numbers.`);
   if (s.carriedRisk > 0)
     notes.push(`You entered this phase carrying ${s.carriedRisk} points of risk from earlier phases — the sim remembers, and so does a real project.`);
   if (s.risk > 0)
@@ -453,7 +486,10 @@ export function debrief(phase: SimPhase, s: SimState): SimDebrief {
     spentVariance: s.costVariance,
     contingencyAllowance: contingency,
     quality: s.quality,
+    safety: s.safety,
+    morale: s.morale,
     risk: s.risk,
+    safetyPenalty,
     optimalCount,
     decisionCount,
     headline,
