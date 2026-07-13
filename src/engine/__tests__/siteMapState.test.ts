@@ -17,6 +17,19 @@ describe('site map zone data', () => {
     }
   });
 
+  it('every hand-traced footprint is a valid polygon within canvas bounds', () => {
+    for (const z of siteZones) {
+      if (!z.footprint) continue;
+      expect(z.footprint.length).toBeGreaterThanOrEqual(3);
+      for (const p of z.footprint) {
+        expect(p.x).toBeGreaterThanOrEqual(0);
+        expect(p.x).toBeLessThanOrEqual(100.01);
+        expect(p.y).toBeGreaterThanOrEqual(0);
+        expect(p.y).toBeLessThanOrEqual(100.01);
+      }
+    }
+  });
+
   it('estate build progress rises monotonically as phases complete', () => {
     const empty = siteBuildProgress(siteZones, new Set());
     expect(empty).toBe(0);

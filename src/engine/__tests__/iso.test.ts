@@ -18,7 +18,8 @@ describe('isometric projection', () => {
 });
 
 describe('zoneSolid — rectangle (legacy) zones', () => {
-  const zone = siteZones.find((z) => z.category === 'condo')!;
+  // a zone with no hand-traced footprint still renders as its x/y/w/h box
+  const zone = siteZones.find((z) => !z.footprint)!;
 
   it('flat zones have no walls and top === base footprint', () => {
     const s = zoneSolid(zone, 0);
@@ -95,10 +96,17 @@ describe('solidsBounds + svgPoints', () => {
     expect(Number.isFinite(b.minY)).toBe(true);
   });
 
-  it('serializes points as SVG polygon coordinates', () => {
-    const s = zoneSolid(siteZones[0], 5);
+  it('serializes points as SVG polygon coordinates, matching the zone footprint size', () => {
+    const zone = siteZones.find((z) => !z.footprint)!;
+    const s = zoneSolid(zone, 5);
     const str = svgPoints(s.top);
-    expect(str.split(' ')).toHaveLength(4);
+    expect(str.split(' ')).toHaveLength(4); // plain rectangle zone -> 4 points
     expect(str).toMatch(/^-?\d/);
+  });
+
+  it('serializes a hand-traced footprint at its own point count, not forced to 4', () => {
+    const zone = siteZones.find((z) => (z.footprint?.length ?? 0) > 4)!;
+    const s = zoneSolid(zone, 5);
+    expect(svgPoints(s.top).split(' ')).toHaveLength(zone.footprint!.length);
   });
 });
