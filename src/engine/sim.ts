@@ -107,6 +107,8 @@ export interface Advisor {
   label: string;
   cost: number; // B$
   blurb: string;
+  /** which mentor NPC delivers this advisor's help (see content/mentors) */
+  mentorId: string;
 }
 
 export const ADVISORS: Advisor[] = [
@@ -114,6 +116,7 @@ export const ADVISORS: Advisor[] = [
     id: 'qs-review',
     label: 'Bring in the QS',
     cost: 150,
+    mentorId: 'qs',
     blurb:
       'Your quantity surveyor prices every option before you choose — cost and schedule impacts shown for the rest of this phase. Consultants cost money; flying blind costs more.',
   },
@@ -121,6 +124,7 @@ export const ADVISORS: Advisor[] = [
     id: 'reserve-release',
     label: 'Release management reserve',
     cost: 250,
+    mentorId: 'owner',
     blurb:
       'Board-approved reserve drawdown: −$300K of cost variance. Real projects hold reserves above the contingency for exactly this.',
   },
@@ -128,6 +132,7 @@ export const ADVISORS: Advisor[] = [
     id: 'acceleration',
     label: 'Acceleration workshop',
     cost: 200,
+    mentorId: 'foreman',
     blurb:
       'A resequencing workshop with your supers and key subs recovers 5 days of slip. Schedule is bought back with planning, not shouting.',
   },

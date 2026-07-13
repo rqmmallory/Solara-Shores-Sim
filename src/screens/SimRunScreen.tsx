@@ -19,8 +19,11 @@ import {
   SimState,
 } from '../engine/sim';
 import { PREP_RISK_RELIEF, prepStatus } from '../engine/prep';
+import { mentorById, mentorReaction, phaseHost } from '../content/mentors';
 import { useAppState } from '../state/AppState';
-import { Body, Btn, Card, H1, H2, Meter, OptionRow, Screen, Small, Tag, TeachBox } from '../ui/components';
+import { Body, Btn, Card, Celebrate, Collapsible, H1, H2, Meter, OptionRow, Screen, Small, Tag, TeachBox } from '../ui/components';
+import MentorBubble from '../ui/MentorBubble';
+import { celebrateFeedback, impactFeedback, outcomeFeedback } from '../ui/feedback';
 import { colors } from '../ui/theme';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -43,13 +46,16 @@ export default function SimRunScreen({ route, navigation }: Props) {
     if (prep.qualified) carry.risk = Math.max(0, carry.risk - PREP_RISK_RELIEF);
     return initialSimState(phase, carry);
   };
+  const host = phaseHost(phaseId);
   const [sim, setSim] = useState<SimState | null>(startState);
   const [lastOutcome, setLastOutcome] = useState<{
     title: string;
     text: string;
     tone: 'good' | 'warn' | 'bad';
+    mentorId?: string;
   } | null>(null);
   const [banked, setBanked] = useState(false);
+  const [showCelebrate, setShowCelebrate] = useState(false);
 
   const pending = useMemo(
     () => (phase && sim?.pendingCurveball ? getCurveball(phase, sim.pendingCurveball) : null),
@@ -69,6 +75,8 @@ export default function SimRunScreen({ route, navigation }: Props) {
       finalRisk: sim.risk,
     });
     setBanked(true);
+    setShowCelebrate(true);
+    celebrateFeedback();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sim?.finished, sim?.pendingCurveball, banked]);
 
@@ -86,11 +94,18 @@ export default function SimRunScreen({ route, navigation }: Props) {
   // ---- finished: debrief ----
   if (sim.finished && !sim.pendingCurveball) {
     const d = debrief(phase, sim);
+    const debriefTone: 'good' | 'warn' | 'bad' = d.score >= 80 ? 'good' : d.score >= 60 ? 'warn' : 'bad';
     return (
+      <>
       <Screen>
         <H1>
           Phase debrief — Grade {d.grade}
         </H1>
+        <MentorBubble
+          mentor={host}
+          line={`${d.headline} ${mentorReaction(host, debriefTone, d.optimalCount + d.score)}`}
+          animateIn
+        />
         <Card>
           <Meter label="Phase score" value={d.score} color={d.score >= 70 ? colors.good : colors.warn} suffix="/100" />
           <Body style={{ fontWeight: '600', marginTop: 6 }}>{d.headline}</Body>
@@ -128,6 +143,13 @@ export default function SimRunScreen({ route, navigation }: Props) {
         />
         <Btn label="Back to phases" kind="ghost" onPress={() => navigation.goBack()} />
       </Screen>
+      <Celebrate
+        visible={showCelebrate}
+        title={`${phase.title.split('—').pop()?.trim() ?? 'Phase'} complete!`}
+        subtitle={`Grade ${d.grade} · +${XP.simPhaseComplete}+ XP banked · buildings raised on the map`}
+        onDone={() => setShowCelebrate(false)}
+      />
+      </>
     );
   }
 
@@ -174,8 +196,9 @@ export default function SimRunScreen({ route, navigation }: Props) {
                 style={{ marginTop: 0 }}
                 onPress={() => {
                   if (app.spendCapital(a.cost)) {
+                    impactFeedback('medium');
                     setSim((s) => (s ? applyAdvisor(s, a.id) : s));
-                    setLastOutcome({ title: a.label, text: a.blurb, tone: 'good' });
+                    setLastOutcome({ title: a.label, text: a.blurb, tone: 'good', mentorId: a.mentorId });
                   }
                 }}
               />
@@ -188,9 +211,15 @@ export default function SimRunScreen({ route, navigation }: Props) {
       </Card>
 
       {lastOutcome && (
-        <TeachBox tone={lastOutcome.tone}>
-          {lastOutcome.title}: {lastOutcome.text}
-        </TeachBox>
+        <MentorBubble
+          mentor={mentorById(lastOutcome.mentorId ?? host.id) ?? host}
+          line={`${lastOutcome.text}${
+            lastOutcome.mentorId
+              ? ''
+              : ` — ${mentorReaction(host, lastOutcome.tone, sim.log.length + lastOutcome.text.length)}`
+          }`}
+          animateIn
+        />
       )}
 
       {pending ? (
@@ -206,12 +235,14 @@ export default function SimRunScreen({ route, navigation }: Props) {
               label={o.label}
               detail={sim.revealEffects ? fmtEffectPreview(o.effects) : undefined}
               onPress={() => {
+                const tone = o.optimal ? 'good' : o.acceptable ? 'warn' : 'bad';
+                outcomeFeedback(tone);
                 const next = resolveCurveball(phase, sim, o);
                 setSim(next);
                 setLastOutcome({
                   title: pending.title,
                   text: `${o.outcome} Lesson: ${pending.lesson}`,
-                  tone: o.optimal ? 'good' : o.acceptable ? 'warn' : 'bad',
+                  tone,
                 });
               }}
             />
@@ -221,31 +252,31 @@ export default function SimRunScreen({ route, navigation }: Props) {
         <>
           {sim.log.length === 0 && !lastOutcome ? (
             <>
-              <TeachBox>{phase.intro}</TeachBox>
+              <MentorBubble mentor={host} line={phase.intro} animateIn />
               {sim.inheritedFlags.length > 0 || sim.carriedRisk > 0 ? (
-                <TeachBox tone="warn">
-                  Your earlier phases follow you in: {sim.inheritedFlags.length} standing decision
-                  {sim.inheritedFlags.length === 1 ? '' : 's'} (contracts signed, specs chosen,
-                  shortcuts taken)
-                  {sim.carriedRisk > 0
-                    ? ` and ${sim.carriedRisk} points of open risk carried forward`
-                    : ''}
-                  . Events in this phase can trace back to them.
-                </TeachBox>
+                <Collapsible
+                  tone="warn"
+                  summary={`Your past follows you in — ${sim.inheritedFlags.length} standing decision${
+                    sim.inheritedFlags.length === 1 ? '' : 's'
+                  }${sim.carriedRisk > 0 ? `, +${sim.carriedRisk} open risk` : ''}`}
+                >
+                  Contracts signed, specs chosen, and shortcuts taken in earlier phases can arm or
+                  defuse events here — and any open risk you finished the last phase carrying rides
+                  forward into this one.
+                </Collapsible>
               ) : null}
               {prep.qualified ? (
                 <TeachBox tone="good">
-                  Prep bonus active: you studied this phase's modules (
-                  {prep.modules.map((m) => m.short).join(', ')}) to {prep.avgProficiency}% —
-                  starting risk reduced by {PREP_RISK_RELIEF}. Knowing the material before the
-                  decisions is what preparation buys.
+                  ✅ Prep bonus active — you studied {prep.modules.map((m) => m.short).join(', ')} to{' '}
+                  {prep.avgProficiency}%, so you start with {PREP_RISK_RELIEF} less risk. Knowing the
+                  material before the decisions is what preparation buys.
                 </TeachBox>
               ) : prep.modules.length > 0 ? (
-                <TeachBox>
-                  Prep tip: study {prep.modules.map((m) => m.short).join(', ')} to 60%+ average
-                  proficiency before running this phase to start with reduced risk (currently{' '}
-                  {prep.avgProficiency}%).
-                </TeachBox>
+                <Collapsible tone="teach" summary={`Prep tip — study before you run (now ${prep.avgProficiency}%)`}>
+                  Take {prep.modules.map((m) => m.short).join(', ')} to 60%+ average proficiency
+                  before running this phase and you start with reduced risk exposure. Learning is a
+                  concrete in-game advantage, not homework.
+                </Collapsible>
               ) : null}
             </>
           ) : null}
@@ -262,13 +293,11 @@ export default function SimRunScreen({ route, navigation }: Props) {
               label={o.label}
               detail={sim.revealEffects ? fmtEffectPreview(o.effects) : undefined}
               onPress={() => {
+                const tone = o.optimal ? 'good' : o.acceptable ? 'warn' : 'bad';
+                outcomeFeedback(tone);
                 const next = chooseOption(phase, sim, o, defaultRng, app.state.settings.curveballFrequency);
                 setSim(next);
-                setLastOutcome({
-                  title: step.title,
-                  text: o.outcome,
-                  tone: o.optimal ? 'good' : o.acceptable ? 'warn' : 'bad',
-                });
+                setLastOutcome({ title: step.title, text: o.outcome, tone });
               }}
             />
           ))}

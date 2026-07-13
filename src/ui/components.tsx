@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
+  Animated,
+  Easing,
   ScrollView,
   StyleSheet,
   Text,
@@ -7,6 +9,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { tapFeedback } from './feedback';
 import { colors, space, type } from './theme';
 
 export function Screen({ children, scroll = true }: { children: React.ReactNode; scroll?: boolean }) {
@@ -122,6 +125,17 @@ export function Meter({
   suffix?: string;
 }) {
   const pct = Math.max(0, Math.min(1, max === 0 ? 0 : value / max));
+  // the fill slides to its new width instead of snapping — reads as a gauge
+  const anim = useRef(new Animated.Value(pct)).current;
+  useEffect(() => {
+    Animated.timing(anim, {
+      toValue: pct,
+      duration: 480,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
+    }).start();
+  }, [pct, anim]);
+  const width = anim.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] });
   return (
     <View style={{ marginVertical: space.xs }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -132,8 +146,130 @@ export function Meter({
         </Text>
       </View>
       <View style={styles.meterTrack}>
-        <View style={[styles.meterFill, { width: `${pct * 100}%`, backgroundColor: color }]} />
+        <Animated.View style={[styles.meterFill, { width, backgroundColor: color }]} />
       </View>
+    </View>
+  );
+}
+
+/**
+ * Decision-first disclosure. The choice and its stake stay on top; the
+ * reasoning ("the why") tucks behind a tap so a screen leads with action,
+ * not paragraphs. This is how the app stops reading as verbose.
+ */
+export function Collapsible({
+  summary,
+  children,
+  tone = 'teach',
+  openLabel = 'Why this matters',
+}: {
+  summary?: string;
+  children: React.ReactNode;
+  tone?: 'teach' | 'good' | 'bad' | 'warn';
+  openLabel?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const accent =
+    tone === 'good' ? colors.good : tone === 'bad' ? colors.bad : tone === 'warn' ? colors.warn : colors.teal;
+  return (
+    <View style={{ marginVertical: space.xs }}>
+      <TouchableOpacity
+        onPress={() => {
+          tapFeedback();
+          setOpen((o) => !o);
+        }}
+        style={styles.disclosureHeader}
+      >
+        <Text style={[styles.small, { color: accent, fontWeight: '700' }]}>
+          {open ? '▾ ' : '▸ '}
+          {summary ?? openLabel}
+        </Text>
+      </TouchableOpacity>
+      {open ? (
+        <View style={[styles.teach, { borderLeftColor: accent, marginTop: space.xs }]}>
+          {typeof children === 'string' ? <Text style={styles.body}>{children}</Text> : children}
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
+/**
+ * Full-screen celebration overlay for a phase completion — the reward beat.
+ * Scales/fades in, drops a burst of confetti, then calls onDone. Pure
+ * built-in Animated, so it runs in Expo Go with no extra native module.
+ */
+export function Celebrate({
+  visible,
+  title,
+  subtitle,
+  onDone,
+}: {
+  visible: boolean;
+  title: string;
+  subtitle?: string;
+  onDone: () => void;
+}) {
+  const pop = useRef(new Animated.Value(0)).current;
+  const confetti = useRef([...Array(14)].map(() => new Animated.Value(0))).current;
+
+  useEffect(() => {
+    if (!visible) return;
+    pop.setValue(0);
+    confetti.forEach((c) => c.setValue(0));
+    Animated.spring(pop, { toValue: 1, useNativeDriver: true, friction: 6, tension: 80 }).start();
+    Animated.stagger(
+      40,
+      confetti.map((c) =>
+        Animated.timing(c, {
+          toValue: 1,
+          duration: 1100,
+          easing: Easing.out(Easing.quad),
+          useNativeDriver: true,
+        })
+      )
+    ).start();
+    const t = setTimeout(onDone, 2200);
+    return () => clearTimeout(t);
+  }, [visible, pop, confetti, onDone]);
+
+  if (!visible) return null;
+  const emojis = ['🎉', '🏗️', '🏠', '⛵', '✨', '🥳', '🏢'];
+  return (
+    <View style={styles.celebrateOverlay} pointerEvents="box-none">
+      {confetti.map((c, i) => {
+        const startX = (i / confetti.length) * 100 - 50; // % spread around centre
+        const translateY = c.interpolate({ inputRange: [0, 1], outputRange: [-40, 420] });
+        const translateX = c.interpolate({ inputRange: [0, 1], outputRange: [0, startX] });
+        const opacity = c.interpolate({ inputRange: [0, 0.85, 1], outputRange: [1, 1, 0] });
+        return (
+          <Animated.Text
+            key={i}
+            style={{
+              position: 'absolute',
+              top: 60,
+              fontSize: 26,
+              opacity,
+              transform: [{ translateY }, { translateX }, { rotate: `${i * 40}deg` }],
+            }}
+          >
+            {emojis[i % emojis.length]}
+          </Animated.Text>
+        );
+      })}
+      <Animated.View
+        style={[
+          styles.celebrateCard,
+          {
+            opacity: pop,
+            transform: [{ scale: pop.interpolate({ inputRange: [0, 1], outputRange: [0.6, 1] }) }],
+          },
+        ]}
+      >
+        <Text style={{ fontSize: 44, textAlign: 'center' }}>🎉</Text>
+        <Text style={[styles.h1, { textAlign: 'center' }]}>{title}</Text>
+        {subtitle ? <Text style={[styles.small, { textAlign: 'center' }]}>{subtitle}</Text> : null}
+      </Animated.View>
     </View>
   );
 }
@@ -202,5 +338,28 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: space.m,
     marginVertical: space.s,
+  },
+  disclosureHeader: {
+    paddingVertical: 4,
+  },
+  celebrateOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(8,14,24,0.72)',
+    zIndex: 50,
+  },
+  celebrateCard: {
+    backgroundColor: colors.card,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: colors.accent,
+    paddingVertical: space.xl,
+    paddingHorizontal: space.xl,
+    minWidth: 260,
   },
 });

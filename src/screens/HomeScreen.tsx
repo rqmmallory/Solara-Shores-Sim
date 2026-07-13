@@ -3,10 +3,12 @@ import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { modules, readyModules } from '../content';
+import { mentorById } from '../content/mentors';
 import { LEARNING_PATH, nextOnPath, pathProgress } from '../engine/learningPath';
 import { daysToGroundbreak, levelForXp, moduleProficiency } from '../engine/progress';
 import { useAppState } from '../state/AppState';
 import { Body, Btn, Card, H1, H2, Meter, Screen, Small, TeachBox } from '../ui/components';
+import MentorBubble from '../ui/MentorBubble';
 import { colors } from '../ui/theme';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -21,10 +23,22 @@ export default function HomeScreen() {
     .map((m) => ({ m, p: moduleProficiency(m, app.state.moduleStats[m.id]) }))
     .sort((a, b) => a.p - b.p)[0];
 
+  // the Foreman's daily briefing: always surface the single most useful next move
+  const nextStep = nextOnPath(app.state.moduleStats);
+  const foreman = mentorById('foreman')!;
+  const briefing =
+    due > 0
+      ? `${due} review ${due === 1 ? 'question is' : 'questions are'} due — knock those out first, boss. Easy capital and it keeps things stuck.`
+      : nextStep
+        ? `Next on your path is ${nextStep.short}. Get it to 70% and the next one opens up — that's how we build you from the ground up.`
+        : `Your book learning's solid. Take the sim again and defend those grades — that's where it counts.`;
+
   return (
     <Screen>
       <H1>Solara Shores</H1>
-      <Small style={{ marginBottom: 12 }}>Owner-developer training · Yamacraw Road, New Providence</Small>
+      <Small style={{ marginBottom: 8 }}>Owner-developer training · Yamacraw Road, New Providence</Small>
+
+      <MentorBubble mentor={foreman} line={briefing} animateIn />
 
       <Card>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>

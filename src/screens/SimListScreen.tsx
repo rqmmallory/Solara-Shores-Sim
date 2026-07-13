@@ -6,8 +6,10 @@ import { simPhases } from '../content';
 import type { CurveballFrequency } from '../engine/sim';
 import { WEATHER_TABLE } from '../engine/weather';
 import { useAppState } from '../state/AppState';
+import { phaseHost } from '../content/mentors';
 import { Body, Card, H1, H2, Screen, Small, Tag } from '../ui/components';
-import SiteMapView from '../ui/SiteMapView';
+import IsoSiteMap from '../ui/IsoSiteMap';
+import MentorBubble from '../ui/MentorBubble';
 import { colors } from '../ui/theme';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -26,13 +28,23 @@ export default function SimListScreen() {
   return (
     <Screen>
       <H1>Build Solara Shores</H1>
-      <Small style={{ marginBottom: 12 }}>
-        The actual project, phase by phase. Every gate is a real decision from the research; wrong
-        calls cost days, dollars, and quality — never a game-over. New phases unlock as they're
-        built into the app.
-      </Small>
 
-      <SiteMapView records={app.state.simRecords} />
+      {(() => {
+        const next =
+          simPhases.find(
+            (p) => p.status !== 'placeholder' && !app.state.simRecords.some((r) => r.phaseId === p.id)
+          ) ?? simPhases[0];
+        const host = phaseHost(next.id);
+        return (
+          <MentorBubble
+            mentor={host}
+            line={`${host.greeting} Next up: ${next.title}.`}
+            animateIn
+          />
+        );
+      })()}
+
+      <IsoSiteMap records={app.state.simRecords} />
 
       <Card>
         <Body style={{ fontWeight: '600', marginBottom: 4 }}>Curveball frequency</Body>

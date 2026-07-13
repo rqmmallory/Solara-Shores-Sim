@@ -24,8 +24,16 @@ npm run typecheck  # tsc --noEmit
 The `start`/`android`/`ios`/`web` scripts invoke
 `node ./node_modules/expo/bin/cli` directly (not the bare `expo` command),
 so a stale **global `expo-cli`** elsewhere on your `PATH` can't shadow them —
-this project is Expo SDK 57; the old global `expo-cli` package caps at SDK 46
-and is deprecated upstream.
+this project is Expo SDK 54 (matched to the Expo Go build on the test
+device); the old global `expo-cli` package caps at SDK 46 and is deprecated
+upstream.
+
+> **Running from a Codespace / cloud dev box?** LAN mode hands your phone a
+> private `10.x`/`exp.direct` address it can't reach. Use `npm start -- --tunnel`
+> (needs `@expo/ngrok`), or forward port **8081** as **Public** in the VS Code
+> Ports panel and open that `https://…app.github.dev` URL in Expo Go. The
+> isometric map needs `react-native-svg` and haptics need `expo-haptics` —
+> both ship in Expo Go, so no custom dev build is required.
 
 ### Still seeing "SDK 46" / metro TerminalReporter errors?
 
@@ -40,13 +48,13 @@ npm ls -g --depth=0 | grep expo-cli
 npm uninstall -g expo-cli
 hash -r                           # clear your shell's cached command lookup
 
-# confirm the LOCAL SDK 57 CLI is what actually runs:
-node ./node_modules/expo/bin/cli --version   # should print 57.x
+# confirm the LOCAL SDK 54 CLI is what actually runs:
+node ./node_modules/expo/bin/cli --version   # should print 54.x
 
 npm start -- --tunnel             # always use the npm script, not bare `expo`
 ```
 
-If `node ./node_modules/expo/bin/cli --version` doesn't print `57.x`,
+If `node ./node_modules/expo/bin/cli --version` doesn't print `54.x`,
 `node_modules` is out of sync with `package.json` — run
 `rm -rf node_modules && npm install` and try again.
 
@@ -77,9 +85,11 @@ If `node ./node_modules/expo/bin/cli --version` doesn't print `57.x`,
    tracks calibration over time. Every problem shows a full worked solution.
 
 3. **Subdivision simulation (Sim tab)** — the actual project, phase by phase,
-   with a visual **site-progress map** that fills in as phases complete, and
-   sequential phase unlocking (the critical path is the critical path).
-   Playable now:
+   on a **living isometric site map** (`ui/IsoSiteMap.tsx`, projection math in
+   `engine/iso.ts`): the real master-plan parcels render in 2.5D and *extrude
+   into shaded buildings that rise out of the ground* as you complete phases —
+   tap any parcel for its build status. Phases unlock sequentially (the
+   critical path is the critical path). Playable now:
    - **Phase 1 — Enabling Works & Site Prep**: six decision gates (CEC timing,
      geotech, rock classification, crusher, QA lab, hurricane prep) plus a
      curveball pool (karst void, rock claim, storm warning, permit query, sub
@@ -123,6 +133,25 @@ Two interlocks tie learning to the sim:
   intuition → trade science → coast → production → running the business), with
   a next-step card on Home. Each module's PLAIN register assumes only what
   earlier path entries taught.
+
+## Game feel
+
+Teaching still comes first, but the delivery is built to draw you in:
+
+- **Mentor characters** (`content/mentors.ts`, `ui/MentorBubble.tsx`) — the
+  "why" is spoken by a named cast with a point of view: **Deacon** the site
+  foreman gives your daily briefing on Home, **Dr. Rolle** (geotech),
+  **Cap** (marine super), **Ing. Adderley** (structural engineer),
+  **Marguerite** (QS), and **You** (owner) host the phases they own and react
+  to every decision you make. They frame the facts; the facts still live in
+  the module/sim JSON.
+- **Decision-first cards** (`Collapsible`) — screens lead with the choice and
+  its stake; the reasoning tucks behind a "Why this matters" tap, so nothing
+  reads as a wall of text.
+- **Juice** — animated gauge meters, `expo-haptics` on every graded outcome
+  (success / warning / error patterns), and a confetti **phase-complete
+  celebration**. All built on React Native's `Animated`, so it runs in Expo
+  Go with no custom native build.
 
 ## Content architecture — how to drop research in
 
