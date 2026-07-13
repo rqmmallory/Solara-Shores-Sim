@@ -35,6 +35,10 @@ export interface PersistedState {
   capital: number;
   /** ids of achievements the player has unlocked (see engine/achievements) */
   achievements: string[];
+  /** last claimed daily challenge — { key: day-key, id } — one claim per day */
+  dailyClaim: { key: string; id: string } | null;
+  /** last claimed weekly contract — { key: week-key, id } */
+  weeklyClaim: { key: string; id: string } | null;
   settings: {
     curveballFrequency: CurveballFrequency;
   };
@@ -50,6 +54,8 @@ export function emptyState(): PersistedState {
     simRuns: {},
     capital: 0,
     achievements: [],
+    dailyClaim: null,
+    weeklyClaim: null,
     settings: { curveballFrequency: 'realistic' },
   };
 }

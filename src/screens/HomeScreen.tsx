@@ -93,6 +93,8 @@ export default function HomeScreen() {
         </TeachBox>
       )}
 
+      <ChallengesCard />
+
       <LearningPathCard />
 
       <AchievementsCard />
@@ -121,6 +123,61 @@ export default function HomeScreen() {
         modules light up as research drops into the content files — no app update needed.
       </Small>
     </Screen>
+  );
+}
+
+/**
+ * Daily challenge + weekly contract: the "come back tomorrow" loop. Each is a
+ * bite-sized goal with a CM Capital reward, claimable once per period when
+ * satisfied. Deterministic from the date, so it rotates predictably.
+ */
+function ChallengesCard() {
+  const app = useAppState();
+  // re-render on claim by reading a local tick
+  const [, force] = React.useReducer((n) => n + 1, 0);
+  const daily = app.dailyStatus();
+  const weekly = app.weeklyStatus();
+
+  const Row = ({
+    kind,
+    label,
+    status,
+  }: {
+    kind: 'daily' | 'weekly';
+    label: string;
+    status: { challenge: { title: string; description: string; reward: number }; satisfied: boolean; claimed: boolean };
+  }) => (
+    <View style={{ marginTop: 8 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Small style={{ color: colors.text, fontWeight: '700' }}>{label}</Small>
+        <Small style={{ color: colors.accent }}>+B${status.challenge.reward}</Small>
+      </View>
+      <Body style={{ fontWeight: '600' }}>{status.challenge.title}</Body>
+      <Small>{status.challenge.description}</Small>
+      {status.claimed ? (
+        <Tag label="Claimed ✓" color={colors.good} />
+      ) : status.satisfied ? (
+        <Btn
+          label={`Claim +B$${status.challenge.reward}`}
+          kind="teal"
+          onPress={() => {
+            app.claimChallenge(kind);
+            force();
+          }}
+        />
+      ) : (
+        <Tag label="Not yet — keep going" color={colors.muted} />
+      )}
+    </View>
+  );
+
+  return (
+    <Card>
+      <Body style={{ fontWeight: '600' }}>Challenges</Body>
+      <Small>Bite-sized goals that pay CM Capital. They refresh each day and week.</Small>
+      <Row kind="daily" label="TODAY" status={daily} />
+      <Row kind="weekly" label="THIS WEEK" status={weekly} />
+    </Card>
   );
 }
 

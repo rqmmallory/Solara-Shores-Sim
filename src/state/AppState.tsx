@@ -23,7 +23,8 @@ import {
   XP,
 } from '../engine/progress';
 import { companyReputation, rankForXp } from '../engine/career';
-import { evaluateAchievements, rewardFor } from '../engine/achievements';
+import { AchievementContext, evaluateAchievements, rewardFor } from '../engine/achievements';
+import { dailyChallenge, dayKey, weekKey, weeklyContract } from '../engine/challenges';
 import { nextOnPath } from '../engine/learningPath';
 import { dueItems, recordMiss, recordReviewPass, SrsItem } from '../engine/spacedRepetition';
 import { emptyState, loadState, PersistedState, saveStateDebounced } from './store';
@@ -56,10 +57,46 @@ interface AppStateValue {
   simCarryFor: (phaseId: string) => { flags: string[]; risk: number };
   /** spend CM Capital (B$); returns false (and spends nothing) if short */
   spendCapital: (amount: number) => boolean;
+  /** today's daily challenge + whether it's satisfied/already claimed */
+  dailyStatus: () => { challenge: import('../engine/challenges').Challenge; satisfied: boolean; claimed: boolean };
+  /** this week's contract + whether it's satisfied/already claimed */
+  weeklyStatus: () => { challenge: import('../engine/challenges').Challenge; satisfied: boolean; claimed: boolean };
+  /** claim a daily/weekly reward if satisfied and unclaimed; returns B$ paid (0 if not) */
+  claimChallenge: (kind: 'daily' | 'weekly') => number;
   setCurveballFrequency: (f: CurveballFrequency) => void;
 }
 
 const Ctx = createContext<AppStateValue | null>(null);
+
+/**
+ * Build the pure state snapshot that achievements and challenges test against.
+ * Kept at module scope so both the achievement effect and challenge-claiming
+ * share one definition of "where the player is right now".
+ */
+function buildContext(state: PersistedState): AchievementContext {
+  const gradable = modules.filter((m) => m.status !== 'placeholder');
+  const knowledge =
+    gradable.length === 0
+      ? 0
+      : Math.round(
+          gradable.reduce((acc, m) => acc + moduleProficiency(m, state.moduleStats[m.id]), 0) /
+            gradable.length
+        );
+  const totalXp =
+    Object.values(state.moduleStats).reduce((acc, m) => acc + m.xp, 0) + state.mathStats.xp;
+  return {
+    totalXp,
+    capital: state.capital,
+    modulesMastered: gradable.filter((m) => moduleProficiency(m, state.moduleStats[m.id]) >= 70).length,
+    pathComplete: nextOnPath(state.moduleStats) === null,
+    mathAttempts: state.mathStats.attempts,
+    mathReadiness: mathReadiness(state.mathStats),
+    projectsCompleted: state.simRecords.length,
+    bestGrade: state.simRecords.reduce((acc, r) => Math.max(acc, r.bestScore), 0),
+    reputation: companyReputation(knowledge, state.simRecords),
+    rankIndex: rankForXp(totalXp).index,
+  };
+}
 
 export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<PersistedState>(emptyState);
@@ -83,29 +120,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   // converges in a single pass and never loops.
   useEffect(() => {
     if (!ready) return;
-    const gradable = modules.filter((m) => m.status !== 'placeholder');
-    const knowledge =
-      gradable.length === 0
-        ? 0
-        : Math.round(
-            gradable.reduce((acc, m) => acc + moduleProficiency(m, state.moduleStats[m.id]), 0) /
-              gradable.length
-          );
-    const totalXp =
-      Object.values(state.moduleStats).reduce((acc, m) => acc + m.xp, 0) + state.mathStats.xp;
-    const ctx = {
-      totalXp,
-      capital: state.capital,
-      modulesMastered: gradable.filter((m) => moduleProficiency(m, state.moduleStats[m.id]) >= 70).length,
-      pathComplete: nextOnPath(state.moduleStats) === null,
-      mathAttempts: state.mathStats.attempts,
-      mathReadiness: mathReadiness(state.mathStats),
-      projectsCompleted: state.simRecords.length,
-      bestGrade: state.simRecords.reduce((acc, r) => Math.max(acc, r.bestScore), 0),
-      reputation: companyReputation(knowledge, state.simRecords),
-      rankIndex: rankForXp(totalXp).index,
-    };
-    const newly = evaluateAchievements(ctx, state.achievements);
+    const newly = evaluateAchievements(buildContext(state), state.achievements);
     if (newly.length > 0) {
       mutate((s) => ({
         ...s,
@@ -265,6 +280,41 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     [mutate]
   );
 
+  const dailyStatus = useCallback(() => {
+    const challenge = dailyChallenge(Date.now());
+    const s = stateRef.current;
+    const claimed = s.dailyClaim?.key === dayKey(Date.now()) && s.dailyClaim?.id === challenge.id;
+    return { challenge, satisfied: challenge.test(buildContext(s)), claimed };
+  }, []);
+
+  const weeklyStatus = useCallback(() => {
+    const challenge = weeklyContract(Date.now());
+    const s = stateRef.current;
+    const claimed = s.weeklyClaim?.key === weekKey(Date.now()) && s.weeklyClaim?.id === challenge.id;
+    return { challenge, satisfied: challenge.test(buildContext(s)), claimed };
+  }, []);
+
+  const claimChallenge = useCallback(
+    (kind: 'daily' | 'weekly'): number => {
+      const now = Date.now();
+      const s = stateRef.current;
+      const challenge = kind === 'daily' ? dailyChallenge(now) : weeklyContract(now);
+      const key = kind === 'daily' ? dayKey(now) : weekKey(now);
+      const claim = kind === 'daily' ? s.dailyClaim : s.weeklyClaim;
+      const already = claim?.key === key && claim?.id === challenge.id;
+      if (already || !challenge.test(buildContext(s))) return 0;
+      mutate((st) => ({
+        ...st,
+        capital: st.capital + challenge.reward,
+        ...(kind === 'daily'
+          ? { dailyClaim: { key, id: challenge.id } }
+          : { weeklyClaim: { key, id: challenge.id } }),
+      }));
+      return challenge.reward;
+    },
+    [mutate]
+  );
+
   const setCurveballFrequency = useCallback(
     (f: CurveballFrequency) => {
       mutate((s) => ({ ...s, settings: { ...s.settings, curveballFrequency: f } }));
@@ -295,9 +345,12 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       recordSimRun,
       simCarryFor,
       spendCapital,
+      dailyStatus,
+      weeklyStatus,
+      claimChallenge,
       setCurveballFrequency,
     };
-  }, [ready, state, recordQuizResult, recordDecisionSeen, recordMath, recordSimRun, simCarryFor, spendCapital, setCurveballFrequency]);
+  }, [ready, state, recordQuizResult, recordDecisionSeen, recordMath, recordSimRun, simCarryFor, spendCapital, dailyStatus, weeklyStatus, claimChallenge, setCurveballFrequency]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

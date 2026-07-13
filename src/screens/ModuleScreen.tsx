@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { moduleById } from '../content';
+import { mentorForModule } from '../content/mentors';
 import { moduleProficiency } from '../engine/progress';
+import { adaptiveGuidance, assistLabel, assistLevel } from '../engine/mentorGuidance';
 import { fmtWithUnit } from '../engine/format';
 import { useAppState } from '../state/AppState';
 import { Body, Btn, Card, H1, H2, Meter, Screen, Small, Tag, TeachBox } from '../ui/components';
+import MentorBubble from '../ui/MentorBubble';
 import { colors } from '../ui/theme';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -34,6 +37,20 @@ export default function ModuleScreen({ route, navigation }: Props) {
       <H1>{m.title}</H1>
       <Meter label="Proficiency" value={prof} suffix="%" color={prof >= 80 ? colors.good : colors.teal} />
       <TeachBox>{m.summary}</TeachBox>
+
+      {/* the topic's mentor, adapting how much they help to your mastery */}
+      {(() => {
+        const mentor = mentorForModule(m.id);
+        return (
+          <>
+            <MentorBubble mentor={mentor} line={adaptiveGuidance(mentor, prof, m.short)} animateIn />
+            <Small style={{ marginTop: -4, marginBottom: 8 }}>
+              {mentor.name} is {assistLabel(assistLevel(prof)).toLowerCase()} — the more you master this,
+              the more they step back.
+            </Small>
+          </>
+        );
+      })()}
 
       {m.sections.length > 0 && (
         <>
