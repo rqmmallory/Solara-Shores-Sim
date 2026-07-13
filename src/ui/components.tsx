@@ -212,6 +212,11 @@ export function Celebrate({
 }) {
   const pop = useRef(new Animated.Value(0)).current;
   const confetti = useRef([...Array(14)].map(() => new Animated.Value(0))).current;
+  // hold the latest onDone in a ref so the animation effect keys only off
+  // `visible` — an inline onDone changing identity each render can't restart
+  // the animation or reset the auto-dismiss timer.
+  const onDoneRef = useRef(onDone);
+  onDoneRef.current = onDone;
 
   useEffect(() => {
     if (!visible) return;
@@ -229,9 +234,9 @@ export function Celebrate({
         })
       )
     ).start();
-    const t = setTimeout(onDone, 2200);
+    const t = setTimeout(() => onDoneRef.current(), 2200);
     return () => clearTimeout(t);
-  }, [visible, pop, confetti, onDone]);
+  }, [visible, pop, confetti]);
 
   if (!visible) return null;
   const emojis = ['🎉', '🏗️', '🏠', '⛵', '✨', '🥳', '🏢'];
