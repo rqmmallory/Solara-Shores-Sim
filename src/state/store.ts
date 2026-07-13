@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { CurveballFrequency } from '../engine/sim';
 import type { MathStats, ModuleStats, SimRecord } from '../engine/progress';
 import { emptyMathStats } from '../engine/progress';
+import { DISTRICTS, DistrictProgress, initialProgress } from '../engine/districts';
 import type { SrsItem } from '../engine/spacedRepetition';
 
 /** the latest completed run of a phase — the canonical "what you did",
@@ -39,9 +40,19 @@ export interface PersistedState {
   dailyClaim: { key: string; id: string } | null;
   /** last claimed weekly contract — { key: week-key, id } */
   weeklyClaim: { key: string; id: string } | null;
+  /**
+   * live construction progress per work front (see engine/districts). Each
+   * district fills toward the ceiling its decisions authorise, over elapsed
+   * real time — so the estate keeps building while the app is closed.
+   */
+  districts: Record<string, DistrictProgress>;
   settings: {
     curveballFrequency: CurveballFrequency;
   };
+}
+
+function freshDistricts(now: number): Record<string, DistrictProgress> {
+  return Object.fromEntries(DISTRICTS.map((d) => [d.id, initialProgress(now)]));
 }
 
 export function emptyState(): PersistedState {
@@ -56,6 +67,7 @@ export function emptyState(): PersistedState {
     achievements: [],
     dailyClaim: null,
     weeklyClaim: null,
+    districts: freshDistricts(Date.now()),
     settings: { curveballFrequency: 'realistic' },
   };
 }
@@ -74,6 +86,7 @@ export async function loadState(): Promise<PersistedState> {
       ...base,
       ...parsed,
       mathStats: { ...base.mathStats, ...parsed.mathStats },
+      districts: { ...base.districts, ...(parsed.districts ?? {}) },
       settings: { ...base.settings, ...parsed.settings },
     };
   } catch {

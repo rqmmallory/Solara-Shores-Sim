@@ -25,6 +25,7 @@ import {
 import { companyReputation, rankForXp } from '../engine/career';
 import { AchievementContext, evaluateAchievements, rewardFor } from '../engine/achievements';
 import { dailyChallenge, dayKey, weekKey, weeklyContract } from '../engine/challenges';
+import { accrue, ceilingStage, DISTRICTS, DistrictProgress, initialProgress } from '../engine/districts';
 import { nextOnPath } from '../engine/learningPath';
 import { dueItems, recordMiss, recordReviewPass, SrsItem } from '../engine/spacedRepetition';
 import { emptyState, loadState, PersistedState, saveStateDebounced } from './store';
@@ -130,6 +131,34 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, ready]);
+
+  // the construction clock: advance every work front toward the ceiling its
+  // decisions authorise, by real elapsed time. Runs once on load (offline
+  // catch-up) then on an interval while open. Better reputation builds faster.
+  useEffect(() => {
+    if (!ready) return;
+    const tick = () => {
+      mutate((s) => {
+        const completed = new Set(s.simRecords.map((r) => r.phaseId));
+        const rep = buildContext(s).reputation;
+        const mult = 0.6 + (rep / 100) * 0.8; // 0.6× (unproven) → 1.4× (blue-chip)
+        const now = Date.now();
+        const next: Record<string, DistrictProgress> = {};
+        let changed = false;
+        for (const d of DISTRICTS) {
+          const cur = s.districts[d.id] ?? initialProgress(now);
+          const advanced = accrue(cur, d, ceilingStage(d, completed), now, mult);
+          next[d.id] = advanced;
+          if (advanced.pos !== cur.pos || advanced.lastTickAt !== cur.lastTickAt) changed = true;
+        }
+        return changed ? { ...s, districts: next } : s;
+      });
+    };
+    tick();
+    const id = setInterval(tick, 30_000);
+    return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready]);
 
   const mutate = useCallback((fn: (s: PersistedState) => PersistedState) => {
     setState((s) => fn(s));
