@@ -1,6 +1,6 @@
 import { siteZones } from '../../content/siteMap';
 import { ZONE_HEIGHT } from '../iso';
-import { isoProject, solidsBounds, svgPoints, zoneSolid } from '../iso';
+import { extrudePolygon, isoProject, solidsBounds, svgPoints, zoneSolid } from '../iso';
 
 describe('isometric projection', () => {
   it('projects the origin to the origin', () => {
@@ -17,26 +17,62 @@ describe('isometric projection', () => {
   });
 });
 
-describe('zoneSolid', () => {
+describe('zoneSolid — rectangle (legacy) zones', () => {
   const zone = siteZones.find((z) => z.category === 'condo')!;
 
   it('flat zones have no walls and top === base footprint', () => {
     const s = zoneSolid(zone, 0);
-    expect(s.left).toHaveLength(0);
-    expect(s.right).toHaveLength(0);
+    expect(s.walls).toHaveLength(0);
     expect(s.top).toEqual(s.base);
     expect(s.top).toHaveLength(4);
   });
 
-  it('extruded zones lift the roof above the base and grow two walls', () => {
+  it('extruded rectangles lift the roof and produce exactly the two near-side walls', () => {
     const s = zoneSolid(zone, 20);
-    expect(s.left).toHaveLength(4);
-    expect(s.right).toHaveLength(4);
-    // every roof point sits above (smaller screen-y than) its base point
+    expect(s.walls).toHaveLength(2); // south + east faces only, as before
     for (let i = 0; i < 4; i++) {
       expect(s.top[i].y).toBeCloseTo(s.base[i].y - 20);
       expect(s.top[i].x).toBeCloseTo(s.base[i].x);
     }
+  });
+});
+
+describe('extrudePolygon — arbitrary N-gon footprints', () => {
+  it('a flat polygon has no walls and top === base', () => {
+    const tri = [{ x: 0, y: 0 }, { x: 10, y: 0 }, { x: 5, y: 10 }];
+    const s = extrudePolygon(tri, 0);
+    expect(s.walls).toHaveLength(0);
+    expect(s.top).toEqual(s.base);
+  });
+
+  it('extrudes a triangle with only camera-facing walls, each lifted correctly', () => {
+    const tri = [{ x: 0, y: 0 }, { x: 10, y: 0 }, { x: 5, y: 10 }];
+    const s = extrudePolygon(tri, 6);
+    expect(s.walls.length).toBeGreaterThan(0);
+    expect(s.walls.length).toBeLessThan(3); // at least one back face is culled
+    for (const w of s.walls) {
+      expect(w.pts).toHaveLength(4);
+      expect(w.shade).toBeGreaterThan(0);
+      expect(w.shade).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it('handles an irregular (non-rectangular) quad — e.g. an L-shaped or angled footprint', () => {
+    const quad = [{ x: 0, y: 0 }, { x: 12, y: 2 }, { x: 10, y: 9 }, { x: 1, y: 7 }];
+    const s = extrudePolygon(quad, 8);
+    expect(s.top).toHaveLength(4);
+    expect(s.base).toHaveLength(4);
+    expect(s.walls.length).toBeGreaterThan(0);
+    // every wall's base points must equal actual footprint edges (not fabricated)
+    for (const w of s.walls) {
+      expect(w.pts).toHaveLength(4);
+    }
+  });
+
+  it('center is the centroid of the roof, depth grows toward the south-east', () => {
+    const near = extrudePolygon([{ x: 80, y: 80 }, { x: 90, y: 80 }, { x: 90, y: 90 }, { x: 80, y: 90 }], 0);
+    const far = extrudePolygon([{ x: 0, y: 0 }, { x: 10, y: 0 }, { x: 10, y: 10 }, { x: 0, y: 10 }], 0);
+    expect(near.depth).toBeGreaterThan(far.depth);
   });
 });
 

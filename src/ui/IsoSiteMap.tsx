@@ -164,12 +164,9 @@ export default function IsoSiteMap({ districts }: { districts: Record<string, Di
                     {!flat ? (
                       <Polygon points={svgPoints(solid.base)} fill={shade(topColor, 0.32)} />
                     ) : null}
-                    {solid.left.length ? (
-                      <Polygon points={svgPoints(solid.left)} fill={shade(topColor, 0.55)} />
-                    ) : null}
-                    {solid.right.length ? (
-                      <Polygon points={svgPoints(solid.right)} fill={shade(topColor, 0.78)} />
-                    ) : null}
+                    {solid.walls.map((w, wi) => (
+                      <Polygon key={wi} points={svgPoints(w.pts)} fill={shade(topColor, w.shade)} />
+                    ))}
                     <Polygon
                       points={svgPoints(solid.top)}
                       fill={topColor}

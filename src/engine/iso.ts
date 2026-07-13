@@ -1,9 +1,10 @@
 /**
  * Isometric projection math for the living site map. Pure geometry — no
- * rendering — so it can be unit-tested. The map reuses the real master-plan
- * zone rectangles from content/siteMap (top-down percentages) and projects
- * them into a 2.5D isometric scene: flat parcels become ground diamonds and
- * built parcels extrude into shaded 3D volumes that rise out of the ground.
+ * rendering — so it can be unit-tested. Zones project a top-down plan
+ * footprint (either a simple rectangle, or an arbitrary hand-traced polygon —
+ * a marina outline, a condo silhouette, a lake) into a 2.5D isometric scene:
+ * flat parcels become ground shapes and built parcels extrude into shaded
+ * volumes that rise out of the ground.
  *
  * Plan space: X is 0..100 (canvas width %), Y is scaled by 1/CANVAS_ASPECT
  * so the tall New Providence wedge keeps its real proportions in iso.
@@ -45,15 +46,19 @@ export const ZONE_HEIGHT: Record<ZoneCategory, number> = {
   beach: 0,
 };
 
+/** one visible wall face: its projected quad and a 0..1 shade factor */
+export interface WallFace {
+  pts: Pt[];
+  shade: number;
+}
+
 export interface ZoneSolid {
-  /** roof / ground-footprint diamond (4 pts) */
+  /** roof / ground-footprint polygon, N points (matches the footprint) */
   top: Pt[];
-  /** left visible wall (empty when flat) */
-  left: Pt[];
-  /** right visible wall (empty when flat) */
-  right: Pt[];
-  /** ground footprint diamond (4 pts) — the base shadow the volume sits on */
+  /** ground footprint polygon — the base shadow the volume sits on */
   base: Pt[];
+  /** visible (camera-facing) wall quads, empty when flat */
+  walls: WallFace[];
   height: number;
   /** centroid of the roof, for labels/icons */
   center: Pt;
@@ -67,39 +72,77 @@ function planY(pct: number): number {
 }
 
 /**
- * Build the projected faces of one zone extruded to `height` plan units.
- * A height of 0 yields a flat diamond (top === base, no walls).
+ * Extrude an arbitrary plan-space polygon (already in iso plan units — Y
+ * pre-scaled by planY) to `height` plan units. Works for any simple polygon,
+ * not just rectangles: a triangle, an L-shape, a hand-traced building outline.
+ *
+ * Wall visibility: for a 2:1 isometric camera looking from the south-east, an
+ * edge is camera-facing if its midpoint lies south-east of the polygon's
+ * centroid (i.e. `(mx - cx) + (my - cy) > 0`) — the same test that already
+ * identified exactly the two near-side walls of a rectangle, generalized to N
+ * edges. Each visible wall is shaded toward whichever axis (east/south) its
+ * outward direction dominates, matching the existing two-tone convention.
+ */
+export function extrudePolygon(planPoints: Pt[], height: number): ZoneSolid {
+  const n = planPoints.length;
+  const base = planPoints.map((p) => isoProject(p.x, p.y));
+  const lift = (p: Pt): Pt => ({ x: p.x, y: p.y - height });
+  const top = base.map(lift);
+
+  const cx = planPoints.reduce((a, p) => a + p.x, 0) / n;
+  const cy = planPoints.reduce((a, p) => a + p.y, 0) / n;
+
+  const walls: WallFace[] = [];
+  if (height > 0) {
+    for (let i = 0; i < n; i++) {
+      const p1 = planPoints[i];
+      const p2 = planPoints[(i + 1) % n];
+      const mx = (p1.x + p2.x) / 2;
+      const my = (p1.y + p2.y) / 2;
+      const dx = mx - cx;
+      const dy = my - cy;
+      if (dx + dy <= 0) continue; // back-facing — hidden behind the roof/near walls
+      const b1 = base[i];
+      const b2 = base[(i + 1) % n];
+      const t1 = top[i];
+      const t2 = top[(i + 1) % n];
+      const shade = Math.abs(dx) > Math.abs(dy) ? 0.78 : 0.55; // east-ish : south-ish
+      walls.push({ pts: [b1, b2, t2, t1], shade });
+    }
+  }
+
+  const center = {
+    x: top.reduce((a, p) => a + p.x, 0) / n,
+    y: top.reduce((a, p) => a + p.y, 0) / n,
+  };
+  const depth = cx + cy;
+
+  return { top, base, walls, height, center, depth };
+}
+
+/**
+ * Build the projected solid for a content zone, extruded to `height` plan
+ * units. Zones with a hand-traced `footprint` extrude that polygon directly;
+ * legacy rectangle zones (`x`/`y`/`w`/`h` only) extrude their bounding box.
  */
 export function zoneSolid(zone: SiteZone, height: number): ZoneSolid {
-  const x0 = zone.x;
-  const x1 = zone.x + zone.w;
-  const y0 = planY(zone.y);
-  const y1 = planY(zone.y + zone.h);
+  const planPoints: Pt[] = zone.footprint
+    ? zone.footprint.map((p) => ({ x: p.x, y: planY(p.y) }))
+    : rectCorners(zone.x, zone.y, zone.w, zone.h);
+  return extrudePolygon(planPoints, height);
+}
 
-  // ground footprint corners, projected (N, E, S, W of the diamond)
-  const gN = isoProject(x0, y0);
-  const gE = isoProject(x1, y0);
-  const gS = isoProject(x1, y1);
-  const gW = isoProject(x0, y1);
-  const base = [gN, gE, gS, gW];
-
-  // up is negative screen-y
-  const lift = (p: Pt): Pt => ({ x: p.x, y: p.y - height });
-  const rN = lift(gN);
-  const rE = lift(gE);
-  const rS = lift(gS);
-  const rW = lift(gW);
-  const top = [rN, rE, rS, rW];
-
-  // the two walls meeting at the front (nearest) corner gS
-  const right = height > 0 ? [gE, gS, rS, rE] : [];
-  const left = height > 0 ? [gS, gW, rW, rS] : [];
-
-  const center = { x: (rN.x + rS.x) / 2, y: (rN.y + rS.y) / 2 };
-  // depth by footprint centroid: farther parcels (small x+y) drawn first
-  const depth = x0 + x1 + y0 + y1;
-
-  return { top, left, right, base, height, center, depth };
+function rectCorners(x: number, y: number, w: number, h: number): Pt[] {
+  const x0 = x;
+  const x1 = x + w;
+  const y0 = planY(y);
+  const y1 = planY(y + h);
+  return [
+    { x: x0, y: y0 }, // N
+    { x: x1, y: y0 }, // E
+    { x: x1, y: y1 }, // S
+    { x: x0, y: y1 }, // W
+  ];
 }
 
 export interface IsoBounds {

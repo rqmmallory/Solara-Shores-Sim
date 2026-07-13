@@ -42,11 +42,23 @@ export interface SiteZone {
   id: string;
   name: string;
   category: ZoneCategory;
-  /** percentage box on the illustrated canvas: 0,0 = top-left (road/north) */
+  /**
+   * percentage bounding box on the illustrated canvas: 0,0 = top-left
+   * (road/north). Always required as a fallback footprint and for simple
+   * hit-test/label sizing; when `footprint` is present it defines the real
+   * shape and `x/y/w/h` should just be its bounding box.
+   */
   x: number;
   y: number;
   w: number;
   h: number;
+  /**
+   * an explicit hand-traced polygon (percentage coordinates, same space as
+   * x/y) for zones whose real footprint isn't a rectangle — a marina
+   * outline, a condo silhouette, a lake, a road spine. Optional: zones
+   * without one render as their x/y/w/h rectangle.
+   */
+  footprint?: { x: number; y: number }[];
   /** shown before Phase 1 completes */
   rawIcon: string;
   /** shown once Phase 1 (site prep) completes but before this zone's own first stage */
