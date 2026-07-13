@@ -18,6 +18,16 @@
 
 export type DistrictId = 'enabling' | 'marine' | 'housing' | 'amenity' | 'condos';
 
+/**
+ * Master pacing knob. Base rates below are expressed in "stages per real day";
+ * this multiplier compresses that so construction is perceptible in a play
+ * session. At 300, a housing stage lands roughly every ~5 minutes and a whole
+ * work front fills over ~1–2 hours of elapsed time. Lower it toward a
+ * check-back-daily idle cadence, raise it for faster arcade-style building —
+ * this one number sets the whole feel and is meant to be tuned to taste.
+ */
+export const GAME_SPEED = 300;
+
 export interface DistrictStage {
   key: string;
   label: string;

@@ -25,7 +25,7 @@ import {
 import { companyReputation, rankForXp } from '../engine/career';
 import { AchievementContext, evaluateAchievements, rewardFor } from '../engine/achievements';
 import { dailyChallenge, dayKey, weekKey, weeklyContract } from '../engine/challenges';
-import { accrue, ceilingStage, DISTRICTS, DistrictProgress, initialProgress } from '../engine/districts';
+import { accrue, ceilingStage, DISTRICTS, DistrictProgress, GAME_SPEED, initialProgress } from '../engine/districts';
 import { nextOnPath } from '../engine/learningPath';
 import { dueItems, recordMiss, recordReviewPass, SrsItem } from '../engine/spacedRepetition';
 import { emptyState, loadState, PersistedState, saveStateDebounced } from './store';
@@ -141,7 +141,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       mutate((s) => {
         const completed = new Set(s.simRecords.map((r) => r.phaseId));
         const rep = buildContext(s).reputation;
-        const mult = 0.6 + (rep / 100) * 0.8; // 0.6× (unproven) → 1.4× (blue-chip)
+        // reputation modifier (0.6× unproven → 1.4× blue-chip) × global pacing
+        const mult = (0.6 + (rep / 100) * 0.8) * GAME_SPEED;
         const now = Date.now();
         const next: Record<string, DistrictProgress> = {};
         let changed = false;
