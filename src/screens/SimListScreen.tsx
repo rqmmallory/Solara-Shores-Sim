@@ -4,10 +4,11 @@ import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { simPhases } from '../content';
 import type { CurveballFrequency } from '../engine/sim';
+import { ceilingStage, DISTRICTS, districtPercent, stageAt } from '../engine/districts';
 import { WEATHER_TABLE } from '../engine/weather';
 import { useAppState } from '../state/AppState';
 import { phaseHost } from '../content/mentors';
-import { Body, Card, H1, H2, Screen, Small, Tag } from '../ui/components';
+import { Body, Card, H1, H2, Meter, Screen, Small, Tag } from '../ui/components';
 import IsoSiteMap from '../ui/IsoSiteMap';
 import MentorBubble from '../ui/MentorBubble';
 import { colors } from '../ui/theme';
@@ -45,6 +46,8 @@ export default function SimListScreen() {
       })()}
 
       <IsoSiteMap districts={app.state.districts} />
+
+      <WorkFrontsPanel />
 
       <Card>
         <Body style={{ fontWeight: '600', marginBottom: 4 }}>Curveball frequency</Body>
@@ -153,5 +156,51 @@ export default function SimListScreen() {
         </Small>
       </Card>
     </Screen>
+  );
+}
+
+/**
+ * Work-fronts panel — makes the living construction legible: each district's
+ * current stage, how far it's built, and whether it's actively building,
+ * waiting on your next decision, or finished. This is the reward feedback that
+ * turns the idle clock from invisible into satisfying.
+ */
+function WorkFrontsPanel() {
+  const app = useAppState();
+  const completed = new Set(app.state.simRecords.map((r) => r.phaseId));
+
+  return (
+    <Card>
+      <Body style={{ fontWeight: '600' }}>Work fronts</Body>
+      <Small style={{ marginBottom: 4 }}>
+        Each front builds on its own over time, up to what your decisions have authorised. Complete
+        the next phase to unlock more — and study to build faster.
+      </Small>
+      {DISTRICTS.map((d) => {
+        const pos = app.state.districts[d.id]?.pos ?? 0;
+        const ceil = ceilingStage(d, completed);
+        const stage = stageAt(d, pos);
+        const pct = districtPercent(d, pos);
+        const maxStage = d.stages.length - 1;
+        const finished = pos >= maxStage - 0.01;
+        const atCeiling = pos >= ceil - 0.01;
+        const status = finished
+          ? { label: 'Complete', color: colors.good }
+          : atCeiling
+            ? { label: 'Awaiting decisions', color: colors.warn }
+            : { label: 'Building…', color: colors.teal };
+        return (
+          <View key={d.id} style={{ marginTop: 10 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
+              <Body style={{ fontWeight: '600' }}>
+                {stage.icon} {d.name}
+              </Body>
+              <Tag label={status.label} color={status.color} />
+            </View>
+            <Meter label={stage.label} value={pct} color={status.color} suffix="%" />
+          </View>
+        );
+      })}
+    </Card>
   );
 }
