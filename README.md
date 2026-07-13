@@ -86,10 +86,11 @@ If `node ./node_modules/expo/bin/cli --version` doesn't print `54.x`,
 
 3. **Subdivision simulation (Sim tab)** — the actual project, phase by phase,
    on a **living isometric site map** (`ui/IsoSiteMap.tsx`, projection math in
-   `engine/iso.ts`): the real master-plan parcels render in 2.5D and *extrude
-   into shaded buildings that rise out of the ground* as you complete phases —
-   tap any parcel for its build status. Phases unlock sequentially (the
-   critical path is the critical path). Playable now:
+   `engine/iso.ts`) that renders the real master-plan parcels in 2.5D and
+   *extrudes them into shaded buildings that rise out of the ground* — driven
+   by the **district construction model** (see "The living estate" below), not
+   just binary phase completion. Tap any parcel for its build status. Phases
+   unlock sequentially (the critical path is the critical path). Playable now:
    - **Phase 1 — Enabling Works & Site Prep**: six decision gates (CEC timing,
      geotech, rock classification, crusher, QA lab, hurricane prep) plus a
      curveball pool (karst void, rock claim, storm warning, permit query, sub
@@ -184,6 +185,39 @@ always to understand the construction better.
 
 Everything above reads from the same signals as the readiness score, so there
 is exactly one source of truth for "where the player is."
+
+## The living estate
+
+The estate emerges continuously, one work front at a time, on a model designed
+to grow into a full schedule-driven sim. The core rule:
+
+> **Decisions set the ceiling; idle time fills up to it.**
+
+`engine/districts.ts` groups the ~20 master-plan parcels into **five work
+fronts** — enabling, marine, housing, amenity, condos — each with its own
+ordered vocabulary of real construction stages (housing carries the full 15:
+survey → clear → earthworks → stormwater → roads → services → slabs → framing
+→ roofing → blockwork → fit-out → landscaping → occupancy → complete; marine
+has its own: dry-excavation → bulkheads → canal-cut → flood → docks → beach).
+
+- **Decisions authorise** how far a front may advance (`ceilingStage`):
+  completing the horizontal-works phase unlocks housing up to "services in",
+  the vertical phase up to "roofing", and so on.
+- **Time fills it in** (`accrue`): once authorised, a front advances toward its
+  ceiling by elapsed real time — *including while the app is closed* — but
+  never past what your decisions unlocked. A construction-clock effect in
+  `AppState` catches up offline time on load and ticks every 30s while open.
+- **Learning builds faster**: the fill rate scales with company reputation
+  (0.6× unproven → 1.4× blue-chip), so studying and building well literally
+  speed the estate up.
+- **`GAME_SPEED`** (in `engine/districts.ts`) is the master pacing knob — one
+  number, from a check-back-daily idle cadence to fast arcade building.
+
+The Sim tab shows a **Work fronts** panel (current stage, % built, and whether
+each front is *building*, *awaiting your next decision*, or *complete*) beside
+the map. This is Path A of a staged plan: the next step is to evolve the phase
+gates into a true activity schedule with durations, dependencies and weather
+windows, reusing this same district/stage vocabulary.
 
 ## Content architecture — how to drop research in
 
