@@ -155,7 +155,10 @@ export const DISTRICTS: District[] = [
   {
     id: 'condos',
     name: 'Condominiums',
-    zoneIds: ['condos-1-2', 'condos-3-6', 'condos-7-11', 'condos-12-15'],
+    zoneIds: [
+      'condo-1', 'condo-2', 'condo-3', 'condo-4', 'condo-5', 'condo-6', 'condo-7', 'condo-8',
+      'condo-9', 'condo-10', 'condo-11', 'condo-12', 'condo-13', 'condo-14', 'condo-15',
+    ],
     stages: [
       { key: 'raw', label: 'Raw land', icon: '🌳' },
       { key: 'cleared', label: 'Cleared', icon: '🟫' },
