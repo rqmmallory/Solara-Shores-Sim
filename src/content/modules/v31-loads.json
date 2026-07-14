@@ -4,6 +4,26 @@
   "title": "V3-1 — Loads, Load Paths, and Why Shapes Fail Where They Do",
   "short": "Loads",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "v31-c-loadpath",
+      "principleId": "load-path",
+      "title": "Every pound finds the ground",
+      "mechanism": "Every pound of weight in a building — its own structure, the people and furniture in it, the wind pushing on it — has to travel down an unbroken chain of members to the ground: roof to beam to column to footing to rock. This chain is the load path, and it only takes ONE broken or missing link for the whole thing to fail at that exact point — not gradually, but right where the road runs out. When someone proposes removing or moving a structural element, the real question is never 'does it look fine' — it's 'where does its load go now.'",
+      "diagramId": "load-path",
+      "mechanismPro": "Trace the load path member by member and check the tributary area feeding each one; know where tension lives in the system (bottom of a simple beam, top of a cantilever) since that is where reinforcement and connections matter most.",
+      "hook": "A bucket-brigade line passing water to a fire: it doesn't matter how strong every other person in line is if one person in the middle drops out — the water (the load) simply doesn't arrive.",
+      "applied": {
+        "prompt": "A renovation proposes removing a bearing wall in a single-family house to open the floor plan. What's the first question you ask?",
+        "options": [
+          { "id": "trace-path", "label": "Where does the load currently carried by that wall go once it's gone — what replaces it in the load path?", "outcome": "Right. This is the only question that actually matters; everything else (aesthetics, room size) is downstream of whether the load has somewhere to go.", "optimal": true },
+          { "id": "ask-contractor", "label": "Ask the contractor if it's 'load-bearing' and take their word for it", "outcome": "A contractor's field judgment is a start, but a load-bearing determination for a structural change should be verified by an engineer, not assumed from experience alone.", "acceptable": true },
+          { "id": "just-remove", "label": "Remove it — it's just a wall, and the room will look better open", "outcome": "If that wall was carrying floor or roof load, removing it without a new path (a beam, transfer structure) means the load has nowhere to go — sagging, cracking, or worse.", "acceptable": false }
+        ],
+        "debrief": "This is the foundational law the whole physics backbone builds on. The same question — 'where does the load go now' — reappears as M07's condo lobby column, V3-2's lateral wind path, and S8's pavement layers. Learn to ask it here and you'll ask it everywhere."
+      }
+    }
+  ],
   "summary": "Every pound in a building must travel to the ground, and the path it takes — roof → beam → column → footing → rock — fails at its weakest link. PLAIN: loads are travelers looking for the ground. PRO: trace the load path, check the tributary area, know where tension lives.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "v31-q1",
+      "principleIds": ["load-path"],
       "type": "multipleChoice",
       "teach": "PLAIN: each column holds the slice of floor nearest to it. PRO: tributary area = spacing × spacing on a regular grid.",
       "prompt": "A retail tenant wants a column removed for open floor. Columns sit on a 20×20 ft grid with 150 psf total design load. What does the tributary math say the missing column was carrying?",

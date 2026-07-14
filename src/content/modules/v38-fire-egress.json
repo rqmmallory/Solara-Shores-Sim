@@ -4,6 +4,26 @@
   "title": "V3-8 — Fire Science and Egress: Buying Minutes",
   "short": "Fire & Egress",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "v38-c-buyingtime",
+      "principleId": "fire-time",
+      "title": "Fire code buys minutes",
+      "mechanism": "No building material or design can simply stop a serious fire — the goal of every fire-safety rule is instead to slow it down and buy TIME for people to get out before conditions become unsurvivable. Detection buys the earliest minutes by catching a fire before it spreads. Suppression tries to stop it before flashover (the point where an entire room ignites at once). Compartmentation (fire-rated walls) contains it so it can't spread everywhere at once. Counted, measured egress paths give occupants a predictable route out in the time those other measures bought. Every one of these is a deliberate time purchase, not a fireproofing claim.",
+      "diagramId": "fire-compartment-egress",
+      "mechanismPro": "Occupant load calculations set required exit width/count; two remote exits are standard so one blocked path doesn't strand occupants; defend-in-place strategies (common in senior living / high-rise) substitute vertical compartmentation and staff-assisted evacuation for full building egress.",
+      "hook": "A ship's watertight compartments don't stop it from taking on water — they buy the crew time to respond before the whole ship floods. Fire compartments are the same trade: contain, don't prevent, and buy time with the containment.",
+      "applied": {
+        "prompt": "The senior-living building's design has a single stair core to maximize rentable floor area, arguing residents will be assisted rather than self-evacuate. Your review?",
+        "options": [
+          { "id": "require-two", "label": "Require two remote, counted exit paths per code, sized for the actual occupant load", "outcome": "Right. A single path means any single point of failure (smoke, blockage) strands everyone behind it — the exact scenario the 'two remote exits' rule exists to prevent.", "optimal": true },
+          { "id": "defend-in-place", "label": "Accept a single-stair defend-in-place strategy only if paired with enhanced compartmentation and a verified staff-assisted evacuation plan", "outcome": "A recognized approach for vulnerable-occupant buildings, but only legitimate with real compensating measures (rated compartments, staffing, alarm/suppression), not as a way to skip the second exit for floor-area reasons.", "acceptable": true },
+          { "id": "approve-single", "label": "Approve the single-stair design to preserve rentable area", "outcome": "This trades away the building's entire time-buying strategy for floor area — if that one path is compromised, the design has no remaining plan for getting people out.", "acceptable": false }
+        ],
+        "debrief": "This principle is fire science's version of a load path: minutes have to travel from 'fire starts' to 'everyone is out' through an unbroken chain of detect → suppress → contain → evacuate, and removing any link (like a redundant exit) breaks the chain exactly where you can least afford it."
+      }
+    }
+  ],
   "summary": "Buildings can't be fireproof; they're designed to fail slowly and predictably so people get out. Everything in fire code buys minutes somewhere: detect early, suppress before flashover, contain in compartments, evacuate through counted-and-measured paths. PLAIN: the design goal is time. PRO: flashover, ratings and penetrations, occupant load, two remote exits, defend-in-place.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "v38-q1",
+      "principleIds": ["fire-time"],
       "type": "multipleChoice",
       "teach": "Sprinklers aren't primarily for extinguishing — they're for interrupting the growth curve.",
       "prompt": "Why do sprinklers 'exist mainly to prevent flashover'?",

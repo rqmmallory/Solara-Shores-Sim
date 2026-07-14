@@ -4,6 +4,26 @@
   "title": "V3-7 — Coastal Process Science: Why Beaches Move",
   "short": "Coastal",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "v37-c-drift",
+      "principleId": "sand-river",
+      "title": "A beach is a flow, not a place",
+      "mechanism": "Sand on any shoreline is in constant, slow motion — waves arriving at an angle push it sideways along the coast in a steady longshore current, and the beach profile itself breathes: pulled offshore during storms, pushed back during calm periods. Grain size decides how the beach behaves under all this movement. A groin or any wall placed across that sand river changes the flow: it holds sand on one side but denies that same sand to whatever is next in line down-drift, permanently, for as long as the structure exists.",
+      "diagramId": "longshore-drift",
+      "mechanismPro": "Littoral drift and a site's sediment budget determine equilibrium profile; engineered beaches often use pre-filled groin cells specifically to avoid a long empty-out period downdrift, and monitoring commitments are standard permit conditions for any drift-interrupting structure.",
+      "hook": "A river never stops moving even when it looks calm on the surface — dam it anywhere and the water downstream simply stops arriving. A beach is that same river, just made of sand instead of water.",
+      "applied": {
+        "prompt": "Reviewing the groin design for the project's engineered beach, you notice no down-drift sediment budget analysis was included. Your call?",
+        "options": [
+          { "id": "require-budget", "label": "Require a sediment-budget/longshore-transport study before finalizing the groin design", "outcome": "Right. Without knowing the actual sand flow you cannot know how much down-drift starvation you're creating, or whether pre-filled cells or a different length would reduce it.", "optimal": true },
+          { "id": "monitor-after", "label": "Proceed with the design but commit to post-construction shoreline monitoring", "outcome": "Monitoring is valuable, but reactive — it tells you the damage is happening after the sand river is already interrupted, rather than sizing the structure to minimize it up front.", "acceptable": true },
+          { "id": "proceed", "label": "Proceed with the groin design as submitted", "outcome": "This is exactly the guilty secret M05 warns about: sand retained here is sand denied to the next beach down the coast, and skipping the budget analysis means you won't even know the size of that debt until it shows up as someone else's erosion.", "acceptable": false }
+        ],
+        "debrief": "This principle is the coastal-physics home of the same law M05 applies at the permitting level: a groin is never a gift, only a transfer. Treating a beach as a static 'place' instead of a moving flow is the mistake that turns an engineered amenity into a regulatory and neighborly problem."
+      }
+    }
+  ],
   "summary": "A beach is not a place, it's a flow: sand rivers along the shore (longshore transport), the profile breathes on-offshore with storms and calms, and grain size is destiny. A groin is a wall across the sand river — with a guilty secret downstream. PLAIN: sand is always moving; you're managing a current, not placing a carpet. PRO: littoral drift, sediment budgets, equilibrium profiles, pre-filled groin fields, the baseline survey that's legally priceless.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "v37-q1",
+      "principleIds": ["sand-river"],
       "type": "multipleChoice",
       "teach": "The zigzag mechanism: angled wave up, gravity straight back down.",
       "prompt": "Explain why sand flows ALONG the shore rather than just in and out.",

@@ -4,6 +4,26 @@
   "title": "V3-6 — Reading Cracks: The Diagnostic Alphabet",
   "short": "Cracks",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "v36-c-alphabet",
+      "principleId": "chloride-ingress",
+      "title": "Every crack is a message",
+      "mechanism": "A crack's pattern is handwriting — it names which of six authors wrote it: plastic shrinkage (map/craze pattern, while concrete was still fresh), drying shrinkage, thermal movement, differential settlement (diagonal, at corners), structural overload (specific, load-related patterns), or corrosion (often horizontal, with a rust stain). Reading direction and location first, then whether it's active or still growing versus dormant, tells you which of these six stories you're in — and in this chloride-heavy coastal climate, ANY crack is also a new open door for salt to reach the steel faster, regardless of what originally caused it.",
+      "diagramId": "crack-alphabet",
+      "mechanismPro": "Diagnose by pattern first (flexural cracks at midspan under load, diagonal shear near supports, horizontal with staining = corrosion expansion), direction/location second, active-vs-dormant third; in a marine chloride environment, treat every crack as accelerating S9's ingress clock regardless of its original cause.",
+      "hook": "A doctor doesn't treat every ache the same — a sharp localized pain and a dull spreading one point to different causes. Cracks are the building's version of describing where it hurts and how.",
+      "applied": {
+        "prompt": "A hairline horizontal crack with a faint rust-colored stain appears on a coastal condo balcony's underside. What's your first move?",
+        "options": [
+          { "id": "investigate-corrosion", "label": "Treat it as a likely corrosion crack — investigate cover depth and chloride exposure before deciding on repair", "outcome": "Right. A horizontal crack with rust staining is the module's own signature for corrosion — the rebar is likely already expanding from rust, and cosmetic patching would hide, not fix, an active problem.", "optimal": true },
+          { "id": "monitor", "label": "Monitor it for growth over the next few months before acting", "outcome": "Reasonable only if you're also checking cover/chloride exposure in parallel — corrosion cracks tend to worsen, and 'wait and see' alone risks losing months on an active problem.", "acceptable": true },
+          { "id": "patch-cosmetic", "label": "Patch and paint over it as a cosmetic fix", "outcome": "This treats the stain, not the story it's telling — S9's chloride-ingress law says the steel underneath is likely already corroding, and painting over it does nothing to stop that clock.", "acceptable": false }
+        ],
+        "debrief": "This module is the hub where the crack-producing principles meet: V3-4's differential settlement, V3-5's thermal/shrinkage movement, and S2's curing quality all produce cracks with distinct signatures — but in this climate, S9's chloride-ingress law means whatever produced the crack, it is now also a corrosion door. Read the pattern first, then remember every crack accelerates that second clock too."
+      }
+    }
+  ],
   "summary": "A crack is a message; the pattern tells you who sent it. Six authors with six signatures — plastic shrinkage, drying shrinkage, thermal, settlement, structural overload, corrosion — and the manager's rules: direction and location first, active vs dormant second, pattern over width, and in a chloride climate every crack is also a corrosion door. PLAIN: cracks are handwriting. PRO: flexural at midspan, diagonal shear at supports, delamination along the bar lines.",
   "sections": [
     {
@@ -18,6 +38,7 @@
   "quiz": [
     {
       "id": "v36-q1",
+      "principleIds": ["chloride-ingress"],
       "type": "multipleChoice",
       "teach": "Crack identification: pattern, timing, location.",
       "prompt": "A 45° diagonal crack appears near a condo transfer-beam support. Which author, and what's the first hour's response?",

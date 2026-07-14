@@ -4,6 +4,26 @@
   "title": "V3-5 — Thermal and Moisture Movement: Everything Breathes",
   "short": "Movement",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "v35-c-controljoint",
+      "principleId": "thermal-movement",
+      "title": "Everything breathes — give it somewhere to go",
+      "mechanism": "Concrete, block, and other materials expand and contract with temperature, and there is no way to simply stop that from happening. If you restrain a long run of concrete rigidly with no planned place to move, it doesn't just sit still — it builds up internal stress until it cracks, wherever the material happens to be weakest, which is rarely where you'd want. A control joint (a deliberate weak line sawn or formed into the concrete) doesn't prevent cracking — it decides WHERE the inevitable crack happens, in a place you planned for and can seal, instead of somewhere random and unsightly.",
+      "diagramId": "control-joint",
+      "mechanismPro": "Control joints go at planned intervals (spacing rules of thumb by slab thickness and exposure) sawn early enough to catch the shrinkage crack; expansion joints are a different, larger-movement detail for true dimensional change, not shrinkage. Climate determines which enemy dominates — heat-cycling here vs. freeze-thaw elsewhere.",
+      "hook": "Perforated paper tears cleanly along the dotted line because that's the planned weak spot — tear it without the perforation and it rips wherever it wants. A control joint is the perforation you cut into concrete on purpose.",
+      "applied": {
+        "prompt": "A long exterior concrete walkway is being poured with no control joints, to save a small amount of sawcutting labor. Your call?",
+        "options": [
+          { "id": "require-joints", "label": "Require control joints at proper spacing before the pour proceeds", "outcome": "Right. The concrete WILL crack from thermal/shrinkage movement regardless — the only choice is whether that crack happens at a joint you planned and can seal, or randomly across the slab.", "optimal": true },
+          { "id": "joint-critical", "label": "Allow it but require joints in the highest-visibility/highest-risk sections only", "outcome": "Reduces the worst-case appearance risk but leaves other sections to crack unplanned — a partial fix, not the full one.", "acceptable": true },
+          { "id": "skip-joints", "label": "Allow the pour without joints to save the labor cost", "outcome": "The walkway cracks anyway — you just don't get to choose where, and random cracks are harder to seal and worse to look at than planned ones.", "acceptable": false }
+        ],
+        "debrief": "The same law also runs through V3-6's crack-reading: a thermal/shrinkage crack that shows up unplanned is exactly the kind of crack pattern that module teaches you to recognize as 'preventable, if you'd planned a joint.' Movement is not optional; where it happens is."
+      }
+    }
+  ],
   "summary": "Materials change size and you can't stop them — only plan for them. Restrain concrete's movement and it makes its own room: it cracks. Joints are you deciding where the cracks go. Wood moves with moisture, not heat. And climates differ in WHICH enemy dominates — the transferable literacy. PLAIN: give movement somewhere to happen. PRO: control vs expansion joints, sawcut windows, EMC and acclimatization, exposure classes.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "v35-q1",
+      "principleIds": ["thermal-movement"],
       "type": "multipleChoice",
       "teach": "Sawcut control joints must exist before the slab's own shrinkage stresses beat them to it.",
       "prompt": "The slab crew wants to sawcut joints 'tomorrow morning' after a late-afternoon pour. Why is timing the whole question?",

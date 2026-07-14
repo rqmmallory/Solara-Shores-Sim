@@ -4,6 +4,26 @@
   "title": "V3-9 — Climate & Materials Science: How the Bahamas Attacks Buildings",
   "short": "Climate",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "v39-c-enemylist",
+      "principleId": "chloride-ingress",
+      "title": "How the Bahamas attacks a building",
+      "mechanism": "This climate's attack on a building is constant and chemical rather than sudden and violent — outside of hurricanes, it's salt aerosol soaking steadily into everything, humidity condensing on cool surfaces, UV breaking down exposed materials, and biological growth in the damp warmth. Knowing your enemy list matters as much as knowing what's NOT on it: freeze-thaw cycling, frost heave, and snow load simply do not happen here, and specifying for them wastes real money on protection this building will never need. Climate sets the baseline spec; day-to-day weather (a storm, a heat wave) is what decides whether today's work can proceed.",
+      "diagramId": "chloride-ingress",
+      "mechanismPro": "Exposure classification drives cover, coatings, and material selection for chloride/UV/humidity resistance; explicitly de-scope freeze-thaw and frost-depth provisions common in temperate-climate specs — copying a mainland spec wholesale over-engineers for enemies that don't exist here and may under-engineer for the ones that do.",
+      "hook": "Packing a parka and snow boots for a trip to a tropical island wastes suitcase space you needed for sunscreen and rain gear — the wrong enemy list costs you twice: once in what you didn't need, once in what you forgot.",
+      "applied": {
+        "prompt": "A structural spec drafted from a mainland US template includes frost-depth footing requirements and no explicit chloride-exposure cover upgrade for coastal elements. Your call?",
+        "options": [
+          { "id": "rewrite", "label": "Strip the frost-depth provisions and add proper chloride-exposure cover/mix requirements for the coastal condition", "outcome": "Right. This redirects spec budget from an enemy that isn't here to the one that actually attacks every marine-exposed structure on this project.", "optimal": true },
+          { "id": "partial", "label": "Leave the frost provisions in as harmless extra margin and separately add chloride cover", "outcome": "Adds the needed protection but wastes money on frost provisions that do nothing here — defensible only as a low-priority cleanup, not the ideal use of budget.", "acceptable": true },
+          { "id": "asis", "label": "Use the template spec as-is since it's a recognized standard", "outcome": "A 'recognized' standard for the wrong climate is not free — it spends money protecting against frost that will never occur while leaving the real, constant chloride attack under-addressed.", "acceptable": false }
+        ],
+        "debrief": "This is S9's chloride-ingress law at the scale of the whole climate: cover and dense concrete are the answer wherever salt is the enemy, whether that's a single marina structure in S9 or every coastal element project-wide here. Knowing your climate's specific enemy list — and its NOT-enemies — is where real specification money gets saved or wasted."
+      }
+    }
+  ],
   "summary": "Tropical-marine means the attack is constant, chemical, and biological rather than violent (except hurricanes): salt aerosol, humidity + dew point, UV, biology — and knowing what you DON'T face (freeze-thaw, frost depth, snow) is real money. Plus weather-vs-climate on the jobsite: climate sets your specs; weather sets your day. PLAIN: know your enemy list, and your not-enemy list. PRO: exposure classes, dew-point discipline, the vapor-barrier flip, weather task gating.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "v39-q1",
+      "principleIds": ["chloride-ingress"],
       "type": "multipleChoice",
       "teach": "The sweating-glass analogy: a cold drink sweats because its surface is below the air's dew point.",
       "prompt": "Why does an over-cooled condo wall grow mold in this climate?",

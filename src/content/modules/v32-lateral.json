@@ -4,6 +4,26 @@
   "title": "V3-2 — Lateral Systems: Surviving Being Pushed Sideways",
   "short": "Lateral",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "v32-c-lateral",
+      "principleId": "load-path",
+      "title": "Being pushed sideways at 4x",
+      "mechanism": "Gravity loads are predictable — straight down, every day. Wind is the hard problem because it pushes SIDEWAYS, and the force grows with the SQUARE of wind speed: 150 mph doesn't push twice as hard as 75 mph, it pushes FOUR TIMES as hard. A building needs its own sideways load path — walls catch the wind, the roof/floor diaphragm carries it horizontally to a shear wall, and the shear wall walks it down to the foundation. Skip or under-build any one of those links and the building has no route for the sideways load to take, exactly like a missing link in a gravity load path.",
+      "diagramId": "lateral-load-path",
+      "mechanismPro": "q = 0.00256V² sets wind pressure; diaphragms need chords and shear transfer to the vertical elements; uneven shear-wall stiffness creates torsion, twisting the building instead of just pushing it — check for symmetry, not just total capacity.",
+      "hook": "Pushing a bookshelf straight down does nothing; pushing it sideways at the top tips it over unless it's braced. Buildings need bracing for the sideways push exactly like that bookshelf.",
+      "applied": {
+        "prompt": "A condo floor plan has shear walls concentrated on one side of the building (for architectural reasons) rather than distributed evenly. Your structural review flags this. What do you require?",
+        "options": [
+          { "id": "check-torsion", "label": "Require a torsion check and rebalance shear-wall stiffness before approving", "outcome": "Right. Lopsided stiffness twists the building under lateral load instead of just pushing it — this is exactly the failure mode uneven shear walls create.", "optimal": true },
+          { "id": "add-elsewhere", "label": "Add supplemental lateral elements on the light side without a full torsion re-analysis", "outcome": "May help, but without checking the actual torsional behavior you're guessing at whether the added elements are enough or in the right place.", "acceptable": true },
+          { "id": "approve-asis", "label": "Approve the layout since each individual shear wall meets its own capacity check", "outcome": "Each wall passing its own check says nothing about the building twisting as a whole under wind load — this is a system problem, not a component-by-component one.", "acceptable": false }
+        ],
+        "debrief": "This is V3-1's load-path law, sideways: the load still needs a continuous, adequate route to the ground, it just has to travel horizontally first through the diaphragm before going vertical through the shear wall. Same question as always — where does the load go — asked about wind instead of gravity."
+      }
+    }
+  ],
   "summary": "Gravity is easy; wind is the hard problem — and wind force grows with the SQUARE of speed, so 150 mph pushes four times harder than 75. The sideways skeleton: walls catch, diaphragms carry, shear walls walk it down. PLAIN: a building needs a sideways plan. PRO: q = 0.00256V², diaphragms and chords, shear walls and hold-downs, torsion from lopsided stiffness.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "v32-q1",
+      "principleIds": ["load-path"],
       "type": "multipleChoice",
       "teach": "Wind force scales with velocity SQUARED: q ≈ 0.00256 × V².",
       "prompt": "Why is a 150-mph design storm four times the problem of a 75-mph storm, not two?",
