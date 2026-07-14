@@ -4,6 +4,26 @@
   "title": "Budgeting, Estimating, and Cost Control (The Clerical Spine)",
   "short": "Budgeting",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m09-c-landedcost",
+      "principleId": "landed-cost",
+      "title": "The invoice is not the cost",
+      "mechanism": "A supplier's FOB (Free On Board) invoice price is just the first slice of what a material actually costs you here. Before it is usable on site, it has to travel by sea (freight), clear customs (duty), pass through Customs Processing Fee, and carry VAT — each one stacking on top of the last. Compare two suppliers by invoice price alone and you can easily pick the more expensive one overall, because the cheaper invoice can carry a worse freight/duty combination that erases the saving before the container even clears the port.",
+      "diagramId": "landed-cost-stack",
+      "mechanismPro": "Landed cost = FOB + freight + duty + CPF + VAT; always compare suppliers on landed cost, not FOB, and price tiered contingency by scope risk rather than one blended number that hides which lines are actually uncertain.",
+      "hook": "A 'cheaper' plane ticket that requires three connections and two checked bags can cost more door-to-door than the direct flight. The sticker price was never the trip cost.",
+      "applied": {
+        "prompt": "Two tile suppliers quote FOB prices 8% apart. The cheaper one ships from a country with a much higher duty rate for this material. How do you decide?",
+        "options": [
+          { "id": "landed", "label": "Compute full landed cost for both (FOB + freight + duty + CPF + VAT) and decide on that number", "outcome": "Right. This is the only honest comparison — the module's whole point is that the invoice price is never the real number.", "optimal": true },
+          { "id": "ask-vendor", "label": "Ask each vendor for a landed-cost estimate and sanity-check it independently", "outcome": "A reasonable shortcut if you verify the vendor's duty/freight assumptions rather than trusting them blind — vendors sometimes underquote the parts they don't control.", "acceptable": true },
+          { "id": "fob-only", "label": "Award to the lower FOB price", "outcome": "The higher-duty supplier can easily land more expensive once every stack is added — you picked the worse deal using the one number that was never the real cost.", "acceptable": false }
+        ],
+        "debrief": "This is the math engine's own home-turf law made explicit: on an island, nothing is priced at its sticker. M03's switchgear lead time and M06's materials discipline both live downstream of this same landed-cost reality — plan and price for the whole journey, not the invoice."
+      }
+    }
+  ],
   "summary": "This module is the math engine's home turf: landed-cost calculation (the FOB → freight → duty → CPF → VAT stack), contingency TIERED by scope risk instead of blended, the weekly/monthly control cadence built on committed cost (the only honest number), and the change-order discipline that separates projects that die from projects that merely bleed.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m09-q1",
+      "principleIds": ["landed-cost"],
       "type": "multipleChoice",
       "teach": "Three numbers describe your financial position: budgeted, committed (contracts + POs + approved COs), and spent (invoices paid).",
       "prompt": "Why is committed cost 'the only honest number'?",

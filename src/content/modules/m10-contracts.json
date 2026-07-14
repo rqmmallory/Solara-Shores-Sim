@@ -4,6 +4,26 @@
   "title": "Contracts, Procurement, and Subcontractor Management",
   "short": "Contracts",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m10-c-certainty",
+      "principleId": "de-risk-early",
+      "title": "Only price what you can see",
+      "mechanism": "A contract's FORM should match how well the scope is actually known, not what's administratively convenient. Lump sum works when drawings are complete and quantities are fixed — everyone is pricing the same known thing. Marine dredge with an uncertain rock quantity is the opposite: nobody can honestly price a fixed sum for an unknown volume, so a lump-sum bid there is either padded heavily for the unknown (you overpay) or thinly (you get claims later). Unit-price or cost-plus forms exist specifically for scope you cannot fully see yet.",
+      "diagramId": "contract-certainty-spectrum",
+      "mechanismPro": "Match contract form to scope certainty: lump sum for complete drawings, unit price for quantity uncertainty (rock classification is the classic case), design-build for performance-based scopes; layer in force majeure (named-storm) and EMP flow-down clauses regardless of form.",
+      "hook": "You can quote a flat rate for painting a room you've measured. You cannot honestly quote a flat rate for 'however much rock happens to be under this canal' — you're guessing at both of you a fair price for the wrong thing.",
+      "applied": {
+        "prompt": "The marine contractor for canal dredging, where rock quantity is genuinely uncertain, proposes a lump-sum price to 'keep it simple.' Your call?",
+        "options": [
+          { "id": "unit-price", "label": "Require unit pricing for the excavation with a clear rock-classification definition in the contract", "outcome": "Right. This prices the actual uncertainty honestly and avoids the two failure modes of a mismatched lump sum: overpaying for padding, or fighting claims later.", "optimal": true },
+          { "id": "hybrid", "label": "Accept lump sum for the known portions and unit price only for the uncertain rock quantity", "outcome": "A workable hybrid if the split is drawn clearly and the rock-classification definition is unambiguous — otherwise it reintroduces the same fight in a smaller area.", "acceptable": true },
+          { "id": "accept-lump", "label": "Accept the lump-sum proposal to simplify contract administration", "outcome": "Every rock-quantity dispute for the rest of the project now argues about what was 'included' in a number nobody could honestly calculate — the module's rock-definition clause exists precisely because this fight is predictable.", "acceptable": false }
+        ],
+        "debrief": "This is the same de-risk-early law that runs through M02's permit sequencing and M11's cost-of-change curve, applied to contract structure: match your commitment's rigidity to how much you actually know, and price uncertainty honestly instead of pretending it isn't there."
+      }
+    }
+  ],
   "summary": "Contract FORM follows scope certainty: lump sum where drawings are complete, unit price where quantities are uncertain, design-build for performance scopes — and a handful of clauses (rock definition, named-storm force majeure, EMP flow-down, insurance schedules) decide every fight this project will ever have. Plus the field paperwork machine: daily logs, RFIs, submittals.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m10-q1",
+      "principleIds": ["de-risk-early"],
       "type": "multipleChoice",
       "teach": "Contract form allocates risk — and the right form depends on how certain the scope is.",
       "prompt": "Why is dredging contracted UNIT PRICE while the houses go LUMP SUM?",

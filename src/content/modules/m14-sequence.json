@@ -4,6 +4,26 @@
   "title": "Master Sequence and Critical Path (The Sim Backbone)",
   "short": "Critical Path",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m14-c-invisiblepaper",
+      "principleId": "de-risk-early",
+      "title": "The longest pole is invisible",
+      "mechanism": "The single longest-lead item on the entire project isn't a piece of equipment or a construction activity at all — it's paperwork: the EIA leading to CEC approval, and the seabed lease. It produces nothing you can see or photograph, which is exactly why it's dangerous: it's easy to under-resource something invisible while racing to start visible work like clearing or excavation. But every other phase — enabling works, marine excavation, horizontal waves, vertical waves — sits downstream of this paper. Start it late, and the whole project's critical path is set by a document, not a dozer.",
+      "diagramId": "critical-path-timeline",
+      "mechanismPro": "Sequence Phase 0's environmental/regulatory paper to start before land acquisition even closes if possible; the five critical-path truths — CEC gates everything, the marine window is annual, utilities gate vertical, OC gates occupancy, and paper outlasts dirt-moving in duration — all trace back to this one invisible lead item.",
+      "hook": "The bottleneck in a factory is rarely the loudest machine — it's often a slow, quiet approval sitting upstream that nobody photographs for the progress report, yet everything waits on it.",
+      "applied": {
+        "prompt": "The land deal is expected to close in 3 months. Do you wait until closing to begin the EIA/CEC application, or start it now?",
+        "options": [
+          { "id": "start-now", "label": "Begin the EIA/CEC process in parallel with the land deal, now", "outcome": "Right. This is the longest lead on the entire master sequence — starting it in parallel with, not after, the land closing is what keeps it from becoming the critical path by default.", "optimal": true },
+          { "id": "prep-only", "label": "Prepare all EIA documentation now, but hold formal submission until closing", "outcome": "Better than waiting entirely, but formal review clocks often don't start until submission — verify whether pre-work actually saves calendar time here.", "acceptable": true },
+          { "id": "wait-close", "label": "Wait until the land deal closes to start the environmental process", "outcome": "The least visible, longest lead item on the whole project just got queued AFTER a 3-month wait it didn't need — a self-inflicted critical-path delay before construction ever starts.", "acceptable": false }
+        ],
+        "debrief": "This is the master version of the same law seen at smaller scale in M02's CEC gate and M03's switchgear lead time: find the longest, least-visible lead item on any project and start its clock first — everything else can be resequenced around it, but its own duration cannot be compressed after the fact."
+      }
+    }
+  ],
   "summary": "The whole project in one ordering: Phase 0's invisible paper (EIA → CEC, seabed lease, agency agreements — the longest lead and the least visible), enabling works, marine-critical excavation, horizontal waves, vertical waves, and the calm-season marine completion. Plus the five critical-path truths the sim enforces: CEC gates everything; the marine window is annual; utilities gate vertical; OC gates revenue; and cash can gate everything even when the schedule is fine.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m14-q1",
+      "principleIds": ["de-risk-early"],
       "type": "sequencing",
       "teach": "The master sequence runs paper → enabling → dry marine + horizontal → vertical → wet marine — each gate feeding the next.",
       "prompt": "Order the master phases of Solara Shores:",

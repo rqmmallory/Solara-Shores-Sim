@@ -4,6 +4,26 @@
   "title": "Risk Management, Quality, and Safety Systems",
   "short": "Risk & QA",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m12-c-riskmatrix",
+      "principleId": "de-risk-early",
+      "title": "Spend your worry where it multiplies",
+      "mechanism": "A risk register full of entries is useless if every entry gets the same attention — you have finite mitigation budget and finite hours, and they should go where probability and impact multiply into the biggest number, not where the loudest person is worried. A hurricane threatening an open excavation is both likely (it's hurricane season) and severe (flooded, collapsed works) — that gets real mitigation money. A minor nuisance complaint that's unlikely and low-impact does not deserve the same register entry's worth of attention, even though both 'feel like risks.'",
+      "diagramId": "risk-matrix",
+      "mechanismPro": "Score every register entry as probability × impact, with a named owner, a mitigation action, and a date; re-score on a fixed cadence — the register is a prioritization tool, not a worry journal, and its value is in what it tells you NOT to spend time on.",
+      "hook": "A doctor doesn't treat a paper cut and a heart attack with the same urgency just because both are 'injuries.' Triage means sending your attention where probability and severity multiply highest.",
+      "applied": {
+        "prompt": "Your risk register has 40 entries. You have limited time this week. How do you decide what to work on?",
+        "options": [
+          { "id": "matrix-rank", "label": "Rank all 40 by probability × impact and work the top of that list first", "outcome": "Right. This is exactly what the matrix is for — it turns 40 undifferentiated worries into a prioritized, defensible work order.", "optimal": true },
+          { "id": "recent-first", "label": "Work whichever risks were raised most recently or most loudly", "outcome": "This spends real mitigation time on recency and volume instead of actual exposure — often the opposite of where the register says the danger is.", "acceptable": false },
+          { "id": "equal-time", "label": "Give each of the 40 entries equal attention this week", "outcome": "Spreading finite attention evenly across risks with wildly different exposure means the highest-probability, highest-impact items get the same thin slice as a near-zero one.", "acceptable": false }
+        ],
+        "debrief": "This is the same 'spend where it counts' discipline as M09's tiered contingency — both refuse to treat all risk lines the same, because blending them hides exactly the ones that deserve real money and attention."
+      }
+    }
+  ],
   "summary": "Three systems that run continuously under everything else: a live risk register (probability × impact, owner, mitigation, date), a quality system enforced at hold points and verified by independent testing, and a safety program whose record flows directly into your insurance costs and regulator standing. Plus the honest answer to 'what do I directly manage': fewer things, better systems.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "m12-q1",
+      "principleIds": ["de-risk-early"],
       "type": "multipleChoice",
       "teach": "A risk register entry isn't complete with just a description and a score.",
       "prompt": "What turns a risk register from a worry list into a management tool?",

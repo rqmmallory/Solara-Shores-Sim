@@ -4,6 +4,26 @@
   "title": "Design Management and the Development Team",
   "short": "Design",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m11-c-costofchange",
+      "principleId": "de-risk-early",
+      "title": "A change gets 10x more expensive",
+      "mechanism": "The exact same design change costs radically different amounts depending on WHEN you make it. Caught at schematic design, it's a pencil edit — call it 1x. Caught once construction documents are drawn, coordinated, and priced, redrawing and re-coordinating costs 3-5x as much. Caught in the field, after concrete is poured or walls are framed, it can run 10x or more — demolition, rework, schedule impact, and often a dispute about who pays. The change itself didn't get harder; only WHEN you noticed it did.",
+      "diagramId": "cost-of-change-curve",
+      "mechanismPro": "Enforce design freeze milestones and design-to-budget checks at each gate specifically to catch changes while they're still cheap; every gate you skip is a bet that nothing needs to change later — a bet the curve says you will lose.",
+      "hook": "Catching a typo before you print a book costs nothing. Catching it after 10,000 copies are bound costs a recall. Same typo, wildly different bill — only the timing changed.",
+      "applied": {
+        "prompt": "A design coordination review at 60% construction documents surfaces a conflict between the condo's MEP risers and structural columns. Do you stop and resolve it now, or let the field figure it out?",
+        "options": [
+          { "id": "resolve-now", "label": "Stop, resolve the conflict in the drawings now, even if it delays document issuance slightly", "outcome": "Right. This is still the 3-5x zone, not the 10x+ field zone — the delay now is cheap insurance against a much larger one later.", "optimal": true },
+          { "id": "flag-monitor", "label": "Flag it as a known risk and monitor closely through remaining design, resolving at the next gate", "outcome": "Acceptable only if genuinely tracked to closure at a defined next gate — an unmonitored 'flag' quietly becomes a field discovery.", "acceptable": true },
+          { "id": "field-fix", "label": "Let the field team resolve it during construction — it's a minor conflict", "outcome": "This is exactly the module's 10x+ zone: a riser clash discovered after columns are poured means cutting concrete or rerouting MEP live, on the clock, usually in a dispute over whose drawing was wrong.", "acceptable": false }
+        ],
+        "debrief": "This curve is the reason design gates (freeze, design-to-budget, coordination review) exist at all — they are checkpoints deliberately placed while you're still on the cheap part of the curve. M10's contract-certainty spectrum and M02's permit sequencing are the same instinct: catch it early, because early is the only time it's cheap."
+      }
+    }
+  ],
   "summary": "You hold the pen on nothing and the consequences of everything. This module covers the consultant team and who owns what, the design-phase gates where the developer's discipline actually bites (design freeze, design-to-budget, coordination review), and the escalating cost of change: 1x at schematic, 3–5x at construction documents, 10x+ in the field.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m11-q1",
+      "principleIds": ["de-risk-early"],
       "type": "multipleChoice",
       "teach": "A change's cost depends less on the change than on WHEN it's made.",
       "prompt": "Sales wants to enlarge the beach club. Roughly how does the cost of that change scale by project phase?",

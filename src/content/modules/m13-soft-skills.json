@@ -4,6 +4,26 @@
   "title": "Soft Skills: Negotiation, Stakeholders, and Running the Room",
   "short": "Soft Skills",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m13-c-zopa",
+      "principleId": "zopa-overlap",
+      "title": "The deal lives in the overlap",
+      "mechanism": "In any negotiation, you have a maximum you'll pay (or minimum you'll accept) and so does the other side. A deal is only possible in the narrow range where those two limits overlap — the Zone Of Possible Agreement. If you don't know your own walk-away number before you sit down, you can't tell whether you're inside that zone or being pushed past it. On a small island market like Nassau, where you'll deal with the same ready-mix supplier or sub again next season, a bad deal made without knowing your ZOPA also damages a relationship you need for years, not just this contract.",
+      "diagramId": "zopa-overlap",
+      "mechanismPro": "Establish your BATNA (best alternative to a negotiated agreement) and walk-away number before negotiating; anchor from real data (the leveling sheet), separate interests from stated positions, and remember repeat-market dynamics mean today's negotiation sets tomorrow's terms.",
+      "hook": "Haggling at a market only works if you know the most you're willing to pay before you start — otherwise the seller finds your limit for you, in real time, in their favor.",
+      "applied": {
+        "prompt": "You're negotiating ready-mix concrete pricing with the island's dominant supplier — one of only two viable options, and you'll need them again for later phases. How do you prepare?",
+        "options": [
+          { "id": "know-batna", "label": "Set your walk-away price using the leveling sheet and confirm your real alternative (the other supplier) before the meeting", "outcome": "Right. Knowing your BATNA and walk-away number is what lets you actually recognize a good deal instead of just accepting whatever's offered.", "optimal": true },
+          { "id": "anchor-only", "label": "Walk in with a strong opening anchor but no clear walk-away number", "outcome": "Anchoring helps, but without a known walk-away you can't tell when to hold firm versus when you're being moved past your real limit.", "acceptable": true },
+          { "id": "no-prep", "label": "Negotiate informally based on the relationship, without pre-set numbers", "outcome": "In a two-supplier market you deal with for years, going in without your own numbers means the other side effectively sets both sides of the deal — and you'll face the same supplier next phase having already shown you will.", "acceptable": false }
+        ],
+        "debrief": "This is the negotiation-specific form of de-risk-early: knowing your numbers BEFORE the conversation is the cheap certainty. M10's contract-form decisions and M11's design gates are the same 'decide with information, not in the room' discipline applied elsewhere."
+      }
+    }
+  ],
   "summary": "Nassau is a small market: every sub, supplier, and official recurs across decades and future phases. This module drills the negotiation frameworks (BATNA, ZOPA, interests vs positions, anchoring from the leveling sheet), the stakeholder rule (bad news comes from you first), and the communication mechanics that keep a project's decisions written, minuted, and owned.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m13-q1",
+      "principleIds": ["zopa-overlap"],
       "type": "multipleChoice",
       "teach": "BATNA — Best Alternative To a Negotiated Agreement — is what each side does if talks fail. Relative BATNA strength IS negotiating power.",
       "prompt": "You're negotiating with (a) a dredging contractor whose barge sits idle next month, and (b) the only elevator supplier serving Nassau. Who holds power in each talk?",

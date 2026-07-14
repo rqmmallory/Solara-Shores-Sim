@@ -4,6 +4,26 @@
   "title": "Amenities, Pools, Lakes, and the Sequencing Trap",
   "short": "Amenities",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m08-c-poolfloat",
+      "principleId": "hydrostatic-uplift",
+      "title": "The sales pool that floats",
+      "mechanism": "Buyers close faster and pay more when they can see the clubhouse pool finished early — so there is real commercial pressure to build amenities before the rest of the site is done. But that pool is still a big hollow concrete shell sitting in the same high groundwater as everywhere else on this island. Building it early does not change the physics: an empty or partially-built shell in wet ground still wants to float, and it now sits inside an active, vibration-heavy construction zone where dewatering and protection are harder to maintain than they will be later.",
+      "diagramId": "hydrostatic-uplift",
+      "mechanismPro": "Early-build amenity pools carry the same uplift check as any other pool (footprint × head × 62.4 psf/ft) PLUS construction-phase dewatering risk from nearby earthworks changing local groundwater — verify uplift resistance and site dewatering compatibility before committing to an early build date.",
+      "hook": "Same cup held underwater from V3-3 — it does not care whether the room around it is finished or still under construction. Empty and wet is empty and wet.",
+      "applied": {
+        "prompt": "Sales wants the clubhouse pool finished and full a full phase ahead of schedule to help close sales. Structural flags the groundwater risk during nearby earthworks. Your call?",
+        "options": [
+          { "id": "engineer-first", "label": "Approve the early build only once structural confirms uplift resistance and a dewatering plan compatible with ongoing earthworks", "outcome": "Right. This keeps the sales win while respecting the same uplift law that governs every hollow structure on site — verified, not assumed.", "optimal": true },
+          { "id": "keep-full", "label": "Build it early but commit to keeping it full/ballasted through the construction period", "outcome": "A workable mitigation if genuinely maintained — but it depends on a discipline (never draining it) that must survive the whole remaining construction period without a lapse.", "acceptable": true },
+          { "id": "build-anyway", "label": "Approve the early build on the sales team's timeline without an engineering sign-off", "outcome": "The pool sits in an active earthworks zone with changing groundwater and no verified uplift margin — exactly the setup for a shell to float or crack, on the one amenity buyers see first.", "acceptable": false }
+        ],
+        "debrief": "This is V3-3's hydrostatic-uplift law resurfacing in a scheduling disguise: the sequencing trap here isn't really about sales versus construction, it's that moving a hollow structure earlier doesn't move the groundwater — the physics doesn't negotiate with the sales calendar."
+      }
+    }
+  ],
   "summary": "Amenities don't produce revenue — they SELL the revenue. Buyers at this price point close faster and pay more when the clubhouse, pool, and beach exist. But amenities built early sit inside an active construction zone. Resolving that tension — the sequencing trap — plus pools over a shallow water table, lakes that are groundwater windows, and a seven-figure landscape package.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m08-q1",
+      "principleIds": ["hydrostatic-uplift"],
       "type": "multipleChoice",
       "teach": "Amenities are a financial paradox: pure cost on the pro forma, yet they set the pace of everything that earns.",
       "prompt": "Why does the amenity core get built in Phase 1 despite producing zero revenue?",
