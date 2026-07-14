@@ -8,6 +8,7 @@ import { adaptiveGuidance, assistLabel, assistLevel } from '../engine/mentorGuid
 import { fmtWithUnit } from '../engine/format';
 import { useAppState } from '../state/AppState';
 import { Body, Btn, Card, H1, H2, Meter, Screen, Small, Tag, TeachBox } from '../ui/components';
+import ConceptBlockView from '../ui/ConceptBlock';
 import MentorBubble from '../ui/MentorBubble';
 import { colors } from '../ui/theme';
 import type { RootStackParamList } from '../navigation/types';
@@ -16,7 +17,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Module'>;
 
 export default function ModuleScreen({ route, navigation }: Props) {
   const { moduleId } = route.params;
-  const { state } = useAppState();
+  const { state, recordDecisionSeen } = useAppState();
   const m = moduleById.get(moduleId);
   const [openSection, setOpenSection] = useState<number | null>(0);
   const [showVars, setShowVars] = useState(false);
@@ -51,6 +52,19 @@ export default function ModuleScreen({ route, navigation }: Props) {
           </>
         );
       })()}
+
+      {m.concepts && m.concepts.length > 0 && (
+        <>
+          <H2>Grasp the mechanism</H2>
+          {m.concepts.map((c) => (
+            <ConceptBlockView
+              key={c.id}
+              concept={c}
+              onApplied={(optimal, acceptable) => recordDecisionSeen(m.id, c.id, optimal, acceptable)}
+            />
+          ))}
+        </>
+      )}
 
       {m.sections.length > 0 && (
         <>

@@ -4,6 +4,41 @@
   "title": "V3-3 — Water Pressure, Buoyancy, and Uplift",
   "short": "Buoyancy",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "v33-c-uplift",
+      "principleId": "hydrostatic-uplift",
+      "title": "Why an empty pool floats",
+      "mechanism": "Water pushes on everything around it, and the deeper you go the harder it pushes — about 62 pounds more for every foot down. It pushes sideways on walls and, the part people forget, straight UP on floors. Anything hollow sitting in wet ground shoves aside a pool-shaped chunk of water, and the water shoves back with the full weight of what got moved. Here the groundwater is only about 5 feet down, so anything deep is sitting in it. Drain a pool and it becomes a big empty cup in the water — and the push-up can be far greater than the shell's own weight.",
+      "diagramId": "hydrostatic-uplift",
+      "mechanismPro": "Hydrostatic head → uplift = footprint × head × 62.4 psf/ft, resisted by dead weight + anchors + relief valves at a safety factor of ~1.2–1.5. The same check governs buried fuel tanks, lift-station wet wells, and any basement in high groundwater.",
+      "hook": "Hold an empty plastic cup underwater and let go — it shoots up. A drained pool in high groundwater is that cup, only it weighs 60 tons and the water is pushing with 200.",
+      "applied": {
+        "prompt": "Year 3: O&M wants to drain the clubhouse pool this week to retile it. What is step zero?",
+        "options": [
+          {
+            "id": "check-gw",
+            "label": "Check groundwater and confirm the relief valves work before draining a drop",
+            "outcome": "Right. The valves bleed groundwater IN if pressure wins — you would rather flood the pool than launch it. If groundwater is high, you wait for the dry season or keep it ballasted.",
+            "optimal": true
+          },
+          {
+            "id": "drain-slow",
+            "label": "Drain it slowly to be safe",
+            "outcome": "Buoyancy does not care about speed — the uplift arrives the moment it is empty, fast or slow. Slow draining just schedules the launch.",
+            "acceptable": false
+          },
+          {
+            "id": "just-drain",
+            "label": "Just drain it — pools get drained everywhere",
+            "outcome": "In deep-water-table places, sure. Five feet above groundwater on porous rock, a drained shell can crack free and float — a six-figure repair and a safety incident.",
+            "acceptable": false
+          }
+        ],
+        "debrief": "The danger arrives with the EMPTINESS, not the draining. Every buried hollow thing here — pools, the marina's fuel tanks, the wet wells — carries a buoyancy check and a way to resist uplift. Skipping the groundwater check is how a pool becomes a boat."
+      }
+    }
+  ],
   "summary": "Water pushes on everything, from every side, and it never gets tired — 62.4 pounds per square foot per foot of depth, sideways on walls and UPWARD on floors. Anything hollow in groundwater is a boat whether you meant it or not. The site's secret antagonist, with the floating pool as its signature story. PLAIN: empty things in wet ground want to float. PRO: hydrostatic head, uplift checks, relief valves, why you can't dewater karst.",
   "sections": [
     {

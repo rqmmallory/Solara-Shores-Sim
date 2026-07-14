@@ -26,6 +26,12 @@ export interface ContentModule {
   status: ModuleStatus;
   /** one-paragraph orientation shown at the top of the module */
   summary: string;
+  /**
+   * four-beat concept blocks (mechanism+visual → hook → applied decision →
+   * quiz) — the primary teaching surface. Optional so modules can adopt them
+   * incrementally; a module can still teach through sections + quiz alone.
+   */
+  concepts?: ConceptBlock[];
   /** explainer content, read before quizzing */
   sections: ContentSection[];
   quiz: QuizQuestion[];
@@ -42,6 +48,41 @@ export interface ContentSection {
   body: string;
 }
 
+// ------------------------------------------------------------ concept block
+
+/**
+ * A ConceptBlock is the four-beat teaching unit the learner model calls for:
+ *   1. MECHANISM — the causal "why", child-clear, PAIRED WITH a required
+ *      visual (`diagramId` → an SVG diagram in ui/diagrams). Text-only
+ *      mechanism is a content defect for this learner.
+ *   2. HOOK — one vivid analogy / cross-domain parallel (the memory anchor).
+ *   3. APPLIED — a consequential decision that USES the mechanism (the
+ *      primary encoding event; weighted as the most important beat).
+ *   4. quiz — retrieval practice lives in the module's `quiz`, tagged with the
+ *      same `principleId` so spacing can resurface the law in new disguises.
+ */
+export interface ConceptBlock {
+  id: string;
+  /** the recurring law this teaches (must exist in content/principles) */
+  principleId: string;
+  title: string;
+  /** BEAT 1 — mechanism, plain/child-clear */
+  mechanism: string;
+  /** id of the SVG diagram that visualises the mechanism (REQUIRED) */
+  diagramId: string;
+  /** optional field-vernacular ("say it like a pro") phrasing */
+  mechanismPro?: string;
+  /** BEAT 2 — the analogy / memory hook */
+  hook: string;
+  /** BEAT 3 — the applied, consequential decision */
+  applied: {
+    prompt: string;
+    options: DecisionOption[];
+    /** the lesson shown after choosing — not just a verdict */
+    debrief: string;
+  };
+}
+
 // ---------------------------------------------------------------- quiz
 
 interface QuestionBase {
@@ -51,6 +92,12 @@ interface QuestionBase {
   prompt: string;
   /** the "why" — always shown after answering, never just right/wrong */
   explanation: string;
+  /**
+   * principle(s) this question tests (ids from content/principles). Lets the
+   * retention engine treat the question as one "disguise" of a recurring law,
+   * and resurface that law via a DIFFERENT question elsewhere.
+   */
+  principleIds?: string[];
 }
 
 export interface MultipleChoiceQuestion extends QuestionBase {

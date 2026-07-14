@@ -2,7 +2,8 @@
  * Runtime shape validation for content JSON. Run in unit tests so a bad
  * content drop fails CI instead of crashing the app on a phone.
  */
-import type { ContentModule, QuizQuestion, SimPhase } from './schema';
+import type { ConceptBlock, ContentModule, QuizQuestion, SimPhase } from './schema';
+import { isPrinciple } from './principles';
 
 const GENERATORS = new Set([
   'unitRate',
@@ -61,6 +62,37 @@ export function validateModule(m: ContentModule): string[] {
     if (!d.debrief) errs.push(`${where}/${d.id}: missing debrief`);
   }
 
+  for (const c of m.concepts ?? []) errs.push(...validateConcept(c, `${where}/${c.id}`));
+
+  // every question that tags a principle must name a real one
+  for (const q of m.quiz) {
+    for (const pid of q.principleIds ?? [])
+      if (!isPrinciple(pid)) errs.push(`${where}/${q.id}: unknown principleId "${pid}"`);
+  }
+
+  return errs;
+}
+
+/**
+ * A concept block is the four-beat teaching unit. The learner model's hard
+ * rules become validation: a mechanism with no visual, or no applied decision,
+ * is an incomplete concept and fails CI.
+ */
+function validateConcept(c: ConceptBlock, where: string): string[] {
+  const errs: string[] = [];
+  if (!c.id) errs.push(`${where}: concept missing id`);
+  if (!isPrinciple(c.principleId)) errs.push(`${where}: unknown principleId "${c.principleId}"`);
+  if (!c.mechanism) errs.push(`${where}: BEAT 1 missing mechanism text`);
+  if (!c.diagramId) errs.push(`${where}: BEAT 1 missing diagramId — every mechanism needs a visual`);
+  if (!c.hook) errs.push(`${where}: BEAT 2 missing hook`);
+  if (!c.applied) errs.push(`${where}: BEAT 3 missing applied decision`);
+  else {
+    if (!c.applied.prompt) errs.push(`${where}: applied decision missing prompt`);
+    if (!c.applied.options?.length) errs.push(`${where}: applied decision has no options`);
+    else if (!c.applied.options.some((o) => o.optimal))
+      errs.push(`${where}: applied decision has no optimal option`);
+    if (!c.applied.debrief) errs.push(`${where}: applied decision missing debrief`);
+  }
   return errs;
 }
 
