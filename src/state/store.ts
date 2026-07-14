@@ -7,6 +7,7 @@ import type { CurveballFrequency } from '../engine/sim';
 import type { MathStats, ModuleStats, SimRecord } from '../engine/progress';
 import { emptyMathStats } from '../engine/progress';
 import { DISTRICTS, DistrictProgress, initialProgress } from '../engine/districts';
+import type { PrincipleRetention } from '../engine/principles';
 import type { SrsItem } from '../engine/spacedRepetition';
 
 /** the latest completed run of a phase — the canonical "what you did",
@@ -46,6 +47,11 @@ export interface PersistedState {
    * real time — so the estate keeps building while the app is closed.
    */
   districts: Record<string, DistrictProgress>;
+  /**
+   * per-principle retention (engine/principles) — how well each recurring law
+   * is holding up, so spacing can resurface a weak/stale law in a new disguise.
+   */
+  principleRetention: PrincipleRetention;
   settings: {
     curveballFrequency: CurveballFrequency;
   };
@@ -68,6 +74,7 @@ export function emptyState(): PersistedState {
     dailyClaim: null,
     weeklyClaim: null,
     districts: freshDistricts(Date.now()),
+    principleRetention: {},
     settings: { curveballFrequency: 'realistic' },
   };
 }
@@ -87,6 +94,7 @@ export async function loadState(): Promise<PersistedState> {
       ...parsed,
       mathStats: { ...base.mathStats, ...parsed.mathStats },
       districts: { ...base.districts, ...(parsed.districts ?? {}) },
+      principleRetention: { ...base.principleRetention, ...(parsed.principleRetention ?? {}) },
       settings: { ...base.settings, ...parsed.settings },
     };
   } catch {

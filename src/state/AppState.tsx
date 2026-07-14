@@ -27,6 +27,7 @@ import { AchievementContext, evaluateAchievements, rewardFor } from '../engine/a
 import { dailyChallenge, dayKey, weekKey, weeklyContract } from '../engine/challenges';
 import { accrue, ceilingStage, DISTRICTS, DistrictProgress, GAME_SPEED, initialProgress } from '../engine/districts';
 import { nextOnPath } from '../engine/learningPath';
+import { recordPrincipleOutcome } from '../engine/principles';
 import { dueItems, recordMiss, recordReviewPass, SrsItem } from '../engine/spacedRepetition';
 import { emptyState, loadState, PersistedState, saveStateDebounced } from './store';
 
@@ -68,6 +69,18 @@ interface AppStateValue {
 }
 
 const Ctx = createContext<AppStateValue | null>(null);
+
+// module → question → principle tags, built once from content, so quiz results
+// can feed the per-principle retention tracker without changing call sites
+const QUESTION_PRINCIPLES: Record<string, Record<string, string[]>> = {};
+for (const m of modules) {
+  const byQ: Record<string, string[]> = {};
+  for (const q of m.quiz) if (q.principleIds?.length) byQ[q.id] = q.principleIds;
+  if (Object.keys(byQ).length) QUESTION_PRINCIPLES[m.id] = byQ;
+}
+function questionPrincipleIds(moduleId: string, questionId: string): string[] | undefined {
+  return QUESTION_PRINCIPLES[moduleId]?.[questionId];
+}
 
 /**
  * Build the pure state snapshot that achievements and challenges test against.
@@ -192,6 +205,12 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
           ...s,
           srsQueue,
           capital: s.capital + capitalForXp(gained),
+          principleRetention: recordPrincipleOutcome(
+            s.principleRetention,
+            questionPrincipleIds(moduleId, questionId),
+            correct,
+            now
+          ),
           moduleStats: {
             ...s.moduleStats,
             [moduleId]: {

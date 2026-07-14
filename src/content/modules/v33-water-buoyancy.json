@@ -58,6 +58,7 @@
     {
       "id": "v33-q1",
       "type": "multipleChoice",
+      "principleIds": ["hydrostatic-uplift"],
       "teach": "The app's signature story problem: the pool that becomes a boat.",
       "prompt": "Year 3: O&M drafts a procedure to drain the clubhouse pool for retiling. What is step zero?",
       "choices": [
