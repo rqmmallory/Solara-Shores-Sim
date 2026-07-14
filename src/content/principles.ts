@@ -92,6 +92,36 @@ export const PRINCIPLES: Principle[] = [
     statement: 'Money spent early to buy certainty is the cheapest money on the whole job.',
     domain: 'management',
   },
+  {
+    id: 'even-flow',
+    name: 'Even flow',
+    statement: 'Trades move like a train on one track: keep every crew at the same steady pace and the whole line rolls; let one bunch up and everyone behind it waits.',
+    domain: 'management',
+  },
+  {
+    id: 'sand-river',
+    name: 'Sand river',
+    statement: 'Sand travels along the shore like a slow river; block it with a wall and you feed one beach by starving the next one down the line.',
+    domain: 'physics',
+  },
+  {
+    id: 'fire-time',
+    name: 'Fire buys time',
+    statement: 'A building cannot beat a fire, only slow it down; every fire rule is really buying minutes for people to get out.',
+    domain: 'trade',
+  },
+  {
+    id: 'landed-cost',
+    name: 'Landed cost',
+    statement: 'The price on the invoice is never the cost; on an island every import stacks freight, duty, and tax on top before it is yours.',
+    domain: 'management',
+  },
+  {
+    id: 'zopa-overlap',
+    name: 'ZOPA overlap',
+    statement: "A deal only lives in the gap where both sides' walk-away lines overlap; know your walk-away or you will sign a bad one.",
+    domain: 'management',
+  },
 ];
 
 const BY_ID = new Map(PRINCIPLES.map((p) => [p.id, p]));
