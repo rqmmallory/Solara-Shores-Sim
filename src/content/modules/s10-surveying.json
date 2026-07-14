@@ -4,6 +4,26 @@
   "title": "S10 — Surveying, Layout, and Datums",
   "short": "Surveying",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "s10-c-datum",
+      "principleId": "de-risk-early",
+      "title": "One wrong zero, everyone's wrong",
+      "mechanism": "Every measurement on the project — land elevations, marine dredge depths, flood elevations — has to reference a common 'zero' to mean anything when compared. On a project spanning land and sea, the land survey, the marine drawings, and the flood-elevation requirements can each default to a DIFFERENT vertical datum unless someone deliberately reconciles them. The same physical point can have two different 'correct' elevations depending on which zero you're reading it against — and if that mismatch isn't caught early, every trade that trusts either number is wrong by the same offset, silently, until something doesn't fit.",
+      "diagramId": "datum-mismatch",
+      "mechanismPro": "Establish one project datum with published conversion factors to every reference system in use (NGVD, local marine chart datum, FEMA flood elevations); verify as-built elevations against the SAME published datum before backfilling foundations or canal work.",
+      "hook": "Two clocks, each perfectly accurate, but one set to a different time zone — every appointment scheduled by comparing them directly will be off by the same fixed amount, and everyone will be equally confident they're on time.",
+      "applied": {
+        "prompt": "Marine dredge depths are specified relative to chart datum; land foundation elevations are specified relative to a separate site benchmark. A canal-adjacent foundation is coming up. Your call?",
+        "options": [
+          { "id": "reconcile", "label": "Require a published conversion between both datums and verify the foundation elevation against it before construction", "outcome": "Right. Reconciling the datums up front is the only way to guarantee the land and marine numbers actually describe the same real-world elevation.", "optimal": true },
+          { "id": "spot-survey", "label": "Have the surveyor spot-check this one foundation against both references independently", "outcome": "Catches the immediate case but doesn't fix the systemic risk — every other datum-adjacent element on the project still carries the same unverified assumption.", "acceptable": true },
+          { "id": "assume-same", "label": "Assume both datums align closely enough and proceed", "outcome": "If they don't align, the error is now built into a poured foundation and won't surface until something downstream — flood compliance, canal water levels — doesn't match reality.", "acceptable": false }
+        ],
+        "debrief": "This is the invisible-foundation-of-everything version of de-risk-early: the fix (publish one datum conversion) is cheap and boring; the failure (a silent, systemic elevation error) is expensive and can touch every trade on the project. Same law as M02's permit gate — catch the invisible thing before it becomes everyone's problem."
+      }
+    }
+  ],
   "summary": "Survey control is the invisible foundation every trade's layout hangs from — and vertical datum discipline matters brutally on a project where land drawings, marine drawings, and flood elevations may each reference a different zero. PLAIN: everyone must measure from the same marks, or every error multiplies. PRO: control network, one project datum with published conversions, as-builts before backfill as a payment condition.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "s10-q1",
+      "principleIds": ["de-risk-early"],
       "type": "multipleChoice",
       "teach": "Benchmarks disagree only when something moved — the question is what, and since when.",
       "prompt": "Mid-project, two benchmarks disagree by 0.15 ft. What's the response?",

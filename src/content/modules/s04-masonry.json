@@ -4,6 +4,26 @@
   "title": "S4 — Masonry (CMU): The 302-House Trade",
   "short": "Masonry",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "s04-c-groutedcell",
+      "principleId": "tension-location",
+      "title": "The rebar that does nothing",
+      "mechanism": "A reinforced block wall only works if the vertical rebar inside the hollow cells is actually surrounded by grout — the grout is what bonds the steel to the block and lets the two act together to resist bending and lateral loads. A wall that LOOKS reinforced from the outside (bars visibly placed before the pour) can still have ungrouted cells if the grout pour was skipped, bridged, or poorly consolidated — leaving a loose bar rattling in a hollow cell, bonded to nothing, carrying no load at all. It passes a visual glance and fails the only check that matters.",
+      "diagramId": "cmu-grouted-cell",
+      "mechanismPro": "Verify grouted cells at spec spacing (commonly 24-32 in oc) via cleanout inspection before pour and consolidation checks (rodding/vibration) after — an ungrouted cell is invisible once the wall is finished and plastered, so the inspection MUST happen before that, not after.",
+      "hook": "A seatbelt draped across your lap but not buckled looks exactly the same as one that's fastened — right up until the moment it needs to do its job.",
+      "applied": {
+        "prompt": "A masonry wall section is grouted and the crew wants to move on. The QC inspector wasn't present for the pour. Do you accept it as-is?",
+        "options": [
+          { "id": "verify-first", "label": "Require cleanout photos/inspection records before accepting, or open a test cell to verify consolidation", "outcome": "Right. Grout hidden inside a cell is unverifiable after the fact any other way — this is the one check that has to happen at the right moment, not later.", "optimal": true },
+          { "id": "sample-check", "label": "Accept the wall but flag a percentage of cells for destructive/non-destructive verification going forward", "outcome": "A reasonable go-forward control, though it does nothing to verify the cells already poured without inspection.", "acceptable": true },
+          { "id": "accept", "label": "Accept the wall since the rebar was visibly placed before the pour", "outcome": "Visible bar placement proves nothing about whether the cell actually got grouted and consolidated — this is exactly the hidden failure the module names, and it's now buried behind finishes.", "acceptable": false }
+        ],
+        "debrief": "This is S3's tension-location law in a masonry disguise: steel only helps where it's actually doing its structural job — bonded, in the right place. An ungrouted cell is steel that LOOKS present but contributes nothing, same as rebar on the wrong face of a slab."
+      }
+    }
+  ],
   "summary": "The system anatomy of the reinforced block wall (and the hidden failure — ungrouted 'reinforced' cells), mortar vs grout as different materials with different jobs, the workmanship items that decide quality scores, and the takt math the production game runs on. PLAIN: blocks, bars, and the concrete poured down the holes. PRO: grouted cells at 24–32 oc, bond beam, consolidation, cleanouts.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "s04-q1",
+      "principleIds": ["tension-location"],
       "type": "multipleChoice",
       "teach": "Random cell drilling samples completed walls to estimate the real grouting defect rate.",
       "prompt": "A random drill of 20 grouted cells finds 3 voided. What's the statistically literate response?",

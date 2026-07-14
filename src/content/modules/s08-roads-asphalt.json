@@ -4,6 +4,26 @@
   "title": "S8 — Roads and Asphalt Paving",
   "short": "Asphalt",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "s08-c-layers",
+      "principleId": "load-path",
+      "title": "Pavement is a layered spring",
+      "mechanism": "A road's job is to take a concentrated wheel load and spread it out, layer by layer, until it's gentle enough for the natural subgrade underneath to carry without deforming — the same load-path idea as a building, just sideways and spread out instead of straight down. Subgrade, base, and binder each spread the load a little wider before the surface course goes on top last, as a wear layer, not a structural one. Rush the surface course onto a base that isn't compacted and tested yet, and the load has nothing solid to spread onto — the whole layered spring collapses from the bottom.",
+      "diagramId": "pavement-layers",
+      "mechanismPro": "Each layer (subgrade → base → prime → binder → surface) distributes load over a widening area; surface course is always last and is a sacrificial wear layer, not the structural element — base compaction (often ~98%) and proof-rolling must be verified before binder/surface proceed.",
+      "hook": "A trampoline works because several layers — frame, springs, mat — share the load before you ever land. Skip straight to the mat without the springs underneath and you just hit the ground.",
+      "applied": {
+        "prompt": "The paver wants to lay the asphalt surface course to hit a deadline, before the base course has been proof-rolled and density-tested.",
+        "options": [
+          { "id": "test-base", "label": "Hold the surface course until base compaction/proof-rolling confirms it meets spec", "outcome": "Right. The surface is the sacrificial top layer of a structural system — putting it down on an unverified base is finishing a spring with no coils underneath.", "optimal": true },
+          { "id": "spot-check", "label": "Spot-check the most suspect base areas and proceed on the rest if they pass", "outcome": "A workable risk reduction if the spot checks are genuinely representative — but any failed spot should stop that section, not just get noted.", "acceptable": true },
+          { "id": "pave-anyway", "label": "Let the paver proceed to hit the deadline", "outcome": "An uncompacted base settles under traffic, and the road dips and cracks from the bottom up within a season — the exact 'layered spring' failure the module warns about, now buried under fresh asphalt.", "acceptable": false }
+        ],
+        "debrief": "This is V3-1's load-path law spread sideways: every load needs an unbroken, adequate road to the ground, whether that's a column to a footing or a tire load through five pavement layers to the subgrade. Skipping a layer's verification is breaking the road."
+      }
+    }
+  ],
   "summary": "Pavement is a layered spring — subgrade, base, prime, binder, then (last, always last) the surface course. Asphalt is temperature-critical: the compaction window closes as the mat cools. And on an island, the paver mobilization economics say: batch the paving. PLAIN: layers, heat, and timing. PRO: 98% base, binder through construction, surface course as the sacrificial wear layer.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "s08-q1",
+      "principleIds": ["load-path"],
       "type": "multipleChoice",
       "teach": "The surface course is the finest, prettiest, least structural layer.",
       "prompt": "Why does the surface course go down LAST — after years of construction traffic ran on the binder?",

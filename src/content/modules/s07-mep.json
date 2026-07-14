@@ -4,6 +4,26 @@
   "title": "S7 — MEP Fundamentals for the Non-MEP Manager",
   "short": "MEP",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "s07-c-drainslope",
+      "principleId": "drainage",
+      "title": "Slope is sacred",
+      "mechanism": "Drain and waste piping relies entirely on gravity — there is no pump making wastewater flow, only a continuous downhill slope from fixture to sewer connection. Even a short flat or back-pitched section anywhere along that run creates a low point where waste and water sit instead of flowing through, leading to standing water, odors, and clogs. A tight ceiling space that seems to force a flat run isn't actually optional to accept — the pipe has to reroute, or the ceiling has to change, because gravity itself does not negotiate.",
+      "diagramId": "drain-slope",
+      "mechanismPro": "Maintain minimum slope (commonly around 1/4 in per foot for smaller drain lines) continuously from fixture to connection; any apparent ceiling-height conflict is a coordination problem to solve in design, not a slope to compromise in the field.",
+      "hook": "A marble rolled along a mostly-downhill track with one flat dip in the middle stops right there, in the dip, no matter how steep the rest of the track is. One flat section undoes the whole slope.",
+      "applied": {
+        "prompt": "A condo's ceiling space is too tight to maintain drain slope in one section without dropping the ceiling further, which the architect resists. What do you require?",
+        "options": [
+          { "id": "hold-slope", "label": "Hold the drainage slope and force the ceiling/routing coordination to solve around it", "outcome": "Right. Slope is not a design preference to trade away — a flat section becomes a standing-water and clog problem the day the building is occupied.", "optimal": true },
+          { "id": "reroute", "label": "Reroute the drain line entirely to a path with adequate headroom, even if longer", "outcome": "A legitimate fix that preserves the physics — often the actual right answer when the direct path genuinely can't carry the slope.", "acceptable": true },
+          { "id": "accept-flat", "label": "Accept a flat section to preserve the architect's ceiling height", "outcome": "This creates a permanent low point where solids settle and water sits — a maintenance and odor problem baked into the building for its entire life, to save a few inches of ceiling in one hallway.", "acceptable": false }
+        ],
+        "debrief": "This is the same drainage law as M01's site-wide groundwater management, at building scale: water always wins unless you give it a planned way out, and a plan that skips slope 'just this once' isn't actually a plan."
+      }
+    }
+  ],
   "summary": "Enough plumbing, electrical, and HVAC to manage the trades: drainage slope is sacred, the corrosion tax on coastal electrical is real, and tropical HVAC is dehumidification first — oversized AC makes mold. Plus the coordination discipline that is the actual CM skill. PLAIN: water flows downhill, salt eats metal, cold surfaces sweat. PRO: quarter-inch per foot, coastal-rated equipment, Manual-J right-sizing.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "s07-q1",
+      "principleIds": ["drainage"],
       "type": "multipleChoice",
       "teach": "The slab pour will bury the drainage piping forever — the survey is the last look.",
       "prompt": "The pre-pour survey shows one bathroom group 40 ft from the stack at dead-flat grade. The pour is scheduled for 6 AM. Stop it?",

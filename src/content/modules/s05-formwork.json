@@ -4,6 +4,26 @@
   "title": "S5 — Formwork, Shoring, and the Condo Frame",
   "short": "Formwork",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "s05-c-shorerelease",
+      "principleId": "concrete-curing",
+      "title": "Strip on the break, not the calendar",
+      "mechanism": "A suspended condo slab needs its shoring to stay in place until the concrete underneath is actually strong enough to carry the load on its own — not until some number of days has passed on a schedule. Concrete strength depends on curing conditions (temperature, moisture) that vary, so the same '7 days' can mean very different actual strength depending on the week. The only honest answer to 'is it ready' is a cylinder break test showing real measured strength — the calendar is a guess, the test is a fact.",
+      "diagramId": "shore-release",
+      "mechanismPro": "Strip and reshore based on field-cured cylinder break data matched to the design strength required at that stage, not a fixed calendar day; hurricane-season schedule pressure is exactly when the temptation to strip early on the calendar is highest and most dangerous.",
+      "hook": "You don't decide bread is done baking by looking at the clock — you check if it's actually cooked. Concrete strength is the same: the calendar tells you time has passed, not that the job is done.",
+      "applied": {
+        "prompt": "A named storm is approaching and the super wants to strip shores on schedule (day 7) to free up equipment before the storm, even though today's cylinder breaks are running lower than expected.",
+        "options": [
+          { "id": "wait-data", "label": "Hold the shores until break data confirms design strength, adjusting the storm-prep plan around it", "outcome": "Right. Stripping on a strength number that isn't there yet risks a slab failure — a genuinely worse outcome than a rescheduled equipment move.", "optimal": true },
+          { "id": "partial-reshore", "label": "Strip only the least-loaded spans on schedule, reshore the rest pending data", "outcome": "A defensible compromise IF the load analysis genuinely supports which spans can come down early — this needs engineering sign-off, not a field guess.", "acceptable": true },
+          { "id": "strip-schedule", "label": "Strip on the calendar date to beat the storm", "outcome": "The calendar was never the actual measure of strength — stripping on a date instead of a measured number is how suspended slabs fail, and doing it under storm pressure is the worst possible time to skip the check.", "acceptable": false }
+        ],
+        "debrief": "This is S2's concrete-curing law applied to formwork: strength is a fact you measure, not a date you assume. The same discipline — trust the test, not the calendar — is what protects every suspended slab on the condo frame."
+      }
+    }
+  ],
   "summary": "Formwork is a temporary structure that must be engineered like a permanent one: fresh concrete is a FLUID pushing on forms, suspended slabs sit on shoring carrying the full wet load, and shores release on cylinder data — never the calendar. PLAIN: wet concrete is heavy soup in a box. PRO: form pressure by pour rate, strip on field-cured breaks, reshore the levels below.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "s05-q1",
+      "principleIds": ["concrete-curing"],
       "type": "multipleChoice",
       "teach": "Field-cured cylinders live next to the slab they represent, gaining strength at the slab's actual temperature.",
       "prompt": "7-day field-cured cylinders read 62% of f'c; the stripping table requires 70%. The crane schedule wants the forms tomorrow. What releases the shores?",
