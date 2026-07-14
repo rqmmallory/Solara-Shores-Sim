@@ -22,6 +22,24 @@
         ],
         "debrief": "The same law also runs through V3-6's crack-reading: a thermal/shrinkage crack that shows up unplanned is exactly the kind of crack pattern that module teaches you to recognize as 'preventable, if you'd planned a joint.' Movement is not optional; where it happens is."
       }
+    },
+    {
+      "id": "v35-c-vapordrive",
+      "principleId": "vapor-drive",
+      "title": "The wet side is outside: why northern wall details rot tropical buildings",
+      "mechanism": "Air holds invisible water vapor — hot humid air holds a lot, cool dry air holds very little. That vapor constantly pushes from the side with more of it toward the side with less, straight through walls, and turns back into liquid the instant it touches a surface colder than the dew point. In a cold climate, the inside is the warm, humid side (heating, cooking, people), so vapor pushes OUTWARD — and the plastic vapor barrier goes on the INSIDE face to block it there. In Nassau that's flipped: outside is 32°C and 85% humidity, air-conditioned inside is a cool, dry 23°C, so vapor pushes INWARD, all day, most of the year. Copy a northern wall detail here — poly sheet behind the interior drywall — and you've placed a cold plastic sheet directly in the path of hot, humid air pushing inward. It becomes a condensation machine, quietly raining inside the wall cavity. The direction isn't a convention to follow; it's physics that flips with climate.",
+      "diagramId": "diag-vapor-flip",
+      "mechanismPro": "Vapor drive direction follows the vapor pressure gradient (warm-humid → cool-dry); in cooling-dominated tropical climates the vapor control layer belongs on the exterior (warm) side, opposite the cold-climate convention, and interior finishes should be vapor-open so any incidental moisture can dry inward rather than being trapped against a cold interior barrier.",
+      "hook": "A cold soda can on a Nassau porch sweats instantly — the water isn't leaking from the can, the humid air itself is dumping its invisible moisture onto the first cold surface it touches. Now put that same cold surface inside a wall where nobody can see it happening.",
+      "applied": {
+        "prompt": "The condo interior build-out spec, adapted from the architect's previous project in the northern US, calls for poly sheeting behind the drywall on all exterior walls of the air-conditioned units. Framing starts in two weeks.",
+        "options": [
+          { "id": "rfi-flip", "label": "File an RFI to delete the interior poly, rely on the exterior weather barrier as the vapor control layer, and keep interior finishes vapor-open", "outcome": "Right. Near-zero cost to fix now, and it corrects the exact physics inversion that a copy-pasted heating-climate detail gets backwards in this climate.", "optimal": true },
+          { "id": "mold-resistant", "label": "Keep the spec as drawn but add mold-resistant drywall as insurance", "outcome": "This treats a symptom while leaving the actual condensation plane intact behind the wall — the cavity still gets wet, just behind a board that resists mold slightly longer.", "acceptable": false },
+          { "id": "build-as-stamped", "label": "Build to the stamped spec as drawn, since it's an approved detail", "outcome": "Every exterior wall in all 108 units becomes a condensation plane — hot humid air meeting a cold interior poly sheet rains inside the wall cavity, and mold appears behind finished drywall within a couple of humid seasons.", "acceptable": false }
+        ],
+        "debrief": "Same law, new disguise as S7's MEP module: its warning that an oversized AC 'makes mold' is this exact mechanism wearing a mechanical costume — cold surface plus humid air equals liquid water, whether that cold surface is a poly sheet, a duct, or an over-chilled room that never got the chance to dehumidify."
+      }
     }
   ],
   "summary": "Materials change size and you can't stop them — only plan for them. Restrain concrete's movement and it makes its own room: it cracks. Joints are you deciding where the cracks go. Wood moves with moisture, not heat. And climates differ in WHICH enemy dominates — the transferable literacy. PLAIN: give movement somewhere to happen. PRO: control vs expansion joints, sawcut windows, EMC and acclimatization, exposure classes.",
@@ -69,6 +87,7 @@
     },
     {
       "id": "v35-q2",
+      "principleIds": ["vapor-drive"],
       "type": "multipleChoice",
       "teach": "Control joints and expansion joints solve different problems.",
       "prompt": "The 1,400-ft bulkhead cap needs joints. Which kind, and why is this worth a design-review hour?",

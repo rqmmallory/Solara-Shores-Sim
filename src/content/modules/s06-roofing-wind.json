@@ -22,6 +22,24 @@
         ],
         "debrief": "Wind is an uplift problem, and uplift is a load-path problem: an unbroken chain from roof to ground, with the CONNECTIONS as the weak links to detail hardest. Corners and edges see the most suction — tie them down like the building depends on it, because it does."
       }
+    },
+    {
+      "id": "s06-c-continuity",
+      "principleId": "waterproofing",
+      "title": "A roof is only as waterproof as its worst hole",
+      "mechanism": "A roof membrane works like a raincoat — it only protects you if it is one continuous sheet. Every pipe, vent, and AC curb poking through it is a hole cut in that raincoat. Hurricane rain doesn't fall straight down — wind pushes it sideways and even upward, so it finds any unsealed gap no matter which way the hole faces. Once inside, water spreads sideways through the insulation before it ever drips through the ceiling, so the stain you see can be meters from the actual hole. Being 99% sealed is 0% waterproof at the 1% that isn't.",
+      "diagramId": "diag-roof-penetration",
+      "mechanismPro": "Every penetration needs a flashed, sealed boot tied into the membrane's own waterproofing system, not a bead of mastic; wind-driven rain during named storms actively drives water into unsealed gaps, and water travels laterally through wet insulation before showing as an interior stain, so a stain's location does not point to the leak's location.",
+      "hook": "A raincoat missing one button. You don't end up 99% dry — the rain finds that one gap, runs down your chest, and you're as soaked as if you wore no coat at all.",
+      "applied": {
+        "prompt": "The condo roofing membrane is finished, but MEP needs to cut three new penetrations for relocated condenser lines, and a named storm's outer bands arrive in two days. The sub proposes sealing them with mastic to stay on schedule.",
+        "options": [
+          { "id": "recall-roofer", "label": "Delay MEP slightly and bring the roofer back to install proper flashed boots before the storm arrives", "outcome": "Right. A short delay now is far cheaper than tearing off storm-soaked insulation and membrane after the first named storm finds the mastic.", "optimal": true },
+          { "id": "test-after", "label": "Accept the mastic seal but schedule a water test immediately after the storm passes", "outcome": "This finds the leak only after it has already happened — acceptable as a safety net, but it accepts real risk to the roof deck and insulation during the storm itself.", "acceptable": true },
+          { "id": "mastic-note", "label": "Accept the mastic seal and note the penetrations for proper flashing later", "outcome": "Wind-driven rain from the very next storm finds exactly these gaps; water spreads sideways through the insulation long before any ceiling stain reveals where it entered.", "acceptable": false }
+        ],
+        "debrief": "Same law, new disguise as S7's drainage: a drain line is only as good as its lowest sag; a membrane is only as good as its worst penetration. Systems built to manage water fail at their single weakest point, never at their average."
+      }
     }
   ],
   "summary": "Wind uplift must travel roof covering → sheathing → truss → strap → ring beam → wall steel → footing → rock, with every link CONNECTED. Hurricanes fail the weakest link, and the weakest link is almost always a connection. PLAIN: the storm tries to pull the roof off; every part must hold the next. PRO: load path, zone nailing, strap schedules, opening protection as structure.",
@@ -59,6 +77,7 @@
     },
     {
       "id": "s06-q2",
+      "principleIds": ["waterproofing"],
       "type": "multipleChoice",
       "teach": "Uplift pressure is not uniform across a roof.",
       "prompt": "Why does the sheathing nailing pattern tighten at roof edges and corners?",

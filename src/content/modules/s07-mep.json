@@ -22,6 +22,24 @@
         ],
         "debrief": "This is the same drainage law as M01's site-wide groundwater management, at building scale: water always wins unless you give it a planned way out, and a plan that skips slope 'just this once' isn't actually a plan."
       }
+    },
+    {
+      "id": "s07-c-dewpoint",
+      "principleId": "vapor-drive",
+      "title": "Everything cold sweats: sizing AC for water, not just heat",
+      "mechanism": "In humid Bahamian air, ANY surface below the dew point — an uninsulated duct, a chilled pipe, even an over-cooled ceiling tile — grows liquid water out of thin air, the same way a cold drink sweats on a porch. An air conditioner only pulls humidity out of the air while it's actually running. An oversized unit blasts the room down to temperature in minutes and shuts off, long before it has wrung much water out of the air at all. The result is a cold, clammy room stuck at high humidity, where every cool surface keeps sweating and mold farms itself quietly behind the scenes. A right-sized unit runs longer and gentler, and spends that runtime doing its real tropical job: removing water, with cooling as the side effect.",
+      "diagramId": "diag-cold-sweats",
+      "mechanismPro": "Size cooling equipment to Manual-J load calculations that account for latent (moisture) load, not just sensible heat, since short-cycling from oversizing fails to dehumidify even as it satisfies the thermostat; insulate any duct or pipe surface that can fall below the space dew point, since bare metal at supply-air temperature is a guaranteed condensation source in this climate.",
+      "hook": "Wringing a wet towel: a huge machine that squeezes it for two seconds leaves it cold but still dripping. A smaller machine that squeezes steadily for ten minutes hands you a dry towel. Runtime is what wrings the water out — of a towel, or of a room.",
+      "applied": {
+        "prompt": "Condo buyers' agents push for 'more powerful' AC as a selling point, and the mechanical sub offers a discount on units one size up across all 108 condos; separately, a value-engineering line proposes deleting insulation on condensate-adjacent duct runs above bathroom ceilings.",
+        "options": [
+          { "id": "hold-sizing", "label": "Hold Manual-J-appropriate sizing and keep duct insulation, and give sales a better story: 'engineered for tropical humidity'", "outcome": "Right. This is the actual tropical-climate answer — a unit sized to run long enough to dehumidify, with no cold surfaces left exposed to sweat.", "optimal": true },
+          { "id": "upsize-insulate", "label": "Accept the larger units but keep the duct insulation", "outcome": "Removes one failure mode but not the other — short-cycling still leaves indoor humidity high even though nothing is visibly sweating yet.", "acceptable": true },
+          { "id": "both", "label": "Accept the larger units and delete the duct insulation to save cost", "outcome": "Short-cycling keeps humidity around 70% while bare, cold ducts sweat directly onto ceiling drywall above bathrooms — the marina-view condos develop a mildew smell within two years of occupancy.", "acceptable": false }
+        ],
+        "debrief": "Same law, new disguise as V3-5's wall assembly: v35's poly sheet and this duct are the identical failure — a surface below dew point sitting in humid air. One hides inside a wall, the other drips onto a ceiling tile; once you can ask 'is anything here colder than the dew point,' you'll spot both."
+      }
     }
   ],
   "summary": "Enough plumbing, electrical, and HVAC to manage the trades: drainage slope is sacred, the corrosion tax on coastal electrical is real, and tropical HVAC is dehumidification first — oversized AC makes mold. Plus the coordination discipline that is the actual CM skill. PLAIN: water flows downhill, salt eats metal, cold surfaces sweat. PRO: quarter-inch per foot, coastal-rated equipment, Manual-J right-sizing.",
@@ -69,6 +87,7 @@
     },
     {
       "id": "s07-q2",
+      "principleIds": ["vapor-drive"],
       "type": "multipleChoice",
       "teach": "AC removes moisture only while it's running — a unit that cycles off quickly barely dehumidifies.",
       "prompt": "Explain the oversized-AC-makes-mold mechanism (the one behind the sim's Phase 7 warranty cluster).",

@@ -783,6 +783,192 @@ function FireCompartmentEgress() {
   );
 }
 
+/** roof penetration: a membrane is only as waterproof as its worst hole */
+function RoofPenetration() {
+  return (
+    <G>
+      <Rect x={0} y={0} width={VB_W} height={VB_H} fill="#182A42" />
+      {[10, 24, 38].map((y) => (
+        <G key={y}>
+          <Line x1={4} y1={y} x2={30} y2={y + 14} stroke="#8FD3F7" strokeWidth={1.5} />
+        </G>
+      ))}
+      {label(4, 4, 'wind-driven rain', { size: 7, color: '#8FD3F7' })}
+      <Rect x={20} y={70} width={190} height={16} fill="#8FA3BC" />
+      <Rect x={20} y={64} width={190} height={4} fill="#0A1420" />
+      {label(24, 62, 'membrane', { size: 7, color: colors.muted })}
+      {/* flashed penetration: sealed boot, water sheds */}
+      <Rect x={60} y={40} width={10} height={30} fill="#6B5A30" />
+      <Polygon points="52,64 78,64 70,50 60,50" fill={colors.good} opacity={0.8} />
+      {label(65, 34, 'flashed', { anchor: 'middle', size: 7, color: colors.good, weight: '700' })}
+      {label(65, 118, 'water sheds', { anchor: 'middle', size: 7, color: colors.good })}
+      {/* gapped penetration: water enters, spreads sideways in wet insulation */}
+      <Rect x={150} y={40} width={10} height={30} fill="#6B5A30" />
+      <Circle cx={150} cy={62} r={2} fill="#4FC3F7" />
+      <Circle cx={148} cy={70} r={2} fill="#4FC3F7" />
+      <Rect x={110} y={86} width={90} height={16} fill="#1C77B0" opacity={0.35} />
+      {label(155, 34, 'gap', { anchor: 'middle', size: 7, color: colors.bad, weight: '700' })}
+      <Line x1={130} y1={94} x2={205} y2={100} stroke={colors.bad} strokeWidth={1.5} strokeDasharray="2 2" />
+      {label(155, 118, 'spreads, drips far away', { anchor: 'middle', size: 7, color: colors.bad })}
+      {label(106, 138, '99% waterproof at one hole = 0% waterproof there', { anchor: 'middle', size: 8, color: '#CBD5E6' })}
+    </G>
+  );
+}
+
+/** positive vs negative side: fight water on water's own side of the wall */
+function PositiveNegative() {
+  return (
+    <G>
+      <Rect x={0} y={0} width={90} height={VB_H} fill="#1C77B0" opacity={0.5} />
+      {[20, 40, 60, 80, 100].map((y) => <Line key={y} x1={4} y1={y} x2={86} y2={y} stroke="#8FD3F7" strokeWidth={1} opacity={0.5} />)}
+      {label(4, 12, 'groundwater (sea level)', { size: 7, color: '#8FD3F7' })}
+      <Rect x={90} y={10} width={16} height={VB_H - 30} fill="#8FA3BC" />
+      <Rect x={106} y={10} width={110} height={VB_H - 30} fill="#182A42" />
+      {label(150, 12, 'dry side (pit)', { size: 7, color: colors.muted })}
+      {/* positive side membrane: pressed on */}
+      <Line x1={90} y1={20} x2={90} y2={110} stroke={colors.good} strokeWidth={3} />
+      {[30, 50, 70, 90].map((y) => <Line key={y} x1={82} y1={y} x2={89} y2={y} stroke={colors.good} strokeWidth={1.5} />)}
+      {label(60, 128, 'positive side: pressure seals it', { anchor: 'middle', size: 7, color: colors.good, weight: '700' })}
+      {/* negative side coating: peeled off, wall stays wet */}
+      <Line x1={112} y1={20} x2={112} y2={110} stroke={colors.bad} strokeWidth={2.5} strokeDasharray="4 3" />
+      <Path d="M112,20 Q120,26 113,32" stroke={colors.bad} strokeWidth={1.5} fill="none" />
+      {[35, 55, 75].map((y) => <Circle key={y} cx={98} cy={y} r={1.8} fill="#4FC3F7" />)}
+      {label(150, 128, 'negative side: pressure peels it, wall stays wet', { anchor: 'middle', size: 7, color: colors.bad })}
+    </G>
+  );
+}
+
+/** capillary rise: block walls drink uphill with no break */
+function CapillaryRise() {
+  return (
+    <G>
+      <Rect x={0} y={0} width={VB_W} height={VB_H} fill="#182A42" />
+      {[
+        { x0: 4, label: 'NO BREAK', bad: true },
+        { x0: 114, label: 'WITH BREAK', bad: false },
+      ].map((panel) => (
+        <G key={panel.x0}>
+          <Rect x={panel.x0} y={110} width={100} height={20} fill="#4A3E20" />
+          {[10, 30, 50, 70, 90].map((dx) => <Circle key={dx} cx={panel.x0 + dx} cy={118} r={1.5} fill="#0A1420" opacity={0.4} />)}
+          {[0, 1, 2, 3, 4].map((i) => (
+            <Rect key={i} x={panel.x0 + 5} y={94 - i * 18} width={90} height={16} fill="#8FA3BC" stroke="#5A6270" strokeWidth={0.5} />
+          ))}
+          {panel.bad ? (
+            <>
+              {[0, 1, 2].map((i) => (
+                <Rect key={i} x={panel.x0 + 5} y={94 - i * 18} width={90} height={16} fill="#1C77B0" opacity={0.3} />
+              ))}
+              <UpArrow x={panel.x0 + 50} y0={108} y1={44} color="#4FC3F7" w={1.5} />
+              {label(panel.x0 + 50, 10, 'damp, blisters, salt stains', { anchor: 'middle', size: 6.5, color: colors.bad })}
+            </>
+          ) : (
+            <>
+              <Line x1={panel.x0} y1={110} x2={panel.x0 + 100} y2={110} stroke="#0A1420" strokeWidth={3} />
+              {label(panel.x0 + 50, 106, 'damp-proof course', { anchor: 'middle', size: 6, color: colors.good })}
+              <UpArrow x={panel.x0 + 50} y0={108} y1={112} color={colors.good} w={1.5} />
+              {label(panel.x0 + 50, 10, 'clean above the break', { anchor: 'middle', size: 6.5, color: colors.good })}
+            </>
+          )}
+          {label(panel.x0 + 50, 138, panel.label, { anchor: 'middle', size: 8, weight: '700', color: panel.bad ? colors.bad : colors.good })}
+        </G>
+      ))}
+    </G>
+  );
+}
+
+/** under-slab sandwich: gravel breaks the wick, poly stops the vapor */
+function UnderslabSandwich() {
+  const layers: [string, number, string][] = [
+    ['flooring', 6, '#8FA3BC'],
+    ['slab', 20, '#9AA4B2'],
+  ];
+  return (
+    <G>
+      <Rect x={0} y={0} width={VB_W} height={VB_H} fill="#182A42" />
+      <Line x1={10} y1={120} x2={210} y2={120} stroke="#4FC3F7" strokeWidth={1.5} strokeDasharray="4 2" />
+      {label(12, 130, 'water table ≈ sea level', { size: 7, color: '#8FD3F7' })}
+      <Rect x={10} y={100} width={200} height={20} fill="#4A3E20" />
+      {[30, 70, 110, 150, 190].map((x) => <Circle key={x} cx={x} cy={95} r={3} fill="#8892A0" />)}
+      {label(190, 84, 'gravel — capillary break', { anchor: 'end', size: 7, color: colors.text })}
+      <Line x1={10} y1={82} x2={210} y2={82} stroke={colors.warn} strokeWidth={3} />
+      {label(12, 76, 'poly sheet — vapor barrier', { size: 7, color: colors.warn })}
+      {(() => {
+        let y = 82;
+        return layers.map(([n, h, c]) => {
+          y -= h;
+          return (
+            <G key={n}>
+              <Rect x={10} y={y} width={200} height={h} fill={c} />
+              {label(190, y + h / 2 + 3, n, { anchor: 'end', size: 7, color: '#10141B' })}
+            </G>
+          );
+        });
+      })()}
+      {[40, 100, 160].map((x) => <Line key={x} x1={x} y1={112} x2={x} y2={95} stroke="#4FC3F7" strokeWidth={1.5} />)}
+      {[50, 110, 170].map((x) => (
+        <Line key={x} x1={x} y1={98} x2={x} y2={84} stroke={colors.warn} strokeWidth={1} strokeDasharray="1 2" />
+      ))}
+      {label(106, VB_H - 6, 'skip either layer and the ground becomes the flooring\'s enemy', { anchor: 'middle', size: 7, color: '#CBD5E6' })}
+    </G>
+  );
+}
+
+/** vapor drive flips direction with climate — the tropical inversion */
+function VaporFlip() {
+  return (
+    <G>
+      <Rect x={0} y={0} width={110} height={VB_H} fill="#182A42" />
+      {label(55, 10, 'COLD CLIMATE', { anchor: 'middle', size: 7.5, weight: '700', color: colors.muted })}
+      {label(8, 24, '-5°C dry', { size: 7, color: '#8FD3F7' })}
+      {label(78, 24, '21°C humid', { size: 7, color: colors.warn })}
+      <Rect x={48} y={34} width={12} height={80} fill="#8FA3BC" />
+      <Line x1={54} y1={34} x2={54} y2={114} stroke={colors.text} strokeWidth={2} strokeDasharray="3 2" />
+      <Polygon points="60,68 70,74 60,80" fill={colors.warn} />
+      <Line x1={30} y1={74} x2={60} y2={74} stroke={colors.warn} strokeWidth={2} />
+      {label(20, 130, 'barrier warm side ✓', { size: 6.5, color: colors.good })}
+
+      <Rect x={110} y={0} width={110} height={VB_H} fill="#1F3450" />
+      {label(165, 10, 'BAHAMAS', { anchor: 'middle', size: 7.5, weight: '700', color: colors.accent })}
+      {label(118, 24, '32°C, 85% RH', { size: 7, color: colors.warn })}
+      {label(188, 24, '23°C AC', { size: 7, color: '#8FD3F7' })}
+      <Rect x={158} y={34} width={12} height={50} fill="#8FA3BC" />
+      <Line x1={164} y1={34} x2={164} y2={84} stroke={colors.text} strokeWidth={2} strokeDasharray="3 2" />
+      <Polygon points="158,54 148,60 158,66" fill={colors.bad} />
+      <Line x1={148} y1={60} x2={170} y2={60} stroke={colors.bad} strokeWidth={2} />
+      {[150, 156, 162].map((x) => <Circle key={x} cx={x} cy={78} r={1.8} fill="#4FC3F7" />)}
+      {label(164, 96, 'rains inside the wall ✗', { anchor: 'middle', size: 6.5, color: colors.bad })}
+      <Line x1={164} y1={110} x2={164} y2={140} stroke={colors.good} strokeWidth={2} strokeDasharray="3 2" />
+      {label(164, 148, 'move barrier outside ✓', { anchor: 'middle', size: 6.5, color: colors.good })}
+    </G>
+  );
+}
+
+/** cold sweats: dew point and why AC sizing is really about water */
+function ColdSweats() {
+  return (
+    <G>
+      <Rect x={0} y={0} width={VB_W} height={VB_H} fill="#182A42" />
+      {label(4, 10, 'room air 26°C, 65% RH → dew point 19°C', { size: 7, color: '#CBD5E6' })}
+      <Circle cx={50} cy={40} r={12} fill="#8FA3BC" />
+      {label(50, 43, '13°C', { anchor: 'middle', size: 7, color: '#10141B', weight: '700' })}
+      {[42, 50, 58].map((x) => <Circle key={x} cx={x} cy={56} r={2} fill="#4FC3F7" />)}
+      <Rect x={20} y={64} width={60} height={8} fill="#8892A0" opacity={0.6} />
+      {label(50, 80, 'stained ceiling tile', { anchor: 'middle', size: 6.5, color: colors.bad })}
+      <Circle cx={150} cy={40} r={16} fill="none" stroke="#8FA3BC" strokeWidth={4} />
+      <Circle cx={150} cy={40} r={10} fill="#8FA3BC" />
+      {label(150, 80, 'insulated — stays dry', { anchor: 'middle', size: 6.5, color: colors.good })}
+      {/* runtime bars */}
+      <Rect x={10} y={104} width={12} height={10} fill={colors.warn} />
+      <Rect x={30} y={104} width={8} height={10} fill="#1F3450" />
+      <Rect x={44} y={104} width={12} height={10} fill={colors.warn} />
+      <Rect x={64} y={104} width={8} height={10} fill="#1F3450" />
+      {label(90, 111, 'oversized: short cycles, RH stays 70%', { size: 6.5, color: colors.bad })}
+      <Rect x={10} y={126} width={90} height={10} fill={colors.good} />
+      {label(106, 133, 'right-sized: runs long, RH falls to 50%', { size: 6.5, color: colors.good })}
+    </G>
+  );
+}
+
 const DIAGRAMS: Record<string, () => React.ReactElement> = {
   'hydrostatic-uplift': HydrostaticUplift,
   'load-path': LoadPath,
@@ -813,6 +999,12 @@ const DIAGRAMS: Record<string, () => React.ReactElement> = {
   'control-joint': ControlJoint,
   'crack-alphabet': CrackAlphabet,
   'fire-compartment-egress': FireCompartmentEgress,
+  'diag-roof-penetration': RoofPenetration,
+  'diag-positive-negative': PositiveNegative,
+  'diag-capillary-rise': CapillaryRise,
+  'diag-underslab-sandwich': UnderslabSandwich,
+  'diag-vapor-flip': VaporFlip,
+  'diag-cold-sweats': ColdSweats,
 };
 
 /** ids of diagrams that have a real drawing (not the placeholder) */

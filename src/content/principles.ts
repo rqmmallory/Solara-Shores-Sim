@@ -122,6 +122,18 @@ export const PRINCIPLES: Principle[] = [
     statement: "A deal only lives in the gap where both sides' walk-away lines overlap; know your walk-away or you will sign a bad one.",
     domain: 'management',
   },
+  {
+    id: 'capillary-break',
+    name: 'Capillary break',
+    statement: 'Water climbs porous material in any direction, even straight up; slopes and drains cannot stop a wick — only a break can.',
+    domain: 'physics',
+  },
+  {
+    id: 'vapor-drive',
+    name: 'Vapor drive',
+    statement: 'Invisible vapor pushes from warm-humid toward cool-dry and turns to liquid on the first surface below the dew point; in the tropics the wet side is outside, so a northern detail traps water in the wall.',
+    domain: 'physics',
+  },
 ];
 
 const BY_ID = new Map(PRINCIPLES.map((p) => [p.id, p]));

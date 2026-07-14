@@ -37,6 +37,24 @@
         ],
         "debrief": "The danger arrives with the EMPTINESS, not the draining. Every buried hollow thing here — pools, the marina's fuel tanks, the wet wells — carries a buoyancy check and a way to resist uplift. Skipping the groundwater check is how a pool becomes a boat."
       }
+    },
+    {
+      "id": "v33-c-posneg",
+      "principleId": "waterproofing",
+      "title": "Fight water on water's own side of the wall",
+      "mechanism": "Water under pressure pushes. A waterproofing membrane installed on the WET side of a wall (the side the water is actually pressing from) gets pushed harder onto the wall by that same pressure — the water helps seal itself out. A coating applied on the DRY side instead gets pushed OFF the wall by that pressure, fighting to peel away exactly when it matters most. Worse, a negative-side-only fix leaves the wall itself sitting permanently soaked, because the water never stopped reaching the concrete — it only stopped (mostly) reaching the room.",
+      "diagramId": "diag-positive-negative",
+      "mechanismPro": "Positive-side (exterior/wet-side) membranes are pressure-assisted seals and are always preferred where accessible; negative-side (interior/dry-side) coatings and crystalline treatments are a last resort for already-buried walls, and they leave the wall itself chronically saturated even when the interior stays dry.",
+      "hook": "A sticker on a balloon: on the outside, inflating the balloon presses the sticker tighter. On the inside, every bit of pressure tries to peel it off. Same sticker, opposite fate, depending only on which side it's on.",
+      "applied": {
+        "prompt": "A condo elevator pit sits below the water table and shows seepage after the waterproofing membrane was buried early by backfill, to free up the excavator for the next building. What's your call?",
+        "options": [
+          { "id": "reexcavate", "label": "Re-excavate and repair the positive-side membrane before slab-on-grade pours lock in access", "outcome": "Right. Expensive today, but far cheaper than jackhammering a finished lobby later — and it actually stops water from reaching the wall at all, not just from reaching the room.", "optimal": true },
+          { "id": "crystalline", "label": "Apply a crystalline/negative-side coating from inside the pit", "outcome": "Can reduce visible seepage, but you're betting a coating against real hydrostatic pressure trying to peel it off, and the wall itself stays permanently saturated with groundwater.", "acceptable": true },
+          { "id": "epoxy-crack", "label": "Inject the visible seepage cracks with epoxy and move on", "outcome": "Water under pressure simply relocates to the next cold joint or crack — this treats one symptom while the wall keeps failing everywhere else it can find a path.", "acceptable": false }
+        ],
+        "debrief": "The water you'd lock inside that wall isn't just wet — it's Nassau groundwater, which carries salt. A negative-side fix that 'works' can still be feeding chlorides straight to your rebar, same law as V3-6/S9's ingress clock: what gets into concrete matters as much as whether it drips through."
+      }
     }
   ],
   "summary": "Water pushes on everything, from every side, and it never gets tired — 62.4 pounds per square foot per foot of depth, sideways on walls and UPWARD on floors. Anything hollow in groundwater is a boat whether you meant it or not. The site's secret antagonist, with the floating pool as its signature story. PLAIN: empty things in wet ground want to float. PRO: hydrostatic head, uplift checks, relief valves, why you can't dewater karst.",
@@ -84,6 +102,7 @@
     },
     {
       "id": "v33-q2",
+      "principleIds": ["waterproofing"],
       "type": "multipleChoice",
       "teach": "Uplift = footprint × head × 62.4 pcf. The check is arithmetic; the failure is spectacular.",
       "prompt": "A lift-station wet well pops 4 inches during construction after a rainy week. What happened?",

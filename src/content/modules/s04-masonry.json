@@ -22,6 +22,24 @@
         ],
         "debrief": "This is S3's tension-location law in a masonry disguise: steel only helps where it's actually doing its structural job — bonded, in the right place. An ungrouted cell is steel that LOOKS present but contributes nothing, same as rebar on the wrong face of a slab."
       }
+    },
+    {
+      "id": "s04-c-capillary",
+      "principleId": "capillary-break",
+      "title": "Block walls drink — uphill",
+      "mechanism": "A concrete block is full of tiny pores, and in a pore that thin, surface tension grips the water and pulls it UP the material — gravity loses. So a block wall sitting on damp soil drinks like a stack of sponges, lifting moisture course by course, with nobody pushing it and no slope involved at all. Because the water is climbing, not flowing, no gutter, drain, or regrading can stop it — the wall isn't shedding water, it's wicking it. The only real fix is a BREAK: a layer with no pores to grip (a damp-proof course) or gaps too big for capillary action to bridge (coarse gravel).",
+      "diagramId": "diag-capillary-rise",
+      "mechanismPro": "Rising damp climbs via capillarity regardless of surface slope; a damp-proof course (membrane or coarse-gravel break) at the base of any wall in contact with damp soil is the only reliable stop — surface drainage and regrading address bulk water, not wicking, and will not solve this.",
+      "hook": "A paper towel corner dipped in spilled juice: the juice climbs the towel, upward, with nothing pushing it. A block wall standing on wet coastal sand is a two-metre paper towel.",
+      "applied": {
+        "prompt": "Painters on the first 12 finished houses (of 302) report paint blistering and white crystal stains on the bottom two block courses, inside and out. The painting sub proposes an elastomeric 'waterproof' repaint; the site super proposes regrading to move water away faster.",
+        "options": [
+          { "id": "add-dpc", "label": "Add the missing damp-proof course detail at the wall base on the remaining 290 houses; treat the 12 as remediation", "outcome": "Right. This addresses the actual mechanism — wicking, not surface flow — and costs dollars per house now versus mold and paint-warranty claims across the whole subdivision later.", "optimal": true },
+          { "id": "regrade", "label": "Regrade and extend drip lines away from the foundations", "outcome": "Good general practice, but this treats bulk surface water — the wall is drinking from damp SOIL, not standing puddles, so regrading alone will not stop the rise.", "acceptable": true },
+          { "id": "repaint", "label": "Repaint with elastomeric waterproof coating", "outcome": "This seals the wick's only exit — water that was evaporating out through the paint now has nowhere to go but higher, and the paint blows off above the old blister line instead.", "acceptable": false }
+        ],
+        "debrief": "The same pores that wick water up this wall are the highway chloride ingress takes to your rebar in S9/V3-6 — capillarity is corrosion's delivery truck. Same law, same cure: deny the water a continuous path, whether that path runs up a wall or through a slab (see M01)."
+      }
     }
   ],
   "summary": "The system anatomy of the reinforced block wall (and the hidden failure — ungrouted 'reinforced' cells), mortar vs grout as different materials with different jobs, the workmanship items that decide quality scores, and the takt math the production game runs on. PLAIN: blocks, bars, and the concrete poured down the holes. PRO: grouted cells at 24–32 oc, bond beam, consolidation, cleanouts.",
@@ -69,6 +87,7 @@
     },
     {
       "id": "s04-q2",
+      "principleIds": ["capillary-break"],
       "type": "multipleChoice",
       "teach": "Mortar beds blocks; grout fills cells. Different materials, different consistencies, different jobs.",
       "prompt": "Why is a crew shoveling leftover mortar into reinforced cells a defect rather than a thrifty habit?",

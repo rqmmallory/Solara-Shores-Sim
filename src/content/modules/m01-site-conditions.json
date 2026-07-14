@@ -22,6 +22,24 @@
         ],
         "debrief": "This is the base fact every later decision sits on: rock, water, and weather. The same water table that floods a pit here is what makes an empty pool float in V3-3 — one law, showing up everywhere you dig or build hollow on this island."
       }
+    },
+    {
+      "id": "m01-c-underslab",
+      "principleId": "capillary-break",
+      "title": "The slab sits on a sandwich, not on sand",
+      "mechanism": "With groundwater near sea level, every slab on this project floats just centimeters above wet ground. Concrete is porous, and that ground pushes moisture up into it two different ways: wicking (capillary action, climbing the pores) and invisible water vapor. So before the pour, you build a sandwich: coarse gravel first — gaps too big for capillary action to grip, the capillary break — then a poly sheet on top of that to stop the vapor the gravel can't touch. Skip either layer and the slab quietly becomes a wet ceiling for the ground below it. There is no fixing it later: once the concrete is poured, both layers are buried forever.",
+      "diagramId": "diag-underslab-sandwich",
+      "mechanismPro": "Capillary break (coarse, clean gravel) plus a vapor retarder (poly sheet, ideally under a protective layer to avoid puncture during the pour) belong under every slab-on-grade here; skipping either invites lifetime moisture emission through the slab — flooring adhesive failure, mold under vinyl, and warranty claims that surface only after handover.",
+      "hook": "A dry cracker left on a damp sponge overnight goes soft by morning — nothing dripped or flowed, the moisture just migrated. Rest the cracker on a wire rack (gravel) with cling film underneath (poly) instead, and it stays crisp.",
+      "applied": {
+        "prompt": "After a wet-season dewatering delay, the concrete sub proposes pouring the next block of house slabs directly on compacted fill to claw back schedule — 'the gravel and poly are a nice-to-have, the soil's compacted and drains fine.'",
+        "options": [
+          { "id": "hold-full", "label": "Hold one day per block to place gravel and poly properly before pouring", "outcome": "Right. The day lost is recoverable; the buried layer is not — this is the only point in the entire life of the house these layers can ever be installed.", "optimal": true },
+          { "id": "poly-only", "label": "Pour with poly only, skipping the gravel layer", "outcome": "Handles the vapor, but poly laid directly on sharp compacted fill punctures easily during the pour, and without the gravel break beneath it you've lost the wick-stopping function entirely.", "acceptable": true },
+          { "id": "pour-on-fill", "label": "Pour directly on compacted fill to hold schedule", "outcome": "Compaction controls settlement, not capillary rise or vapor — every house poured this way gets a lifetime moisture path straight up through its slab, discovered only when flooring starts failing after handover.", "acceptable": false }
+        ],
+        "debrief": "Same law, new disguise as S4's rising damp: there the wick climbs a wall, here it climbs through a floor — turn that wall diagram 90 degrees and it's this one. The poly layer is also your first brush with the invisible mechanism V3-5 explains in full: vapor, not just liquid water, is trying to get in."
+      }
     }
   ],
   "summary": "Everything on this project sits on young carbonate limestone with groundwater near sea level and a six-month hurricane season. This module teaches the physics of the site — rock, water, and weather — because every later decision (excavation pricing, canal methods, schedule windows, structural design) is downstream of these three facts.",
@@ -73,6 +91,7 @@
     },
     {
       "id": "m01-q2",
+      "principleIds": ["capillary-break"],
       "type": "multipleChoice",
       "teach": "Karst is limestone that groundwater has dissolved into voids, caves, and soft pockets — and they appear randomly, not where it's convenient.",
       "prompt": "What is the standard defense against karst surprises under building pads?",
