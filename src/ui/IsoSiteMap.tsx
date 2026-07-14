@@ -51,6 +51,18 @@ const BUILT_COLOR: Record<ZoneCategory, string> = {
 const RAW_COLOR = '#1E4632'; // untouched bush
 const CLEARED_COLOR = '#5A4A28'; // graded dirt pad
 
+// scripted-motion layer: keyframed SVG icons keyed to build state (NOT agents).
+// Animated `x` on a react-native-svg <G> gives cheap "the site is working"
+// motion that pans/zooms with the map. useNativeDriver must be false for SVG.
+const AnimatedG = Animated.createAnimatedComponent(G);
+const WORK_ICON: Record<string, string> = {
+  enabling: '🚜',
+  marine: '🛥️',
+  housing: '🏗️',
+  amenity: '🏗️',
+  condos: '🏗️',
+};
+
 interface ZoneVisual {
   icon: string;
   label: string;
@@ -143,6 +155,59 @@ export default function IsoSiteMap({ districts }: { districts: Record<string, Di
   const iconFont = bounds.width * 0.028;
 
   const selVisual = selected ? zoneVisual(selected, districts) : null;
+
+  // ---- scripted motion: where each work front is and what it's doing ----
+  const districtMotion = useMemo(
+    () =>
+      DISTRICTS.map((d) => {
+        // ground centroid of the district's parcels
+        let sx = 0;
+        let sy = 0;
+        let n = 0;
+        for (const zid of d.zoneIds) {
+          const s = solidsByZone.get(zid);
+          if (!s) continue;
+          for (const p of s.base) {
+            sx += p.x;
+            sy += p.y;
+            n += 1;
+          }
+        }
+        const center = n ? { x: sx / n, y: sy / n } : { x: 0, y: 0 };
+        const pos = districts[d.id]?.pos ?? 0;
+        const last = d.stages.length - 1;
+        const underway = pos > 0.6 && pos < last - 0.05;
+        const floodedIdx = d.stages.findIndex((st) => st.key === 'flooded');
+        const wet = d.id === 'marine' && floodedIdx >= 0 && pos >= floodedIdx;
+        return { id: d.id, center, underway, wet };
+      }),
+    [districts, solidsByZone]
+  );
+
+  // stable animated values — one work-icon track per district + a few boats —
+  // looped continuously so motion runs on the Animated timeline, not JS renders
+  const workVals = useRef(DISTRICTS.map(() => new Animated.Value(0))).current;
+  const boatVals = useRef([0, 1, 2].map(() => new Animated.Value(0))).current;
+  useEffect(() => {
+    const anims: Animated.CompositeAnimation[] = [];
+    workVals.forEach((v, i) => {
+      v.setValue(0);
+      const a = Animated.loop(
+        Animated.timing(v, { toValue: 1, duration: 2600 + i * 350, easing: Easing.inOut(Easing.quad), useNativeDriver: false })
+      );
+      a.start();
+      anims.push(a);
+    });
+    boatVals.forEach((v, i) => {
+      v.setValue(i * 0.33);
+      const a = Animated.loop(
+        Animated.timing(v, { toValue: 1, duration: 5200 + i * 900, easing: Easing.inOut(Easing.sin), useNativeDriver: false })
+      );
+      a.start();
+      anims.push(a);
+    });
+    return () => anims.forEach((a) => a.stop());
+  }, [workVals, boatVals]);
 
   // ---- pan/pinch-zoom (core PanResponder + Animated, no gesture-handler) ----
   const scale = useRef(new Animated.Value(1)).current;
@@ -274,6 +339,43 @@ export default function IsoSiteMap({ districts }: { districts: Record<string, Di
                   ) : null}
                 </G>
               );
+            })}
+
+            {/* scripted motion: work vehicles on active fronts, boats once wet */}
+            {districtMotion.map((m, i) => {
+              if (m.wet) {
+                return (
+                  <G key={`boats-${m.id}`}>
+                    {boatVals.map((bv, b) => (
+                      <AnimatedG key={b} x={bv.interpolate({ inputRange: [0, 0.5, 1], outputRange: [-5, 5, -5] })}>
+                        <SvgText
+                          x={m.center.x + (b - 1) * 11}
+                          y={m.center.y}
+                          fontSize={iconFont * 0.85}
+                          textAnchor="middle"
+                        >
+                          ⛵
+                        </SvgText>
+                      </AnimatedG>
+                    ))}
+                  </G>
+                );
+              }
+              if (m.underway) {
+                return (
+                  <AnimatedG key={`work-${m.id}`} x={workVals[i].interpolate({ inputRange: [0, 0.5, 1], outputRange: [-3, 3, -3] })}>
+                    <SvgText
+                      x={m.center.x}
+                      y={m.center.y - iconFont * 0.2}
+                      fontSize={iconFont * 1.05}
+                      textAnchor="middle"
+                    >
+                      {WORK_ICON[m.id]}
+                    </SvgText>
+                  </AnimatedG>
+                );
+              }
+              return null;
             })}
           </Svg>
         </Animated.View>
