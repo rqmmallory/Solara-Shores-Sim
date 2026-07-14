@@ -4,6 +4,26 @@
   "title": "Regulatory & Permitting Map (The Gating System)",
   "short": "Permitting",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m02-c-gate",
+      "principleId": "de-risk-early",
+      "title": "One gate holds all three chains",
+      "mechanism": "Three separate approval chains run in parallel here — land-side (planning, building permits, inspections), environmental (EIA, then CEC), and commercial (licences, VAT, NIB). They look independent, but the environmental chain's CEC approval is a VALVE the other two sit behind: nothing meaningful proceeds on land or commercially until CEC opens, because CEC is the government's signal that the project may exist at all. Money spent racing the land-side and commercial chains ahead of CEC is money spent on work you may have to redo or cannot yet legally use.",
+      "diagramId": "permit-gate",
+      "mechanismPro": "CEC (Certificate of Environmental Clearance) is the long-pole, single-point dependency; sequence land-side and commercial approvals to complete AROUND it, not ahead of it, and fund the EIA/CEC application earliest of all — it is Phase 0's invisible paper.",
+      "hook": "Three trains on three tracks, but all three tracks run through the same tunnel first. It doesn't matter how fast two of them go — nothing gets through until the tunnel opens.",
+      "applied": {
+        "prompt": "Land-side building permit drawings are ready months before CEC is expected. Do you submit and push to start land clearing now?",
+        "options": [
+          { "id": "sequence", "label": "Hold land clearing until CEC issues; spend the wait time on drawings, procurement, and subcontractor packaging instead", "outcome": "Right. Nothing downstream of CEC is safe to commit irreversibly to; use the wait productively rather than racing into it.", "optimal": true },
+          { "id": "partial", "label": "Start only the lowest-risk clearing, reversible if CEC conditions change", "outcome": "Defensible if genuinely low-risk and reversible — but verify that with legal/environmental counsel first; 'lowest-risk' is often optimistic.", "acceptable": true },
+          { "id": "clear-now", "label": "Clear the land now to bank schedule — CEC is a formality at this point", "outcome": "If CEC comes back with conditions (buffer zones, methods restrictions), the clearing may violate them — a stop-work order, a fine, and rework on land you already touched.", "acceptable": false }
+        ],
+        "debrief": "This is the master-sequence law from M14 in miniature: the longest, least-visible lead item gates everything else. Fund and start Phase 0's paper first, always — racing ahead of the gate is how projects lose the time they were trying to save."
+      }
+    }
+  ],
   "summary": "This is the module to overlearn. Every construction activity on Solara Shores is gated by an approval, and the marine approvals are the long poles. Three chains run in parallel: the land-side chain (planning → building permits → inspections → occupancy), the environmental chain (EIA → CEC, which gates EVERYTHING), and the commercial chain (licences, VAT, NIB, work permits).",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m02-q1",
+      "principleIds": ["de-risk-early"],
       "type": "multipleChoice",
       "teach": "The Certificate of Environmental Clearance (CEC) must be issued before 'commencement' of the project — and the definition of commencement is broader than most developers assume.",
       "prompt": "The EIA is in public consultation and going well. Your earthworks contractor has idle machines and offers a discount to start land clearing now. Legal?",

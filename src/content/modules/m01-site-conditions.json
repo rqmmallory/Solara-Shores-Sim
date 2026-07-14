@@ -4,6 +4,26 @@
   "title": "Site Conditions: Geology, Water, Climate",
   "short": "Site Physics",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m01-c-watertable",
+      "principleId": "drainage",
+      "title": "The water is already in your hole",
+      "mechanism": "This island sits on porous limestone with groundwater near sea level — usually within a few feet of the surface everywhere near the coast. Dig a pit anywhere on site and it does not stay dry: water seeps in from the sides and bottom until it reaches the same level as the water table around it, like digging a hole on a beach. You are never 'keeping water out' of an excavation here — you are always managing water that is already inside it.",
+      "diagramId": "water-table",
+      "mechanismPro": "Groundwater at ~sea level in a karst aquifer; expect seepage in any excavation below the water table, plan sump pumps or wellpoints, and remember the rock's porosity means pumped water recharges fast — you cannot dewater it away, only manage the inflow.",
+      "hook": "Dig a hole on the beach at low tide — it fills with water anyway, from underneath, no matter how fast you scoop. The whole island is that beach.",
+      "applied": {
+        "prompt": "A foundation pit for a coastal structure is designed assuming dry excavation, no dewatering budget. Geotech flags groundwater at 4 ft. Your call?",
+        "options": [
+          { "id": "budget", "label": "Add a dewatering line item (sumps/wellpoints) and re-sequence around it now", "outcome": "Right. Budgeting for the water that is already there, before you dig, is far cheaper than a stalled excavation discovering it live.", "optimal": true },
+          { "id": "wait-see", "label": "Start digging and see how bad it actually is", "outcome": "You lose days re-mobilizing pumps mid-excavation, and the schedule float built for other risks gets spent on this one instead.", "acceptable": false },
+          { "id": "assume-dry", "label": "Trust the original dry-excavation assumption", "outcome": "The pit floods on schedule, exactly as the geotech report predicted. This is the same hydrostatic-uplift world as an empty pool — ignoring the water table never makes it go away.", "acceptable": false }
+        ],
+        "debrief": "This is the base fact every later decision sits on: rock, water, and weather. The same water table that floods a pit here is what makes an empty pool float in V3-3 — one law, showing up everywhere you dig or build hollow on this island."
+      }
+    }
+  ],
   "summary": "Everything on this project sits on young carbonate limestone with groundwater near sea level and a six-month hurricane season. This module teaches the physics of the site — rock, water, and weather — because every later decision (excavation pricing, canal methods, schedule windows, structural design) is downstream of these three facts.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m01-q1",
+      "principleIds": ["drainage"],
       "type": "multipleChoice",
       "teach": "On New Providence, 'digging' means breaking rock. The upside is that the excavated limestone is valuable — it crushes into road base and structural fill.",
       "prompt": "Why should canal, marina, and lake excavation be planned against fill needs BEFORE hiring any trucking?",

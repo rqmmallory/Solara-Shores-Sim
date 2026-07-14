@@ -4,6 +4,26 @@
   "title": "Horizontal Development: Clearing, Earthwork, Roads, Utilities",
   "short": "Horizontal",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m03-c-leadtime",
+      "principleId": "de-risk-early",
+      "title": "The switchgear decides the schedule",
+      "mechanism": "Some equipment simply takes a long time to arrive no matter when you order it — BPL switchgear on this island runs an 18-month lead. Vertical construction cannot get permanent power without it. So the switchgear order date, not the construction start date, is what actually decides when houses can be finished and occupied. Order late because 'the design isn't final yet' and you have built a schedule bottleneck into the project before a single house is framed.",
+      "diagramId": "lead-time-bar",
+      "mechanismPro": "Long-lead procurement (switchgear, elevators, specialty MEP) must be ordered against a preliminary load calc, with a change-order allowance for final adjustments — waiting for 100% design certainty on a long-lead item is itself the risk.",
+      "hook": "Mailing a letter that takes 6 weeks to arrive: you don't wait until the day you need the reply to send it. You send it the moment you know you'll need one.",
+      "applied": {
+        "prompt": "Electrical design is 70% complete; final loads may shift 10%. Order switchgear now on preliminary numbers, or wait for 100% design certainty?",
+        "options": [
+          { "id": "order-now", "label": "Order now sized with margin for the expected 10% shift, and flag a change-order path if design moves further", "outcome": "Right. The 18-month clock is the actual constraint; ordering with sensible margin now protects the finish date far more than waiting for a number that only firms up marginally.", "optimal": true },
+          { "id": "partial-order", "label": "Order the frame/enclosure now, finalize internals later if the vendor allows it", "outcome": "Works if the vendor genuinely supports staged configuration — verify that first, since not all switchgear allows it without restarting the lead clock.", "acceptable": true },
+          { "id": "wait", "label": "Wait for 100% design certainty before ordering", "outcome": "The 18-month lead now stacks AFTER final design instead of running in parallel with it — the single biggest, most avoidable schedule hit on the vertical phases.", "acceptable": false }
+        ],
+        "debrief": "This is M14's critical-path law at one specific piece of equipment: find the longest, least-visible lead item and start its clock first, even under some uncertainty. The same logic governs CEC in M02 and the marine dredge mobilization in M04 — the long pole always goes first."
+      }
+    }
+  ],
   "summary": "Horizontal work turns raw rock into buildable, serviced land — and its sequence is rigid for good reasons. This module covers the per-phase sequence, the utility realities of New Providence (WSC water, no island sewer, BPL power with brutal switchgear lead times), and why you never build all 302 lots at once.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m03-q1",
+      "principleIds": ["de-risk-early"],
       "type": "sequencing",
       "teach": "The horizontal sequence is rigid because each step protects the one after it — and the last steps are the most damage-prone.",
       "prompt": "Order the horizontal development sequence for one phase:",

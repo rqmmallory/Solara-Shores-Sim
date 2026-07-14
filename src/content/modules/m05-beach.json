@@ -4,6 +4,26 @@
   "title": "Beach Conversion and Groins (Most Regulated Scope)",
   "short": "Beach",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m05-c-groin",
+      "principleId": "sand-river",
+      "title": "A groin's guilty secret",
+      "mechanism": "Sand on a shoreline is not sitting still — it is constantly traveling sideways along the coast, pushed by waves arriving at an angle, like a slow river running parallel to the beach. A groin (a wall built out into the water) stops that river locally: sand piles up on the up-drift side, exactly where you want your engineered beach. But the sand that would have continued past the groin never arrives on the down-drift side — that beach starves and erodes. Every groin you build is a trade, not a gift: sand gained here is sand denied there.",
+      "diagramId": "longshore-drift",
+      "mechanismPro": "Littoral drift / longshore transport carries a sediment budget along the coast; a groin field interrupts it, requiring downdrift monitoring and often permanent renourishment commitments as mitigation — regulators (and neighbors) will ask about this before approving groins.",
+      "hook": "Damming a river to fill your reservoir works — but the town downstream stops getting water. A groin is a small dam across a river of sand.",
+      "applied": {
+        "prompt": "The engineered beach design proposes three groins to hold imported sand in place. The neighboring shoreline down-drift is not part of your property. Your call on the design review?",
+        "options": [
+          { "id": "study-mitigate", "label": "Require a sediment-transport study and fund down-drift monitoring/mitigation as part of the approval package", "outcome": "Right. This is exactly the scrutiny CEC and neighbors will apply anyway; getting ahead of it with real data and a mitigation commitment is what keeps this project OUT of the newspaper.", "optimal": true },
+          { "id": "shorten", "label": "Shorten the groins to reduce the interruption, accepting less sand retention", "outcome": "A real engineering trade-off — less starvation down-drift, but the beach may need more frequent renourishment. Defensible if disclosed and budgeted.", "acceptable": true },
+          { "id": "build-as-is", "label": "Approve the groins as designed without addressing down-drift effects", "outcome": "This is the single most newspaper-likely scope on the whole project, per the module's own framing — an eroding neighbor's beach is a predictable, public, and regulatory problem you built yourself.", "acceptable": false }
+        ],
+        "debrief": "Same law as V3-7's coastal process science: a beach is a flow, not a place, and every structure across it has a downstream cost. The engineered beach is permanent maintenance, not a one-time build — plan the renourishment cycle from day one."
+      }
+    }
+  ],
   "summary": "The shoreline is rocky ironshore precisely because natural sand does not persist there. Converting it to a sandy beach is engineered nourishment: imported sand at an engineered profile, held by groins, and MAINTAINED forever on a renourishment cycle. This is the most regulated scope on the project and the one most likely to put you in the newspaper.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m05-q1",
+      "principleIds": ["sand-river"],
       "type": "multipleChoice",
       "teach": "The shoreline is rocky for a physical reason, and that reason doesn't go away when you add sand.",
       "prompt": "Why must the beach be treated as a maintained asset rather than a one-time construction scope?",

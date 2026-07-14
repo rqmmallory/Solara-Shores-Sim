@@ -4,6 +4,26 @@
   "title": "Vertical: Condos, Senior Living, and Commercial Buildings",
   "short": "Condos",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m07-c-loadpath",
+      "principleId": "load-path",
+      "title": "The lobby column you can't move",
+      "mechanism": "In an engineered concrete-frame building, every column is part of an unbroken chain carrying the floors above down to the foundation — the load path. The architect proposing to remove a ground-floor column for a more open lobby is not just changing a room, they are asking every load that column carried to find a NEW road to the ground. That new road is a transfer beam (or similar), a real structural element with real cost and real depth that must fit in the ceiling — it does not happen for free just because the drawing looks cleaner.",
+      "diagramId": "load-path",
+      "mechanismPro": "Removing a column requires a transfer structure (beam/girder) sized for the full tributary load above, with connections and deflection checked; transfer beams are expensive, deep, and often the reason 'simple' architectural changes blow the structural budget and ceiling heights.",
+      "hook": "Pull one leg off a table and it doesn't collapse — because you gave it a much bigger, stronger leg to compensate. The load didn't disappear; it just found a bigger road.",
+      "applied": {
+        "prompt": "The architect wants a ground-floor column removed for a more open condo lobby. What do you require before approving?",
+        "options": [
+          { "id": "price-transfer", "label": "Get the structural engineer to size the transfer beam and price it before approving the architectural change", "outcome": "Right. The column's load has to go somewhere — pricing the real transfer structure turns a 'free' design tweak into an honest cost decision.", "optimal": true },
+          { "id": "relocate", "label": "Ask the architect to relocate the column instead of removing it entirely", "outcome": "Often cheaper than a full transfer beam and preserves more of the load path — a reasonable middle option if the new location still works for the lobby design.", "acceptable": true },
+          { "id": "approve-blind", "label": "Approve the lobby change and let the engineer figure out the structure later", "outcome": "The transfer beam gets discovered in structural design after the architecture is set, often forcing a costly redesign or a dropped ceiling nobody wanted — the same load-path law from V3-1, ignored until it was expensive.", "acceptable": false }
+        ],
+        "debrief": "This is V3-1's load-path law wearing an architectural-review disguise: every pound must reach the ground, and 'moving' a column just relocates where that road runs — never removes the need for one. The same law decides V3-2's lateral system and S8's pavement design."
+      }
+    }
+  ],
   "summary": "Twelve 3–4 storey condo buildings, senior living, and the commercial pieces play by different rules than the houses: engineered structural frames, MEP stacking discipline, fire/life-safety class changes, elevator procurement, and a legal layer (the Condominium Act) that must be built in step with the concrete.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m07-q1",
+      "principleIds": ["load-path"],
       "type": "multipleChoice",
       "teach": "In multi-storey concrete, plumbing and mechanical risers run vertically through the building — through holes cast into each slab.",
       "prompt": "Why is MEP 'stacking' coordination a make-or-break discipline on the condos when the houses never needed it?",

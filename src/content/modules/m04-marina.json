@@ -4,6 +4,26 @@
   "title": "Canals, Dredging, and Marina (The Specialist Half)",
   "short": "Marina",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m04-c-rockplug",
+      "principleId": "de-risk-early",
+      "title": "Cut it dry, add the sea last",
+      "mechanism": "You can cut canal rock two ways: dry, with normal excavators working in the open air behind a temporary rock plug that holds the ocean back, or wet, dredging underwater once the plug is breached. Dry rock cutting is far cheaper — normal equipment, normal rates. Once you breach the plug and let the sea in, every further cut becomes expensive, permit-heavy marine dredging, and the decision cannot be undone. So the real lever is: do every bit of cutting you possibly can BEFORE the breach, because after it, cheap options disappear forever.",
+      "diagramId": "rock-plug-canal",
+      "mechanismPro": "Maximize dry excavation behind the rock plug before the final breach — a seven-figure swing between dry-cut and marine-dredge unit costs; the breach itself is a single irreversible event requiring EMP/CEC sign-off and turbidity controls, so plan it as the last step, not an early convenience.",
+      "hook": "Renovating a boat while it's still on the trailer versus after you've launched it: everything is easier, cheaper, and reversible before the water is in. Once it's in the water, every fix is a diving job.",
+      "applied": {
+        "prompt": "The canal excavation contractor proposes breaching the rock plug early to 'test' access with barges, before all dry-cut sections are finished.",
+        "options": [
+          { "id": "finish-dry", "label": "Hold the breach until every dry-cuttable section is complete", "outcome": "Right. Every cubic yard cut dry before the breach is cut at a fraction of marine-dredge cost — and the breach is irreversible, so there is no value in doing it early.", "optimal": true },
+          { "id": "partial-test", "label": "Allow a small, contained test breach in one isolated cell only", "outcome": "Only defensible if it is genuinely isolated from uncut dry sections and covered by the EMP's turbidity plan — otherwise it quietly forecloses cheap dry-cut on adjacent areas.", "acceptable": true },
+          { "id": "breach-early", "label": "Approve the early breach for contractor convenience", "outcome": "Every dry-cuttable yard not yet excavated is now underwater and must be dredged at marine rates — the seven-figure lever just moved against you, permanently.", "acceptable": false }
+        ],
+        "debrief": "This is the same 'spend money early to buy certainty/cost control' law that runs through the whole management cluster — here it means sequencing an irreversible event LAST, after every reversible, cheaper option is exhausted. M11 names the general version: the cost of a decision only goes up as you move later."
+      }
+    }
+  ],
   "summary": "The canals and marina basin are mostly CUT INTO LIMESTONE UPLANDS in the dry, behind a rock plug at the ocean, then connected to the sea. How much you excavate dry before breaching that plug is a seven-figure lever, because dry rock cut is far cheaper than marine dredging. You will never self-perform any of this — your job is packaging, permits, insurance, and sequencing.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m04-q1",
+      "principleIds": ["de-risk-early"],
       "type": "multipleChoice",
       "teach": "Dry rock excavation runs $12–30/cy; marine dredging of the same rock runs $30–80/cy.",
       "prompt": "Why is the timing of the plug breach a seven-figure decision?",

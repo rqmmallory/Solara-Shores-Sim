@@ -4,6 +4,26 @@
   "title": "Vertical: Production Single-Family (302 Units)",
   "short": "Houses",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "m06-c-evenflow",
+      "principleId": "even-flow",
+      "title": "302 houses are one train",
+      "mechanism": "With 302 houses and a fixed, finite pool of island trades (framers, block masons, MEP crews), the production system behaves like a single train on one track, not 302 independent projects. Every crew moves through the same sequence of houses at roughly the same pace. If one crew races ahead on a few houses, they simply run out of houses ready for their next step — while every crew behind them piles up waiting on houses that got skipped or rushed. The whole system's output is set by its SLOWEST steady crew, not its fastest one.",
+      "diagramId": "production-train",
+      "mechanismPro": "Even-flow / takt production: balance crew sizes and durations to a common takt time across the 302-unit run; a crew working ahead of takt just creates work-in-process inventory (unfinished houses) waiting on the next trade, not faster completion.",
+      "hook": "An assembly line with five stations: if station 2 doubles its speed, cars just pile up in front of station 3. The line's total output never exceeds its slowest station.",
+      "applied": {
+        "prompt": "The framing crew is running well ahead of block/MEP crews on your 302-house production line. Do you let them keep racing ahead?",
+        "options": [
+          { "id": "hold-pace", "label": "Hold framing to the pace the following trades can absorb, and redeploy the freed capacity to help the bottleneck trade", "outcome": "Right. Matching pace to the slowest steady trade — or better, fixing that trade's pace — is what actually speeds up the whole 302-house line.", "optimal": true },
+          { "id": "buffer", "label": "Let framing build a modest buffer of a few houses ahead, then hold", "outcome": "A small buffer absorbs minor variability without runaway inventory — reasonable if capped and monitored, though it does not fix the underlying pace mismatch.", "acceptable": true },
+          { "id": "race-ahead", "label": "Let the framing crew keep racing as far ahead as they can", "outcome": "Dozens of framed-but-not-blocked houses now sit exposed to weather and vandalism while MEP and block crews fall further behind — the finish date does not move, only the mess grows.", "acceptable": false }
+        ],
+        "debrief": "This is the manufacturing law hiding inside a housing project: fast is not the same as even, and even is what actually finishes 302 units on schedule. The same discipline shows up in S4's masonry takt math and S8's batched asphalt paving — a production system, not a series of one-off jobs."
+      }
+    }
+  ],
   "summary": "302 houses is not 302 construction projects — it's a manufacturing problem. This module covers the Bahamian concrete house sequence, even-flow production scheduling, the island's finite trade labor pool, and the materials discipline that island logistics forces on you.",
   "sections": [
     {
@@ -26,6 +46,7 @@
   "quiz": [
     {
       "id": "m06-q1",
+      "principleIds": ["even-flow"],
       "type": "sequencing",
       "teach": "The Bahamian concrete house has a fixed structural logic — each stage bears on the one before.",
       "prompt": "Order the single-family construction sequence:",
