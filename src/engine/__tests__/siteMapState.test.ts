@@ -2,6 +2,36 @@ import { siteZones } from '../../content/siteMap';
 import { resolveZoneVisual, siteBuildProgress, unknownPhaseRefs } from '../siteMapState';
 import { simPhases } from '../../content';
 
+const zone = (id: string) => siteZones.find((z) => z.id === id)!;
+const cx = (id: string) => zone(id).x + zone(id).w / 2;
+
+describe('Sheet A1 east-west orientation', () => {
+  it('puts the marina/condos at the WEST (low x) and road/retail at the EAST (high x)', () => {
+    // marina point is west of the whole commercial/road core
+    expect(cx('marina-basin')).toBeLessThan(cx('lots-wave-1'));
+    expect(cx('lots-wave-1')).toBeLessThan(cx('road-frontage'));
+    expect(cx('marina-basin')).toBeLessThan(cx('retail-block'));
+    expect(cx('clubhouse')).toBeLessThan(cx('senior-living'));
+  });
+
+  it('keeps every rotated zone inside the 0-100 canvas', () => {
+    for (const z of siteZones) {
+      expect(z.x).toBeGreaterThanOrEqual(0);
+      expect(z.y).toBeGreaterThanOrEqual(0);
+      expect(z.x + z.w).toBeLessThanOrEqual(100.01);
+      expect(z.y + z.h).toBeLessThanOrEqual(100.01);
+      if (z.footprint) {
+        for (const p of z.footprint) {
+          expect(p.x).toBeGreaterThanOrEqual(-0.01);
+          expect(p.x).toBeLessThanOrEqual(100.01);
+          expect(p.y).toBeGreaterThanOrEqual(-0.01);
+          expect(p.y).toBeLessThanOrEqual(100.01);
+        }
+      }
+    }
+  });
+});
+
 describe('site map zone data', () => {
   it('has unique zone ids', () => {
     const ids = siteZones.map((z) => z.id);

@@ -1,34 +1,31 @@
 /**
- * Illustrated site map geometry, traced from the real Solara Shores
- * master plan (Lotus Design, 18 May 2026, sheets A1-A4) and the
- * property aerial. North (Yamacraw Hill Rd) is the top of the map;
- * south (the ocean/beach) is the bottom — matching both the aerial
- * photo and the KB's own "bounded by Yamacraw Hill Rd (north) and the
- * ocean (south)" framing. The marine-civil half (marina, 15 condo
- * buildings, clubhouse, canal-front estates, beach) sits at the south
- * end; the conventional land-development half (lot grid, amenity core,
- * senior living, retail) fills the rest, matching Module 0's own
- * "west/south = marine-civil, east/north = conventional" split.
+ * Illustrated site map geometry, traced from the real Solara Shores master
+ * plan (Lotus Design, 18 May 2026, sheets A1-A4).
  *
- * Sheet A1 is drawn rotated ~90-110° on the page (standard drafting
- * practice for fitting a diagonal parcel onto a landscape sheet) — its
- * own left/right is NOT compass east/west. The property aerial is the
- * ground truth for true orientation (road along the entire top edge,
- * beach along the entire bottom); this file's coordinate space follows
- * the aerial's north-up frame, while feature SHAPES (marina, condo
- * footprints, ponds, courts, road spine) are traced from the sheets'
- * proportions and adjacency, un-rotated to match.
+ * ORIENTATION — matches Sheet A1: this is a WIDE east-west wedge. The MARINA
+ * point (marina basin, 15 condos, clubhouse, marine fuel, beach + groins) is
+ * at the WEST end (left); the wide commercial/road end (Yamacraw Rd frontage,
+ * retail, senior living, parking, incoming electrical) is at the EAST end
+ * (right); the single-family lot grid, lakes/green space and amenity/court
+ * core fill the centre.
  *
- * Positions are percentages of a fixed-aspect illustrated canvas
- * (CANVAS_ASPECT = width:height). Zones without a `footprint` render as
- * their x/y/w/h bounding box (a plain rectangle); zones WITH a footprint
- * render that hand-traced polygon instead — real building silhouettes,
- * the marina's branching basin, organic pond shapes, and lot "waves"
- * that follow the actual block outline rather than an abstract box.
- * Still game-legible proportions, not a survey.
+ * AUTHORING NOTE: the zone data below is authored in a readable "road-at-top,
+ * marina-at-bottom" portrait frame, then rotated 90° by `toEastWest()` on
+ * export so `siteZones` comes out in Sheet A1's landscape orientation. This
+ * keeps every hand-traced footprint arithmetic-error-free (one tested
+ * transform instead of 46 re-typed coordinate sets). Consumers only ever see
+ * the rotated `siteZones`.
+ *
+ * Positions are percentages of a fixed-aspect canvas (CANVAS_ASPECT =
+ * width:height). Zones without a `footprint` render as their x/y/w/h bounding
+ * box; zones WITH a footprint render that hand-traced polygon — real building
+ * silhouettes, the marina's branching basin, organic ponds, and lot "waves"
+ * that follow the block outline. Game-legible proportions, not a survey.
  */
 
-export const CANVAS_ASPECT = 0.52; // width / height — tall wedge, like the real parcel
+// wide landscape wedge (Sheet A1). The authored portrait frame is ~0.52 tall;
+// rotating it 90° inverts the aspect to ~1.92 wide.
+export const CANVAS_ASPECT = 1.92;
 
 export type ZoneCategory =
   | 'road'
@@ -80,7 +77,8 @@ export interface SiteZone {
   stages: SiteZoneStage[];
 }
 
-export const siteZones: SiteZone[] = [
+// authored in a portrait "road at top, marina at bottom" frame for readability
+const AUTHORED_ZONES: SiteZone[] = [
   // ---- north edge: the road ----
   {
     id: 'road-frontage',
@@ -438,3 +436,31 @@ export const siteZones: SiteZone[] = [
     stages: [{ phaseId: 'phase4-marine-window', icon: '🏖️', label: 'Beach converted, groins in' }],
   },
 ];
+
+/**
+ * Rotate one authored point 90° clockwise from the portrait frame into Sheet
+ * A1's landscape frame: the road end (authored top, y≈0) swings to the EAST
+ * (x≈100); the marina end (authored bottom, y≈100) swings to the WEST (x≈0);
+ * the authored cross-axis (x) becomes north-south (y). Bounds stay within
+ * 0..100 because the authored data already satisfies x+w≤100 and y+h≤100.
+ */
+function rotatePoint(p: { x: number; y: number }): { x: number; y: number } {
+  return { x: 100 - p.y, y: p.x };
+}
+
+/** rotate a whole authored zone (bounding box + optional footprint) east-west */
+export function toEastWest(z: SiteZone): SiteZone {
+  return {
+    ...z,
+    // the rotated bounding box: new origin is the rotated far corner,
+    // width/height swap axes
+    x: 100 - (z.y + z.h),
+    y: z.x,
+    w: z.h,
+    h: z.w,
+    footprint: z.footprint?.map(rotatePoint),
+  };
+}
+
+/** the exported map — Sheet A1 orientation (marina west, road/retail east) */
+export const siteZones: SiteZone[] = AUTHORED_ZONES.map(toEastWest);
