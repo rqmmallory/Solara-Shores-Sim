@@ -77,7 +77,6 @@
     },
     {
       "id": "s06-q2",
-      "principleIds": ["waterproofing"],
       "type": "multipleChoice",
       "teach": "Uplift pressure is not uniform across a roof.",
       "prompt": "Why does the sheathing nailing pattern tighten at roof edges and corners?",
@@ -153,6 +152,33 @@
         }
       ],
       "explanation": "PLAIN: the person who designed your building says yes or no to swapped parts — not the person selling the swap. PRO: 'substitution through the submittal register, EOR approval before purchase' — Module 10's submittal discipline meeting S6's load path. (S6, M10)"
+    },
+    {
+      "id": "s06-q5",
+      "principleIds": ["waterproofing"],
+      "type": "multipleChoice",
+      "teach": "A membrane is a continuous sheet; every penetration is a hole cut in it.",
+      "prompt": "After the roofing sub finishes, a water test shows no leaks. Three weeks later a new satellite dish mount is bolted through the membrane with four lag screws and a bead of caulk around each. What is the actual risk here?",
+      "choices": [
+        {
+          "text": "Four small unflashed holes are enough — wind-driven rain finds any unsealed gap regardless of size, and caulk alone isn't a flashed, membrane-tied seal",
+          "correct": true,
+          "why": "Correct. A membrane's continuity doesn't scale with hole size — one unflashed penetration is exactly as much of a breach as a large one; caulk degrades and was never tied into the membrane's waterproofing system."
+        },
+        {
+          "text": "None — the holes are too small to matter",
+          "why": "Size is irrelevant to the mechanism. Wind-driven rain is pushed sideways and upward, and it will find a gap the width of a lag screw thread just as easily as a large tear."
+        },
+        {
+          "text": "Only a risk if it rains within 24 hours of installation",
+          "why": "Caulk fails gradually with UV and thermal cycling — the risk doesn't expire after the first dry day, it accumulates over the life of the roof."
+        },
+        {
+          "text": "It's fine as long as the dish mount is near the center of the roof, away from the edges",
+          "why": "Edge/corner wind zones affect uplift and nailing patterns, not whether a penetration leaks — any unflashed hole anywhere on the membrane is a path for water."
+        }
+      ],
+      "explanation": "PLAIN: a hole is a hole, no matter how small or where it sits — the raincoat doesn't know the difference. PRO: 'every post-completion penetration needs a flashed boot tied into the membrane, not a bead of sealant — track roof penetrations added after handover the same as ones cut during construction.' (S6)"
     }
   ],
   "mathVariables": [

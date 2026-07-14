@@ -87,7 +87,6 @@
     },
     {
       "id": "v35-q2",
-      "principleIds": ["vapor-drive"],
       "type": "multipleChoice",
       "teach": "Control joints and expansion joints solve different problems.",
       "prompt": "The 1,400-ft bulkhead cap needs joints. Which kind, and why is this worth a design-review hour?",
@@ -114,6 +113,7 @@
     },
     {
       "id": "v35-q3",
+      "principleIds": ["vapor-drive"],
       "type": "multipleChoice",
       "teach": "The vapor-barrier flip is the classic climate-literacy interview question.",
       "prompt": "A US-trained architect details the condo walls with an interior vapor barrier, copied from northern practice. What's wrong?",

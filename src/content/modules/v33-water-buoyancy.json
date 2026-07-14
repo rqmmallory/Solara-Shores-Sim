@@ -102,7 +102,6 @@
     },
     {
       "id": "v33-q2",
-      "principleIds": ["waterproofing"],
       "type": "multipleChoice",
       "teach": "Uplift = footprint × head × 62.4 pcf. The check is arithmetic; the failure is spectacular.",
       "prompt": "A lift-station wet well pops 4 inches during construction after a rainy week. What happened?",
@@ -152,6 +151,33 @@
         }
       ],
       "explanation": "PLAIN: this rock is a sponge sitting in the sea — pump the hole dry and the sea refills it through the walls. PRO: 'karst recharge defeats economical dewatering at scale; excavate in the wet, or dry behind an unexcavated plug breached last.' This is WHY Module 4's canal method looks the way it does. (V3-3, M4)"
+    },
+    {
+      "id": "v33-q4",
+      "principleIds": ["waterproofing"],
+      "type": "multipleChoice",
+      "teach": "Water pressure presses a positive-side membrane onto the wall; it peels a negative-side coating off.",
+      "prompt": "Two elevator pits, both below the water table, both show damp walls after backfill. Pit A had its positive-side membrane buried before punch-list inspection; Pit B had a negative-side crystalline coating applied from inside after backfill was already complete. Which pit's wall is drier, and why?",
+      "choices": [
+        {
+          "text": "Neither is verified to be doing its job — Pit A's membrane may or may not be intact (it was never inspected before burial), and Pit B's coating fights real hydrostatic pressure trying to peel it off from day one",
+          "correct": true,
+          "why": "Correct. Burying a positive-side membrane without inspection doesn't make it wrong in principle, but it does make it unverified; a negative-side coating is structurally fighting the pressure that should be helping it seal instead."
+        },
+        {
+          "text": "Pit B, because crystalline coatings are always superior to membranes",
+          "why": "Positive-side membranes are pressure-assisted seals and are preferred wherever the wall is accessible — crystalline coatings are a last resort for walls already buried, not a general upgrade."
+        },
+        {
+          "text": "Pit A, automatically, since positive-side is always installed correctly",
+          "why": "'Positive-side' describes which face the membrane is on, not whether the installation was actually verified before it disappeared behind backfill."
+        },
+        {
+          "text": "Both are equally dry since waterproofing performance doesn't depend on which side it's installed on",
+          "why": "It depends enormously — the same water pressure that helps seal a positive-side membrane onto the wall is exactly what peels a negative-side coating off it."
+        }
+      ],
+      "explanation": "PLAIN: water pressure is either your friend (pressing a wet-side seal tighter) or your enemy (peeling a dry-side coating away) — which one depends entirely on which face the fix sits on. PRO: 'positive-side membranes preferred and inspected before burial; negative-side treatments are a last resort for already-buried walls and leave the wall itself chronically saturated.' (V3-3)"
     }
   ],
   "mathVariables": [

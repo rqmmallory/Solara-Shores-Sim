@@ -879,8 +879,8 @@ function CapillaryRise() {
 /** under-slab sandwich: gravel breaks the wick, poly stops the vapor */
 function UnderslabSandwich() {
   const layers: [string, number, string][] = [
-    ['flooring', 6, '#8FA3BC'],
     ['slab', 20, '#9AA4B2'],
+    ['flooring', 6, '#8FA3BC'],
   ];
   return (
     <G>
@@ -922,23 +922,23 @@ function VaporFlip() {
       {label(8, 24, '-5°C dry', { size: 7, color: '#8FD3F7' })}
       {label(78, 24, '21°C humid', { size: 7, color: colors.warn })}
       <Rect x={48} y={34} width={12} height={80} fill="#8FA3BC" />
-      <Line x1={54} y1={34} x2={54} y2={114} stroke={colors.text} strokeWidth={2} strokeDasharray="3 2" />
-      <Polygon points="60,68 70,74 60,80" fill={colors.warn} />
-      <Line x1={30} y1={74} x2={60} y2={74} stroke={colors.warn} strokeWidth={2} />
-      {label(20, 130, 'barrier warm side ✓', { size: 6.5, color: colors.good })}
+      <Line x1={60} y1={34} x2={60} y2={114} stroke={colors.text} strokeWidth={2} strokeDasharray="3 2" />
+      <Polygon points="70,68 60,74 70,80" fill={colors.warn} />
+      <Line x1={80} y1={74} x2={70} y2={74} stroke={colors.warn} strokeWidth={2} />
+      {label(64, 130, 'barrier warm side ✓', { anchor: 'middle', size: 6.5, color: colors.good })}
 
       <Rect x={110} y={0} width={110} height={VB_H} fill="#1F3450" />
       {label(165, 10, 'BAHAMAS', { anchor: 'middle', size: 7.5, weight: '700', color: colors.accent })}
       {label(118, 24, '32°C, 85% RH', { size: 7, color: colors.warn })}
       {label(188, 24, '23°C AC', { size: 7, color: '#8FD3F7' })}
       <Rect x={158} y={34} width={12} height={50} fill="#8FA3BC" />
-      <Line x1={164} y1={34} x2={164} y2={84} stroke={colors.text} strokeWidth={2} strokeDasharray="3 2" />
-      <Polygon points="158,54 148,60 158,66" fill={colors.bad} />
-      <Line x1={148} y1={60} x2={170} y2={60} stroke={colors.bad} strokeWidth={2} />
-      {[150, 156, 162].map((x) => <Circle key={x} cx={x} cy={78} r={1.8} fill="#4FC3F7" />)}
+      <Line x1={170} y1={34} x2={170} y2={84} stroke={colors.text} strokeWidth={2} strokeDasharray="3 2" />
+      <Polygon points="150,54 160,60 150,66" fill={colors.bad} />
+      <Line x1={130} y1={60} x2={150} y2={60} stroke={colors.bad} strokeWidth={2} />
+      {[158, 164, 169].map((x) => <Circle key={x} cx={x} cy={78} r={1.8} fill="#4FC3F7" />)}
       {label(164, 96, 'rains inside the wall ✗', { anchor: 'middle', size: 6.5, color: colors.bad })}
-      <Line x1={164} y1={110} x2={164} y2={140} stroke={colors.good} strokeWidth={2} strokeDasharray="3 2" />
-      {label(164, 148, 'move barrier outside ✓', { anchor: 'middle', size: 6.5, color: colors.good })}
+      <Line x1={158} y1={110} x2={158} y2={140} stroke={colors.good} strokeWidth={2} strokeDasharray="3 2" />
+      {label(158, 148, 'move barrier outside ✓', { anchor: 'middle', size: 6.5, color: colors.good })}
     </G>
   );
 }

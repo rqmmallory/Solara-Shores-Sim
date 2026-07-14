@@ -87,7 +87,6 @@
     },
     {
       "id": "s04-q2",
-      "principleIds": ["capillary-break"],
       "type": "multipleChoice",
       "teach": "Mortar beds blocks; grout fills cells. Different materials, different consistencies, different jobs.",
       "prompt": "Why is a crew shoveling leftover mortar into reinforced cells a defect rather than a thrifty habit?",
@@ -163,6 +162,33 @@
         }
       ],
       "explanation": "PLAIN: people rushing lay more blocks and hide more mistakes — and block-wall mistakes hide inside the wall. PRO: 'takt to sustainable crew rates; watch first-pass rate as the leading indicator when pace rises.' The sim's overpace flag arms exactly these consequences. (S4, M6)"
+    },
+    {
+      "id": "s04-q5",
+      "principleIds": ["capillary-break"],
+      "type": "multipleChoice",
+      "teach": "Capillary rise climbs through the pores of the block itself — it does not care which way the ground slopes.",
+      "prompt": "A block wall's base sits against damp compacted fill with no damp-proof course. The site is graded so surface water drains away perfectly. Six months later, the bottom courses show white crystal stains and blistering paint. Why didn't the good grading prevent it?",
+      "choices": [
+        {
+          "text": "Grading manages surface water flowing over the ground; it does nothing to stop moisture already in the soil from wicking upward through the block's own pores",
+          "correct": true,
+          "why": "Correct — capillary rise is a different mechanism from surface runoff. The block is porous and touching damp soil, so it drinks upward regardless of how well the surface sheds rain."
+        },
+        {
+          "text": "The grading wasn't sloped steeply enough",
+          "why": "Slope only affects water sitting on top of the ground — it has no bearing on capillary action moving through a porous material's pores."
+        },
+        {
+          "text": "The paint was the wrong type",
+          "why": "The paint is a symptom, not the cause — any coating without a damp-proof course beneath it will eventually blister as trapped moisture tries to evaporate through it."
+        },
+        {
+          "text": "This only happens near the coast",
+          "why": "Capillarity happens anywhere a porous material touches damp ground — coastal soils just guarantee the ground stays damp year-round, making the effect visible sooner."
+        }
+      ],
+      "explanation": "PLAIN: water climbs the block like a paper towel, and nothing about the yard's slope changes that. PRO: 'a damp-proof course at the base of every wall in contact with damp soil is the only reliable break — surface drainage solves a different problem.' (S4)"
     }
   ],
   "mathVariables": [

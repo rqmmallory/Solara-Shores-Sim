@@ -91,7 +91,6 @@
     },
     {
       "id": "m01-q2",
-      "principleIds": ["capillary-break"],
       "type": "multipleChoice",
       "teach": "Karst is limestone that groundwater has dissolved into voids, caves, and soft pockets — and they appear randomly, not where it's convenient.",
       "prompt": "What is the standard defense against karst surprises under building pads?",
@@ -207,6 +206,33 @@
         }
       ],
       "explanation": "Drainage wells ($8,000–20,000 each) and soakaways put stormwater into the porous limestone. The three lakes double as stormwater management. This is why the civil drainage design gets reviewed by MOW's Civil Design Section as part of permitting."
+    },
+    {
+      "id": "m01-q7",
+      "type": "multipleChoice",
+      "principleIds": ["capillary-break"],
+      "teach": "The water table doesn't just threaten open excavations — it threatens every slab poured above it, silently.",
+      "prompt": "A house slab is poured directly on compacted fill, skipping the gravel layer and poly sheet, to save a day on a delayed schedule. What actually goes wrong?",
+      "choices": [
+        {
+          "text": "Groundwater wicks upward through the porous concrete and vapor migrates through it, moving moisture into the slab continuously for the life of the house",
+          "correct": true,
+          "why": "Correct — this is capillary action plus vapor diffusion, neither of which cares that the fill is 'compacted and drains fine.' Compaction controls settlement, not moisture migration."
+        },
+        {
+          "text": "Nothing, as long as the fill is well compacted and slopes away from the house",
+          "why": "Compaction and slope manage bulk surface water, not water climbing through the pores of the concrete itself — a different mechanism entirely."
+        },
+        {
+          "text": "The slab will crack from differential settlement within a year",
+          "why": "That's V3-4's mechanism (uneven support), not this one — a uniformly compacted pad settles evenly; the problem here is moisture transport, not settlement."
+        },
+        {
+          "text": "Only a concern if the house is directly above the water table, not centimeters above it",
+          "why": "With groundwater near sea level, 'centimeters above' is exactly the condition every slab here is built in — there is no safe distance that skips the capillary break."
+        }
+      ],
+      "explanation": "This is the 'under-slab sandwich' every slab needs on this island: gravel breaks the capillary wick, poly stops the vapor the gravel can't. Skip either and the ground becomes a permanent, invisible moisture source feeding straight into flooring adhesive and finishes above."
     }
   ],
   "mathVariables": [
