@@ -4,6 +4,26 @@
   "title": "S3 — Reinforcement: Why, Where, and the Detailing Rules",
   "short": "Rebar",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "s03-c-tension",
+      "principleId": "tension-location",
+      "title": "Steel only helps where concrete is stretched",
+      "mechanism": "Concrete is strong when you squeeze it and weak when you stretch it — pull it apart and it cracks. Steel is the opposite: excellent in tension. So you put the steel exactly where the concrete is being STRETCHED, and it carries the pull the concrete cannot. Get the location wrong — steel on the squeezed face instead of the stretched one — and it does nothing; the concrete cracks as if there were no steel at all.",
+      "diagramId": "tension-location",
+      "mechanismPro": "Tension follows the bending moment: bottom steel at midspan (sagging), TOP steel over supports and in cantilevers (hogging). Cover protects it; effective depth d sets capacity. A balcony or canopy with the main bars in the bottom instead of the top is the classic fatal detail.",
+      "hook": "Bend a bar of chocolate: it snaps on the far, stretched side — where you would glue a strip of tape to hold it. Rebar is that tape, on the stretched face.",
+      "applied": {
+        "prompt": "Shop drawings for a cantilevered condo balcony show the main reinforcing bars near the BOTTOM of the slab. Approve?",
+        "options": [
+          { "id": "reject", "label": "Reject — a cantilever hogs, so tension is on TOP; the main steel belongs near the top face", "outcome": "Right. A cantilever bends the opposite way to a simple span — the top fibres stretch. Bottom bars there do nothing and the balcony can fail. This catch just prevented a collapse.", "optimal": true },
+          { "id": "cover", "label": "Approve if the cover looks adequate", "outcome": "Cover is irrelevant if the steel is on the wrong face entirely. This approves a balcony reinforced as if it were a simple span — a genuine safety failure.", "acceptable": false },
+          { "id": "approve", "label": "Approve — bottom steel is standard for slabs", "outcome": "Standard for a simple span, fatal for a cantilever. The two bend in opposite directions. Rubber-stamping trade-standard details without checking the tension side is how balconies come down.", "acceptable": false }
+        ],
+        "debrief": "Same law wherever concrete bends: put the steel on the stretched face — bottom at midspan, top over supports and cantilevers. It decides whether a slab, a beam, a dock deck, or a balcony stands up or cracks apart."
+      }
+    }
+  ],
   "summary": "Concrete is strong squeezed and weak stretched; steel carries the stretch. Every rebar rule follows three physics requirements: the steel must be WHERE tension occurs, BONDED well enough to develop its force, and PROTECTED from corrosion. PLAIN: put the metal where the pulling happens. PRO: development length, lap splices, cover by exposure class.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "s03-q1",
+      "principleIds": ["tension-location"],
       "type": "multipleChoice",
       "teach": "A cantilever — a balcony, a canopy — is a diving board: it droops, so its top surface stretches.",
       "prompt": "Where does the main steel go in a balcony slab, and what does a crew chairing it low actually do?",

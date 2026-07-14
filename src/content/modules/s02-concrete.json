@@ -4,6 +4,26 @@
   "title": "S2 — Concrete Materials and Mix Design",
   "short": "Concrete",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "s02-c-curing",
+      "principleId": "concrete-curing",
+      "title": "Concrete gets strong by staying wet",
+      "mechanism": "Concrete does not harden by drying — it hardens by a chemical reaction between cement and WATER that keeps going for days as long as the water is there. Let the surface dry out in the first week and the reaction near the top just stops, leaving weak, dusty, crack-prone concrete that never recovers. Curing means keeping it wet (or sealed) for about 7 days so the reaction finishes. In Bahamian sun and wind, water leaves fast — so curing is not optional here.",
+      "diagramId": "concrete-curing",
+      "mechanismPro": "Hydration, not evaporation. Keep it continuously moist for ~7 days (wet burlap, ponding, or a curing compound). Early water loss → plastic-shrinkage cracking plus a weak, permeable surface layer that then lets chlorides in faster. The w/c ratio sets the strength ceiling; curing decides whether you reach it.",
+      "hook": "Like bread dough proving — it needs time AND the right conditions to develop. Pull it out of the warm early and it never rises right. Concrete that dries early is dough pulled too soon.",
+      "applied": {
+        "prompt": "A slab was poured Friday afternoon. The crew is off for the weekend and it is hot and breezy. What do you insist on before they leave?",
+        "options": [
+          { "id": "cure", "label": "Curing in place — wet burlap or curing compound and a plan to keep it wet through the weekend", "outcome": "Right. The first 48–72 hours are when the reaction is fastest and water loss is worst. Left to dry, the top inch is compromised permanently.", "optimal": true },
+          { "id": "spray", "label": "A single spray-down before they go", "outcome": "Gone in an hour in this heat. One wetting is not curing; the surface dries and cracks by Saturday. You spent the concrete's strength to save a curing blanket.", "acceptable": false },
+          { "id": "nothing", "label": "Nothing — it will set fine over the weekend", "outcome": "It sets, but weak and dusty on top, with shrinkage cracks — and a permeable surface that lets salt in faster for the next 50 years. The cheapest weekend you will pay for the longest.", "acceptable": false }
+        ],
+        "debrief": "Strength is a promise the mix design makes and curing keeps. Every pour on this project — slabs, walls, the marina structures — carries a curing requirement, and skipping it is invisible until the cracks and the chloride problems show up years later."
+      }
+    }
+  ],
   "summary": "The chemistry in one paragraph, why the water/cement ratio governs everything, the Bahamian specifics (absorptive limestone aggregate, imported cement, hot-weather concreting as the permanent condition), and the testing regime. PLAIN: less water makes stronger glue. PRO: w/c ratio drives strength AND permeability; everything else manages workability around that fact.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "s02-q1",
+      "principleIds": ["concrete-curing"],
       "type": "multipleChoice",
       "teach": "Water in fresh concrete beyond what hydration needs doesn't disappear — it evaporates and leaves pore space.",
       "prompt": "The placement crew asks the driver for 'a little water in the drum' on a hot afternoon. What's actually being requested?",

@@ -4,6 +4,26 @@
   "title": "S9 — Marine Concrete, Steel, and Durability Science",
   "short": "Marine Durability",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "s09-c-chloride",
+      "principleId": "chloride-ingress",
+      "title": "Salt is the clock on every coastal structure",
+      "mechanism": "Salt in the sea air and spray slowly soaks into concrete and reaches the steel reinforcing inside. There it breaks down the thin protective layer around the steel and the steel starts to RUST. Rust takes up more space than steel, so it swells and cracks the concrete off from the inside — 'spalling'. You cannot stop the salt; you can only slow it with thick, dense cover so it takes decades, not years, to reach the steel. On the west, marine-exposed half of this project, that clock is running on everything.",
+      "diagramId": "chloride-ingress",
+      "mechanismPro": "Chloride diffuses to the rebar and depassivates it; corrosion products expand ~6× and spall the cover. Buy time with cover (often 2–3 in in splash zones), low-w/c dense concrete, SCMs (fly ash / slag / silica fume), and sometimes coatings or corrosion inhibitors. It is a durability design, not an afterthought.",
+      "hook": "Like salt on a car in a snowy climate — you do not stop the rust, you slow it with undercoating and washes. Coastal concrete is that car; cover and a dense mix are the undercoating.",
+      "applied": {
+        "prompt": "To hit a number, a sub suggests trimming the specified concrete cover on the marina-facing structures by half an inch. Your call?",
+        "options": [
+          { "id": "hold", "label": "Hold the cover — it is the durability clock; trimming it shortens the structure's life", "outcome": "Right. Cover is not padding — it is the distance the salt has to travel. Cutting half an inch can cut decades off the time to first corrosion. In the splash zone it is the whole ballgame.", "optimal": true },
+          { "id": "coat", "label": "Allow the trim but add a surface coating", "outcome": "A coating helps but wears and gets damaged; it is a supplement to cover, not a substitute. Trading permanent cover for a maintainable coating moves risk onto a future budget that may not exist.", "acceptable": false },
+          { "id": "trim", "label": "Allow it — half an inch is nothing", "outcome": "Half an inch is the difference between spalling at year 15 and year 40. On a marine structure it is the single most important durability dimension, and it is invisible until the concrete falls off.", "acceptable": false }
+        ],
+        "debrief": "On the coast, durability IS the design. The same chloride law governs every marine-exposed element — the marina, bulkheads, docks, seaward condos — and cover plus dense concrete is how you buy the years. It ties straight back to curing: a poorly cured, permeable surface lets the salt in faster."
+      }
+    }
+  ],
   "summary": "The chloride mechanism governs your entire west half: salt reaches the steel, rust expands 4–6x, the cover spalls, and the cycle runs away. Defense in depth: low permeability, real cover, crack control, then metallurgy and cathodic protection. Plus galvanic couples (dissimilar metals in seawater are batteries) and the inspection regime the HOA inherits. PLAIN: salt + steel + water = a slow explosion. PRO: w/c ≤0.40, 2.5–3 in cover, 316 not 304, anodes on a survey cycle.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "s09-q1",
+      "principleIds": ["chloride-ingress"],
       "type": "sequencing",
       "teach": "The chloride-to-spall chain is a causal sequence — each step enables the next.",
       "prompt": "Order the chloride corrosion mechanism:",

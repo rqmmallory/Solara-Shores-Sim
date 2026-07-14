@@ -4,6 +4,26 @@
   "title": "S6 — Roofing and Wind-Resistant Detailing (The Hurricane Module)",
   "short": "Wind & Roofs",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "s06-c-uplift",
+      "principleId": "wind-uplift",
+      "title": "Wind lifts roofs off — it does not push them down",
+      "mechanism": "When wind blows over a roof it speeds up, and fast-moving air has LOWER pressure — the same reason a plane's wing lifts. So a hurricane does not push your roof down; it SUCKS it up, hardest at the edges and corners. If the roof is not tied down to the walls, and the walls to the foundation, in one continuous chain, the wind finds the weakest link and peels the whole thing off — usually starting at a corner.",
+      "diagramId": "wind-uplift",
+      "mechanismPro": "Aerodynamic uplift; suction peaks at eaves, ridges and corners (higher GCp). Design a continuous load path: roof covering → deck → rafters → hurricane straps → wall → hold-downs → foundation. The connections, not the members, are what fail — every link must carry the uplift.",
+      "hook": "Hold a sheet of paper by one edge and blow across the TOP — it rises toward the fast air, it does not get pushed down. Your roof is that paper in a hurricane.",
+      "applied": {
+        "prompt": "To save cost, a sub proposes toe-nailing the rafters to the wall plate instead of the specified hurricane straps — in a hurricane-strength wind zone. Your call?",
+        "options": [
+          { "id": "straps", "label": "Hold the spec — engineered straps, continuous from roof to foundation", "outcome": "Right. Toe-nails pull straight out under uplift; straps are the link that carries it. The continuous tie-down is the difference between a roof that stays and one in the neighbour's yard.", "optimal": true },
+          { "id": "extra-nails", "label": "Allow toe-nails but add more of them", "outcome": "More nails loaded the wrong way (in withdrawal) still pull out — you cannot fix a bad connection type with quantity. This is the failure mode that fills post-storm reports.", "acceptable": false },
+          { "id": "allow", "label": "Allow it to save money — it is just the roof-to-wall joint", "outcome": "That 'just' joint is the link the entire uplift path runs through. Break it and the roof leaves, the walls follow, and the interior is destroyed. The cheapest connection on the job, and the one that loses the building.", "acceptable": false }
+        ],
+        "debrief": "Wind is an uplift problem, and uplift is a load-path problem: an unbroken chain from roof to ground, with the CONNECTIONS as the weak links to detail hardest. Corners and edges see the most suction — tie them down like the building depends on it, because it does."
+      }
+    }
+  ],
   "summary": "Wind uplift must travel roof covering → sheathing → truss → strap → ring beam → wall steel → footing → rock, with every link CONNECTED. Hurricanes fail the weakest link, and the weakest link is almost always a connection. PLAIN: the storm tries to pull the roof off; every part must hold the next. PRO: load path, zone nailing, strap schedules, opening protection as structure.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "s06-q1",
+      "principleIds": ["wind-uplift"],
       "type": "sequencing",
       "teach": "Uplift travels the load path link by link — order is the anatomy.",
       "prompt": "Trace the wind-uplift load path from the storm to the ground:",

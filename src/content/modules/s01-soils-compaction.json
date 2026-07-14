@@ -4,6 +4,26 @@
   "title": "S1 — Soils, Rock Bearing, and Compaction Theory",
   "short": "Compaction",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "s01-c-compaction",
+      "principleId": "compaction",
+      "title": "Why loose fill sinks later",
+      "mechanism": "Fresh fill is full of air — gaps between the soil grains. Put a building on it and those gaps slowly squeeze shut under the weight, and the ground drops. Compaction is just squeezing the air out NOW, in thin layers at the right dampness, so there is nothing left to squeeze out later. Skip it and the settling shows up months after you have paved and built — as cracked slabs, dipping roads, and doors that will not shut.",
+      "diagramId": "compaction",
+      "mechanismPro": "Proctor curve → target ~95% of maximum dry density at optimum moisture, placed in 6–8 in lifts, each proof-rolled or nuclear-density tested. Too dry or too wet and you cannot hit density; the water film has to be just right to lubricate the grains together.",
+      "hook": "Packing a suitcase: press each layer down as you go and it all fits; toss it in loose and the lid pops back up later. The ground does the same — it just takes months instead of seconds.",
+      "applied": {
+        "prompt": "The earthworks sub wants to place fill in 2-ft lifts to save passes and finish faster. Your call?",
+        "options": [
+          { "id": "thin", "label": "Hold them to thin lifts (6–8 in) with density testing on each", "outcome": "Right. The roller only compacts so deep — a 2-ft lift leaves the bottom loose no matter how many passes. Thin lifts, tested, are the only way the density is real.", "optimal": true },
+          { "id": "compromise", "label": "Allow 1-ft lifts as a middle ground", "outcome": "Better than 2 ft, but still beyond what the roller reaches cleanly; you get variable density and some future settlement. Defensible only with heavy kit and proof-rolling.", "acceptable": true },
+          { "id": "allow", "label": "Let them run 2-ft lifts to keep schedule", "outcome": "The bottom of each lift stays loose. It tests fine on top and sinks later — cracked slabs and dipping pavement after handover, when it is most expensive to fix.", "acceptable": false }
+        ],
+        "debrief": "Compaction is invisible work whose absence is invisible too — until the building settles onto it. The whole discipline is thin lifts + moisture + testing. It is the same 'squeeze the air out now or pay later' law under every slab, road, and pad on the project."
+      }
+    }
+  ],
   "summary": "Why fill gets compacted, what the Proctor test actually establishes, why lift thickness is non-negotiable, and what your limestone's superb bearing does and doesn't guarantee. PLAIN: squeezed-out air makes fill strong. PRO: percent of maximum dry density at optimum moisture, verified per lift.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "s01-q1",
+      "principleIds": ["compaction"],
       "type": "multipleChoice",
       "teach": "Density tests measure the material the gauge can reach — roughly the top of the lift.",
       "prompt": "Density tests pass at 95% Proctor, but you learn the fill was placed in 24-inch lifts instead of the specified 8–12. Accept or reject?",

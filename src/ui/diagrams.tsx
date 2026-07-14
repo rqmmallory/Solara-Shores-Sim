@@ -166,10 +166,148 @@ function TensionLocation() {
   );
 }
 
+/** compaction: air voids in loose fill become tomorrow's settlement */
+function Compaction() {
+  return (
+    <G>
+      <Rect x={0} y={0} width={VB_W} height={VB_H} fill="#182A42" />
+      {/* LEFT — loose fill with voids, house sinking/tilting */}
+      <Rect x={8} y={70} width={94} height={70} fill="#5A4A28" />
+      {[[24, 90], [46, 84], [70, 96], [88, 78], [34, 112], [64, 118], [86, 108]].map(([x, y], k) => (
+        <Circle key={k} cx={x} cy={y} r={5} fill="#0A1420" opacity={0.7} />
+      ))}
+      <Polygon points="30,70 74,70 66,58 38,58" fill="#CE9A63" transform="rotate(6 52 64)" />
+      {label(55, 52, 'sinks & tilts', { anchor: 'middle', size: 8, color: colors.bad })}
+      {label(55, 134, 'loose fill = air voids', { anchor: 'middle', size: 8, color: '#CBD5E6' })}
+      {/* RIGHT — compacted thin lifts, house level */}
+      <Rect x={118} y={70} width={94} height={70} fill="#6B5A30" />
+      {[78, 88, 98, 108, 118, 128].map((y) => (
+        <Line key={y} x1={118} y1={y} x2={212} y2={y} stroke="#4A3E20" strokeWidth={1} />
+      ))}
+      <Polygon points="142,70 186,70 178,58 150,58" fill="#CE9A63" />
+      {label(165, 52, 'stays level', { anchor: 'middle', size: 8, color: colors.good })}
+      {label(165, 134, 'thin lifts, no voids', { anchor: 'middle', size: 8, color: colors.good })}
+    </G>
+  );
+}
+
+/** concrete curing: strength comes from staying wet, not drying */
+function ConcreteCuring() {
+  return (
+    <G>
+      <Rect x={0} y={0} width={VB_W} height={VB_H} fill="#182A42" />
+      {/* LEFT — kept wet, strong */}
+      <Rect x={12} y={60} width={90} height={22} fill="#8FA3BC" />
+      {[24, 44, 64, 84].map((x) => (
+        <G key={x}>
+          <Line x1={x} y1={48} x2={x} y2={58} stroke="#4FC3F7" strokeWidth={2} />
+          <Circle cx={x} cy={58} r={2} fill="#4FC3F7" />
+        </G>
+      ))}
+      {label(57, 42, 'kept wet 7 days', { anchor: 'middle', size: 8, color: '#8FD3F7' })}
+      <Rect x={12} y={96} width={90} height={12} fill="#10141B" />
+      <Rect x={12} y={96} width={82} height={12} fill={colors.good} />
+      {label(57, 122, 'full strength', { anchor: 'middle', size: 8, color: colors.good, weight: '700' })}
+      {/* RIGHT — dried early, weak + cracked */}
+      <Rect x={118} y={60} width={90} height={22} fill="#8FA3BC" />
+      {[140, 165, 190].map((x) => (
+        <Line key={x} x1={x} y1={60} x2={x + 3} y2={82} stroke="#0A1420" strokeWidth={1.5} />
+      ))}
+      <SvgText x={163} y={52} fontSize={12} textAnchor="middle">☀️</SvgText>
+      <Rect x={118} y={96} width={90} height={12} fill="#10141B" />
+      <Rect x={118} y={96} width={40} height={12} fill={colors.bad} />
+      {label(163, 122, 'weak — forever', { anchor: 'middle', size: 8, color: colors.bad, weight: '700' })}
+    </G>
+  );
+}
+
+/** differential settlement: uneven sinking, not sinking, cracks things */
+function DifferentialSettlement() {
+  return (
+    <G>
+      <Rect x={0} y={0} width={VB_W} height={VB_H} fill="#182A42" />
+      {/* two soils */}
+      <Rect x={0} y={96} width={110} height={54} fill="#8892A0" />
+      {[10, 30, 50, 70, 90].map((x) => (
+        <Line key={x} x1={x} y1={96} x2={x + 8} y2={108} stroke="#5A6270" strokeWidth={1} />
+      ))}
+      {label(52, 140, 'firm rock', { anchor: 'middle', size: 8, color: '#CBD5E6' })}
+      <Rect x={110} y={96} width={110} height={54} fill="#4A3E20" />
+      {[[128, 116], [150, 128], [172, 112], [196, 124], [206, 108]].map(([x, y], k) => (
+        <Circle key={k} cx={x} cy={y} r={4} fill="#0A1420" opacity={0.7} />
+      ))}
+      {label(165, 140, 'soft pocket (sinks)', { anchor: 'middle', size: 8, color: colors.warn })}
+      {/* building, tilted, with a crack up the middle where the two differ */}
+      <Polygon points="40,50 180,50 186,96 46,96" fill="#6C7BD6" opacity={0.92} />
+      <Path d="M112,50 L108,66 L116,80 L110,96" stroke="#0A1420" strokeWidth={2.5} fill="none" />
+      {label(112, 44, 'crack', { anchor: 'middle', size: 8, color: colors.bad, weight: '700' })}
+      {label(110, VB_H - 4, 'even settling = fine · DIFFERENT settling = cracks', { anchor: 'middle', size: 8, color: '#CBD5E6' })}
+    </G>
+  );
+}
+
+/** wind uplift: wind lifts a roof like a wing; tie it down continuously */
+function WindUplift() {
+  return (
+    <G>
+      <Rect x={0} y={0} width={VB_W} height={VB_H} fill="#182A42" />
+      {/* wind streaming over the roof */}
+      {[26, 40, 54].map((y) => (
+        <Path key={y} d={`M6,${y} Q70,${y - 14} 130,${y}`} stroke="#8FD3F7" strokeWidth={1.5} fill="none" />
+      ))}
+      {label(20, 20, 'wind', { size: 8, color: '#8FD3F7' })}
+      {/* suction lifting the roof */}
+      {[70, 90, 110].map((x) => (
+        <UpArrow key={x} x={x} y0={70} y1={50} color={colors.accent} w={2} />
+      ))}
+      {label(150, 44, 'UPLIFT (suction)', { size: 9, color: colors.accent, weight: '700' })}
+      {/* house: roof + walls + footing */}
+      <Polygon points="56,66 124,66 90,44" fill="#C99A5B" />
+      <Rect x={58} y={66} width={64} height={54} fill="#8FA3BC" />
+      <Rect x={48} y={120} width={84} height={9} fill="#4A3E20" />
+      {/* the continuous tie-down: roof → wall → footing */}
+      <Path d="M64,52 L64,120" stroke={colors.good} strokeWidth={2.5} strokeDasharray="3 2" />
+      <Path d="M116,52 L116,120" stroke={colors.good} strokeWidth={2.5} strokeDasharray="3 2" />
+      {label(90, VB_H - 4, 'tie the roof to the ground — a continuous load path', { anchor: 'middle', size: 8, color: colors.good })}
+    </G>
+  );
+}
+
+/** chloride ingress: salt reaches the steel and rust spalls the cover */
+function ChlorideIngress() {
+  return (
+    <G>
+      <Rect x={0} y={0} width={VB_W} height={VB_H} fill="#182A42" />
+      {/* concrete cover block */}
+      <Rect x={20} y={30} width={180} height={90} fill="#9AA4B2" />
+      {label(24, 24, 'salty air / spray', { size: 8, color: '#8FD3F7' })}
+      {/* salt migrating in from the surface (left) toward the bar */}
+      {[[28, 50], [40, 66], [34, 84], [52, 58], [60, 76], [72, 92], [84, 64]].map(([x, y], k) => (
+        <SvgText key={k} x={x} y={y} fontSize={7} fill="#4FC3F7">Na</SvgText>
+      ))}
+      {/* the rebar, rusting + swelling */}
+      <Circle cx={120} cy={78} r={10} fill="#C97A3A" />
+      <Circle cx={120} cy={78} r={6} fill="#8892A0" />
+      {label(120, 100, 'rebar rusts & swells', { anchor: 'middle', size: 7.5, color: colors.warn })}
+      {/* spalling crack popping the cover off above the bar */}
+      <Path d="M120,68 L112,50 L126,40 L120,30" stroke="#0A1420" strokeWidth={2} fill="none" />
+      {label(160, 46, 'cover spalls off', { size: 8, color: colors.bad })}
+      {/* the cover = the clock */}
+      <Line x1={20} y1={126} x2={120} y2={126} stroke={colors.good} strokeWidth={2} />
+      {label(70, VB_H - 4, 'thicker, denser cover = more years before salt reaches steel', { anchor: 'middle', size: 8, color: colors.good })}
+    </G>
+  );
+}
+
 const DIAGRAMS: Record<string, () => React.ReactElement> = {
   'hydrostatic-uplift': HydrostaticUplift,
   'load-path': LoadPath,
   'tension-location': TensionLocation,
+  compaction: Compaction,
+  'concrete-curing': ConcreteCuring,
+  'differential-settlement': DifferentialSettlement,
+  'wind-uplift': WindUplift,
+  'chloride-ingress': ChlorideIngress,
 };
 
 /** ids of diagrams that have a real drawing (not the placeholder) */

@@ -4,6 +4,26 @@
   "title": "V3-4 — Differential Settlement: The Crack-Maker",
   "short": "Settlement",
   "status": "ready",
+  "concepts": [
+    {
+      "id": "v34-c-differential",
+      "principleId": "differential-settlement",
+      "title": "It is uneven settling that cracks buildings",
+      "mechanism": "All buildings settle a little as the ground compresses under them — that alone is usually harmless. The damage comes when DIFFERENT parts settle by different amounts: one end on firm rock, the other on a soft pocket, so the building tilts and tears where the two meet. Cracks, jammed doors, sloping floors. The fix is not stopping settlement — it is making it EVEN, by knowing the ground under every part and founding it consistently.",
+      "diagramId": "differential-settlement",
+      "mechanismPro": "Total vs differential settlement; angular distortion (Δ/L) governs cracking, roughly 1/500 for walls. Uniform soils or a stiff raft spread it; mixed bearing (rock next to a karst-infill pocket) concentrates it. This is why the geotech grid matters — you are mapping where the ground changes.",
+      "hook": "A table on a tiled floor sits fine; put one leg on a stack of napkins and it rocks and the tablecloth pulls. Even support is steady; uneven support tilts and tears.",
+      "applied": {
+        "prompt": "Borings show a building pad sits half on firm rock and half over a soft karst-infill pocket. The cheapest-looking option is to spread footings and build. Your call?",
+        "options": [
+          { "id": "treat", "label": "Even out the support first — over-excavate or treat the soft pocket so the whole pad settles alike", "outcome": "Right. Left as-is, the soft half settles more and the building tears down the boundary. Making the support consistent is what prevents the crack — settlement you can live with, DIFFERENTIAL settlement you cannot.", "optimal": true },
+          { "id": "raft", "label": "Use a stiff raft to span the difference", "outcome": "A legitimate engineered fix — a rigid mat redistributes load and limits angular distortion. Costs more concrete and steel but works if designed for it; defensible.", "acceptable": true },
+          { "id": "spread", "label": "Spread footings and build — settlement is normal", "outcome": "Normal, yes; EVEN, no. The soft half keeps sinking after the rock half stops, and the building cracks along the seam. The 'cheap' pad becomes a structural repair.", "acceptable": false }
+        ],
+        "debrief": "Settlement itself is fine; the enemy is the DIFFERENCE. That is the whole reason for the geotech grid — to find where the ground changes so you can found the building to settle evenly. The same law shows up wherever strong meets weak — even in a team, where the crack forms next to the member who cannot carry their share."
+      }
+    }
+  ],
   "summary": "Settling isn't the problem; settling UNEVENLY is — a building that sinks together is fine, a building that sinks at one corner has to bend, and block buildings don't bend, they crack. The signature: stair-step cracks, sticking doors, sloping floors. The cause: different ground under different parts. PLAIN: one soft spot under one corner. PRO: angular distortion, transitions, the remedy ladder from monitoring to underpinning.",
   "sections": [
     {
@@ -22,6 +42,7 @@
   "quiz": [
     {
       "id": "v34-q1",
+      "principleIds": ["differential-settlement"],
       "type": "multipleChoice",
       "teach": "Crack patterns are diagnostic — stair-steps through block joints tell a specific story.",
       "prompt": "House 214 shows stair-step cracking over the garage corner 8 months after closing. What's the correct sequence?",
