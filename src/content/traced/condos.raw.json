@@ -1,0 +1,21 @@
+{
+  "dpi": 400,
+  "notes": "Coordinates are full-page pixel space at 400 DPI (page 4, 14400x9600). Scale 1/64in=1ft => 1px=0.16ft. Axis-aligned rectangles (CONDO 3-15) traced by dark-line projection and verified against printed sqft. CONDO 1 and CONDO 2 are rotated parallelograms (west waterfront); traced by edge-line fitting. Both 1 and 2 have small entrance notches/wings on their west facade that are excluded (the main rectangle already equals the printed per-floor area).",
+  "condos": [
+    { "id": "condo-1", "label": "CONDO 1", "points": [{"x":1804,"y":3272},{"x":2211,"y":3372},{"x":1898,"y":4649},{"x":1491,"y":4549}], "meta": { "storeys": 3, "sqftPerFloor": 14000, "totalSqft": null } },
+    { "id": "condo-2", "label": "CONDO 2", "points": [{"x":2056,"y":1593},{"x":2470,"y":1640},{"x":2320,"y":2965},{"x":1906,"y":2918}], "meta": { "storeys": 4, "sqftPerFloor": 14000, "totalSqft": 56000 } },
+    { "id": "condo-3", "label": "CONDO 3", "points": [{"x":2718,"y":1093},{"x":3780,"y":1093},{"x":3780,"y":1499},{"x":2718,"y":1499}], "meta": { "storeys": 3, "sqftPerFloor": 11000, "totalSqft": 33000 } },
+    { "id": "condo-4", "label": "CONDO 4", "points": [{"x":4063,"y":1094},{"x":5127,"y":1094},{"x":5127,"y":1499},{"x":4063,"y":1499}], "meta": { "storeys": 3, "sqftPerFloor": 11000, "totalSqft": 33000 } },
+    { "id": "condo-5", "label": "CONDO 5", "points": [{"x":5312,"y":1040},{"x":5728,"y":1040},{"x":5728,"y":1982},{"x":5312,"y":1982}], "meta": { "storeys": 4, "sqftPerFloor": 10000, "totalSqft": 40000 } },
+    { "id": "condo-6", "label": "CONDO 6", "points": [{"x":6268,"y":1040},{"x":6683,"y":1040},{"x":6683,"y":1980},{"x":6268,"y":1980}], "meta": { "storeys": 3, "sqftPerFloor": 10000, "totalSqft": 30000 } },
+    { "id": "condo-7", "label": "CONDO 7", "points": [{"x":6268,"y":2899},{"x":6683,"y":2899},{"x":6683,"y":3840},{"x":6268,"y":3840}], "meta": { "storeys": 3, "sqftPerFloor": 10000, "totalSqft": 30000 } },
+    { "id": "condo-8", "label": "CONDO 8", "points": [{"x":5281,"y":2898},{"x":5696,"y":2898},{"x":5696,"y":3839},{"x":5281,"y":3839}], "meta": { "storeys": 4, "sqftPerFloor": 10000, "totalSqft": 40000 } },
+    { "id": "condo-9", "label": "CONDO 9", "points": [{"x":5276,"y":4234},{"x":5691,"y":4234},{"x":5691,"y":5267},{"x":5276,"y":5267}], "meta": { "storeys": 5, "sqftPerFloor": 11000, "totalSqft": 55000 } },
+    { "id": "condo-10", "label": "CONDO 10", "points": [{"x":5281,"y":5588},{"x":5696,"y":5588},{"x":5696,"y":6622},{"x":5281,"y":6622}], "meta": { "storeys": 4, "sqftPerFloor": 11000, "totalSqft": 44000 } },
+    { "id": "condo-11", "label": "CONDO 11", "points": [{"x":6260,"y":4700},{"x":6678,"y":4700},{"x":6678,"y":6012},{"x":6260,"y":6012}], "meta": { "storeys": 3, "sqftPerFloor": 14000, "totalSqft": 42000 } },
+    { "id": "condo-12", "label": "CONDO 12", "points": [{"x":10078,"y":4410},{"x":10494,"y":4410},{"x":10494,"y":5350},{"x":10078,"y":5350}], "meta": { "storeys": 4, "sqftPerFloor": 10000, "totalSqft": 40000 } },
+    { "id": "condo-13", "label": "CONDO 13", "points": [{"x":10078,"y":5663},{"x":10494,"y":5663},{"x":10494,"y":6604},{"x":10078,"y":6604}], "meta": { "storeys": 3, "sqftPerFloor": 10000, "totalSqft": 30000 } },
+    { "id": "condo-14", "label": "CONDO 14", "points": [{"x":11272,"y":4410},{"x":11686,"y":4410},{"x":11686,"y":5350},{"x":11272,"y":5350}], "meta": { "storeys": 4, "sqftPerFloor": 10000, "totalSqft": 40000 } },
+    { "id": "condo-15", "label": "CONDO 15", "points": [{"x":11272,"y":5663},{"x":11686,"y":5663},{"x":11686,"y":6604},{"x":11272,"y":6604}], "meta": { "storeys": 3, "sqftPerFloor": 10000, "totalSqft": 30000 } }
+  ]
+}
