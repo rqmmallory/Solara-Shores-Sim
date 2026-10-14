@@ -42,3 +42,6 @@ yarn-error.*
 
 # packaged single-page web build (published as the claude.ai artifact)
 dist-artifact/
+
+# generated design handoff bundle
+design-handoff/
