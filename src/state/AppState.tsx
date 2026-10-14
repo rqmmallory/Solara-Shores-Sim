@@ -69,7 +69,18 @@ interface AppStateValue {
   /** claim a daily/weekly reward if satisfied and unclaimed; returns B$ paid (0 if not) */
   claimChallenge: (kind: 'daily' | 'weekly') => number;
   setCurveballFrequency: (f: CurveballFrequency) => void;
+  /**
+   * spend CM Capital to put an extra crew on a work front: advances it now,
+   * but never past the stage your sim decisions have authorised
+   */
+  boostDistrict: (districtId: string) => BoostResult;
+  /** how far a front may go right now, and whether it is already there */
+  districtHeadroom: (districtId: string) => { ceiling: number; pos: number; capped: boolean };
 }
+
+export const CREW_COST = 25; // B$
+export const CREW_GAIN = 0.35; // stages of progress per crew sent
+export type BoostResult = { ok: true; gained: number } | { ok: false; reason: 'capped' | 'funds' | 'unknown' };
 
 const Ctx = createContext<AppStateValue | null>(null);
 
@@ -401,6 +412,38 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     [mutate]
   );
 
+  const districtHeadroom = useCallback((districtId: string) => {
+    const d = DISTRICTS.find((x) => x.id === districtId);
+    const s = stateRef.current;
+    if (!d) return { ceiling: 0, pos: 0, capped: true };
+    // surveying needs no approvals, so crews may always take a front as far as its survey stage
+    const survey = Math.max(0, d.stages.findIndex((st) => st.key === 'survey'));
+    const ceiling = Math.max(ceilingStage(d, new Set(s.simRecords.map((r) => r.phaseId))), survey);
+    const pos = s.districts[d.id]?.pos ?? 0;
+    return { ceiling, pos, capped: pos >= ceiling - 0.001 };
+  }, []);
+
+  const boostDistrict = useCallback(
+    (districtId: string): BoostResult => {
+      const d = DISTRICTS.find((x) => x.id === districtId);
+      if (!d) return { ok: false, reason: 'unknown' };
+      const { ceiling, pos, capped } = districtHeadroom(districtId);
+      if (capped) return { ok: false, reason: 'capped' };
+      if (stateRef.current.capital < CREW_COST) return { ok: false, reason: 'funds' };
+      const next = Math.min(ceiling, pos + CREW_GAIN);
+      mutate((s) => {
+        const cur = s.districts[d.id] ?? initialProgress(Date.now());
+        return {
+          ...s,
+          capital: s.capital - CREW_COST,
+          districts: { ...s.districts, [d.id]: { ...cur, pos: Math.max(cur.pos, next) } },
+        };
+      });
+      return { ok: true, gained: next - pos };
+    },
+    [districtHeadroom, mutate]
+  );
+
   const value = useMemo<AppStateValue>(() => {
     const readyPhases = simPhases.filter((p) => p.status !== 'placeholder').length;
     const readiness = projectReadiness(
@@ -429,8 +472,10 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       weeklyStatus,
       claimChallenge,
       setCurveballFrequency,
+      boostDistrict,
+      districtHeadroom,
     };
-  }, [ready, state, syncStatus, recordQuizResult, recordDecisionSeen, recordMath, recordSimRun, simCarryFor, spendCapital, dailyStatus, weeklyStatus, claimChallenge, setCurveballFrequency]);
+  }, [ready, state, syncStatus, recordQuizResult, recordDecisionSeen, recordMath, recordSimRun, simCarryFor, spendCapital, dailyStatus, weeklyStatus, claimChallenge, setCurveballFrequency, boostDistrict, districtHeadroom]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

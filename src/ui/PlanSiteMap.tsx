@@ -4,6 +4,11 @@ import Svg, { Circle, Defs, G, Line, Path, Pattern, RadialGradient, Rect, Stop, 
 import { PLAN_ASPECT, planZones, SiteZone, ZoneCategory } from '../content/siteMap';
 import { DISTRICTS, DistrictProgress, districtById, districtOfZone, districtPercent, stageAt } from '../engine/districts';
 import { levelForXp } from '../engine/progress';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { simPhases } from '../content';
+import type { RootStackParamList } from '../navigation/types';
+import { CREW_COST, useAppState } from '../state/AppState';
 import { tapFeedback } from './feedback';
 import { colors, mapColors as M } from './theme';
 
@@ -177,8 +182,8 @@ export default function PlanSiteMap({
   const fitW = Math.max(W, (fullH * width) / MAP_HEIGHT);
   const vbW = fitW / zoom;
   const vbH = (vbW * MAP_HEIGHT) / width;
-  const cx = vbW >= W ? W / 2 : Math.max(vbW / 2, Math.min(W - vbW / 2, center.x));
-  const cy = vbH >= fullH ? fullH / 2 : Math.max(vbH / 2, Math.min(fullH - vbH / 2, center.y * sq));
+  const cx = Math.max(0, Math.min(W, center.x));
+  const cy = Math.max(0, Math.min(fullH, center.y * sq));
   const vb = `${(cx - vbW / 2).toFixed(2)} ${(cy - vbH / 2).toFixed(2)} ${vbW.toFixed(2)} ${vbH.toFixed(2)}`;
   const k = Math.min(1.6, vbW / W); // keeps strokes/badges a near-constant on-screen size as you zoom
 
@@ -188,11 +193,12 @@ export default function PlanSiteMap({
   const panStart = useRef(center);
   const pan = useRef(
     PanResponder.create({
-      onStartShouldSetPanResponder: () => false,
-      onMoveShouldSetPanResponder: (_e, g) => g.numberActiveTouches === 2 || Math.abs(g.dx) > 6 || Math.abs(g.dy) > 6,
-      onPanResponderGrant: () => {
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderGrant: (_e, g) => {
         pinch.current = null;
         panStart.current = centerRef.current;
+        tapAt.current = { x: g.x0, y: g.y0 };
       },
       onPanResponderMove: (e, g) => {
         const t = e.nativeEvent.touches;
@@ -202,18 +208,52 @@ export default function PlanSiteMap({
           else setZoom(Math.max(1, Math.min(MAX_ZOOM, (dist / pinch.current.dist) * pinch.current.zoom)));
         } else {
           const unitsPerPx = vbWRef.current / widthRef.current;
-          setCenter({ x: panStart.current.x - g.dx * unitsPerPx, y: panStart.current.y - g.dy * unitsPerPx });
+          setCenter({ x: panStart.current.x - g.dx * unitsPerPx, y: panStart.current.y - (g.dy * unitsPerPx) / camRef.current.sq });
         }
       },
-      onPanResponderRelease: () => {
+      onPanResponderRelease: (_e, g) => {
+        const wasPinch = pinch.current != null;
         pinch.current = null;
+        if (wasPinch || Math.abs(g.dx) > 6 || Math.abs(g.dy) > 6 || !tapAt.current) return;
+        const at = tapAt.current;
+        mapRef.current?.measureInWindow((x, y) => {
+          const hit = hitTest(at.x - x, at.y - y);
+          if (hit) {
+            tapFeedback();
+            setSelected(hit);
+          }
+        });
       },
     })
   ).current;
+  const tapAt = useRef<{ x: number; y: number } | null>(null);
+  const mapRef = useRef<View>(null);
+  const camRef = useRef({ x0: 0, y0: 0, vbW: W, vbH: H, sq: 1, tilt: 0, parcels: [] as typeof parcels });
+  /** which parcel is under a point in the map card (topmost first, roofs lifted in 3D) */
+  const hitTest = (px: number, py: number): string | null => {
+    const c = camRef.current;
+    const vx = c.x0 + (px * c.vbW) / widthRef.current;
+    const vy = (c.y0 + (py * c.vbH) / MAP_HEIGHT) / c.sq;
+    const byDepth = [...c.parcels].sort((a, b) => b.maxY - a.maxY);
+    for (const p of byDepth) {
+      const lift = (p.h * c.tilt) / c.sq;
+      let inside = false;
+      for (let i = 0, j = p.pts.length - 1; i < p.pts.length; j = i++) {
+        const a = p.pts[i];
+        const b = p.pts[j];
+        const ay = a.y - lift;
+        const by = b.y - lift;
+        if (ay > vy !== by > vy && vx < ((b.x - a.x) * (vy - ay)) / (by - ay) + a.x) inside = !inside;
+      }
+      if (inside) return p.z.id;
+    }
+    return null;
+  };
   const widthRef = useRef(width);
   widthRef.current = width;
   const vbWRef = useRef(vbW);
   vbWRef.current = vbW;
+  camRef.current = { x0: cx - vbW / 2, y0: cy - vbH / 2, vbW, vbH, sq, tilt, parcels };
 
   const sel = parcels.find((p) => p.z.id === selected);
   const ordered = [...parcels].sort((a, b) => a.maxY - b.maxY);
@@ -248,7 +288,7 @@ export default function PlanSiteMap({
         </Svg>
       </View>
 
-      <View style={styles.map} onLayout={(e: LayoutChangeEvent) => setWidth(e.nativeEvent.layout.width)} {...pan.panHandlers}>
+      <View ref={mapRef} style={styles.map} onLayout={(e: LayoutChangeEvent) => setWidth(e.nativeEvent.layout.width)} {...pan.panHandlers}>
         <Svg width={width} height={MAP_HEIGHT} viewBox={vb}>
           <Defs>
             <Pattern id="raw" patternUnits="userSpaceOnUse" width={1.6} height={1.6}>
@@ -303,7 +343,7 @@ export default function PlanSiteMap({
                 }
               }
               return (
-                <G key={p.z.id} onPress={() => { tapFeedback(); setSelected(p.z.id); }}>
+                <G key={p.z.id}>
                   {lift > 0.01 ? (
                     <Path d={d(p.pts.map((q) => ({ x: q.x + lift * 0.5, y: q.y + lift * 0.18 })))} fill={M.ink} opacity={0.14} />
                   ) : null}
@@ -451,20 +491,8 @@ export default function PlanSiteMap({
         </View>
       </View>
 
-      {sel ? (
-        <View style={styles.detail}>
-          <Text style={styles.detailTag}>{sel.dist ? sel.dist.name.toUpperCase() : 'SITE'}</Text>
-          <Text style={styles.detailTitle}>{sel.z.name}</Text>
-          <Text style={styles.detailBody}>
-            {sel.stage}
-            {sel.next ? ` · next: ${sel.next}` : ''}
-          </Text>
-          <View style={styles.track}>
-            <View style={[styles.fill, { width: `${Math.round(sel.prog * 100)}%`, backgroundColor: sel.state === 'built' ? colors.teal : colors.accent }]} />
-          </View>
-        </View>
-      ) : (
-        <Text style={styles.hint}>Tap a parcel for its build status · drag to pan · pinch or +/− to zoom · 3D tilts the sheet</Text>
+      {sel ? <ParcelPanel sel={sel} /> : (
+        <Text style={styles.hint}>Tap a parcel to work on it · drag to pan · pinch or +/− to zoom · 3D tilts the sheet</Text>
       )}
 
       <View style={styles.legend}>
@@ -473,6 +501,63 @@ export default function PlanSiteMap({
         <Swatch kind="built" label="Built" />
         <Swatch kind="water" label="Water" />
       </View>
+    </View>
+  );
+}
+
+/**
+ * The selected parcel: its stage and progress, plus the actions you can take
+ * on it. Sending a crew spends CM Capital to push the work front forward now;
+ * fronts never pass what your sim decisions have authorised, so a capped front
+ * points you at the phase that unlocks it.
+ */
+function ParcelPanel({ sel }: { sel: { z: SiteZone; dist?: { id: string; name: string; checkpoints: { phaseId: string; stage: number }[] }; stage: string; next?: string; prog: number; state: State } }) {
+  const app = useAppState();
+  const nav = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const [msg, setMsg] = useState<{ text: string; good: boolean } | null>(null);
+  useEffect(() => setMsg(null), [sel.z.id]);
+  const dist = sel.dist;
+  const room = dist ? app.districtHeadroom(dist.id) : null;
+  const done = new Set(app.state.simRecords.map((r) => r.phaseId));
+  const unlock = dist && room?.capped ? dist.checkpoints.find((c) => c.stage > room.ceiling && !done.has(c.phaseId)) : undefined;
+  const unlockPhase = unlock ? simPhases.find((p) => p.id === unlock.phaseId) : undefined;
+
+  const send = () => {
+    if (!dist) return;
+    tapFeedback();
+    const r = app.boostDistrict(dist.id);
+    if (r.ok) setMsg({ text: `Crew on site: ${dist.name} advanced ${Math.round(r.gained * 100)}% of a stage (−B$${CREW_COST}).`, good: true });
+    else if (r.reason === 'funds') setMsg({ text: `Not enough CM Capital (B$${CREW_COST} needed). Study a module or clear reviews to earn more.`, good: false });
+    else setMsg({ text: 'This front has done everything your decisions allow.', good: false });
+  };
+
+  return (
+    <View style={styles.detail}>
+      <Text style={styles.detailTag}>{dist ? dist.name.toUpperCase() : 'SITE'}</Text>
+      <Text style={styles.detailTitle}>{sel.z.name}</Text>
+      <Text style={styles.detailBody}>
+        {sel.stage}
+        {sel.next ? ` · next: ${sel.next}` : ''}
+      </Text>
+      <View style={styles.track}>
+        <View style={[styles.fill, { width: `${Math.round(sel.prog * 100)}%`, backgroundColor: sel.state === 'built' ? colors.teal : colors.accent }]} />
+      </View>
+      {dist && sel.state !== 'built' ? (
+        room && !room.capped ? (
+          <TouchableOpacity onPress={send} style={[styles.action, app.state.capital < CREW_COST && { opacity: 0.5 }]}>
+            <Text style={styles.actionText}>SEND A CREW</Text>
+            <Text style={styles.actionCost}>B${CREW_COST}</Text>
+          </TouchableOpacity>
+        ) : unlockPhase ? (
+          <TouchableOpacity onPress={() => { tapFeedback(); nav.navigate('SimRun', { phaseId: unlockPhase.id }); }} style={[styles.action, styles.actionAlt]}>
+            <Text style={[styles.actionText, { color: colors.card }]}>UNLOCK: {unlockPhase.title.toUpperCase()}</Text>
+          </TouchableOpacity>
+        ) : null
+      ) : null}
+      {dist && room?.capped && sel.state !== 'built' ? (
+        <Text style={styles.hint}>Crews are waiting on your decisions. Play the next phase to authorise more work here.</Text>
+      ) : null}
+      {msg ? <Text style={[styles.hint, { color: msg.good ? colors.teal : colors.bad, fontSize: 12 }]}>{msg.text}</Text> : null}
     </View>
   );
 }
@@ -569,5 +654,9 @@ const styles = StyleSheet.create({
   track: { height: 7, borderRadius: 4, backgroundColor: colors.cardAlt, marginTop: 8, overflow: 'hidden' },
   fill: { height: 7, borderRadius: 4 },
   hint: { color: colors.muted, fontSize: 11, marginTop: 6 },
+  action: { marginTop: 10, minHeight: 48, borderRadius: 6, borderWidth: 1.5, borderColor: colors.text, backgroundColor: colors.accent, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 12 },
+  actionAlt: { backgroundColor: colors.text },
+  actionText: { fontSize: 15, fontWeight: '700', letterSpacing: 1, color: colors.text, flexShrink: 1 },
+  actionCost: { fontSize: 12, fontWeight: '700', color: colors.text, ...mono },
   legend: { flexDirection: 'row', flexWrap: 'wrap', marginTop: 8 },
 });
