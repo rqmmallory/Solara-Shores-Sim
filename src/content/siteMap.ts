@@ -532,3 +532,11 @@ export function toEastWest(z: SiteZone): SiteZone {
 
 /** the exported map — Sheet A1 orientation (marina west, road/retail east) */
 export const siteZones: SiteZone[] = AUTHORED_ZONES.map(toEastWest);
+
+/**
+ * The same parcels in their authored north-up frame (road at top, marina at
+ * bottom), for the plan-view map. Units: x 0..100 across, y 0..100 down a
+ * canvas PLAN_ASPECT times as tall as it is wide.
+ */
+export const planZones: SiteZone[] = AUTHORED_ZONES;
+export const PLAN_ASPECT = CANVAS_ASPECT;

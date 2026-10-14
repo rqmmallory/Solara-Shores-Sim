@@ -9,7 +9,7 @@ import { WEATHER_TABLE } from '../engine/weather';
 import { useAppState } from '../state/AppState';
 import { phaseHost } from '../content/mentors';
 import { Body, Card, H1, H2, Meter, Screen, Small, Tag } from '../ui/components';
-import IsoSiteMap from '../ui/IsoSiteMap';
+import PlanSiteMap from '../ui/PlanSiteMap';
 import MentorBubble from '../ui/MentorBubble';
 import { colors } from '../ui/theme';
 import type { RootStackParamList } from '../navigation/types';
@@ -45,7 +45,7 @@ export default function SimListScreen() {
         );
       })()}
 
-      <IsoSiteMap districts={app.state.districts} />
+      <PlanSiteMap districts={app.state.districts} capital={app.state.capital} totalXp={app.totalXp} />
 
       <WorkFrontsPanel />
 
@@ -65,7 +65,7 @@ export default function SimListScreen() {
                 backgroundColor: freq === f.key ? colors.teal : colors.cardAlt,
               }}
             >
-              <Small style={{ color: freq === f.key ? '#10141B' : colors.muted, fontWeight: '700' }}>
+              <Small style={{ color: freq === f.key ? colors.card : colors.muted, fontWeight: '700' }}>
                 {f.label}
               </Small>
             </TouchableOpacity>

@@ -165,7 +165,7 @@ function Chip({ label, active, onPress }: { label: string; active: boolean; onPr
         borderColor: active ? colors.teal : colors.border,
       }}
     >
-      <Small style={{ color: active ? '#10141B' : colors.muted, fontWeight: '600' }}>{label}</Small>
+      <Small style={{ color: active ? colors.card : colors.muted, fontWeight: '600' }}>{label}</Small>
     </TouchableOpacity>
   );
 }

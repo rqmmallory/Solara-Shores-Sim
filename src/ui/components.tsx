@@ -60,7 +60,7 @@ export function Btn({
 }) {
   const bg =
     kind === 'primary' ? colors.accent : kind === 'teal' ? colors.teal : kind === 'danger' ? colors.bad : 'transparent';
-  const fg = kind === 'ghost' ? colors.text : '#10141B';
+  const fg = kind === 'ghost' ? colors.text : kind === 'primary' ? colors.text : colors.card;
   return (
     <TouchableOpacity
       onPress={onPress}

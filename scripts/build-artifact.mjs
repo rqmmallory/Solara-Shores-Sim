@@ -48,8 +48,8 @@ const js = bundles
 const page = `<title>Solara Shores Sim</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
-  /* single committed look: the game's own dark site-office palette */
-  :root { color-scheme: dark; --bg: #0F1B2D; --fg: #E8EEF6; }
+  /* single committed look: the game's own day-sheet drafting palette */
+  :root { color-scheme: light; --bg: #E8EAE4; --fg: #16202A; }
   html, body { height: 100%; }
   body {
     background: var(--bg);

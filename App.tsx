@@ -9,7 +9,7 @@ export default function App() {
     <SafeAreaProvider>
       <AppStateProvider>
         <AppNav />
-        <StatusBar style="light" />
+        <StatusBar style="dark" />
       </AppStateProvider>
     </SafeAreaProvider>
   );
