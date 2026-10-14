@@ -126,10 +126,14 @@ export function extrudePolygon(planPoints: Pt[], height: number): ZoneSolid {
  * legacy rectangle zones (`x`/`y`/`w`/`h` only) extrude their bounding box.
  */
 export function zoneSolid(zone: SiteZone, height: number): ZoneSolid {
-  const planPoints: Pt[] = zone.footprint
+  return extrudePolygon(zonePlanPolygon(zone), height);
+}
+
+/** a zone's footprint in iso plan units (its traced polygon, or its rectangle) */
+export function zonePlanPolygon(zone: SiteZone): Pt[] {
+  return zone.footprint
     ? zone.footprint.map((p) => ({ x: p.x, y: planY(p.y) }))
     : rectCorners(zone.x, zone.y, zone.w, zone.h);
-  return extrudePolygon(planPoints, height);
 }
 
 function rectCorners(x: number, y: number, w: number, h: number): Pt[] {
