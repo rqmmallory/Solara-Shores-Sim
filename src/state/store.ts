@@ -22,6 +22,12 @@ export interface SimRunSnapshot {
 
 export interface PersistedState {
   version: 1;
+  /**
+   * when the player last DID something (ms). Stamped by player actions only,
+   * never by the background construction clock, so cross-device sync can
+   * pick the save holding the most recent real decision (see cloudSync).
+   */
+  updatedAt: number;
   moduleStats: Record<string, ModuleStats>;
   mathStats: MathStats;
   srsQueue: SrsItem[];
@@ -64,6 +70,7 @@ function freshDistricts(now: number): Record<string, DistrictProgress> {
 export function emptyState(): PersistedState {
   return {
     version: 1,
+    updatedAt: 0,
     moduleStats: {},
     mathStats: emptyMathStats(),
     srsQueue: [],
@@ -81,22 +88,30 @@ export function emptyState(): PersistedState {
 
 const KEY = 'solara.state.v1';
 
+/**
+ * A parsed save (from this device or the cloud) merged over an empty state so
+ * fields added since it was written get defaults. null if it isn't a v1 save.
+ */
+export function hydrate(parsed: unknown): PersistedState | null {
+  if (!parsed || typeof parsed !== 'object' || (parsed as PersistedState).version !== 1) return null;
+  const p = parsed as PersistedState;
+  const base = emptyState();
+  return {
+    ...base,
+    ...p,
+    updatedAt: typeof p.updatedAt === 'number' ? p.updatedAt : 0,
+    mathStats: { ...base.mathStats, ...p.mathStats },
+    districts: { ...base.districts, ...(p.districts ?? {}) },
+    principleRetention: { ...base.principleRetention, ...(p.principleRetention ?? {}) },
+    settings: { ...base.settings, ...p.settings },
+  };
+}
+
 export async function loadState(): Promise<PersistedState> {
   try {
     const raw = await AsyncStorage.getItem(KEY);
     if (!raw) return emptyState();
-    const parsed = JSON.parse(raw) as PersistedState;
-    if (parsed.version !== 1) return emptyState();
-    // merge over empty so newly added fields get defaults
-    const base = emptyState();
-    return {
-      ...base,
-      ...parsed,
-      mathStats: { ...base.mathStats, ...parsed.mathStats },
-      districts: { ...base.districts, ...(parsed.districts ?? {}) },
-      principleRetention: { ...base.principleRetention, ...(parsed.principleRetention ?? {}) },
-      settings: { ...base.settings, ...parsed.settings },
-    };
+    return hydrate(JSON.parse(raw)) ?? emptyState();
   } catch {
     return emptyState();
   }

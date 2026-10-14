@@ -58,6 +58,25 @@ If `node ./node_modules/expo/bin/cli --version` doesn't print `54.x`,
 `node_modules` is out of sync with `package.json` — run
 `rm -rf node_modules && npm install` and try again.
 
+## Play on any device (web build + synced saves)
+
+The same app also builds for the web and is published as a private claude.ai
+artifact, so it runs in a desktop browser and in the Claude app on a phone —
+no app store, no Expo Go, no dev server, works on the road.
+
+- **Saves sync between devices.** Inside the artifact, the save is mirrored to
+  one private document in the artifact's database (`data/users/<you>/save`,
+  readable only by you). The copy holding the most recent *player action* wins;
+  the background construction clock never overwrites a real decision, and a
+  device never pushes until it has heard the cloud's current copy.
+- **Expo Go stays local-only** (it can't reach the artifact database), as
+  before.
+- **Rebuild:** `npm run build:artifact` writes
+  `dist-artifact/solara-shores-sim.html` — one self-contained page (JS bundle
+  and image assets inlined) — which is what gets republished to the artifact.
+  The packager is `scripts/build-artifact.mjs`; sync logic is
+  `src/state/cloudSync.ts` (unit-tested against a fake database).
+
 ## The three systems
 
 1. **Knowledge modules (Learn tab)** — 33 modules across three KB volumes:

@@ -29,11 +29,14 @@ import { accrue, ceilingStage, DISTRICTS, DistrictProgress, GAME_SPEED, initialP
 import { nextOnPath } from '../engine/learningPath';
 import { recordPrincipleOutcome } from '../engine/principles';
 import { dueItems, recordMiss, recordReviewPass, SrsItem } from '../engine/spacedRepetition';
+import { CloudSync, startCloudSync, SyncStatus } from './cloudSync';
 import { emptyState, loadState, PersistedState, saveStateDebounced } from './store';
 
 interface AppStateValue {
   ready: boolean;
   state: PersistedState;
+  /** where progress is being kept: this device only, or synced across devices */
+  syncStatus: SyncStatus;
   readiness: ReadinessBreakdown;
   totalXp: number;
   dueReviews: SrsItem[];
@@ -115,18 +118,36 @@ function buildContext(state: PersistedState): AchievementContext {
 export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<PersistedState>(emptyState);
   const [ready, setReady] = useState(false);
+  const [syncStatus, setSyncStatus] = useState<SyncStatus>('local');
   const stateRef = useRef(state);
   stateRef.current = state;
+  const syncRef = useRef<CloudSync | null>(null);
 
+  // load this device's save and (inside the published artifact) the cloud
+  // save together, and start from whichever holds the newer player action
   useEffect(() => {
-    loadState().then((s) => {
-      setState(s);
+    let cancelled = false;
+    const sync = startCloudSync({
+      onStatus: setSyncStatus,
+      // another device acted: adopt its save if it is newer than ours
+      onRemote: (remote) => setState((cur) => (remote.updatedAt > cur.updatedAt ? remote : cur)),
+    });
+    syncRef.current = sync;
+    Promise.all([loadState(), sync.initial]).then(([local, remote]) => {
+      if (cancelled) return;
+      setState(remote && remote.updatedAt > local.updatedAt ? remote : local);
       setReady(true);
     });
+    return () => {
+      cancelled = true;
+      sync.stop();
+    };
   }, []);
 
   useEffect(() => {
-    if (ready) saveStateDebounced(state);
+    if (!ready) return;
+    saveStateDebounced(state);
+    syncRef.current?.push(state);
   }, [state, ready]);
 
   // award achievements whenever the game state that could satisfy one changes.
@@ -136,7 +157,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     if (!ready) return;
     const newly = evaluateAchievements(buildContext(state), state.achievements);
     if (newly.length > 0) {
-      mutate((s) => ({
+      mutateQuiet((s) => ({
         ...s,
         achievements: [...s.achievements, ...newly],
         capital: s.capital + rewardFor(newly),
@@ -151,7 +172,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!ready) return;
     const tick = () => {
-      mutate((s) => {
+      mutateQuiet((s) => {
         const completed = new Set(s.simRecords.map((r) => r.phaseId));
         const rep = buildContext(s).reputation;
         // reputation modifier (0.6× unproven → 1.4× blue-chip) × global pacing
@@ -174,7 +195,16 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready]);
 
+  /** a player action: stamps updatedAt so it wins cross-device sync */
   const mutate = useCallback((fn: (s: PersistedState) => PersistedState) => {
+    setState((s) => {
+      const next = fn(s);
+      return next === s ? s : { ...next, updatedAt: Math.max(Date.now(), s.updatedAt + 1) };
+    });
+  }, []);
+
+  /** a derived/background change (construction clock, achievement awards): no stamp */
+  const mutateQuiet = useCallback((fn: (s: PersistedState) => PersistedState) => {
     setState((s) => fn(s));
   }, []);
 
@@ -385,6 +415,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     return {
       ready,
       state,
+      syncStatus,
       readiness,
       totalXp,
       dueReviews: dueItems(state.srsQueue, Date.now()),
@@ -399,7 +430,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       claimChallenge,
       setCurveballFrequency,
     };
-  }, [ready, state, recordQuizResult, recordDecisionSeen, recordMath, recordSimRun, simCarryFor, spendCapital, dailyStatus, weeklyStatus, claimChallenge, setCurveballFrequency]);
+  }, [ready, state, syncStatus, recordQuizResult, recordDecisionSeen, recordMath, recordSimRun, simCarryFor, spendCapital, dailyStatus, weeklyStatus, claimChallenge, setCurveballFrequency]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

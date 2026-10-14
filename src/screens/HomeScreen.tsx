@@ -9,6 +9,7 @@ import { companyReputation, rankForXp, reputationTier } from '../engine/career';
 import { LEARNING_PATH, nextOnPath, pathProgress } from '../engine/learningPath';
 import { daysToGroundbreak, levelForXp, moduleProficiency } from '../engine/progress';
 import { useAppState } from '../state/AppState';
+import type { SyncStatus } from '../state/cloudSync';
 import { Body, Btn, Card, H1, H2, Meter, Screen, Small, Tag, TeachBox } from '../ui/components';
 import MentorBubble from '../ui/MentorBubble';
 import { colors } from '../ui/theme';
@@ -38,7 +39,8 @@ export default function HomeScreen() {
   return (
     <Screen>
       <H1>Solara Shores</H1>
-      <Small style={{ marginBottom: 8 }}>Owner-developer training · Yamacraw Road, New Providence</Small>
+      <Small style={{ marginBottom: 6 }}>Owner-developer training · Yamacraw Road, New Providence</Small>
+      <SyncChip />
 
       <MentorBubble mentor={foreman} line={briefing} animateIn />
 
@@ -123,6 +125,25 @@ export default function HomeScreen() {
         modules light up as research drops into the content files — no app update needed.
       </Small>
     </Screen>
+  );
+}
+
+const SYNC_LABEL: Record<SyncStatus, { text: string; color: string }> = {
+  local: { text: 'Saved on this device', color: colors.muted },
+  connecting: { text: 'Connecting to cloud save…', color: colors.muted },
+  synced: { text: '☁ Synced across your devices', color: colors.good },
+  saving: { text: '☁ Saving…', color: colors.teal },
+  error: { text: 'Cloud save paused · progress kept on this device', color: colors.warn },
+};
+
+/** where your progress lives right now: this device only, or shared across devices */
+function SyncChip() {
+  const { syncStatus } = useAppState();
+  const { text, color } = SYNC_LABEL[syncStatus];
+  return (
+    <View style={{ flexDirection: 'row', marginBottom: 8 }}>
+      <Tag label={text} color={color} />
+    </View>
   );
 }
 
